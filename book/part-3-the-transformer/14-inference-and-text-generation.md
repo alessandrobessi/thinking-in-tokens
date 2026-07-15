@@ -1,13 +1,18 @@
 # Chapter 14 — Inference and Text Generation
 
-> **Part:** The Transformer · **Concept Level:** Level 4 · **Prerequisites:** Chapter 6 (prediction), Chapter 12 (transformer blocks)
-> **New concepts introduced:** Inference, Sampling
+**Part:** The Transformer
+
+**Concept Level:** Level 4
+
+**Prerequisites:** Chapter 6 (prediction), Chapter 12 (transformer blocks)
+
+**New concepts introduced:** Inference, Sampling
 
 ---
 
 ## 1. Opening Question
 
-> *Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
+*Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
 
 ## 2. Real-World Story
 
@@ -97,15 +102,21 @@ the model's raw output, not identical to it.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "The model is still learning or improving while I chat with it."
-> **Why it's wrong:** Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
-> **Correct intuition:** What grows during a conversation is the context available to the model (Chapter 16), not the model's trained parameters themselves.
-> **Analogy:** A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
+**Misconception:** "The model is still learning or improving while I chat with it."
 
-> **Misconception:** "Since it's the same model and the same prompt, it should give the exact same answer every time."
-> **Why it's wrong:** Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
-> **Correct intuition:** Identical inputs can produce different outputs by design, because sampling deliberately introduces choice among plausible candidates rather than always taking the single most likely one.
-> **Analogy:** Asking three different (equally excellent) writers to finish the same sentence naturally produces three different, all-reasonable endings.
+**Why it's wrong:** Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
+
+**Correct intuition:** What grows during a conversation is the context available to the model (Chapter 16), not the model's trained parameters themselves.
+
+**Analogy:** A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
+
+**Misconception:** "Since it's the same model and the same prompt, it should give the exact same answer every time."
+
+**Why it's wrong:** Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
+
+**Correct intuition:** Identical inputs can produce different outputs by design, because sampling deliberately introduces choice among plausible candidates rather than always taking the single most likely one.
+
+**Analogy:** Asking three different (equally excellent) writers to finish the same sentence naturally produces three different, all-reasonable endings.
 
 ## 7. Practical Implications
 
@@ -137,10 +148,12 @@ faster.
 
 ## 11. The Next Obvious Question
 
-> *If the model is just sampling plausible-sounding tokens, what happens when "plausible-sounding" and "actually true" come apart?*
+*If the model is just sampling plausible-sounding tokens, what happens when "plausible-sounding" and "actually true" come apart?*
 
 ---
 
 **Glossary terms added this chapter:** Inference, Sampling, Temperature, Top-k / nucleus sampling → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "the model keeps learning during conversation"; "same prompt should always give the same answer" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 4 — Inference, Sampling, both at Ch. 14

@@ -1,13 +1,18 @@
 # Chapter 2 — What Is Information?
 
-> **Part:** Information · **Concept Level:** Level 0 · **Prerequisites:** Chapter 1 (informal notion of data/computation)
-> **New concepts introduced:** Information, Symbols, Computation, Probability (intuition)
+**Part:** Information
+
+**Concept Level:** Level 0
+
+**Prerequisites:** Chapter 1 (informal notion of data/computation)
+
+**New concepts introduced:** Information, Symbols, Computation, Probability (intuition)
 
 ---
 
 ## 1. Opening Question
 
-> *What does it actually mean for a computer to "know" or "read" something?*
+*What does it actually mean for a computer to "know" or "read" something?*
 
 ## 2. Real-World Story
 
@@ -121,15 +126,21 @@ probable one (a mechanism Chapter 14 covers in detail).
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "A computer that processes information understands what that information means."
-> **Why it's wrong:** Computation, by its formal definition, requires only mechanical rule-following — not comprehension. A telegraph relay "processes" Morse code perfectly without understanding English.
-> **Correct intuition:** A computer manipulates symbols according to rules; whether or not any "understanding" is happening is a separate, much harder question this book will return to.
-> **Analogy:** A vending machine correctly processes coin-shaped-and-weighted metal without knowing what money is.
+**Misconception:** "A computer that processes information understands what that information means."
 
-> **Misconception:** "More information means more data — a longer message always contains more information."
-> **Why it's wrong:** Information is a measure of how much a message reduces your uncertainty, not how many words or bytes it contains. A long, entirely predictable message can carry almost no information.
-> **Correct intuition:** Information content depends on how surprising the message is, not on its length.
-> **Analogy:** A weather forecast that just says "it will be exactly like every other day this month" can be a hundred pages long and still tell you almost nothing you didn't already expect.
+**Why it's wrong:** Computation, by its formal definition, requires only mechanical rule-following — not comprehension. A telegraph relay "processes" Morse code perfectly without understanding English.
+
+**Correct intuition:** A computer manipulates symbols according to rules; whether or not any "understanding" is happening is a separate, much harder question this book will return to.
+
+**Analogy:** A vending machine correctly processes coin-shaped-and-weighted metal without knowing what money is.
+
+**Misconception:** "More information means more data — a longer message always contains more information."
+
+**Why it's wrong:** Information is a measure of how much a message reduces your uncertainty, not how many words or bytes it contains. A long, entirely predictable message can carry almost no information.
+
+**Correct intuition:** Information content depends on how surprising the message is, not on its length.
+
+**Analogy:** A weather forecast that just says "it will be exactly like every other day this month" can be a hundred pages long and still tell you almost nothing you didn't already expect.
 
 ## 7. Practical Implications
 
@@ -160,10 +171,12 @@ rather than feeling hand-wavy.
 
 ## 11. The Next Obvious Question
 
-> *If computers only handle information as symbols, how does something as messy and irregular as human language get turned into symbols a computer can actually work with?*
+*If computers only handle information as symbols, how does something as messy and irregular as human language get turned into symbols a computer can actually work with?*
 
 ---
 
 **Glossary terms added this chapter:** Information, Symbol, Computation, Probability (intuition) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "computers understand meaning"; "more information = more data volume" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 0 — Information, Symbols, Computation, Probability (intuition), all at Ch. 2

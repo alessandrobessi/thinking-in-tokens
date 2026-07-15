@@ -1,13 +1,18 @@
 # Chapter 11 — The Attention Revolution
 
-> **Part:** The Transformer · **Concept Level:** Level 4 · **Prerequisites:** Chapter 4 (context), Chapter 5 (embeddings, similarity)
-> **New concepts introduced:** Attention, Causal masking, Attention heads, Positional encoding
+**Part:** The Transformer
+
+**Concept Level:** Level 4
+
+**Prerequisites:** Chapter 4 (context), Chapter 5 (embeddings, similarity)
+
+**New concepts introduced:** Attention, Causal masking, Attention heads, Positional encoding
 
 ---
 
 ## 1. Opening Question
 
-> *How does a model decide which earlier words matter most when predicting the next one?*
+*How does a model decide which earlier words matter most when predicting the next one?*
 
 ## 2. Real-World Story
 
@@ -51,6 +56,16 @@ ones that haven't appeared yet. "It" gets resolved only in hindsight, once
 later tokens are available to attend back across everything, including
 "it," that came before them.
 
+Note what does *not* happen here: the model doesn't reach back and rewrite
+whatever representation it originally computed at the position of "it."
+That position's calculation is done, and done for good, the moment the
+model moves on. What actually happens is that a *later* position — "big,"
+or anything generated after it — builds its own new representation, one
+that draws on "it," "trophy," and "suitcase" as available earlier context
+and, in doing so, effectively resolves the reference at that later point.
+The resolution moves forward with the sequence; it never travels backward
+into it.
+
 ## 4. Core Intuition
 
 **Attention** is a mechanism that lets a model, while processing any given
@@ -82,22 +97,26 @@ but *where* each one sits relative to the others.
 
 ## 5. Technical Explanation
 
-Formally, for each token being processed, attention computes three things
-derived from that token's embedding (Chapter 5): a **query** (what this
-token is looking for), and, for every token in the sequence, a **key**
-(what that token has to offer) and a **value** (the actual content it
-contributes if selected). Comparing the current token's query against
-every *earlier* token's key produces a relevance score for each pair —
-comparisons against later tokens are blocked outright, assigned no weight
-regardless of how relevant they might otherwise seem. This blocking is
-the **causal mask**: applied uniformly across the whole sequence, so
-every position's calculation can still be performed in parallel during
-training, while guaranteeing that no token's result ever actually depends
-on information from tokens generated after it. The remaining, unblocked
-scores are converted into weights that sum to one; the token's updated
-representation is a weighted combination of every earlier token's value,
-using those weights — heavily favoring highly relevant tokens, barely
-including irrelevant ones.
+Formally, for each token being processed, attention computes three
+things: a **query** (what this token is looking for), and, for every
+token in the sequence, a **key** (what that token has to offer) and a
+**value** (the actual content it contributes if selected). In the first
+transformer block, these are derived from the token representations that
+began as embeddings (Chapter 5); in every later block, they're derived
+instead from the richer representations the previous block already
+produced (Chapter 12 covers this stacking) — not repeatedly from the
+original embedding. Comparing the current token's query against its own
+key and every *earlier* token's key produces a relevance score for each
+pair — comparisons against later tokens are blocked outright, assigned no
+weight regardless of how relevant they might otherwise seem. This
+blocking is the **causal mask**: applied uniformly across the whole
+sequence, so every position's calculation can still be performed in
+parallel during training, while guaranteeing that no token's result ever
+actually depends on information from tokens generated after it. The
+remaining, unblocked scores are converted into weights that sum to one;
+the token's updated representation is a weighted combination of its own
+value and every earlier token's value, using those weights — heavily
+favoring highly relevant tokens, barely including irrelevant ones.
 
 This is precisely the revision process Chapter 5 flagged but deferred: a
 token's embedding is a general-purpose starting point, and attention is
@@ -127,20 +146,29 @@ somehow, since attention itself carries none) hasn't changed.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Attention means the model reads one word at a time, left to right, like a person reading a sentence."
-> **Why it's wrong:** Attention lets a model weigh every earlier token against every other earlier token simultaneously — it isn't a sequential scan, it's a parallel weighing computed in one step, just restricted to tokens already available (see the next misconception).
-> **Correct intuition:** Every token can draw on every earlier token's information in one step, with weights that shift depending on the specific sequence, not a fixed left-to-right reading order.
-> **Analogy:** A conductor doesn't process an orchestra one instrument at a time in sequence — they attend to the whole ensemble at once, adjusting emphasis on different sections based on what the whole piece needs at that moment.
+**Misconception:** "Attention means the model reads one word at a time, left to right, like a person reading a sentence."
 
-> **Misconception:** "Since attention lets a model weigh every token's relevance, it can look at the entire sentence, including words that come later — the same way a human reading the whole sentence at once can."
-> **Why it's wrong:** For a generative model, attention is deliberately restricted, by the causal mask, to the current token and everything before it — never anything after. This isn't a memory limitation; it's a rule enforced because next-token prediction (Chapter 6) requires it.
-> **Correct intuition:** Attention is comprehensive across everything available *so far*, not comprehensive across the whole eventual passage — the Winograd sentence in this chapter's story is only resolved in hindsight, once "big" or "small" has actually appeared.
-> **Analogy:** A detective solving a case in real time can only use clues discovered so far, not clues that will turn up tomorrow — even though the eventual case file will contain the whole story.
+**Why it's wrong:** Attention lets a model weigh every earlier token against every other earlier token simultaneously — it isn't a sequential scan, it's a parallel weighing computed in one step, just restricted to tokens already available (see the next misconception).
 
-> **Misconception:** "Positional encoding gives the model an understanding of grammar and word order, the way a person learns syntax rules."
-> **Why it's wrong:** Positional encoding is just a numerical tag marking where a token sits in the sequence — it doesn't encode any grammatical rule directly; whatever use the model makes of position (including anything resembling grammar) has to be learned during training (Chapter 9), the same way everything else is.
-> **Correct intuition:** Positional encoding supplies raw positional information; any grammatical pattern built from that information is learned, not given.
-> **Analogy:** Numbering the pages of a shuffled manuscript tells you the correct order — it doesn't, by itself, tell you what the story means.
+**Correct intuition:** Every token can draw on every earlier token's information in one step, with weights that shift depending on the specific sequence, not a fixed left-to-right reading order.
+
+**Analogy:** A conductor doesn't process an orchestra one instrument at a time in sequence — they attend to the whole ensemble at once, adjusting emphasis on different sections based on what the whole piece needs at that moment.
+
+**Misconception:** "Since attention lets a model weigh every token's relevance, it can look at the entire sentence, including words that come later — the same way a human reading the whole sentence at once can."
+
+**Why it's wrong:** For a generative model, attention is deliberately restricted, by the causal mask, to the current token and everything before it — never anything after. This isn't a memory limitation; it's a rule enforced because next-token prediction (Chapter 6) requires it.
+
+**Correct intuition:** Attention is comprehensive across everything available *so far*, not comprehensive across the whole eventual passage — the Winograd sentence in this chapter's story is only resolved in hindsight, once "big" or "small" has actually appeared.
+
+**Analogy:** A detective solving a case in real time can only use clues discovered so far, not clues that will turn up tomorrow — even though the eventual case file will contain the whole story.
+
+**Misconception:** "Positional encoding gives the model an understanding of grammar and word order, the way a person learns syntax rules."
+
+**Why it's wrong:** Positional encoding is just a numerical tag marking where a token sits in the sequence — it doesn't encode any grammatical rule directly; whatever use the model makes of position (including anything resembling grammar) has to be learned during training (Chapter 9), the same way everything else is.
+
+**Correct intuition:** Positional encoding supplies raw positional information; any grammatical pattern built from that information is learned, not given.
+
+**Analogy:** Numbering the pages of a shuffled manuscript tells you the correct order — it doesn't, by itself, tell you what the story means.
 
 ## 7. Practical Implications
 
@@ -158,11 +186,11 @@ earlier words a model weighted heavily when producing a given output.
 
 ## 8. Key Takeaway
 
-**Attention lets a model weigh every earlier token's relevance when interpreting or predicting from any given token — never later ones, by design — and positional encoding is what lets it also know where each token sits in the sequence.**
+**Attention lets a model weigh its own and every earlier token's relevance when interpreting or predicting from any given token — never later ones, by design — and positional encoding is what lets it also know where each token sits in the sequence.**
 
 ## 9. One-Page Summary
 
-- Attention computes, for each token, a weight reflecting how relevant every *earlier* token is to it right now — a direct, numerical version of Chapter 4's "context."
+- Attention computes, for each token, a weight reflecting how relevant it itself and every *earlier* token is to it right now — a direct, numerical version of Chapter 4's "context."
 - This weighing happens in parallel across the whole sequence during training, not as a sequential left-to-right scan — but it is restricted to earlier tokens only.
 - Causal masking is what enforces "earlier only, never later" — a deliberate rule, not a technical limitation, required for next-token prediction to be meaningful.
 - Attention heads run several relevance computations side by side per layer, each free to specialize in a different kind of relationship.
@@ -178,10 +206,12 @@ earlier words a model weighted heavily when producing a given output.
 
 ## 11. The Next Obvious Question
 
-> *Once a model can weigh relevance across an entire passage, how do you actually assemble that mechanism into a full working system that can be trained end to end?*
+*Once a model can weigh relevance across an entire passage, how do you actually assemble that mechanism into a full working system that can be trained end to end?*
 
 ---
 
 **Glossary terms added this chapter:** Attention, Causal masking, Attention heads (multi-head attention), Positional encoding, Query/key/value → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "attention reads sequentially, one word at a time"; "attention can see later tokens, not just earlier ones"; "positional encoding teaches grammar" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 4 — Attention, Causal masking, Attention heads, Positional encoding, all at Ch. 11

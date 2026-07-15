@@ -1,13 +1,18 @@
 # Chapter N — [Chapter Title]
 
-> **Part:** [Part Name] · **Concept Level:** [Level X, per concept-graph.md] · **Prerequisites:** [prior chapters/concepts required]
-> **New concepts introduced:** [comma-separated list — must also be added to glossary.md / misconceptions.md / concept-graph.md]
+**Part:** [Part Name]
+
+**Concept Level:** [Level X, per concept-graph.md]
+
+**Prerequisites:** [prior chapters/concepts required]
+
+**New concepts introduced:** [comma-separated list — must also be added to glossary.md / misconceptions.md / concept-graph.md]
 
 ---
 
 ## 1. Opening Question
 
-> *[The one question this chapter exists to answer, in plain language — no jargon.]*
+*[The one question this chapter exists to answer, in plain language — no jargon.]*
 
 ## 2. Real-World Story
 
@@ -31,10 +36,13 @@ happens, and land on the same insight the story already pointed at, now doubly g
 
 ## 6. Common Misconceptions
 
-> **Misconception:** [...]
-> **Why it's wrong:** [...]
-> **Correct intuition:** [...]
-> **Analogy:** [...]
+**Misconception:** [...]
+
+**Why it's wrong:** [...]
+
+**Correct intuition:** [...]
+
+**Analogy:** [...]
 
 [Repeat block for each misconception covered. Mirror each as one row in misconceptions.md.]
 
@@ -59,10 +67,12 @@ load-bearing sentence.]**
 
 ## 11. The Next Obvious Question
 
-> *[The question this chapter's answer naturally provokes — becomes the next chapter's Opening Question.]*
+*[The question this chapter's answer naturally provokes — becomes the next chapter's Opening Question.]*
 
 ---
 
 **Glossary terms added this chapter:** [term1, term2, ...] → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** [...] → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** [...] → update `/concept-graph.md`

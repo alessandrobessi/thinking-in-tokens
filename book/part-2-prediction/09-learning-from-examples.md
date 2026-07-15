@@ -1,13 +1,18 @@
 # Chapter 9 — Learning From Examples
 
-> **Part:** Prediction · **Concept Level:** Level 3 · **Prerequisites:** Chapter 8 (neural networks, parameters)
-> **New concepts introduced:** Learning, Training, Loss
+**Part:** Prediction
+
+**Concept Level:** Level 3
+
+**Prerequisites:** Chapter 8 (neural networks, parameters)
+
+**New concepts introduced:** Learning, Training, Loss
 
 ---
 
 ## 1. Opening Question
 
-> *How does a neural network actually learn the right values for its billions of adjustable parameters?*
+*How does a neural network actually learn the right values for its billions of adjustable parameters?*
 
 ## 2. Real-World Story
 
@@ -98,15 +103,21 @@ avoided.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Training makes the model memorize its training examples, like a database of stored sentences."
-> **Why it's wrong:** The training process specifically rewards parameters that predict well across an enormous, varied set of examples — patterns that generalize tend to reduce loss more reliably than memorized specifics, especially given far more distinct examples than parameters could ever store verbatim.
-> **Correct intuition:** A well-trained model has learned generalizable patterns of language, not a searchable copy of its training text — though under some conditions (very repeated text, insufficient data relative to model size) some memorization can still occur, a nuance Chapter 15 returns to.
-> **Analogy:** A student who does thousands of practice problems learns the underlying method, not a lookup table of exactly those problems — though a student who saw the same ten problems a thousand times might indeed just memorize those ten.
+**Misconception:** "Training makes the model memorize its training examples, like a database of stored sentences."
 
-> **Misconception:** "A lower loss always means the model has gotten more generally 'intelligent.'"
-> **Why it's wrong:** Loss measures how well the model fits its specific training objective (next-token prediction on its training data) — improving at that objective correlates with many useful capabilities, but it's a specific, measurable quantity, not a direct measure of general intelligence.
-> **Correct intuition:** Treat loss as a precise fitness score for one specific task, useful and informative, but distinct from the broader, harder question of evaluating a system's overall capability — which Chapter 27 addresses directly.
-> **Analogy:** A student's score on one specific exam is real, useful information about their preparation for that exam — but it isn't the same thing as a complete measure of their intelligence.
+**Why it's wrong:** The training process specifically rewards parameters that predict well across an enormous, varied set of examples — patterns that generalize tend to reduce loss more reliably than memorized specifics, especially given far more distinct examples than parameters could ever store verbatim.
+
+**Correct intuition:** A well-trained model has learned generalizable patterns of language, not a searchable copy of its training text — though under some conditions (very repeated text, insufficient data relative to model size) some memorization can still occur, a nuance Chapter 15 returns to.
+
+**Analogy:** A student who does thousands of practice problems learns the underlying method, not a lookup table of exactly those problems — though a student who saw the same ten problems a thousand times might indeed just memorize those ten.
+
+**Misconception:** "A lower loss always means the model has gotten more generally 'intelligent.'"
+
+**Why it's wrong:** Loss measures how well the model fits its specific training objective (next-token prediction on its training data) — improving at that objective correlates with many useful capabilities, but it's a specific, measurable quantity, not a direct measure of general intelligence.
+
+**Correct intuition:** Treat loss as a precise fitness score for one specific task, useful and informative, but distinct from the broader, harder question of evaluating a system's overall capability — which Chapter 27 addresses directly.
+
+**Analogy:** A student's score on one specific exam is real, useful information about their preparation for that exam — but it isn't the same thing as a complete measure of their intelligence.
 
 ## 7. Practical Implications
 
@@ -138,10 +149,12 @@ and again.
 
 ## 11. The Next Obvious Question
 
-> *If throwing more examples and more parameters at this training loop keeps improving performance, is there a predictable pattern to how much better it gets — and are there limits?*
+*If throwing more examples and more parameters at this training loop keeps improving performance, is there a predictable pattern to how much better it gets — and are there limits?*
 
 ---
 
 **Glossary terms added this chapter:** Loss, Training, Learning → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "training just means memorizing examples"; "lower loss always means more general intelligence" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 3 — Learning, Training, Loss, all at Ch. 9

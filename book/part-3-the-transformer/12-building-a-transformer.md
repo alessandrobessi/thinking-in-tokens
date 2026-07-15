@@ -1,13 +1,18 @@
 # Chapter 12 — Building a Transformer
 
-> **Part:** The Transformer · **Concept Level:** Level 4 · **Prerequisites:** Chapter 8 (neural networks), Chapter 11 (attention, positional encoding)
-> **New concepts introduced:** Transformer blocks
+**Part:** The Transformer
+
+**Concept Level:** Level 4
+
+**Prerequisites:** Chapter 8 (neural networks), Chapter 11 (attention, positional encoding)
+
+**New concepts introduced:** Transformer blocks
 
 ---
 
 ## 1. Opening Question
 
-> *Once a model can weigh relevance across an entire passage, how do you actually assemble that mechanism into a full working system?*
+*Once a model can weigh relevance across an entire passage, how do you actually assemble that mechanism into a full working system?*
 
 ## 2. Real-World Story
 
@@ -54,8 +59,8 @@ understanding of exactly what "big" is doing in this exact sentence.
 
 A **transformer block** combines two sub-steps, applied one after the
 other: an attention step (Chapter 11), where every token gathers relevant
-information from every earlier token, and a feed-forward step, where a
-simple neural network (Chapter 8) further transforms each token's
+information from itself and every earlier token, and a feed-forward step,
+where a simple neural network (Chapter 8) further transforms each token's
 representation individually, independent of the others. A transformer is
 what you get by stacking many of these blocks — modern models use dozens
 — each one refining the output of the block before it, the same way each
@@ -91,15 +96,21 @@ feed-forward processing, rather than from raw, unrefined embeddings.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Every layer in a transformer does the same thing — it's the same computation repeated identically."
-> **Why it's wrong:** Each block has its own independently learned parameters; different blocks tend to specialize in different kinds of patterns as a byproduct of training, not identical, interchangeable copies of one computation.
-> **Correct intuition:** Stacking blocks is stacking distinct, separately-learned refinements, not repeating one fixed operation.
-> **Analogy:** Twenty-four editors reading the same manuscript don't make identical changes — each brings a different kind of scrutiny, even though they're all doing "editing."
+**Misconception:** "Every layer in a transformer does the same thing — it's the same computation repeated identically."
 
-> **Misconception:** "Adding more layers just makes the same computation take longer, without changing what the model can do."
-> **Why it's wrong:** Additional layers give the network more rounds of refinement to build increasingly elaborate representations — similar to how Chapter 8's hidden layers build on patterns detected by the layer before, just now with attention included at every stage.
-> **Correct intuition:** Depth is a qualitatively different resource from raw speed — more layers change what kinds of patterns the network can represent, not just how long it takes to run.
-> **Analogy:** Twenty-four rounds of editing don't just take longer than one round — they produce a qualitatively more polished manuscript than one editor working twenty-four times as long alone.
+**Why it's wrong:** Each block has its own independently learned parameters; different blocks tend to specialize in different kinds of patterns as a byproduct of training, not identical, interchangeable copies of one computation.
+
+**Correct intuition:** Stacking blocks is stacking distinct, separately-learned refinements, not repeating one fixed operation.
+
+**Analogy:** Twenty-four editors reading the same manuscript don't make identical changes — each brings a different kind of scrutiny, even though they're all doing "editing."
+
+**Misconception:** "Adding more layers just makes the same computation take longer, without changing what the model can do."
+
+**Why it's wrong:** Additional layers give the network more rounds of refinement to build increasingly elaborate representations — similar to how Chapter 8's hidden layers build on patterns detected by the layer before, just now with attention included at every stage.
+
+**Correct intuition:** Depth is a qualitatively different resource from raw speed — more layers change what kinds of patterns the network can represent, not just how long it takes to run.
+
+**Analogy:** Twenty-four rounds of editing don't just take longer than one round — they produce a qualitatively more polished manuscript than one editor working twenty-four times as long alone.
 
 ## 7. Practical Implications
 
@@ -117,7 +128,7 @@ just making one computation bigger.
 
 ## 9. One-Page Summary
 
-- A transformer block combines an attention step (gathering relevant context from every token) with a feed-forward step (refining each token's representation individually).
+- A transformer block combines an attention step (gathering relevant context from itself and every earlier token) with a feed-forward step (refining each token's representation individually).
 - A transformer stacks many such blocks, each with its own independently learned parameters, each refining the output of the one before it.
 - Blocks add their refinements on top of incoming representations rather than replacing them, and normalization keeps values stable across many stacked rounds.
 - Different blocks tend to specialize in different kinds of patterns as a byproduct of training, not by design.
@@ -130,10 +141,12 @@ just making one computation bigger.
 
 ## 11. The Next Obvious Question
 
-> *Given this machinery existed conceptually for a while, what specifically made it good enough to power something like ChatGPT?*
+*Given this machinery existed conceptually for a while, what specifically made it good enough to power something like ChatGPT?*
 
 ---
 
 **Glossary terms added this chapter:** Transformer block, Feed-forward step, Residual connection, Normalization → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "every transformer layer does the same thing"; "more layers just means slower, not different" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 4 — Transformer blocks, at Ch. 12

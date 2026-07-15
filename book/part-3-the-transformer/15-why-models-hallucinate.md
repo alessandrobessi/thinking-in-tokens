@@ -1,13 +1,18 @@
 # Chapter 15 — Why Models Hallucinate
 
-> **Part:** The Transformer · **Concept Level:** Level 5 · **Prerequisites:** Chapter 9 (training), Chapter 14 (inference, sampling)
-> **New concepts introduced:** Hallucinations
+**Part:** The Transformer
+
+**Concept Level:** Level 5
+
+**Prerequisites:** Chapter 9 (training), Chapter 14 (inference, sampling)
+
+**New concepts introduced:** Hallucinations
 
 ---
 
 ## 1. Opening Question
 
-> *If the model is just sampling plausible-sounding tokens, what happens when "plausible-sounding" and "actually true" come apart?*
+*If the model is just sampling plausible-sounding tokens, what happens when "plausible-sounding" and "actually true" come apart?*
 
 ## 2. Real-World Story
 
@@ -79,24 +84,33 @@ training text, so statistical plausibility and truth line up.
 For rare, obscure, or entirely nonexistent facts — a specific, uncommon
 court case, a specific minor historical date, a citation for a paper that
 doesn't exist — the alignment between "statistically plausible" and
-"actually true" breaks down, but the model still must produce *some*
-continuation (Chapter 14's sampling still has to select a token). Unless
-it has been specifically trained or aligned (Chapter 13's preview,
-Chapter 19's full treatment) to prefer expressing uncertainty or
-declining to answer in exactly these situations, it fills the gap with a
-fluent, confident-sounding fabrication rather than a flagged absence.
+"actually true" breaks down. Chapter 14's sampling step still has to
+select *some* token at each position, but stopping, declining, or flagging
+uncertainty are themselves valid tokens to select, not exceptions to the
+process. What actually happens depends on training: unless the model has
+been specifically trained or aligned (Chapter 13's preview, Chapter 19's
+full treatment) to prefer expressing uncertainty or declining to answer in
+exactly these situations, sampling has no particular reason to favor
+those options over a fluent, confident-sounding fabrication — so, left to
+that default, it commonly produces one instead of a flagged absence.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Hallucination is a rare bug that will simply get fixed as models improve."
-> **Why it's wrong:** It's less a discrete defect than a structural tension between "always produce a fluent, confident continuation" and "only state things that are true" — a tension inherent to how next-token prediction works, not a simple coding error.
-> **Correct intuition:** Mitigations exist and genuinely help (better alignment, retrieval-augmentation in Chapters 17–18, improved calibration of uncertainty), but treat hallucination as an ongoing tradeoff to manage, not a bug awaiting a final patch.
-> **Analogy:** A student trained their whole life to always give a confident-sounding answer on every exam question will keep bluffing convincingly on the questions they don't actually know, even after years of additional coaching — the tendency has to be specifically retrained, not merely reduced by getting generally smarter.
+**Misconception:** "Hallucination is a rare bug that will simply get fixed as models improve."
 
-> **Misconception:** "The model knows it's making something up and is choosing to deceive."
-> **Why it's wrong:** There's no separate module tracking "what I actually know is true" apart from "what token comes next" — it's the same fluent generation process whether the content happens to be accurate or fabricated. Some research suggests a model's internal computations can carry information correlated with how likely a claim is to be wrong, but normal generation doesn't reliably surface that signal as a calibrated statement of uncertainty — so confident phrasing still isn't a dependable indicator of accuracy in practice.
-> **Correct intuition:** Confident phrasing and factual accuracy are produced by the same process but aren't reliably linked in the final output — one doesn't guarantee the other, even if some trace of "how sure" exists somewhere inside the computation.
-> **Analogy:** A fluent public speaker can sound equally confident whether reciting a well-verified fact or a half-remembered detail — confidence of delivery and accuracy of content are simply different things.
+**Why it's wrong:** It's less a discrete defect than a structural tension between next-token prediction's default pull toward a fluent, confident-sounding continuation and the separate goal of only stating things that are true — a tension inherent to how the mechanism works, not a simple coding error.
+
+**Correct intuition:** Mitigations exist and genuinely help (better alignment, retrieval-augmentation in Chapters 17–18, improved calibration of uncertainty), but treat hallucination as an ongoing tradeoff to manage, not a bug awaiting a final patch.
+
+**Analogy:** A student trained their whole life to always give a confident-sounding answer on every exam question will keep bluffing convincingly on the questions they don't actually know, even after years of additional coaching — the tendency has to be specifically retrained, not merely reduced by getting generally smarter.
+
+**Misconception:** "The model knows it's making something up and is choosing to deceive."
+
+**Why it's wrong:** There's no separate module tracking "what I actually know is true" apart from "what token comes next" — it's the same fluent generation process whether the content happens to be accurate or fabricated. Some research suggests a model's internal computations can carry information correlated with how likely a claim is to be wrong, but normal generation doesn't reliably surface that signal as a calibrated statement of uncertainty — so confident phrasing still isn't a dependable indicator of accuracy in practice.
+
+**Correct intuition:** Confident phrasing and factual accuracy are produced by the same process but aren't reliably linked in the final output — one doesn't guarantee the other, even if some trace of "how sure" exists somewhere inside the computation.
+
+**Analogy:** A fluent public speaker can sound equally confident whether reciting a well-verified fact or a half-remembered detail — confidence of delivery and accuracy of content are simply different things.
 
 ## 7. Practical Implications
 
@@ -125,14 +139,17 @@ knowledge and obscure or narrow topics.
 
 ## 10. Further Reading
 
-- Search for documented cases of AI-generated fake legal citations (including the case referenced in this chapter) for real, verifiable examples of this failure mode in practice.
+- Look up *Mata v. Avianca, Inc.* (S.D.N.Y. 2023) for the full documented record of the fabricated-citations incident referenced in this chapter's story, and other real, verifiable examples of this failure mode in practice.
+- Search for "survey of hallucination in natural language generation" for a broader treatment of hallucination's causes and mitigations across the field, beyond this chapter's conceptual introduction.
 
 ## 11. The Next Obvious Question
 
-> *If a model's own trained-in knowledge can run out or go stale, how can it be given a bigger, more reliable memory to draw from?*
+*If a model's own trained-in knowledge can run out or go stale, how can it be given a bigger, more reliable memory to draw from?*
 
 ---
 
 **Glossary terms added this chapter:** Hallucination → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "hallucination is a rare bug that will get fixed"; "the model knows it's making things up" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 5 — Hallucinations, at Ch. 15 (closes Part III)

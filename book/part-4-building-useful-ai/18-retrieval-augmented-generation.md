@@ -1,13 +1,18 @@
 # Chapter 18 — Retrieval-Augmented Generation
 
-> **Part:** Building Useful AI · **Concept Level:** Level 6 · **Prerequisites:** Chapter 16 (context windows), Chapter 17 (retrieval, vector databases)
-> **New concepts introduced:** Retrieval-Augmented Generation (RAG)
+**Part:** Building Useful AI
+
+**Concept Level:** Level 6
+
+**Prerequisites:** Chapter 16 (context windows), Chapter 17 (retrieval, vector databases)
+
+**New concepts introduced:** Retrieval-Augmented Generation (RAG)
 
 ---
 
 ## 1. Opening Question
 
-> *Once relevant documents can be retrieved this way, how does a model actually combine that with its own generation process to produce a grounded answer?*
+*Once relevant documents can be retrieved this way, how does a model actually combine that with its own generation process to produce a grounded answer?*
 
 ## 2. Real-World Story
 
@@ -82,15 +87,21 @@ itself failed to find the genuinely relevant passage.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "RAG means the model has been retrained on the retrieved documents."
-> **Why it's wrong:** In the standard, simplest deployment pattern, no training or parameter update happens anywhere in this process — it's entirely a context-window technique, performed freshly at each individual query, exactly like handing a student pages for one specific exam rather than sending them back to school. (More elaborate setups can add retriever or generator fine-tuning on top, but that's an addition to the core pattern, not what makes something RAG.)
-> **Correct intuition:** RAG's defining move changes what the model can see for this one answer, not what it permanently knows.
-> **Analogy:** Handing someone a reference sheet during a test doesn't require re-teaching them the whole subject — the reference sheet is temporary, per-question help.
+**Misconception:** "RAG means the model has been retrained on the retrieved documents."
 
-> **Misconception:** "RAG eliminates hallucination entirely, since the model now has real sources to work from."
-> **Why it's wrong:** The model can still misinterpret retrieved text, blend it incorrectly with unrelated trained-in knowledge, or hallucinate confidently when the retrieval step itself fails to find the genuinely relevant passage — grounding reduces the risk substantially, but doesn't remove it.
-> **Correct intuition:** RAG narrows the gap between "plausible" and "true" (Chapter 15) by giving the model real material to draw from, but doesn't guarantee the model uses that material correctly every time.
-> **Analogy:** An open-book exam reduces guessing, but a student can still misread the reference page or cite the wrong passage.
+**Why it's wrong:** In the standard, simplest deployment pattern, no training or parameter update happens anywhere in this process — it's entirely a context-window technique, performed freshly at each individual query, exactly like handing a student pages for one specific exam rather than sending them back to school. (More elaborate setups can add retriever or generator fine-tuning on top, but that's an addition to the core pattern, not what makes something RAG.)
+
+**Correct intuition:** RAG's defining move changes what the model can see for this one answer, not what it permanently knows.
+
+**Analogy:** Handing someone a reference sheet during a test doesn't require re-teaching them the whole subject — the reference sheet is temporary, per-question help.
+
+**Misconception:** "RAG eliminates hallucination entirely, since the model now has real sources to work from."
+
+**Why it's wrong:** The model can still misinterpret retrieved text, blend it incorrectly with unrelated trained-in knowledge, or hallucinate confidently when the retrieval step itself fails to find the genuinely relevant passage — grounding reduces the risk substantially, but doesn't remove it.
+
+**Correct intuition:** RAG narrows the gap between "plausible" and "true" (Chapter 15) by giving the model real material to draw from, but doesn't guarantee the model uses that material correctly every time.
+
+**Analogy:** An open-book exam reduces guessing, but a student can still misread the reference page or cite the wrong passage.
 
 ## 7. Practical Implications
 
@@ -122,10 +133,12 @@ Chapter 15 together equip you to spot.
 
 ## 11. The Next Obvious Question
 
-> *If a model's knowledge and behavior can be shaped after pretraining without retrieval, purely through additional training, how does that actually work — and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
+*If a model's knowledge and behavior can be shaped after pretraining without retrieval, purely through additional training, how does that actually work — and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
 
 ---
 
 **Glossary terms added this chapter:** Retrieval-Augmented Generation (RAG) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "RAG means the model was retrained on the documents"; "RAG eliminates hallucination entirely" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 6 — RAG, at Ch. 18

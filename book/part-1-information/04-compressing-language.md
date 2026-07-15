@@ -1,13 +1,18 @@
 # Chapter 4 — Compressing Language
 
-> **Part:** Information · **Concept Level:** Level 1 · **Prerequisites:** Chapter 2 (information, probability), Chapter 3 (tokens)
-> **New concepts introduced:** Compression, Context
+**Part:** Information
+
+**Concept Level:** Level 1
+
+**Prerequisites:** Chapter 2 (information, probability), Chapter 3 (tokens)
+
+**New concepts introduced:** Compression, Context
 
 ---
 
 ## 1. Opening Question
 
-> *Why can a short sentence carry so much meaning, and how do computers exploit that?*
+*Why can a short sentence carry so much meaning, and how do computers exploit that?*
 
 ## 2. Real-World Story
 
@@ -98,15 +103,21 @@ consequential form, when we cover context windows and memory in Part IV.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Compressing language means losing quality or meaning, like a blurry, low-resolution photo."
-> **Why it's wrong:** Good compression specifically targets redundant, predictable content — the exact opposite of the parts of a message that carry meaning.
-> **Correct intuition:** Compression removes what could be reconstructed anyway; what's left is precisely the informative core of the message.
-> **Analogy:** Removing the words "I will be" from "I will be arriving Tuesday" loses nothing a reader couldn't reconstruct — unlike smudging out a photo's details, which are never recoverable.
+**Misconception:** "Compressing language means losing quality or meaning, like a blurry, low-resolution photo."
 
-> **Misconception:** "Context just means 'the general topic' being discussed."
-> **Why it's wrong:** Context, in this technical sense, is the specific sequence of surrounding tokens — not a vague subject label — and it can resolve very fine-grained ambiguity, not just topic.
-> **Correct intuition:** Context is the exact material immediately around a token that a model actually conditions its interpretation on.
-> **Analogy:** Knowing the "topic" of a conversation is a river — but knowing the *exact previous sentence* is what tells you whether "bank" means the water's edge or the building down the street.
+**Why it's wrong:** Good compression specifically targets redundant, predictable content — the exact opposite of the parts of a message that carry meaning.
+
+**Correct intuition:** Compression removes what could be reconstructed anyway; what's left is precisely the informative core of the message.
+
+**Analogy:** Removing the words "I will be" from "I will be arriving Tuesday" loses nothing a reader couldn't reconstruct — unlike smudging out a photo's details, which are never recoverable.
+
+**Misconception:** "Context just means 'the general topic' being discussed."
+
+**Why it's wrong:** Context, in this technical sense, is the specific sequence of surrounding tokens — not a vague subject label — and it can resolve very fine-grained ambiguity, not just topic.
+
+**Correct intuition:** Context is the exact material immediately around a token that a model actually conditions its interpretation on.
+
+**Analogy:** Knowing the "topic" of a conversation is a river — but knowing the *exact previous sentence* is what tells you whether "bank" means the water's edge or the building down the street.
 
 ## 7. Practical Implications
 
@@ -138,10 +149,12 @@ material a human would have used.
 
 ## 11. The Next Obvious Question
 
-> *If meaning depends so heavily on context and surrounding tokens, how can a computer represent "meaning" itself in a form it can actually compute with?*
+*If meaning depends so heavily on context and surrounding tokens, how can a computer represent "meaning" itself in a form it can actually compute with?*
 
 ---
 
 **Glossary terms added this chapter:** Compression, Context (as surrounding disambiguating sequence) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "compression loses meaning like a blurry photo"; "context just means the general topic" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 1 — Compression, Context, both at Ch. 4

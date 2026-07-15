@@ -1,13 +1,18 @@
 # Chapter 17 — Semantic Retrieval and Vector Databases
 
-> **Part:** Building Useful AI · **Concept Level:** Level 6 · **Prerequisites:** Chapter 5 (embeddings, similarity), Chapter 16 (context windows)
-> **New concepts introduced:** Retrieval, Vector databases
+**Part:** Building Useful AI
+
+**Concept Level:** Level 6
+
+**Prerequisites:** Chapter 5 (embeddings, similarity), Chapter 16 (context windows)
+
+**New concepts introduced:** Retrieval, Vector databases
 
 ---
 
 ## 1. Opening Question
 
-> *If a context window can't hold everything, how can a model still pull in specific relevant information exactly when it's needed?*
+*If a context window can't hold everything, how can a model still pull in specific relevant information exactly when it's needed?*
 
 ## 2. Real-World Story
 
@@ -78,15 +83,21 @@ fast, without checking every point individually.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Retrieval works by searching for matching keywords, just with some extra intelligence layered on."
-> **Why it's wrong:** Semantic retrieval finds meaning-level matches even when zero words are shared between the query and the result, exactly as in the refund/reimbursement example — it isn't keyword search with improvements, it's a different underlying operation entirely.
-> **Correct intuition:** Retrieval compares locations in Chapter 5's meaning-space, not overlapping vocabulary.
-> **Analogy:** The librarian-by-meaning finds you the right book by what it's about, not by whether its title happens to share words with your question.
+**Misconception:** "Retrieval works by searching for matching keywords, just with some extra intelligence layered on."
 
-> **Misconception:** "A vector database is just a regular database with a search feature added."
-> **Why it's wrong:** The core operation — approximate nearest-neighbor search over points in a high-dimensional space — is fundamentally different from what conventional databases (built for exact lookups, filtering, and sorting) are optimized to do, even though modern systems increasingly combine both kinds of capability.
-> **Correct intuition:** A vector database is built around a genuinely different question — "what's nearby in meaning-space" — not an enhancement of "what exactly matches this value."
-> **Analogy:** A library organized by meaning and a library organized alphabetically are solving different problems, even though both are technically "libraries."
+**Why it's wrong:** Semantic retrieval finds meaning-level matches even when zero words are shared between the query and the result, exactly as in the refund/reimbursement example — it isn't keyword search with improvements, it's a different underlying operation entirely.
+
+**Correct intuition:** Retrieval compares locations in Chapter 5's meaning-space, not overlapping vocabulary.
+
+**Analogy:** The librarian-by-meaning finds you the right book by what it's about, not by whether its title happens to share words with your question.
+
+**Misconception:** "A vector database is just a regular database with a search feature added."
+
+**Why it's wrong:** The core operation — approximate nearest-neighbor search over points in a high-dimensional space — is fundamentally different from what conventional databases (built for exact lookups, filtering, and sorting) are optimized to do, even though modern systems increasingly combine both kinds of capability.
+
+**Correct intuition:** A vector database is built around a genuinely different question — "what's nearby in meaning-space" — not an enhancement of "what exactly matches this value."
+
+**Analogy:** A library organized by meaning and a library organized alphabetically are solving different problems, even though both are technically "libraries."
 
 ## 7. Practical Implications
 
@@ -118,10 +129,12 @@ branding.
 
 ## 11. The Next Obvious Question
 
-> *Once relevant documents can be retrieved this way, how does a model actually combine that retrieved information with its own generation process to produce a grounded answer?*
+*Once relevant documents can be retrieved this way, how does a model actually combine that retrieved information with its own generation process to produce a grounded answer?*
 
 ---
 
 **Glossary terms added this chapter:** Retrieval, Vector database, Chunking, Nearest-neighbor search → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "retrieval is just smarter keyword search"; "a vector database is a regular database with search added" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 6 — Retrieval, Vector databases, both at Ch. 17

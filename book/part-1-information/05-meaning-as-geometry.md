@@ -1,13 +1,18 @@
 # Chapter 5 — Meaning as Geometry
 
-> **Part:** Information · **Concept Level:** Level 2 · **Prerequisites:** Chapter 3 (tokens), Chapter 4 (context)
-> **New concepts introduced:** Embeddings, Vector spaces, Similarity, Semantic geometry
+**Part:** Information
+
+**Concept Level:** Level 2
+
+**Prerequisites:** Chapter 3 (tokens), Chapter 4 (context)
+
+**New concepts introduced:** Embeddings, Vector spaces, Similarity, Semantic geometry
 
 ---
 
 ## 1. Opening Question
 
-> *How can a computer represent the meaning of a word, not just the word itself?*
+*How can a computer represent the meaning of a word, not just the word itself?*
 
 ## 2. Real-World Story
 
@@ -125,22 +130,31 @@ initial position, not its final, in-context one.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** The model stores dictionary definitions.
-> **Why it's wrong:** Nowhere in an embedding is there a stored sentence explaining what a word means — there is only a location in space, learned from patterns of use.
-> **Correct intuition:** The model learns locations in a geometric space.
-> **Analogy:** Cities on a map.
+**Misconception:** The model stores dictionary definitions.
 
-> **Misconception:** "Similarity in this space just means 'these words are synonyms.'"
-> **Why it's wrong:** Words end up close together whenever they're used in similar contexts, which captures far more than synonymy — antonyms like "hot" and "cold," for instance, often end up relatively close too, since they're used in nearly identical grammatical contexts ("the water is ___").
-> **Correct intuition:** Closeness reflects similarity of *use and context*, which is a broader and sometimes subtler relationship than "means the same thing."
-> **Analogy:** On the culture-and-economy city map, two rival neighboring capitals might sit close together despite being political opposites — closeness there tracked "type of place," not "gets along with."
+**Why it's wrong:** Nowhere in an embedding is there a stored sentence explaining what a word means — there is only a location in space, learned from patterns of use.
+
+**Correct intuition:** The model learns locations in a geometric space.
+
+**Analogy:** Cities on a map.
+
+**Misconception:** "Similarity in this space just means 'these words are synonyms.'"
+
+**Why it's wrong:** Words end up close together whenever they're used in similar contexts, which captures far more than synonymy — antonyms like "hot" and "cold," for instance, often end up relatively close too, since they're used in nearly identical grammatical contexts ("the water is ___").
+
+**Correct intuition:** Closeness reflects similarity of *use and context*, which is a broader and sometimes subtler relationship than "means the same thing."
+
+**Analogy:** On the culture-and-economy city map, two rival neighboring capitals might sit close together despite being political opposites — closeness there tracked "type of place," not "gets along with."
 
 > **Try it yourself, before reading on:** would you expect "hot" to sit closer to "cold," or closer to "sandwich," on this map? Most people's first instinct is "sandwich" — hot and cold feel like opposites, so surely they shouldn't be neighbors. But "hot" is actually closer to "cold": both fill the same slot in the same kinds of sentences ("the water is ___," "turn the ___ tap"), while "sandwich" almost never does. If your first guess was "sandwich," you were reasoning about *meaning-as-agreement* rather than *meaning-as-use* — exactly the misconception above, caught in the act.
 
-> **Misconception:** "An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."
-> **Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — a process called attention (Chapter 11) — producing a different, in-context representation each time.
-> **Correct intuition:** This chapter's embedding is a token's general-purpose starting point, not its final, in-context meaning — the final meaning is computed fresh for every sentence.
-> **Analogy:** A person's home address is a fixed, general-purpose location — but where they actually are right now, in context, changes throughout the day. This chapter describes the home address; Chapter 11 describes where the token actually is right now.
+**Misconception:** "An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."
+
+**Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — a process called attention (Chapter 11) — producing a different, in-context representation each time.
+
+**Correct intuition:** This chapter's embedding is a token's general-purpose starting point, not its final, in-context meaning — the final meaning is computed fresh for every sentence.
+
+**Analogy:** A person's home address is a fixed, general-purpose location — but where they actually are right now, in context, changes throughout the day. This chapter describes the home address; Chapter 11 describes where the token actually is right now.
 
 ## 7. Practical Implications
 
@@ -178,10 +192,12 @@ level rather than the single-token level this chapter has focused on.
 
 ## 11. The Next Obvious Question
 
-> *Now that a computer can represent the meaning of a word as a location in space, how can it learn to predict what word is likely to come next in a sentence?*
+*Now that a computer can represent the meaning of a word as a location in space, how can it learn to predict what word is likely to come next in a sentence?*
 
 ---
 
 **Glossary terms added this chapter:** Embedding, Vector space, Similarity, Semantic geometry → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "the model stores dictionary definitions"; "similarity just means synonym"; "an embedding is a word's one true, permanent meaning" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 2 — Embeddings, Vector spaces, Similarity, Semantic geometry, all at Ch. 5

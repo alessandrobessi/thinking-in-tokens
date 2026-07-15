@@ -1,13 +1,18 @@
 # Chapter 19 — Fine-Tuning and Alignment
 
-> **Part:** Building Useful AI · **Concept Level:** Level 5 · **Prerequisites:** Chapter 9 (training, parameters), Chapter 13 (preview of fine-tuning/human feedback)
-> **New concepts introduced:** Fine-tuning, Alignment
+**Part:** Building Useful AI
+
+**Concept Level:** Level 5
+
+**Prerequisites:** Chapter 9 (training, parameters), Chapter 13 (preview of fine-tuning/human feedback)
+
+**New concepts introduced:** Fine-tuning, Alignment
 
 ---
 
 ## 1. Opening Question
 
-> *How does additional training after pretraining actually work, and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
+*How does additional training after pretraining actually work, and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
 
 ## 2. Real-World Story
 
@@ -109,15 +114,21 @@ subtly misaligned ways after this process, which is part of why Chapter
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Fine-tuning and pretraining are fundamentally different kinds of processes."
-> **Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
-> **Correct intuition:** Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
-> **Analogy:** A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
+**Misconception:** "Fine-tuning and pretraining are fundamentally different kinds of processes."
 
-> **Misconception:** "An aligned model has been made to genuinely understand and agree with human values."
-> **Why it's wrong:** Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
-> **Correct intuition:** Treat "aligned" as a description of trained behavioral tendencies, not a claim about the model's inner understanding — a distinction worth holding onto rather than resolving prematurely.
-> **Analogy:** A well-trained customer service employee can reliably follow a company's values in every interaction without that proving they personally hold those values — the training shapes behavior either way.
+**Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
+
+**Correct intuition:** Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
+
+**Analogy:** A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
+
+**Misconception:** "An aligned model has been made to genuinely understand and agree with human values."
+
+**Why it's wrong:** Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
+
+**Correct intuition:** Treat "aligned" as a description of trained behavioral tendencies, not a claim about the model's inner understanding — a distinction worth holding onto rather than resolving prematurely.
+
+**Analogy:** A well-trained customer service employee can reliably follow a company's values in every interaction without that proving they personally hold those values — the training shapes behavior either way.
 
 ## 7. Practical Implications
 
@@ -149,10 +160,12 @@ effort, not a completed guarantee.
 
 ## 11. The Next Obvious Question
 
-> *If a model can be fine-tuned to behave better, can it also be adjusted to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
+*If a model can be fine-tuned to behave better, can it also be adjusted to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
 
 ---
 
 **Glossary terms added this chapter:** Fine-tuning (formal), Alignment, Supervised fine-tuning, RLHF (formal), Reward model, Direct preference optimization (DPO), Adapter (fine-tuning) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "fine-tuning and pretraining are fundamentally different"; "an aligned model genuinely understands/agrees with human values" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 5 — Fine-tuning, Alignment, both at Ch. 19

@@ -9,7 +9,7 @@ readers with **no math, no programming, and no prior ML background**.
 
 Most explanations of AI are either marketing ("it's magic") or academic
 (equations first, intuition never). This project tries to do what
-[SICP](https://mitp-content-server.mit.edu/books/content/sectbyfnid/8090/sicp.zip/index.html)
+*Structure and Interpretation of Computer Programs*
 did for computer science and what the *Feynman Lectures* did for
 physics: build one durable mental model, incrementally, that keeps
 working as the technology changes.
@@ -34,9 +34,9 @@ Every chapter builds understanding through a story, a worked example, and
 precise technical explanation, then ends with one bolded, memorable
 sentence that distills its core idea. From Chapter 5, on embeddings:
 
-> **Embeddings place words as points in a high-dimensional space, where
-> nearby points mean similar usage and consistent directions capture
-> consistent relationships.**
+> **Embeddings place tokens as points in a high-dimensional space, where
+> nearby points often reflect similar usage, and some recurring
+> relationships can appear as geometric directions.**
 
 See it in full context, with the story and worked example that build up
 to it, in

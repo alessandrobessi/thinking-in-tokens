@@ -1,7 +1,8 @@
 # Machine-readable source of truth for the concept dependency graph in
-# blueprint.md. concept-graph.md is this file's human-readable mirror —
-# update both together (or regenerate the .md from this file by hand until
-# a real generator script exists; see ROADMAP.md).
+# blueprint.md. concept-graph.md is this file's human-readable mirror,
+# generated from this file by `scripts/generate_concept_graph_md.py` — do
+# not hand-edit concept-graph.md; regenerate it after any change here (CI
+# checks the two stay in sync).
 #
 # Fields:
 #   id                 stable slug, referenced by nothing else yet but
@@ -347,7 +348,7 @@ concepts:
   - id: rag
     name: Retrieval-Augmented Generation (RAG)
     level: 6
-    prerequisites: [retrieval, vector-databases, context-windows, inference]
+    prerequisites: [retrieval, context-windows, inference]
     introduced_in: 18
     written: true
     misconception_ids: [rag-means-retrained-on-documents, rag-eliminates-hallucination-entirely]

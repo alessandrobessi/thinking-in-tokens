@@ -1,13 +1,18 @@
 # Chapter 10 — Scaling Laws
 
-> **Part:** Prediction · **Concept Level:** Level 3 · **Prerequisites:** Chapter 8 (parameters), Chapter 9 (training, loss)
-> **New concepts introduced:** Scaling laws
+**Part:** Prediction
+
+**Concept Level:** Level 3
+
+**Prerequisites:** Chapter 8 (parameters), Chapter 9 (training, loss)
+
+**New concepts introduced:** Scaling laws
 
 ---
 
 ## 1. Opening Question
 
-> *Is there a predictable relationship between how big a model is and how good it becomes — and does scaling ever stop paying off?*
+*Is there a predictable relationship between how big a model is and how good it becomes — and does scaling ever stop paying off?*
 
 ## 2. Real-World Story
 
@@ -102,15 +107,21 @@ the energy required to produce it.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Scaling laws mean you can scale forever with no real limit."
-> **Why it's wrong:** Returns diminish predictably — each further order-of-magnitude increase in scale buys a progressively smaller improvement — and practical ceilings exist in available high-quality data, compute cost, and energy.
-> **Correct intuition:** Scaling laws describe a reliable but diminishing-returns curve, not an unlimited runway.
-> **Analogy:** Training for a marathon reliably improves your time the more you train — but the tenth month of training buys you far less improvement than the first, and eventually further training yields almost nothing extra.
+**Misconception:** "Scaling laws mean you can scale forever with no real limit."
 
-> **Misconception:** "A bigger model is automatically the better choice for any given use case."
-> **Why it's wrong:** Scaling laws predict lower loss on the training objective, not that a bigger model is the right cost, speed, or capability tradeoff for every task — a smaller, well-matched model is often the better engineering choice.
-> **Correct intuition:** Treat "bigger, following the scaling curve" as one axis of a decision, not the whole decision — Part IV's chapter on quantization and efficient models covers the other side of this tradeoff.
-> **Analogy:** A commercial airliner is a better choice than a small plane for a transatlantic flight, and a much worse choice for a quick hop between two nearby small towns — bigger isn't better in some absolute sense, it's better for a particular job.
+**Why it's wrong:** Returns diminish predictably — each further order-of-magnitude increase in scale buys a progressively smaller improvement — and practical ceilings exist in available high-quality data, compute cost, and energy.
+
+**Correct intuition:** Scaling laws describe a reliable but diminishing-returns curve, not an unlimited runway.
+
+**Analogy:** Training for a marathon reliably improves your time the more you train — but the tenth month of training buys you far less improvement than the first, and eventually further training yields almost nothing extra.
+
+**Misconception:** "A bigger model is automatically the better choice for any given use case."
+
+**Why it's wrong:** Scaling laws predict lower loss on the training objective, not that a bigger model is the right cost, speed, or capability tradeoff for every task — a smaller, well-matched model is often the better engineering choice.
+
+**Correct intuition:** Treat "bigger, following the scaling curve" as one axis of a decision, not the whole decision — Part IV's chapter on quantization and efficient models covers the other side of this tradeoff.
+
+**Analogy:** A commercial airliner is a better choice than a small plane for a transatlantic flight, and a much worse choice for a quick hop between two nearby small towns — bigger isn't better in some absolute sense, it's better for a particular job.
 
 ## 7. Practical Implications
 
@@ -142,10 +153,12 @@ announcements oversell.
 
 ## 11. The Next Obvious Question
 
-> *Now that a model can learn enormous numbers of parameters and improve predictably with scale, how does it actually decide which earlier words matter most when predicting the next one?*
+*Now that a model can learn enormous numbers of parameters and improve predictably with scale, how does it actually decide which earlier words matter most when predicting the next one?*
 
 ---
 
 **Glossary terms added this chapter:** Scaling law, Undertrained (relative to parameter count), Irreducible loss → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "scaling laws mean unlimited scaling"; "bigger model is automatically the better choice" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 3 — Scaling laws, at Ch. 10 (closes Level 3 / Part II)

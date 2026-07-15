@@ -1,13 +1,18 @@
 # Chapter 3 — Characters, Words and Tokens
 
-> **Part:** Information · **Concept Level:** Level 1 · **Prerequisites:** Chapter 2 (symbols, computation)
-> **New concepts introduced:** Characters, Words, Tokens, Tokenization
+**Part:** Information
+
+**Concept Level:** Level 1
+
+**Prerequisites:** Chapter 2 (symbols, computation)
+
+**New concepts introduced:** Characters, Words, Tokens, Tokenization
 
 ---
 
 ## 1. Opening Question
 
-> *How does a computer break language into pieces it can actually work with?*
+*How does a computer break language into pieces it can actually work with?*
 
 ## 2. Real-World Story
 
@@ -108,15 +113,21 @@ common pieces it already has tokens for.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "The model reads text one letter at a time, like sounding out a word."
-> **Why it's wrong:** Character-by-character processing is far too slow and loses too much structure for large-scale models; subword tokenization deliberately groups common sequences into single units to avoid this.
-> **Correct intuition:** The model reads a sequence of tokens, most of which are whole words or common word-fragments, not individual letters.
-> **Analogy:** A fluent reader doesn't sound out "the" letter by letter — they recognize it instantly as a single familiar shape.
+**Misconception:** "The model reads text one letter at a time, like sounding out a word."
 
-> **Misconception:** "A token is always exactly one word."
-> **Why it's wrong:** Tokenizers deliberately split rare, long, or unfamiliar words into multiple sub-word tokens, and can also merge very common short words with surrounding punctuation.
-> **Correct intuition:** A token is whatever chunk of text the vocabulary happened to assign a single ID to — sometimes a whole word, sometimes a fragment, sometimes less than a word.
-> **Analogy:** Postal abbreviations aren't one-per-word either — common words get short codes ("St.," "Ave.") while unusual street names are spelled out in full.
+**Why it's wrong:** Character-by-character processing is far too slow and loses too much structure for large-scale models; subword tokenization deliberately groups common sequences into single units to avoid this.
+
+**Correct intuition:** The model reads a sequence of tokens, most of which are whole words or common word-fragments, not individual letters.
+
+**Analogy:** A fluent reader doesn't sound out "the" letter by letter — they recognize it instantly as a single familiar shape.
+
+**Misconception:** "A token is always exactly one word."
+
+**Why it's wrong:** Tokenizers deliberately split rare, long, or unfamiliar words into multiple sub-word tokens, and can also merge very common short words with surrounding punctuation.
+
+**Correct intuition:** A token is whatever chunk of text the vocabulary happened to assign a single ID to — sometimes a whole word, sometimes a fragment, sometimes less than a word.
+
+**Analogy:** Postal abbreviations aren't one-per-word either — common words get short codes ("St.," "Ave.") while unusual street names are spelled out in full.
 
 ## 7. Practical Implications
 
@@ -148,10 +159,12 @@ internal letters to the model in an obvious way.
 
 ## 11. The Next Obvious Question
 
-> *If text becomes a long sequence of small tokens, how does a model deal with the fact that meaning is spread out and repeated across that sequence — and can that sequence be represented more efficiently?*
+*If text becomes a long sequence of small tokens, how does a model deal with the fact that meaning is spread out and repeated across that sequence — and can that sequence be represented more efficiently?*
 
 ---
 
 **Glossary terms added this chapter:** Character, Word, Token, Tokenization, Byte-Pair Encoding (BPE) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "model reads letter by letter"; "a token is always one word" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 1 — Characters, Words, Tokens, Tokenization, all at Ch. 3

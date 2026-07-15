@@ -2,6 +2,62 @@
 
 ## 2026-07-15
 
+- Reformatted all 20 written chapters to match an updated
+  `templates/chapter-template.md`: front matter (Part / Concept Level /
+  Prerequisites / New concepts introduced), the Opening Question, the
+  Next Obvious Question, each Common Misconceptions block, and the footer
+  summary lines all moved from cramped blockquote formatting to plain
+  bold paragraphs separated by blank lines — easier to scan and edit,
+  same content. Purely mechanical (verified via script + diff review, all
+  20 chapters still at 11 sections each, all three validators clean).
+- Sixth review round, addressed directly — a precision pass on top of the
+  fifth round's causal-masking fix:
+  - Chapter 11: added a paragraph explicitly ruling out the misreading
+    that a causal model retroactively rewrites an earlier token's
+    representation once later context arrives (it doesn't — resolution
+    happens at the later position, not backward into the earlier one).
+    Fixed query/key/value to note that only the first block derives them
+    from raw embeddings — later blocks derive them from the previous
+    block's output. Fixed "every earlier token" to "itself and every
+    earlier token" in the Technical Explanation, Key Takeaway, and
+    Summary, since causal self-attention includes the current position.
+  - Chapter 12: same "itself and every earlier token" precision fix in
+    the Core Intuition and Summary, which had drifted from Chapter 11's
+    corrected framing.
+  - Chapter 13: fixed a real contradiction with Chapter 19 — "none of
+    these change what the base model fundamentally knows" and "the
+    architecture doing the predicting never changes" are both overstated
+    given Chapter 19's fuller treatment (fine-tuning can shift facts and
+    capabilities; adapter methods add components; DPO skips the reward
+    model). Reworded both passages to point to Chapter 19 instead of
+    contradicting it, while keeping Chapter 13's preview framing simple.
+  - Chapter 15: fixed a residual overstatement — "the model still must
+    produce *some* continuation" read as if declining or expressing
+    uncertainty weren't valid token choices. Reworded to make clear
+    stopping/declining are themselves selectable continuations, and that
+    what actually happens depends on training, not sampling mechanics.
+  - Chapter 20: the worked example's "errors tend to wash out" framing
+    was more reassuring than the Technical Explanation's (already
+    correct) calibrated-quantization framing next to it — reworded so
+    both sections tell the same story.
+  - Fixed a real inconsistency in `concept-graph.yaml`: `rag`'s
+    prerequisites listed `vector-databases`, contradicting Chapter 18's
+    (correctly) broadened definition of RAG as not requiring vector-based
+    retrieval specifically. Removed it from the dependency list. Also
+    fixed a stale header comment claiming `concept-graph.md` still needed
+    manual regeneration, though the generator script has existed since
+    the previous round.
+  - Fixed `README.md`'s embedding preview quote, which had drifted from
+    Chapter 5's actual (already-corrected) Key Takeaway wording.
+  - Added two more citations: `mata2023avianca` (the real court case
+    behind Chapter 15's fabricated-citations story) and
+    `ji2023hallucination` (a general hallucination survey), closing out
+    Chapter 15's previously-flagged citation gaps.
+  - Verified several other review claims against the live repo and found
+    them stale: `testing/questions.md` already covered Chapters 1–20 (the
+    review was reading a version from before the previous commit), and
+    the GitHub repo description already read "A Mental Model for Modern
+    AI Systems," not the older subtitle the review cited.
 - Fifth review round, addressed directly — the most substantial technical
   correctness pass so far, focused on Chapters 11–20:
   - **Causal masking**, the central fix: Chapter 11's Winograd worked

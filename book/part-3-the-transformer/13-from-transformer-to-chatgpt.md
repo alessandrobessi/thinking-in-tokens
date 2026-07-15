@@ -1,13 +1,18 @@
 # Chapter 13 — From Transformer to ChatGPT
 
-> **Part:** The Transformer · **Concept Level:** motivational (no new formal concept — previews Level 5's fine-tuning/alignment, formally covered Chapter 19) · **Prerequisites:** Chapter 9 (training), Chapter 12 (transformer blocks)
-> **New concepts introduced:** none (informal preview of "fine-tuning," "human feedback," used loosely; formal treatment starts Chapter 19)
+**Part:** The Transformer
+
+**Concept Level:** motivational (no new formal concept — previews Level 5's fine-tuning/alignment, formally covered Chapter 19)
+
+**Prerequisites:** Chapter 9 (training), Chapter 12 (transformer blocks)
+
+**New concepts introduced:** none (informal preview of "fine-tuning," "human feedback," used loosely; formal treatment starts Chapter 19)
 
 ---
 
 ## 1. Opening Question
 
-> *The transformer architecture existed since 2017 — why did it take years before something like ChatGPT appeared?*
+*The transformer architecture existed since 2017 — why did it take years before something like ChatGPT appeared?*
 
 ## 2. Real-World Story
 
@@ -67,8 +72,12 @@ statistically unremarkable continuations of internet text.
 specific token from its predicted probabilities also shapes how a response
 feels to use, independent of training.
 
-None of these change what the base model fundamentally knows. They change
-what it's been pointed toward doing with that knowledge.
+These stages usually preserve the same basic transformer architecture and
+build on the same underlying knowledge the base model already has. But —
+as Chapter 19 covers in full — "usually preserve" isn't "never change":
+additional training can shift more than surface style, sometimes touching
+the model's factual associations and specific capabilities too, not just
+how it's been pointed toward using what it already knew.
 
 ## 5. Technical Explanation
 
@@ -87,21 +96,31 @@ outputs by preference; that ranking data trains a separate model — a
 The original language model is then further adjusted, again using
 Chapter 9's core loss-reduction mechanism, but now using the reward
 model's predicted preference as the error signal instead of raw
-next-token accuracy. The architecture doing the predicting never changes
-across any of this — only the training signal being optimized against
-does.
+next-token accuracy. (RLHF isn't the only way to use preference data —
+Chapter 19 covers a newer alternative that skips the separate reward
+model entirely.) The same basic architecture usually keeps doing the
+predicting throughout this process — though some fine-tuning methods add
+small extra components rather than adjusting the whole thing, which
+Chapter 19 also covers — and what changes most directly, across all of
+this, is the training signal being optimized against.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."
-> **Why it's wrong:** Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
-> **Correct intuition:** A "chat" or "instruct" model is a pretrained model that has been through additional, deliberate behavioral training — not the same artifact as the raw pretrained model wearing a different interface.
-> **Analogy:** A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
+**Misconception:** "ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."
 
-> **Misconception:** "The 2017 transformer paper alone explains why chatbots suddenly got good."
-> **Why it's wrong:** As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
-> **Correct intuition:** The architecture made a powerful predictor possible; alignment techniques are what made that predictor feel like a helpful assistant.
-> **Analogy:** A powerful engine doesn't make a car street-legal or comfortable to drive — it still needs the rest of the car built around it.
+**Why it's wrong:** Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
+
+**Correct intuition:** A "chat" or "instruct" model is a pretrained model that has been through additional, deliberate behavioral training — not the same artifact as the raw pretrained model wearing a different interface.
+
+**Analogy:** A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
+
+**Misconception:** "The 2017 transformer paper alone explains why chatbots suddenly got good."
+
+**Why it's wrong:** As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
+
+**Correct intuition:** The architecture made a powerful predictor possible; alignment techniques are what made that predictor feel like a helpful assistant.
+
+**Analogy:** A powerful engine doesn't make a car street-legal or comfortable to drive — it still needs the rest of the car built around it.
 
 ## 7. Practical Implications
 
@@ -132,10 +151,12 @@ security and safety.
 
 ## 11. The Next Obvious Question
 
-> *Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
+*Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
 
 ---
 
 **Glossary terms added this chapter:** Pretraining (formal contrast with fine-tuning), Base model, Chat/instruct model, RLHF (preview) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "ChatGPT is just a base model with a chat interface"; "the transformer paper alone explains chatbot quality" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** none (motivational chapter, previews Level 5's fine-tuning/alignment formally introduced Ch. 19)

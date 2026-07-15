@@ -43,11 +43,12 @@ the second implementation.
 
 - [x] Lightweight citation pass on empirical/historical claims (`references/`)
   — added `levesque2012winograd`, `holtzman2019degeneration`,
-  `rafailov2023dpo`, and `frantar2022gptq` to `bibliography.md`, cited from
-  `references/chapter-11.md`, `chapter-14.md`, `chapter-19.md`, and
-  `chapter-20.md`. KV caching (Ch.20) still has no single canonical paper
-  cited — flagged in that reference file for a future pass if one is
-  wanted.
+  `rafailov2023dpo`, `frantar2022gptq`, `mata2023avianca`, and
+  `ji2023hallucination` to `bibliography.md`, cited from
+  `references/chapter-11.md`, `chapter-14.md`, `chapter-15.md`,
+  `chapter-19.md`, and `chapter-20.md`. KV caching (Ch.20) still has no
+  single canonical paper cited — flagged in that reference file for a
+  future pass if one is wanted.
 - [x] `testing/questions.md` now covers Chapters 1–20 (Parts I–IV) —
   extended with Comprehension and scenario-based Misconception Resistance
   questions for Chapters 11–20, following the same format and tied to the

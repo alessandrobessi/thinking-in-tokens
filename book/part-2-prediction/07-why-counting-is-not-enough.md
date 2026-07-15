@@ -1,13 +1,18 @@
 # Chapter 7 — Why Counting Is Not Enough
 
-> **Part:** Prediction · **Concept Level:** motivational (no new formal concept — motivates Level 3's neural networks) · **Prerequisites:** Chapter 6 (prediction)
-> **New concepts introduced:** none (informally previews why counting-based methods fail; formal treatment of neural networks starts Chapter 8)
+**Part:** Prediction
+
+**Concept Level:** motivational (no new formal concept — motivates Level 3's neural networks)
+
+**Prerequisites:** Chapter 6 (prediction)
+
+**New concepts introduced:** none (informally previews why counting-based methods fail; formal treatment of neural networks starts Chapter 8)
 
 ---
 
 ## 1. Opening Question
 
-> *Why not just count how often one word follows another in a giant table, instead of building something as complicated as a neural network?*
+*Why not just count how often one word follows another in a giant table, instead of building something as complicated as a neural network?*
 
 ## 2. Real-World Story
 
@@ -93,15 +98,21 @@ network provides.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "A big enough counting table would eventually solve this — it's just a matter of collecting more data."
-> **Why it's wrong:** The space of possible word sequences grows so explosively with length that no realistic amount of counting closes the gap — most sequences a system needs to handle will always be ones it has never exactly seen.
-> **Correct intuition:** The problem isn't insufficient data — it's that counting exact matches can never generalize to new-but-similar cases, no matter how much data you have.
-> **Analogy:** No matter how many recipes a cookbook contains, it can never contain the exact recipe for every possible combination of ingredients in your kitchen — you need to actually understand cooking principles, not just look up matches.
+**Misconception:** "A big enough counting table would eventually solve this — it's just a matter of collecting more data."
 
-> **Misconception:** "Modern AI is just a much bigger version of this same counting approach."
-> **Why it's wrong:** The core mechanism is different in kind, not just in scale: a counting table only ever reports exact historical frequencies, while a neural network (Chapter 8) learns a general-purpose function that can generalize to sequences it has never encountered.
-> **Correct intuition:** Scale alone doesn't fix a counting table's fundamental inability to generalize — a different mechanism was required, and finding it is what Chapter 8 covers.
-> **Analogy:** A phrasebook that's ten times longer is still just a phrasebook — it still can't handle a sentence nobody thought to include.
+**Why it's wrong:** The space of possible word sequences grows so explosively with length that no realistic amount of counting closes the gap — most sequences a system needs to handle will always be ones it has never exactly seen.
+
+**Correct intuition:** The problem isn't insufficient data — it's that counting exact matches can never generalize to new-but-similar cases, no matter how much data you have.
+
+**Analogy:** No matter how many recipes a cookbook contains, it can never contain the exact recipe for every possible combination of ingredients in your kitchen — you need to actually understand cooking principles, not just look up matches.
+
+**Misconception:** "Modern AI is just a much bigger version of this same counting approach."
+
+**Why it's wrong:** The core mechanism is different in kind, not just in scale: a counting table only ever reports exact historical frequencies, while a neural network (Chapter 8) learns a general-purpose function that can generalize to sequences it has never encountered.
+
+**Correct intuition:** Scale alone doesn't fix a counting table's fundamental inability to generalize — a different mechanism was required, and finding it is what Chapter 8 covers.
+
+**Analogy:** A phrasebook that's ten times longer is still just a phrasebook — it still can't handle a sentence nobody thought to include.
 
 ## 7. Practical Implications
 
@@ -131,10 +142,12 @@ already seen.
 
 ## 11. The Next Obvious Question
 
-> *If we need something that can generalize using geometry rather than simply counting exact matches, what is the actual mechanism that learns this geometry and makes predictions from it?*
+*If we need something that can generalize using geometry rather than simply counting exact matches, what is the actual mechanism that learns this geometry and makes predictions from it?*
 
 ---
 
 **Glossary terms added this chapter:** N-gram model, Curse of dimensionality → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "a bigger counting table would eventually work"; "modern AI is just a bigger counting table" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** none (motivational chapter, motivates Level 3's neural-networks concept introduced in Ch. 8)

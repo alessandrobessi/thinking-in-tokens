@@ -1,13 +1,18 @@
 # Chapter 20 — Quantization and Efficient Models
 
-> **Part:** Building Useful AI · **Concept Level:** Level 7 · **Prerequisites:** Chapter 8 (parameters), Chapter 14 (inference)
-> **New concepts introduced:** Quantization, Efficient inference
+**Part:** Building Useful AI
+
+**Concept Level:** Level 7
+
+**Prerequisites:** Chapter 8 (parameters), Chapter 14 (inference)
+
+**New concepts introduced:** Quantization, Efficient inference
 
 ---
 
 ## 1. Opening Question
 
-> *Can a trained model be made to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
+*Can a trained model be made to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
 
 ## 2. Real-World Story
 
@@ -36,11 +41,16 @@ digits, or even a small, fixed set of levels rather than a smooth range.
 Any single weight, rounded this way, is now slightly less precise than
 before. But a network's behavior, as Chapter 8 established, lives in the
 overall *pattern* formed by billions of such weights working together —
-not in any individual weight's exact value. Round every weight slightly,
-and the small individual errors tend to wash out across that enormous
-pattern, leaving the network's overall behavior nearly as accurate as
-before, while using a fraction of the memory and computation to store and
-run.
+not in any individual weight's exact value, and not every weight is
+equally safe to round coarsely. A network typically has enough numerical
+redundancy to absorb this kind of approximation without its overall
+behavior changing much — but getting there reliably, especially at low
+precision, usually takes more than rounding every weight the same
+careless way; it takes choosing the rounding carefully, often guided by a
+sample of real data, so the approximation lands where the network can
+actually afford it. Done well, the result uses a fraction of the memory
+and computation to store and run, while leaving overall behavior nearly
+as accurate as before.
 
 ## 4. Core Intuition
 
@@ -92,15 +102,21 @@ gets applied at inference time.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "Quantization makes a model noticeably dumber, in a way any user would clearly notice."
-> **Why it's wrong:** At reasonable levels, the accuracy loss from quantization is typically small enough to be barely noticeable in normal use — though it is a genuine tradeoff, and very aggressive quantization can cause real, noticeable degradation, so it isn't a completely free lunch either.
-> **Correct intuition:** Quantization is a tunable tradeoff between precision and efficiency, usually a strongly favorable one at moderate settings, not a guaranteed-invisible or guaranteed-safe operation at every setting.
-> **Analogy:** A well-made JPEG looks essentially identical to its RAW source for ordinary viewing — but compress the same image far more aggressively, and the quality loss eventually becomes obvious.
+**Misconception:** "Quantization makes a model noticeably dumber, in a way any user would clearly notice."
 
-> **Misconception:** "An efficient or quantized version of a model is a smaller, differently-trained model."
-> **Why it's wrong:** Quantization approximates the exact same trained model's weights at lower precision, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch. The parameter *values* do change (they're rounded); what's preserved is the architecture, and the goal is preserving behavior as closely as possible.
-> **Correct intuition:** Same architecture, same learned pattern approximated at lower precision, aiming for nearly the same behavior — not literally identical parameter values, and not a different model.
-> **Analogy:** A compressed photo and its RAW original show the same scene, even though the compressed file's actual pixel values are different from the original's — compressing the file didn't send a different photographer back to reshoot it smaller.
+**Why it's wrong:** At reasonable levels, the accuracy loss from quantization is typically small enough to be barely noticeable in normal use — though it is a genuine tradeoff, and very aggressive quantization can cause real, noticeable degradation, so it isn't a completely free lunch either.
+
+**Correct intuition:** Quantization is a tunable tradeoff between precision and efficiency, usually a strongly favorable one at moderate settings, not a guaranteed-invisible or guaranteed-safe operation at every setting.
+
+**Analogy:** A well-made JPEG looks essentially identical to its RAW source for ordinary viewing — but compress the same image far more aggressively, and the quality loss eventually becomes obvious.
+
+**Misconception:** "An efficient or quantized version of a model is a smaller, differently-trained model."
+
+**Why it's wrong:** Quantization approximates the exact same trained model's weights at lower precision, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch. The parameter *values* do change (they're rounded); what's preserved is the architecture, and the goal is preserving behavior as closely as possible.
+
+**Correct intuition:** Same architecture, same learned pattern approximated at lower precision, aiming for nearly the same behavior — not literally identical parameter values, and not a different model.
+
+**Analogy:** A compressed photo and its RAW original show the same scene, even though the compressed file's actual pixel values are different from the original's — compressing the file didn't send a different photographer back to reshoot it smaller.
 
 ## 7. Practical Implications
 
@@ -135,10 +151,12 @@ not optional.
 
 ## 11. The Next Obvious Question
 
-> *So far, everything this book has covered happens entirely inside the model's own reasoning — reading, predicting, retrieving, remembering. How does a model actually reach outside itself and take an action in the real world?*
+*So far, everything this book has covered happens entirely inside the model's own reasoning — reading, predicting, retrieving, remembering. How does a model actually reach outside itself and take an action in the real world?*
 
 ---
 
 **Glossary terms added this chapter:** Quantization, Efficient inference, KV cache, Prefix caching → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "quantization makes a model noticeably dumber"; "an efficient/quantized model is a different, smaller model" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 7 — Quantization, Efficient inference, both at Ch. 20 (closes Part IV)

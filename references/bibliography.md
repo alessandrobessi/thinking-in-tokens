@@ -25,3 +25,5 @@ driver," "emergent abilities").
 | `holtzman2019degeneration` | A. Holtzman et al., "The Curious Case of Neural Text Degeneration," *arXiv:1904.09751*, 2019. | Nucleus (top-p) sampling (Ch. 14) |
 | `rafailov2023dpo` | R. Rafailov et al., "Direct Preference Optimization: Your Language Model is Secretly a Reward Model," *arXiv:2305.18290*, 2023. | Direct preference optimization as an alternative to RLHF (Ch. 19) |
 | `frantar2022gptq` | E. Frantar et al., "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers," *arXiv:2210.17323*, 2022. | Calibrated post-training quantization (Ch. 20) |
+| `mata2023avianca` | *Mata v. Avianca, Inc.*, No. 22-cv-1461 (S.D.N.Y. June 22, 2023), Order on Sanctions. | The fabricated legal citations incident used as Ch. 15's real-world story |
+| `ji2023hallucination` | Z. Ji et al., "Survey of Hallucination in Natural Language Generation," *ACM Computing Surveys*, 2023 (`arXiv:2202.03629`). | General hallucination-rate and mitigation claims (Ch. 15) |

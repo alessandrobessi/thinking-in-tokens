@@ -78,7 +78,7 @@ after any change to the YAML and commit both files together.
 |---|---|---|---|---|---|
 | Retrieval | ✅ written | Ch. 17 | similarity, context-windows | 1 | [link](book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#8-key-takeaway) |
 | Vector databases | ✅ written | Ch. 17 | embeddings, similarity, retrieval | 1 | [link](book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#8-key-takeaway) |
-| Retrieval-Augmented Generation (RAG) | ✅ written | Ch. 18 | retrieval, vector-databases, context-windows, inference | 2 | [link](book/part-4-building-useful-ai/18-retrieval-augmented-generation.md#8-key-takeaway) |
+| Retrieval-Augmented Generation (RAG) | ✅ written | Ch. 18 | retrieval, context-windows, inference | 2 | [link](book/part-4-building-useful-ai/18-retrieval-augmented-generation.md#8-key-takeaway) |
 | Tool calling | ☐ planned | Ch. 21 | inference, context-windows | 0 | — |
 | Model Context Protocol (MCP) | ☐ planned | Ch. 21 | tool-calling | 0 | — |
 | AI agents | ☐ planned | Ch. 22 | tool-calling, memory, inference | 0 | — |

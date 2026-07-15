@@ -1,13 +1,18 @@
 # Chapter 8 — Neural Networks Without Mathematics
 
-> **Part:** Prediction · **Concept Level:** Level 3 · **Prerequisites:** Chapter 6 (prediction), Chapter 7 (why counting fails)
-> **New concepts introduced:** Neural networks, Parameters
+**Part:** Prediction
+
+**Concept Level:** Level 3
+
+**Prerequisites:** Chapter 6 (prediction), Chapter 7 (why counting fails)
+
+**New concepts introduced:** Neural networks, Parameters
 
 ---
 
 ## 1. Opening Question
 
-> *What is a neural network, actually — without the math?*
+*What is a neural network, actually — without the math?*
 
 ## 2. Real-World Story
 
@@ -113,15 +118,21 @@ literal blueprint of one.
 
 ## 6. Common Misconceptions
 
-> **Misconception:** "A neural network is basically a simulation of a human brain."
-> **Why it's wrong:** The units are only loosely, historically inspired by biological neurons; they don't simulate real neuron behavior, brain structure, or biological learning mechanisms.
-> **Correct intuition:** A neural network is a mathematical system of simple, adjustable units — the biological name is a historical artifact of where the idea originally came from, not a claim of biological accuracy.
-> **Analogy:** An airplane wing is inspired by a bird's wing, but nobody mistakes a Boeing 747 for a mechanical bird.
+**Misconception:** "A neural network is basically a simulation of a human brain."
 
-> **Misconception:** "More parameters automatically means the network understands more, in a simple, linear way."
-> **Why it's wrong:** Parameter count matters, but how those parameters are structured, trained, and balanced against the amount of training data all matter too — a large but poorly trained network can underperform a smaller, well-trained one.
-> **Correct intuition:** Parameter count is one important ingredient among several, not a standalone score of capability — Chapter 10 covers how these ingredients interact.
-> **Analogy:** A car with a bigger engine isn't automatically faster if the rest of the car — transmission, weight, aerodynamics — isn't built to use that power well.
+**Why it's wrong:** The units are only loosely, historically inspired by biological neurons; they don't simulate real neuron behavior, brain structure, or biological learning mechanisms.
+
+**Correct intuition:** A neural network is a mathematical system of simple, adjustable units — the biological name is a historical artifact of where the idea originally came from, not a claim of biological accuracy.
+
+**Analogy:** An airplane wing is inspired by a bird's wing, but nobody mistakes a Boeing 747 for a mechanical bird.
+
+**Misconception:** "More parameters automatically means the network understands more, in a simple, linear way."
+
+**Why it's wrong:** Parameter count matters, but how those parameters are structured, trained, and balanced against the amount of training data all matter too — a large but poorly trained network can underperform a smaller, well-trained one.
+
+**Correct intuition:** Parameter count is one important ingredient among several, not a standalone score of capability — Chapter 10 covers how these ingredients interact.
+
+**Analogy:** A car with a bigger engine isn't automatically faster if the rest of the car — transmission, weight, aerodynamics — isn't built to use that power well.
 
 ## 7. Practical Implications
 
@@ -153,10 +164,12 @@ whole pattern, not localized in any single readable place.
 
 ## 11. The Next Obvious Question
 
-> *If a network's entire behavior lives in these adjustable numbers, how do those numbers actually get set to the right values?*
+*If a network's entire behavior lives in these adjustable numbers, how do those numbers actually get set to the right values?*
 
 ---
 
 **Glossary terms added this chapter:** Neural network, Parameter (weight), Layer (input/hidden/output) → append to `/glossary.md`
+
 **Misconceptions logged this chapter:** "a neural network simulates a brain"; "more parameters simply means more understanding" → append to `/misconceptions.md`
+
 **Concept-graph entries checked off:** Level 3 — Neural networks, Parameters, both at Ch. 8
