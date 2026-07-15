@@ -11,13 +11,15 @@
 
 ## 2. Real-World Story
 
-Picture a manuscript passed through twenty-four rounds of editing. Each
-editor reads the entire piece from start to finish — not just the
-paragraph they're revising, but everything, weighing earlier sections
-against later ones exactly the way Chapter 11 described — and then makes
-a focused pass of small, local adjustments: sharpening a sentence here,
-clarifying a reference there. Then it moves to the next editor, who does
-the same thing again, starting from the previous editor's version.
+Picture a manuscript passed through twenty-four rounds of editing, but
+with a constraint: at every point, an editor may only weigh a passage
+against everything written *before* it — never against a later section,
+even one that already exists on the page, exactly the discipline Chapter
+11 described. Each editing pass, working forward through the manuscript,
+reconsiders each passage against everything earlier, and makes a focused
+round of small, local adjustments: sharpening a sentence here, clarifying
+a reference there. Then it moves to the next editor, who does the same
+thing again, starting from the previous editor's version.
 
 No single editor rewrites the whole manuscript from scratch. Each one adds
 a layer of refinement on top of what came before. After twenty-four
@@ -29,28 +31,30 @@ way: not in one shot, but through many repeated rounds of refinement.
 
 ## 3. Worked Example
 
-Trace the word "it" from Chapter 11's trophy sentence through two rounds
-of this process. In the first round, an attention step (Chapter 11) looks
-across the whole sentence and pulls "it" toward "trophy," based on "big."
-Then a feed-forward step — a small neural network, exactly like Chapter
-8's layered network, applied to each token individually — further
-processes that freshly-weighted representation, refining it a bit further
-based on patterns it learned during training.
+Trace what happens once the model reaches the position of "big" itself,
+in Chapter 11's trophy sentence. In the first round, an attention step
+(Chapter 11) at this position looks backward across everything already
+read — "it," "trophy," "suitcase," and every earlier word — and weighs
+"trophy" and "it" heavily, since they're exactly what "big" is
+describing. Then a feed-forward step — a small neural network, exactly
+like Chapter 8's layered network, applied to each token individually —
+further processes that freshly-weighted representation, refining it a
+bit further based on patterns it learned during training.
 
-That refined representation, still attached to the token "it," now enters
-a second round: attention runs again, this time working from the
-already-improved representations of every token (including the improved
-"it" and the improved "trophy"), sharpening the interpretation further.
-Feed-forward refines it again. Stack twenty or forty of these rounds, each
-one building on the last, and a token that started as a generic,
-context-free embedding ends up carrying a rich, specific understanding of
-its exact role in this exact sentence.
+That refined representation, now attached to the position of "big," enters
+a second round: attention runs again, this time drawing on the
+already-improved representations of "it," "trophy," and every other
+earlier position, sharpening the interpretation further. Feed-forward
+refines it again. Stack twenty or forty of these rounds, each one
+building on the last, and the representation at this position — still
+only ever looking backward — ends up carrying a rich, specific
+understanding of exactly what "big" is doing in this exact sentence.
 
 ## 4. Core Intuition
 
 A **transformer block** combines two sub-steps, applied one after the
 other: an attention step (Chapter 11), where every token gathers relevant
-information from every other token, and a feed-forward step, where a
+information from every earlier token, and a feed-forward step, where a
 simple neural network (Chapter 8) further transforms each token's
 representation individually, independent of the others. A transformer is
 what you get by stacking many of these blocks — modern models use dozens

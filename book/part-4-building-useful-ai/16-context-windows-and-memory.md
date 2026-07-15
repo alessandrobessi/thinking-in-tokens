@@ -36,14 +36,17 @@ desk — you ask for a recipe recommendation, and the assistant suggests
 one containing peanuts.
 
 This isn't the assistant failing to care, or misremembering in a fuzzy,
-human way. The peanut-allergy detail is either still physically present
-in the input the model is currently working from, or it simply isn't
-there at all — there's no partial, degraded version of "remembering" in
-between. If a system built around this assistant wants to avoid this
-exact failure, it needs a deliberate strategy for keeping that detail
-available even after the raw conversation has grown too long to hold it
-directly — which is precisely what "memory," as a system-design idea,
-is for.
+human way. As far as the *raw* conversation goes, the peanut-allergy
+detail is either still physically present in the input the model is
+currently working from, or it's entirely absent — there's no fuzzy,
+partially-remembered version of the original sentence sitting in between.
+If a system built around this assistant wants to avoid this exact
+failure, it needs a deliberate strategy for keeping that detail available
+even after the raw conversation has grown too long to hold it directly —
+which is precisely what "memory," as a system-design idea, is for: not
+recovering a lost original, but making sure the important part survives
+in some form (even compressed or restated) before it would otherwise fall
+off the desk.
 
 ## 4. Core Intuition
 
@@ -60,17 +63,29 @@ available despite the window's fixed size as a conversation or task grows
 longer than the window can directly hold. Memory doesn't expand the
 window; it decides, deliberately, what earns a place inside it.
 
+Being inside the window is necessary for a model to use something, but it
+isn't sufficient for the model to use it *well*. Information outside the
+window is unavailable unless something deliberately reintroduces it —
+that part is genuinely binary. But information sitting inside a long
+window is available only "in principle": models often draw on information
+near the beginning or end of a long input more reliably than information
+buried in the middle, even when every token is technically present the
+whole time. Presence in the window is the floor, not a guarantee of equal
+use.
+
 ## 5. Technical Explanation
 
 Context window size is a genuine architectural property, not an arbitrary
-policy choice: because attention (Chapter 11) computes a relevance score
-between every pair of tokens, its computational cost grows much faster
-than the sequence length itself, which is a major reason context windows
-have practical size limits — a bigger window costs disproportionately
-more compute per step, a tradeoff Chapter 20 returns to directly. Context
-window sizes have grown substantially across model generations as
-architectures and infrastructure have improved, but they remain
-fundamentally bounded, not unlimited.
+policy choice: because standard, dense attention (Chapter 11) computes a
+relevance score between every pair of tokens, its computational cost grows
+much faster than the sequence length itself, which is a major reason
+context windows have practical size limits — a bigger window costs
+disproportionately more compute per step, a tradeoff Chapter 20 returns to
+directly. (Some newer architectures restructure attention to reduce this
+cost, but standard dense attention is still the dominant baseline this
+book describes.) Context window sizes have grown substantially across
+model generations as architectures and infrastructure have improved, but
+they remain fundamentally bounded, not unlimited.
 
 Several concrete strategies implement "memory" within that constraint. A
 simple sliding window just drops the oldest tokens once the limit is
@@ -91,9 +106,9 @@ mechanism covered in Chapter 17.
 > **Analogy:** A doctor's medical training doesn't reset between patients, but their notes on the patient currently in front of them are specific to that one visit.
 
 > **Misconception:** "A model remembers earlier parts of a long conversation the way a person does, just imperfectly."
-> **Why it's wrong:** There's no active recall process happening — either the information is still literally present as tokens in the current input, or it's entirely absent; there's no partial, fuzzy, human-style memory filling in the gap.
-> **Correct intuition:** "In the window" or "not in the window" is a clean, binary fact about the current input, not a spectrum of more-or-less-remembered.
-> **Analogy:** A photocopier either has a page in the tray or it doesn't — it doesn't have a hazy, partial memory of a page that got removed.
+> **Why it's wrong:** There's no active human-style recall process happening. Whether raw information is available at all is a clean, binary fact — present as tokens in the current input, or entirely absent, with no fuzzy in-between. But that's not the whole picture: even present information can be used less reliably depending on where it sits in a long input, which is a different phenomenon from human-style forgetting.
+> **Correct intuition:** "In the window" or "not in the window" is binary; "used well" is a separate, non-binary question about how reliably a model draws on something it technically has access to.
+> **Analogy:** A photocopier either has a page in the tray or it doesn't — but even with every page present, a reader skimming a thick stack may still absorb the first and last pages more reliably than page two hundred.
 
 ## 7. Practical Implications
 
@@ -113,10 +128,10 @@ sets up exactly why retrieval systems (Chapters 17–18) matter in practice.
 ## 9. One-Page Summary
 
 - A context window is the maximum number of tokens a model can consider at once — everything beyond it simply isn't visible to the model.
-- Context window size is bounded by attention's computational cost, which grows faster than sequence length itself.
+- Context window size is bounded by standard attention's computational cost, which grows faster than sequence length itself.
 - Memory is the set of strategies for managing what stays available within that fixed budget, not an expansion of the budget.
 - A sliding window, summarization, and external memory (previewing retrieval) are three concrete memory strategies.
-- There's no fuzzy, partial "remembering" — information is either present in the current input or it isn't.
+- Raw information is either present in the current input or it isn't — no fuzzy in-between — but being present doesn't guarantee equally reliable use; information in the middle of a long input can still be underused.
 - This chapter's limitation directly motivates retrieval-augmented approaches, covered next.
 
 ## 10. Further Reading

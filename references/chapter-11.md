@@ -1,11 +1,11 @@
 # References — Chapter 11: The Attention Revolution
 
-- `vaswani2017` — the formal source for the attention mechanism and
-  positional encoding described conceptually in this chapter, first
-  previewed informally in Chapter 1.
-- The Winograd sentence pair used in §2/§3 ("too big" / "too small") is a
-  well-known example from the Winograd Schema Challenge literature —
-  flagged for a direct citation in the Milestone 3 citation pass (see
-  `ROADMAP.md`) rather than being retold from general knowledge.
+- `vaswani2017` — the formal source for attention, causal masking
+  (described in the paper as masked self-attention for the decoder),
+  multi-head attention, and positional encoding, all described
+  conceptually in this chapter and first previewed informally in Chapter
+  1.
+- `levesque2012winograd` — the source for the trophy/suitcase sentence
+  pair used as this chapter's real-world story and worked example.
 
 See `bibliography.md` for full citations.

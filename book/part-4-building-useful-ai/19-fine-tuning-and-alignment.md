@@ -7,7 +7,7 @@
 
 ## 1. Opening Question
 
-> *How does additional training after pretraining actually work, and how does a model get pointed toward being safe and aligned with what people actually want?*
+> *How does additional training after pretraining actually work, and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
 
 ## 2. Real-World Story
 
@@ -52,24 +52,48 @@ instructions reliably, answering directly, or matching a particular
 style, instead of generic text continuation.
 
 **Alignment** is the broader goal fine-tuning (and related techniques) is
-used to pursue: making a model's behavior actually match what its
-designers and users want — helpful, honest, careful — rather than merely
+used to pursue: making a model's behavior actually match some set of
+intended goals — helpful, honest, careful — rather than merely
 "statistically plausible given training text," which, as Chapter 15
-showed, doesn't automatically mean helpful or truthful.
+showed, doesn't automatically mean helpful or truthful. That phrase "some
+set of intended goals" is doing real work: alignment is always relative
+to particular objectives set by particular designers, evaluators, or
+policies, and those can conflict with each other or with what any given
+user wants in the moment — "aligned" is not a single, universally-agreed
+target.
 
 ## 5. Technical Explanation
 
-Two broad techniques are widely used, often in combination. **Supervised
-fine-tuning** trains directly on example input/output pairs written or
-curated by humans, showing the model the desired style of response
-explicitly. **Reinforcement Learning from Human Feedback (RLHF)**, already
-previewed in Chapter 13, works differently and in two steps: humans
-compare pairs of candidate model outputs and indicate which they prefer;
-that preference data trains a separate model — a reward model — to
-predict which of two responses a human would favor. The original language
-model is then further adjusted, using Chapter 9's core loss-reduction
-mechanism, but now using the reward model's predicted preference as the
-error signal instead of raw next-token accuracy.
+Several broad techniques are widely used, often in combination.
+**Supervised fine-tuning** trains directly on example input/output pairs
+written or curated by humans, showing the model the desired style of
+response explicitly. **Reinforcement Learning from Human Feedback
+(RLHF)**, already previewed in Chapter 13, works differently and in two
+steps: humans compare pairs of candidate model outputs and indicate which
+they prefer; that preference data trains a separate model — a reward
+model — to predict which of two responses a human would favor. The
+original language model is then further adjusted, using Chapter 9's core
+loss-reduction mechanism, but now using the reward model's predicted
+preference as the error signal instead of raw next-token accuracy.
+
+RLHF is an influential approach, but not the only way to use preference
+data. Newer methods, broadly grouped under the name **direct preference
+optimization**, adjust the language model directly from pairs of
+preferred and rejected responses, without training a separate reward
+model or running RLHF's full two-stage pipeline. The shared idea across
+all of these methods is the same: shift the model toward outputs that
+some evaluator — human or otherwise — prefers, using whichever specific
+training procedure gets there.
+
+Two more precisions matter. First, fine-tuning doesn't only reshape
+surface style — it can also add, sharpen, or shift specific factual
+associations and capabilities, not just tone. Second, "the underlying
+architecture doesn't change" describes the most common and simplest case,
+where every original parameter remains and gets further adjusted; some
+fine-tuning methods instead freeze most of the original model and train a
+small number of additional parameters (often called adapters) bolted onto
+it, which changes the mechanics slightly while keeping the same basic
+idea: reuse a pretrained model, adjust it further toward a narrower goal.
 
 It's important to be precise about what this achieves. Alignment
 techniques adjust a model's *output tendencies* to match patterns of
@@ -108,19 +132,20 @@ effort, not a completed guarantee.
 
 ## 8. Key Takeaway
 
-**Fine-tuning is Chapter 9's training loop applied again after pretraining, on a narrower goal; alignment is the broader aim that loop is pointed at — matching a model's behavior to what people actually want, not just what's statistically plausible.**
+**Fine-tuning is Chapter 9's training loop applied again after pretraining, on a narrower goal; alignment is the broader aim that loop is pointed at — matching a model's behavior to some set of intended goals, not just what's statistically plausible.**
 
 ## 9. One-Page Summary
 
 - Fine-tuning reuses Chapter 9's core training loop on a smaller, more specifically curated dataset, after pretraining is complete.
-- Alignment is the broader goal fine-tuning serves: making model behavior match what designers and users actually want, not just statistically plausible continuations.
-- Supervised fine-tuning trains directly on curated examples; RLHF trains a reward model from human preferences, then adjusts the language model against that reward model.
+- Alignment is the broader goal fine-tuning serves — matching model behavior to particular designers'/evaluators' intended goals, which can themselves conflict, not just statistically plausible continuations.
+- Supervised fine-tuning trains directly on curated examples; RLHF trains a reward model from human preferences and adjusts the language model against it; direct preference optimization methods skip the separate reward model and adjust the language model straight from preference pairs.
+- Fine-tuning can shift specific facts and capabilities, not just surface style, and some methods add small adapter components rather than adjusting every original parameter.
 - Alignment adjusts output tendencies, not necessarily genuine understanding or agreement — a distinction worth holding onto rather than resolving.
 - Alignment is an ongoing, imperfect, actively researched effort, not a one-time, completed fix.
 
 ## 10. Further Reading
 
-- Search for "InstructGPT" and "RLHF" for the research that formalized much of the fine-tuning and alignment approach described in this chapter.
+- Search for "InstructGPT" and "RLHF" for the research that formalized much of the fine-tuning and alignment approach described in this chapter, and "Direct Preference Optimization" (DPO) for a widely-used alternative that skips the separate reward model.
 
 ## 11. The Next Obvious Question
 
@@ -128,6 +153,6 @@ effort, not a completed guarantee.
 
 ---
 
-**Glossary terms added this chapter:** Fine-tuning (formal), Alignment, Supervised fine-tuning, RLHF (formal), Reward model → append to `/glossary.md`
+**Glossary terms added this chapter:** Fine-tuning (formal), Alignment, Supervised fine-tuning, RLHF (formal), Reward model, Direct preference optimization (DPO), Adapter (fine-tuning) → append to `/glossary.md`
 **Misconceptions logged this chapter:** "fine-tuning and pretraining are fundamentally different"; "an aligned model genuinely understands/agrees with human values" → append to `/misconceptions.md`
 **Concept-graph entries checked off:** Level 5 — Fine-tuning, Alignment, both at Ch. 19

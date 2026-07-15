@@ -57,24 +57,36 @@ it has learned.
 
 ## 5. Technical Explanation
 
-This works because of exactly the property Chapter 8 established: a
-neural network's capability is distributed across the overall pattern of
-its parameters, not localized in any single one. Rounding every
-individual weight slightly rarely changes the network's overall behavior
-much, in the same way a slightly lower-resolution thumbnail of a photo
-remains clearly recognizable even though every individual pixel's value
-has changed. Very aggressive quantization — rounding far more coarsely
-than a model can comfortably absorb — does eventually produce noticeable
-degradation, which is why quantization is a genuine tradeoff to tune
-carefully, not a cost-free operation.
+This works, at a basic level, because of exactly the property Chapter 8
+established: a neural network's capability is distributed across the
+overall pattern of its parameters, not localized in any single one, so
+naive, independent rounding of every weight tends not to change overall
+behavior much — in the same way a slightly lower-resolution thumbnail of
+a photo remains clearly recognizable even though every individual pixel's
+value has changed. In practice, the better quantization methods do more
+than naive independent rounding: they calibrate the rounding using a
+sample of real data, so the approximation is deliberately shaped to
+preserve the patterns that matter most, rather than relying purely on
+errors coincidentally washing out. Very aggressive quantization — rounding
+far more coarsely than a model can comfortably absorb — does eventually
+produce noticeable degradation regardless of method, which is why
+quantization is a genuine tradeoff to tune carefully, not a cost-free
+operation.
 
 Other efficient-inference techniques address different parts of the same
-underlying problem. Caching reuses previously computed results across
-similar or repeated requests rather than recomputing them from scratch.
+underlying problem. The most important one for autoregressive generation
+(Chapter 6) is the **KV cache**: since generating each new token requires
+comparing it against the keys and values (Chapter 11) of every earlier
+token, and those earlier tokens' keys and values never change once
+computed, a well-built system computes each token's key and value exactly
+once and reuses them for every later step — instead of recomputing the
+entire sequence's attention from scratch at every single token generated.
+A related technique, prefix caching, reuses this same saved work across
+separate requests that happen to share an identical starting prompt.
 Specialized hardware and software, built specifically around the pattern
 of computation transformers (Chapters 11–12) perform, can run the exact
-same calculations significantly faster than general-purpose systems.
-None of these techniques change what the model learned during training
+same calculations significantly faster than general-purpose systems. None
+of these techniques change what the model learned during training
 (Chapter 9) — they change how efficiently that already-learned knowledge
 gets applied at inference time.
 
@@ -86,9 +98,9 @@ gets applied at inference time.
 > **Analogy:** A well-made JPEG looks essentially identical to its RAW source for ordinary viewing — but compress the same image far more aggressively, and the quality loss eventually becomes obvious.
 
 > **Misconception:** "An efficient or quantized version of a model is a smaller, differently-trained model."
-> **Why it's wrong:** Quantization represents the exact same trained model's weights more coarsely, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch.
-> **Correct intuition:** The knowledge and parameters are the same as the original model's; only their stored precision or serving infrastructure has changed.
-> **Analogy:** A compressed photo and its RAW original show the same scene — compressing the file didn't send a different photographer back to reshoot it smaller.
+> **Why it's wrong:** Quantization approximates the exact same trained model's weights at lower precision, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch. The parameter *values* do change (they're rounded); what's preserved is the architecture, and the goal is preserving behavior as closely as possible.
+> **Correct intuition:** Same architecture, same learned pattern approximated at lower precision, aiming for nearly the same behavior — not literally identical parameter values, and not a different model.
+> **Analogy:** A compressed photo and its RAW original show the same scene, even though the compressed file's actual pixel values are different from the original's — compressing the file didn't send a different photographer back to reshoot it smaller.
 
 ## 7. Practical Implications
 
@@ -109,15 +121,17 @@ not optional.
 
 ## 9. One-Page Summary
 
-- Quantization reduces the numerical precision of a model's stored parameters, shrinking memory and compute needs.
-- This works because network behavior lives in the overall pattern of parameters (Chapter 8), not any single weight's exact value — small individual errors tend to wash out.
+- Quantization approximates a model's stored parameters at lower numerical precision, shrinking memory and compute needs — the values change, but the architecture and (as closely as possible) the behavior are preserved.
+- This works partly because network behavior lives in the overall pattern of parameters (Chapter 8), not any single weight's exact value; the best methods also calibrate rounding against real data rather than relying purely on independent errors washing out.
 - Very aggressive quantization is a real tradeoff and can noticeably degrade quality; moderate quantization usually isn't noticeable.
-- Efficient inference is the broader category including quantization, caching, and specialized hardware/software — none of which retrain or fundamentally change the model.
+- The KV cache — reusing each token's already-computed key and value instead of recomputing the whole sequence's attention at every step — is the central efficient-inference technique for autoregressive generation.
+- Efficient inference is the broader category including quantization, KV/prefix caching, and specialized hardware/software — none of which retrain or fundamentally change what the model learned.
 - This is why some models can run on ordinary consumer devices despite requiring enormous compute to train.
 
 ## 10. Further Reading
 
-- Search for "post-training quantization" and "4-bit/8-bit inference" for concrete, current examples of the techniques described in this chapter.
+- Search for "post-training quantization," "GPTQ," and "4-bit/8-bit inference" for concrete, current examples of calibrated quantization techniques described in this chapter.
+- Search for "KV cache" and "prefix caching" for more on the central inference-efficiency technique described in §5.
 
 ## 11. The Next Obvious Question
 
@@ -125,6 +139,6 @@ not optional.
 
 ---
 
-**Glossary terms added this chapter:** Quantization, Efficient inference, Caching (inference) → append to `/glossary.md`
+**Glossary terms added this chapter:** Quantization, Efficient inference, KV cache, Prefix caching → append to `/glossary.md`
 **Misconceptions logged this chapter:** "quantization makes a model noticeably dumber"; "an efficient/quantized model is a different, smaller model" → append to `/misconceptions.md`
 **Concept-graph entries checked off:** Level 7 — Quantization, Efficient inference, both at Ch. 20 (closes Part IV)

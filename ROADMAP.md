@@ -41,15 +41,17 @@ the second implementation.
 
 ## Milestone 3 — Editorial validation of Parts I–IV
 
-- [ ] Lightweight citation pass on empirical/historical claims (`references/`)
-  — several Ch. 11–20 reference files flag specific claims still needing a
-  citation (Winograd schema attribution, the Ch. 15 legal-citation
-  incident, nucleus sampling, ANN indexing, quantization techniques).
-- [ ] `testing/questions.md` currently only covers Chapters 1–10 (Parts
-  I–II). Extending the same protocol (comprehension, transfer,
-  scenario-based misconception resistance, retention) to Chapters 11–20
-  is a real, tracked gap, not an oversight — do this before Track A
-  testing runs on Parts III–IV.
+- [x] Lightweight citation pass on empirical/historical claims (`references/`)
+  — added `levesque2012winograd`, `holtzman2019degeneration`,
+  `rafailov2023dpo`, and `frantar2022gptq` to `bibliography.md`, cited from
+  `references/chapter-11.md`, `chapter-14.md`, `chapter-19.md`, and
+  `chapter-20.md`. KV caching (Ch.20) still has no single canonical paper
+  cited — flagged in that reference file for a future pass if one is
+  wanted.
+- [x] `testing/questions.md` now covers Chapters 1–20 (Parts I–IV) —
+  extended with Comprehension and scenario-based Misconception Resistance
+  questions for Chapters 11–20, following the same format and tied to the
+  misconception IDs in `misconceptions.md`.
 - [ ] Track A — Pedagogy: 5+ non-technical target readers, following the
   structured protocol in `testing/` — pre-test, comprehension, transfer,
   misconception resistance (scenario-based, scored 0-2), retention, and

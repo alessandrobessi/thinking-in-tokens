@@ -1,4 +1,4 @@
-# Reader-Testing Question Bank — Chapters 1–10
+# Reader-Testing Question Bank — Chapters 1–20
 
 See `README.md` in this directory for how to run a session, the scoring
 rubric, and the pre-test step. Misconception-resistance prompts are paired
@@ -165,3 +165,127 @@ is what gets scored (see README.md's 0/1/2 rubric).
   chart actually shows." — correct answer should reflect that both axes
   are scaled in multiples of ten, not that loss falls linearly on an
   ordinary chart.
+
+## Chapter 11 — The Attention Revolution
+
+- **Comprehension:** "What does 'attention' let a model do, in your own
+  words?"
+- **Misconception resistance** (`attention-reads-sequentially`): "A
+  colleague says a model 'reads' a sentence one word at a time in order,
+  the way a person does. How would you respond?"
+- **Misconception resistance** (`attention-sees-future-tokens`): "A
+  colleague says 'since attention weighs every token's relevance, the
+  model can look at the whole sentence, including words that come later —
+  the same way a person reading the whole thing at once can.' Is that
+  right? Explain."
+- **Misconception resistance** (`positional-encoding-teaches-grammar`):
+  "Someone says positional encoding gives the model an understanding of
+  grammar. Explain what it actually does."
+
+## Chapter 12 — Building a Transformer
+
+- **Comprehension:** "What is a transformer block, and what does
+  'stacking' many of them actually buy you?"
+- **Misconception resistance** (`every-transformer-layer-same`): "A
+  friend says 'all the layers in a transformer are doing the same thing,
+  just repeated.' How would you respond?"
+- **Misconception resistance** (`more-layers-just-slower`): "Someone says
+  'adding more layers just makes the model slower — it doesn't change
+  what it can do.' Explain why that's not quite right."
+
+## Chapter 13 — From Transformer to ChatGPT
+
+- **Comprehension:** "Why did it take more than just the transformer
+  architecture to get something like ChatGPT?"
+- **Misconception resistance** (`chatgpt-is-base-model-with-interface`):
+  "A colleague says 'ChatGPT is just GPT-3 with a chat window slapped on
+  it.' How would you respond?"
+- **Misconception resistance** (`transformer-paper-alone-explains-quality`):
+  "Someone says 'the 2017 transformer paper alone explains why chatbots
+  suddenly got so good.' Is that the whole story? Explain."
+
+## Chapter 14 — Inference and Text Generation
+
+- **Comprehension:** "What's the difference between training and
+  inference?"
+- **Misconception resistance** (`model-learns-during-conversation`): "A
+  friend says 'the model is learning and getting smarter as I chat with
+  it.' Explain what's actually happening."
+- **Misconception resistance** (`same-prompt-same-answer-always`):
+  "Someone says 'since it's the same model and the same prompt, it should
+  always give the exact same answer.' Is that true? Explain."
+- **New probe (post-review addition):** "A colleague says 'temperature
+  and top-k don't change the model's predictions — they just change which
+  one gets picked.' Is that accurate? Explain what's actually happening."
+  (Correct answer: these controls reshape the distribution actually
+  sampled from — rescaling or truncating and renormalizing it — not just
+  the selection rule applied to an untouched distribution.)
+
+## Chapter 15 — Why Models Hallucinate
+
+- **Comprehension:** "Why do models 'hallucinate' — what's actually
+  happening?"
+- **Misconception resistance** (`hallucination-is-rare-bug`): "Someone
+  says 'hallucination is just a rare bug that will get fixed as models
+  improve.' How would you respond?"
+- **Misconception resistance** (`model-knows-its-making-things-up`): "A
+  colleague says 'the model knows when it's making something up — it's
+  just choosing to deceive us.' Explain what's actually happening."
+
+## Chapter 16 — Context Windows and Memory
+
+- **Comprehension:** "What's the difference between a model's trained
+  knowledge and its context window?"
+- **Misconception resistance** (`context-window-is-trained-knowledge`):
+  "Someone says 'the context window is basically the model's memory, same
+  as what it learned in training.' Explain the difference."
+- **Misconception resistance** (`model-remembers-fuzzily-like-person`): "A
+  friend says 'the model forgets things from earlier in a long
+  conversation, kind of like a person does.' Is that an accurate
+  description? Explain."
+
+## Chapter 17 — Semantic Retrieval and Vector Databases
+
+- **Comprehension:** "How does semantic retrieval find relevant documents
+  without matching exact words?"
+- **Misconception resistance** (`retrieval-is-smarter-keyword-search`):
+  "A colleague says 'semantic retrieval is really just keyword search
+  with some AI sprinkled on.' How would you respond?"
+- **Misconception resistance** (`vector-db-is-regular-db-with-search`):
+  "Someone says 'a vector database is just a normal database with a
+  search feature bolted on.' Explain what's actually different."
+
+## Chapter 18 — Retrieval-Augmented Generation
+
+- **Comprehension:** "What does RAG actually do, step by step?"
+- **Misconception resistance** (`rag-means-retrained-on-documents`): "A
+  friend says 'if a chatbot uses RAG, it must have been retrained on
+  those documents.' Is that right? Explain."
+- **Misconception resistance** (`rag-eliminates-hallucination-entirely`):
+  "Someone says 'RAG completely solves hallucination, since the model now
+  has real sources.' How would you respond?"
+
+## Chapter 19 — Fine-Tuning and Alignment
+
+- **Comprehension:** "What's the difference between fine-tuning and
+  pretraining?"
+- **Misconception resistance**
+  (`finetuning-pretraining-fundamentally-different`): "A colleague says
+  'fine-tuning is a totally different process from pretraining.' Explain
+  why that's not quite right."
+- **Misconception resistance**
+  (`aligned-model-genuinely-understands-values`): "Someone says 'an
+  aligned model genuinely understands and agrees with human values.' Is
+  that an accurate claim? Explain."
+
+## Chapter 20 — Quantization and Efficient Models
+
+- **Comprehension:** "What is quantization, and why doesn't it usually
+  hurt a model's behavior much?"
+- **Misconception resistance** (`quantization-makes-model-dumber`): "A
+  friend says 'a quantized model is obviously going to be noticeably
+  worse.' How would you respond?"
+- **Misconception resistance**
+  (`efficient-model-is-different-smaller-model`): "Someone says 'an
+  efficient or quantized version of a model is basically a different,
+  smaller model.' Explain what's actually the same and what's different."

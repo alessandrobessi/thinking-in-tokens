@@ -47,16 +47,16 @@ the real explanation lives in the chapter itself.
 | RLHF (preview) | Reinforcement Learning from Human Feedback — training a reward model from human preferences, then adjusting the language model against it. | Ch. 13 |
 | Inference | Running a trained model with fixed, frozen parameters to produce output. | Ch. 14 |
 | Sampling | The method used to choose one actual token from a model's predicted probability distribution at each generation step. | Ch. 14 |
-| Temperature | A control adjusting how narrowly or broadly sampling draws from the predicted distribution. | Ch. 14 |
-| Top-k / nucleus sampling | Sampling techniques that restrict token choice to the most plausible candidates, avoiding implausible tokens by chance. | Ch. 14 |
-| Hallucination | Fluent, confident, plausible-sounding output that is factually wrong or fabricated, without intent to deceive. | Ch. 15 |
+| Temperature | A control that rescales the model's raw predicted scores before sampling, sharpening or flattening the resulting distribution. | Ch. 14 |
+| Top-k / nucleus sampling | Sampling techniques that truncate and renormalize the predicted distribution to the most plausible candidates before drawing from it. | Ch. 14 |
+| Hallucination | Generated output that is factually wrong or unsupported, with or without confident phrasing, without intent to deceive. | Ch. 15 |
 | Context window | The maximum number of tokens a model can consider at once; everything beyond it isn't visible to the model. | Ch. 16 |
 | Memory (system-design sense) | Strategies for managing what stays available within a fixed context window as a conversation grows. | Ch. 16 |
 | Retrieval | Finding relevant documents or passages using semantic similarity rather than exact keyword matching. | Ch. 17 |
 | Vector database | A specialized storage system for huge numbers of embeddings, built for fast nearest-neighbor search. | Ch. 17 |
 | Chunking | Splitting documents into passages before embedding them for retrieval. | Ch. 17 |
 | Nearest-neighbor search | Finding the stored embeddings closest to a query's embedding in a vector space. | Ch. 17 |
-| Retrieval-Augmented Generation (RAG) | Retrieving relevant passages and inserting them into the context window before generating an answer. | Ch. 18 |
+| Retrieval-Augmented Generation (RAG) | Retrieving relevant passages from an external source and inserting them into the context window before generating an answer; the retrieval mechanism (vector search, keyword search, etc.) is an implementation choice, not part of the definition. | Ch. 18 |
 | Fine-tuning (formal) | Continuing training on a smaller, curated dataset after pretraining, using the same mechanism as Ch. 9, aimed at a narrower goal. | Ch. 19 |
 | Alignment | The goal of making a model's behavior match what people actually want, not just what's statistically plausible. | Ch. 19 |
 | Supervised fine-tuning | Fine-tuning directly on curated example input/output pairs showing desired behavior. | Ch. 19 |
@@ -64,4 +64,5 @@ the real explanation lives in the chapter itself.
 | Reward model | A model trained to predict which of two candidate responses a human would prefer. | Ch. 19 |
 | Quantization | Reducing the numerical precision of a model's stored parameters to shrink memory and compute needs. | Ch. 20 |
 | Efficient inference | The broader set of techniques (including quantization) for making inference faster and cheaper without retraining. | Ch. 20 |
-| Caching (inference) | Reusing previously computed results across similar or repeated requests instead of recomputing them. | Ch. 20 |
+| KV cache | Reusing each token's already-computed key and value (Chapter 11) instead of recomputing the whole sequence's attention at every generation step. | Ch. 20 |
+| Prefix caching | Reusing KV-cached work across separate requests that share an identical starting prompt. | Ch. 20 |

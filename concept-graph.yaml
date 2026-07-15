@@ -222,7 +222,25 @@ concepts:
     prerequisites: [embeddings, context, similarity]
     introduced_in: 11
     written: true
-    misconception_ids: [attention-reads-sequentially]
+    misconception_ids: [attention-reads-sequentially, attention-sees-future-tokens]
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway
+
+  - id: causal-masking
+    name: Causal masking
+    level: 4
+    prerequisites: [attention]
+    introduced_in: 11
+    written: true
+    misconception_ids: [attention-sees-future-tokens]
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway
+
+  - id: attention-heads
+    name: Attention heads (multi-head attention)
+    level: 4
+    prerequisites: [attention]
+    introduced_in: 11
+    written: true
+    misconception_ids: []
     key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway
 
   - id: positional-encoding
@@ -237,7 +255,7 @@ concepts:
   - id: transformer-blocks
     name: Transformer blocks
     level: 4
-    prerequisites: [attention, positional-encoding, neural-networks]
+    prerequisites: [attention, causal-masking, positional-encoding, neural-networks]
     introduced_in: 12
     written: true
     misconception_ids: [every-transformer-layer-same, more-layers-just-slower]
@@ -410,6 +428,15 @@ concepts:
     introduced_in: 20
     written: true
     misconception_ids: [efficient-model-is-different-smaller-model]
+    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway
+
+  - id: kv-cache
+    name: KV cache
+    level: 7
+    prerequisites: [attention, inference]
+    introduced_in: 20
+    written: true
+    misconception_ids: []
     key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway
 
   # ---------- Level 8 (planned — Part VI, unwritten) ----------

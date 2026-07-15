@@ -56,31 +56,44 @@ and refinement through transformer blocks (Chapters 11–12), and a
 next-token probability distribution (Chapter 6) — using those fixed
 values, one token at a time.
 
-**Sampling** is the specific method used to actually pick one token from
-that predicted probability distribution at each step. The options range
-from always taking the single most likely token (deterministic, safe, but
-repetitive) to sampling more broadly among likely candidates (more varied
-and natural-feeling, at some risk of an occasional odd choice).
+**Sampling** is the specific method used to actually pick one token,
+starting from the model's predicted probabilities at each step. The
+options range from always taking the single most likely token
+(deterministic, and often repetitive) to sampling more broadly among
+likely candidates (more varied and natural-feeling, at some risk of an
+occasional odd choice) — and, as the next section makes precise, most
+practical sampling methods don't just choose from the model's raw
+predicted probabilities unmodified; they first reshape that distribution
+before drawing from it.
 
 ## 5. Technical Explanation
 
-A control commonly called **temperature** adjusts how sharply or broadly
-sampling draws from the predicted distribution. Low temperature
-concentrates almost all the choice on the single most likely token or a
-small handful of top candidates — closer to always picking the top
-answer. High temperature spreads the choice more evenly across a wider
-range of plausible candidates, including some riskier ones, producing
-more varied but occasionally less careful output. Related techniques
-often called **top-k** or **nucleus sampling** restrict the random choice
-to only the most plausible handful of candidates in the first place,
-rather than the model's entire vocabulary — preventing an implausible
-token from being selected purely by chance, even at higher temperatures.
+Precisely: none of these controls change the model's parameters, and none
+of them rerun training — that much is fixed the moment inference begins.
+But they do genuinely reshape the distribution actually sampled from,
+rather than leaving the model's raw predictions untouched and merely
+changing the selection rule applied to them.
 
-None of this changes the probabilities the trained network actually
-computed. It changes only how one specific token gets chosen from an
-already-computed distribution — the same distinction as a weather
-forecast (Chapter 6's own analogy) computing a 70% chance of rain, versus
-the separate question of what you personally decide to do about it.
+A control commonly called **temperature** rescales the model's raw
+predicted scores before they're converted into probabilities, which
+changes the resulting distribution's shape. Low temperature sharpens the
+distribution, concentrating most of the probability on the single most
+likely token or a small handful of top candidates — closer to always
+picking the top answer. High temperature flattens the distribution,
+spreading probability more evenly across a wider range of candidates,
+including some riskier ones, producing more varied but occasionally less
+careful output. Related techniques called **top-k** and **nucleus (top-p)
+sampling** go further: they truncate the distribution outright, discarding
+everything outside the most plausible handful of candidates (top-k), or
+outside the smallest set of candidates whose combined probability crosses
+a chosen threshold (nucleus sampling), and then renormalize what remains
+into a fresh probability distribution before sampling from it.
+
+So the accurate way to put it: the model's underlying parameters and
+training (Chapter 9) are completely fixed during inference — that part
+never changes. What temperature, top-k, and nucleus sampling change is
+the distribution actually used for sampling at each step, computed *from*
+the model's raw output, not identical to it.
 
 ## 6. Common Misconceptions
 
@@ -113,8 +126,8 @@ faster.
 
 - Inference is using a trained model's fixed parameters to produce output — as opposed to training, where parameters are still being adjusted.
 - Sampling is the method for choosing one actual token from the model's predicted probability distribution at each step.
-- Temperature controls how narrowly or broadly sampling draws from that distribution; top-k/nucleus sampling restricts choices to the most plausible candidates.
-- None of this changes the underlying probabilities the network computed — only how a token gets selected from them.
+- Temperature rescales the model's raw predicted scores before sampling, sharpening or flattening the resulting distribution; top-k/nucleus sampling truncates and renormalizes it, discarding implausible candidates outright.
+- None of this changes the model's parameters or reruns training — but it does genuinely reshape the distribution actually sampled from, not just the rule for picking from an untouched one.
 - Identical prompts can produce different, equally valid outputs by design, because of this controlled randomness.
 - Training is a large, mostly one-time cost; inference is a smaller, recurring cost paid every time the model is used.
 

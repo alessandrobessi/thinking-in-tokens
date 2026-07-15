@@ -45,20 +45,26 @@ patterns in text, not to cross-check every generated claim against an
 external record of what's real. For extremely common, heavily-repeated
 facts, this rarely matters, because the true fact is also the
 overwhelmingly likely continuation. For a rare, specific, or nonexistent
-case, the model still has to produce *something* — and what it produces
-is a plausible-looking fabrication, not a flagged gap.
+case, without specific training aimed at handling exactly this situation
+(Chapter 19 covers this), the model has no strong built-in pull toward
+stopping, refusing, or flagging uncertainty instead of continuing — so it
+commonly fills the gap with a plausible-looking fabrication rather than a
+flagged absence.
 
 ## 4. Core Intuition
 
-A **hallucination** is fluent, confident, plausible-sounding output that
-is nonetheless factually wrong or entirely fabricated — not because the
-model is lying (it has no intention, and nothing resembling a separate
-"belief" it's concealing), but because next-token prediction (Chapter 6)
-optimizes for statistical plausibility given training-data patterns, not
-for correspondence with truth about the actual world. A model has no
-built-in mechanism that checks "is this actually true" as something
-separate from "does this sound like the kind of thing that's usually said
-here."
+A **hallucination** is generated output that is factually wrong or
+unsupported — fabricated, misremembered, or simply unconnected to any
+real source — regardless of how confidently it's phrased. Confident,
+fluent delivery is the most attention-grabbing case, but a model can
+hallucinate while sounding tentative too; confidence of phrasing and
+accuracy of content are produced by the same process and aren't reliably
+linked. This isn't the model lying (it has no intention, and nothing
+resembling a separate "belief" it's concealing) — it's that next-token
+prediction (Chapter 6) optimizes for statistical plausibility given
+training-data patterns, and standard generation doesn't include a
+reliable, separate fact-checking step weighing "is this actually true"
+against the outside world.
 
 ## 5. Technical Explanation
 
@@ -88,8 +94,8 @@ fluent, confident-sounding fabrication rather than a flagged absence.
 > **Analogy:** A student trained their whole life to always give a confident-sounding answer on every exam question will keep bluffing convincingly on the questions they don't actually know, even after years of additional coaching — the tendency has to be specifically retrained, not merely reduced by getting generally smarter.
 
 > **Misconception:** "The model knows it's making something up and is choosing to deceive."
-> **Why it's wrong:** There's no separate module tracking "what I actually know is true" apart from "what token comes next" — it's the same fluent generation process whether the content happens to be accurate or fabricated, and the confidence of the phrasing doesn't reliably track any internal certainty, because there isn't a distinct "certainty" signal being consulted.
-> **Correct intuition:** Confident phrasing and factual accuracy are produced by the same process but aren't causally linked — one doesn't guarantee the other.
+> **Why it's wrong:** There's no separate module tracking "what I actually know is true" apart from "what token comes next" — it's the same fluent generation process whether the content happens to be accurate or fabricated. Some research suggests a model's internal computations can carry information correlated with how likely a claim is to be wrong, but normal generation doesn't reliably surface that signal as a calibrated statement of uncertainty — so confident phrasing still isn't a dependable indicator of accuracy in practice.
+> **Correct intuition:** Confident phrasing and factual accuracy are produced by the same process but aren't reliably linked in the final output — one doesn't guarantee the other, even if some trace of "how sure" exists somewhere inside the computation.
 > **Analogy:** A fluent public speaker can sound equally confident whether reciting a well-verified fact or a half-remembered detail — confidence of delivery and accuracy of content are simply different things.
 
 ## 7. Practical Implications
@@ -106,14 +112,14 @@ knowledge and obscure or narrow topics.
 
 ## 8. Key Takeaway
 
-**Hallucination isn't the model lying — it's fluent, confident next-token prediction continuing exactly as designed, in a case where statistical plausibility and factual truth have quietly come apart.**
+**Hallucination isn't the model lying — it's next-token prediction continuing exactly as designed, without a reliable fact-checking step, in a case where statistical plausibility and factual truth have quietly come apart.**
 
 ## 9. One-Page Summary
 
-- A hallucination is fluent, plausible-sounding output that is factually wrong or fabricated, without any intention to deceive.
+- A hallucination is factually wrong or unsupported output — it doesn't require confident phrasing, though confident delivery is the most noticeable case.
 - Next-token prediction (Chapter 6) optimizes for statistical plausibility relative to training text, not for truth about the real world.
 - For common, heavily-repeated facts, plausibility and truth usually align; for rare or nonexistent facts, they can come apart.
-- The model has no built-in mechanism separating "sounds right" from "is actually true" unless specifically trained to flag uncertainty.
+- Standard generation has no reliable, separate mechanism checking "sounds right" against "is actually true," unless a model has been specifically trained to handle exactly this case.
 - Retrieval-augmented generation (Chapters 17–18) is a major practical mitigation, giving the model real source material to ground answers in.
 - Hallucination is best treated as an ongoing, manageable tradeoff rather than a simple bug awaiting a final fix.
 

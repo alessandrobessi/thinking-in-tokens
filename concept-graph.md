@@ -54,9 +54,11 @@ after any change to the YAML and commit both files together.
 
 | Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
 |---|---|---|---|---|---|
-| Attention | ✅ written | Ch. 11 | embeddings, context, similarity | 1 | [link](book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway) |
+| Attention | ✅ written | Ch. 11 | embeddings, context, similarity | 2 | [link](book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway) |
+| Causal masking | ✅ written | Ch. 11 | attention | 1 | [link](book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway) |
+| Attention heads (multi-head attention) | ✅ written | Ch. 11 | attention | 0 | [link](book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway) |
 | Positional encoding | ✅ written | Ch. 11 | attention | 1 | [link](book/part-3-the-transformer/11-the-attention-revolution.md#8-key-takeaway) |
-| Transformer blocks | ✅ written | Ch. 12 | attention, positional-encoding, neural-networks | 2 | [link](book/part-3-the-transformer/12-building-a-transformer.md#8-key-takeaway) |
+| Transformer blocks | ✅ written | Ch. 12 | attention, causal-masking, positional-encoding, neural-networks | 2 | [link](book/part-3-the-transformer/12-building-a-transformer.md#8-key-takeaway) |
 | Inference | ✅ written | Ch. 14 | transformer-blocks | 1 | [link](book/part-3-the-transformer/14-inference-and-text-generation.md#8-key-takeaway) |
 | Sampling | ✅ written | Ch. 14 | inference, probability-intuition | 1 | [link](book/part-3-the-transformer/14-inference-and-text-generation.md#8-key-takeaway) |
 
@@ -90,6 +92,7 @@ after any change to the YAML and commit both files together.
 | Mixture of Experts | ☐ planned | Ch. 25 | transformer-blocks, parameters | 0 | — |
 | Quantization | ✅ written | Ch. 20 | parameters | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
 | Efficient inference | ✅ written | Ch. 20 | inference, quantization | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
+| KV cache | ✅ written | Ch. 20 | attention, inference | 0 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
 
 ## Level 8 — Evaluation, Observability, Security, Safety, AI engineering
 

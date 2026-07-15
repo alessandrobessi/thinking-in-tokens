@@ -1,8 +1,10 @@
 # References — Chapter 20: Quantization and Efficient Models
 
-- No direct citations yet; post-training quantization and "4-bit/8-bit"
-  techniques (§5/§7) are described conceptually without citing a specific
-  paper (e.g. Dettmers et al.'s LLM.int8()/QLoRA work) — flagged for the
-  Milestone 3 citation pass.
+- `frantar2022gptq` — the source for calibrated post-training
+  quantization, referenced in §5 to distinguish real quantization methods
+  from naive independent rounding.
+- KV caching (§5) is a now-standard technique without one single canonical
+  paper cited here — flagged for the Milestone 3 citation pass if a
+  specific primary source is wanted.
 
 See `bibliography.md` for full citations.

@@ -8,8 +8,9 @@ Checks:
 3. No dependency cycles.
 4. Every misconception_id exists as a row in misconceptions.md.
 5. written: true concepts have a chapter file that actually exists under
-   book/, and that file contains the concept's key_takeaway anchor (when
-   set); written: false concepts should not have a key_takeaway set.
+   book/, and that file has a heading whose GitHub-style anchor matches
+   the concept's key_takeaway anchor (when set) -- not just that the file
+   exists; written: false concepts should not have a key_takeaway set.
 6. introduced_in is within the valid chapter range (1-30).
 
 Exit code is 0 if clean, 1 if any check fails, so this can gate a commit
@@ -37,6 +38,20 @@ def load_misconception_ids():
 def find_chapter_file(chapter_num):
     matches = list(ROOT.glob(f"book/**/{chapter_num:02d}-*.md"))
     return matches[0] if matches else None
+
+
+def github_heading_slug(heading_text):
+    """Approximate GitHub's Markdown heading-anchor algorithm: lowercase,
+    drop anything that isn't a word character/space/hyphen, spaces -> hyphens."""
+    slug = heading_text.strip().lower()
+    slug = re.sub(r"[^\w\s-]", "", slug)
+    slug = re.sub(r"\s+", "-", slug)
+    return slug
+
+
+def chapter_heading_anchors(chapter_file):
+    text = chapter_file.read_text()
+    return {github_heading_slug(h) for h in re.findall(r"^##\s+(.+)$", text, re.MULTILINE)}
 
 
 def check_prerequisite_ids_exist(concepts, by_id):
@@ -99,8 +114,14 @@ def check_written_status(concepts):
                 errors.append(f"{c['id']}: written=true but no chapter {c['introduced_in']:02d} file exists")
             elif c.get("key_takeaway"):
                 anchor_file, _, anchor = c["key_takeaway"].partition("#")
-                if not (ROOT / anchor_file).exists():
+                full_path = ROOT / anchor_file
+                if not full_path.exists():
                     errors.append(f"{c['id']}: key_takeaway file '{anchor_file}' does not exist")
+                elif anchor not in chapter_heading_anchors(full_path):
+                    errors.append(
+                        f"{c['id']}: key_takeaway anchor '#{anchor}' has no matching "
+                        f"heading in '{anchor_file}'"
+                    )
         else:
             if c.get("key_takeaway"):
                 errors.append(f"{c['id']}: written=false but key_takeaway is set (should be null)")

@@ -2,6 +2,71 @@
 
 ## 2026-07-15
 
+- Fifth review round, addressed directly — the most substantial technical
+  correctness pass so far, focused on Chapters 11–20:
+  - **Causal masking**, the central fix: Chapter 11's Winograd worked
+    example and story implicitly described bidirectional (BERT-style)
+    resolution of a pronoun, contradicting the book's own established
+    framing of generative, decoder-only, autoregressive transformers.
+    Rewrote the worked example, story, Core Intuition, and Technical
+    Explanation around the fact that attention only looks back across
+    earlier tokens, never forward, and added causal masking as a new,
+    explicitly named concept with its own misconception
+    (`attention-sees-future-tokens`) and detective analogy. Propagated the
+    same correction to Chapter 12's story and worked example, which also
+    implied full-sentence attention. Added `causal-masking` and
+    `attention-heads` to `concept-graph.yaml`.
+  - Broadened positional encoding's description beyond "a fixed
+    mathematical pattern" to mention learned and RoPE-style alternatives
+    (Ch.11), and added a paragraph on multi-head attention.
+  - Fixed Chapter 14's sampling explanation: temperature and top-k/nucleus
+    sampling were described as merely restricting which token gets
+    *picked*; corrected to describe them as *reshaping the distribution
+    itself* (rescaling, or truncating and renormalizing).
+  - Softened Chapter 15's hallucination framing so it no longer requires
+    "confident" phrasing, and softened the "no distinct certainty signal"
+    misconception to acknowledge research on internal states correlating
+    with uncertainty without being reliably surfaced.
+  - Chapter 16: distinguished a token's raw presence in the context window
+    (binary) from the model's reliable use of it ("lost in the middle"),
+    and qualified the quadratic-cost claim as applying to standard, dense
+    attention specifically.
+  - Chapters 17/18: broadened RAG so it no longer requires vector-database
+    retrieval specifically (keyword search, a direct query, or web search
+    can fill the same role), and clarified that RAG's "no parameter
+    update" property describes the simplest, most common deployment
+    pattern, not every RAG variant.
+  - Chapters 13/19: broadened alignment's definition from "what designers
+    and users want" (a single, unified target) to "some set of intended
+    goals," acknowledging objectives can conflict across designers,
+    evaluators, and users. Added Direct Preference Optimization (DPO) as
+    an alternative to RLHF, and noted fine-tuning can shift facts and
+    capabilities, not only style, and that adapter-based methods exist.
+  - Chapter 20: fixed a real factual error — the "same knowledge and
+    parameters as the original model" framing for quantization is wrong,
+    since quantization does change parameter values; corrected to "same
+    architecture, same learned pattern, approximated at lower precision."
+    Replaced a generic, hand-wavy "caching" paragraph with a proper
+    explanation of KV caching (reusing each token's computed key/value
+    instead of recomputing attention from scratch) and prefix caching.
+    Also fixed the naive-rounding framing to acknowledge calibrated
+    methods (GPTQ-style) use real data, not just independent rounding.
+  - Fixed `scripts/validate_concept_graph.py`: the key-takeaway check
+    previously only verified that the target file existed, not that the
+    anchor was a real heading in it — silently passing a broken anchor.
+    Added a GitHub heading-slug approximation and check; verified against
+    a synthetically broken anchor that it now genuinely fails.
+  - Extended `testing/questions.md` from Chapters 1–10 to 1–20: added
+    Comprehension and scenario-based Misconception Resistance questions
+    for Chapters 11–20, tied to this round's new and revised
+    misconception IDs.
+  - Added `levesque2012winograd`, `holtzman2019degeneration`,
+    `rafailov2023dpo`, and `frantar2022gptq` to `bibliography.md`, cited
+    from the relevant chapter reference files.
+  - Verified several other review claims (a GitHub repo-description claim,
+    a template-rigidity concern already addressed by the template's
+    "editorial checklist, not fixed headings" framing) against the live
+    repo; the repo-description claim was stale, as in previous rounds.
 - Fourth review round, addressed directly:
   - Fixed Ch.6's "Chapter 24" -> "Chapter 23" reasoning-models
     cross-reference (verified as a real bug before fixing), plus softened
