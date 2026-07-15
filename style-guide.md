@@ -53,8 +53,19 @@ revisiting that decision explicitly.
   (blueprint.md, "Narrative Graph" section) and ends by provoking the next.
   §11 of chapter N and §1 of chapter N+1 must express the same question.
 - Never introduce a concept before its prerequisites (blueprint.md, "Concept
-  Dependency Graph"). If a chapter needs a concept from a later level to make
-  an aside, cut the aside — don't forward-reference.
+  Dependency Graph"). The test: does the sentence require the reader to
+  already understand *how* the later concept works to parse it correctly?
+  If yes, that's a violation, even if the concept's name is never used
+  (e.g. Chapter 1 originally said older architectures "process a sentence
+  one piece at a time instead of weighing an entire passage at once" to
+  explain *why* a 2022-scale comparison failed — using attention's
+  mechanism to justify a claim, four chapters before attention exists). A
+  bare forward-pointer is fine and is used deliberately elsewhere in the
+  book — naming a future concept only to say "that's the subject of
+  Chapter N" (see Ch. 5's and Ch. 8's handling of "attention"/"the
+  transformer"), with no claim resting on the reader already grasping how
+  it works. If a chapter needs more than a bare pointer, cut it instead of
+  half-explaining it.
 - After finishing a chapter, immediately: add its new terms to `glossary.md`,
   its misconceptions to `misconceptions.md`, check off its concepts in
   `concept-graph.md`, and add any new analogy to the registry below. Do this

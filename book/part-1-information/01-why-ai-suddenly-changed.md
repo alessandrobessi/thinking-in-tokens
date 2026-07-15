@@ -32,24 +32,28 @@ narrow and scripted to broad and improvised, is what this book is about.
 
 ## 3. Worked Example
 
-A quick thought experiment makes the "why now" question concrete. Take
-2022's internet-scale data and 2022's compute, but pair them with a
-pre-2017 architecture instead of the transformer — this isn't hypothetical,
-since exactly that comparison has been run. The older architectures
-plateau well short of what transformers achieve on the same data and
-compute, because they process a sentence largely one piece at a time
-instead of weighing an entire passage at once.
+A quick thought experiment makes the "why now" question concrete, using
+just two ingredients for now — the rest of this chapter explains the
+third.
 
-Now run the experiment the other way. Take the transformer architecture,
-but feed it only 1990s-scale data and compute. You get a toy, not a
-chatbot — there simply isn't enough raw material for the architecture to
-learn from, and not enough computation available to process it even if
-there were.
+Suppose a research team in 2010 had somehow gotten hold of 2022's
+internet-scale data: every article, forum post, and digitized book, ready
+to train on. Would they have built something like today's chatbots? No —
+the computers available in 2010 couldn't have processed anywhere near
+that much text in any reasonable amount of time or budget. The data alone
+wasn't enough without the machines to chew through it.
 
-Two out of three ingredients, in either direction, isn't enough. This is
-exactly why "just add more data" or "just use a bigger chip" announcements,
-taken in isolation, tend to overpromise: each one is describing a single
-ingredient, and a single ingredient was never the story.
+Now flip the experiment. Suppose a 2022 team had 2022's computers, but
+only 1990s-scale data to train on. Also no — there simply wouldn't have
+been enough raw material to learn from, no matter how fast the computers
+could process it.
+
+Both halves point the same direction: data and compute each had to
+separately clear a threshold before either one was useful on its own. And
+as the rest of this chapter explains, even data-plus-compute together
+still wasn't the whole story — which is exactly why "just add more data"
+or "just use a bigger chip" announcements, taken in isolation, tend to
+overpromise.
 
 ## 4. Core Intuition
 
@@ -136,14 +140,14 @@ book aims to give you throughout.
 
 ## 8. Key Takeaway
 
-**Modern AI is what you get when internet-scale data, parallel compute, and the transformer architecture arrive together — not a single sudden invention.**
+**Modern AI is what you get when internet-scale data, parallel compute, and a new kind of architecture arrive together — not a single sudden invention.**
 
 ## 9. One-Page Summary
 
 - What the public experienced as a sudden leap was the convergence of three long-running trends: data, compute, and a new architecture.
 - Internet-scale text gave systems enough examples of language patterns to learn from.
 - GPU-style parallel compute made processing that much data economically feasible.
-- The transformer architecture (2017) let systems weigh an entire passage at once rather than one piece at a time.
+- The new architecture, published in 2017, let systems weigh an entire passage at once rather than one piece at a time. (It has a name — you'll meet it properly in Chapter 11.)
 - These systems are trained with self-supervised learning: predicting the next piece of text, using the text itself as the answer key.
 - Performance improves predictably with scale (data, parameters, compute) — this is why the industry talks constantly about "scaling."
 - At sufficient scale, systems perform tasks they were never explicitly trained for — a side effect of getting very good at prediction.
