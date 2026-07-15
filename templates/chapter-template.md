@@ -16,8 +16,11 @@
 ## 3. Visual Explanation
 
 [One or more small supporting figures that build intuition step by step, before the core
-diagram. Inline SVG, `viewBox="0 0 600 300"` per style-guide.md §3.2. Each figure followed
-by a one-sentence italic takeaway, e.g.:
+diagram. Author as SVG, `viewBox="0 0 600 300"` per style-guide.md §3.2, but save it as its
+own file under `assets/diagrams/chNN-fig1-slug.svg` and reference it with
+`<img src="../../assets/diagrams/chNN-fig1-slug.svg" alt="..." width="640"/>` — never paste
+the raw `<svg>` into the chapter file itself (see style-guide.md §3.0: it silently fails to
+render on GitHub). Each figure followed by a one-sentence italic takeaway, e.g.:
 
 *Takeaway: a sentence can be split into tokens without changing its meaning.*]
 
@@ -45,9 +48,10 @@ engineering blog, or conversation.]
 
 ## 8. Canonical Mental-Model Diagram
 
-[The ONE definitive diagram for this chapter. Inline SVG, `viewBox="0 0 800 500"` per
-style-guide.md §3.2, full iconography/palette compliance. Followed by one bolded
-one-sentence takeaway.]
+[The ONE definitive diagram for this chapter. Author as SVG, `viewBox="0 0 800 500"` per
+style-guide.md §3.2, full iconography/palette compliance — saved as
+`assets/diagrams/chNN-fig2-slug.svg` and referenced via `<img>`, same as above. Followed by
+one bolded one-sentence takeaway.]
 
 **Takeaway: [...]**
 

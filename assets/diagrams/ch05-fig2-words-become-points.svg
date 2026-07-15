@@ -1,0 +1,29 @@
+<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#FBF9F6"/>
+  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Words Become Points in Space</text>
+  <g stroke="#98A6B3" stroke-width="1" stroke-dasharray="2 4">
+    <line x1="60" y1="120" x2="740" y2="120"/>
+    <line x1="60" y1="220" x2="740" y2="220"/>
+    <line x1="60" y1="320" x2="740" y2="320"/>
+    <line x1="60" y1="420" x2="740" y2="420"/>
+    <line x1="200" y1="80" x2="200" y2="450"/>
+    <line x1="350" y1="80" x2="350" y2="450"/>
+    <line x1="500" y1="80" x2="500" y2="450"/>
+    <line x1="650" y1="80" x2="650" y2="450"/>
+  </g>
+  <!-- animal cluster -->
+  <circle cx="180" cy="150" r="7" fill="#457B9D"/><text x="180" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">cat</text>
+  <circle cx="215" cy="170" r="7" fill="#457B9D"/><text x="235" y="180" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">kitten</text>
+  <circle cx="150" cy="185" r="7" fill="#457B9D"/><text x="130" y="200" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">dog</text>
+  <!-- finance cluster, far away -->
+  <circle cx="620" cy="360" r="7" fill="#B56576"/><text x="620" y="345" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">stock</text>
+  <circle cx="660" cy="380" r="7" fill="#B56576"/><text x="680" y="395" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">market</text>
+  <!-- capital-of relationship, consistent direction -->
+  <circle cx="330" cy="250" r="7" fill="#84A98C"/><text x="300" y="240" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">France</text>
+  <circle cx="380" cy="200" r="9" fill="#EE964B"/><text x="410" y="195" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Paris</text>
+  <line x1="330" y1="250" x2="375" y2="205" stroke="#EE964B" stroke-width="2"/>
+  <circle cx="480" cy="290" r="7" fill="#84A98C"/><text x="450" y="280" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Japan</text>
+  <circle cx="530" cy="240" r="9" fill="#EE964B"/><text x="560" y="235" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Tokyo</text>
+  <line x1="480" y1="290" x2="525" y2="245" stroke="#EE964B" stroke-width="2"/>
+  <text x="400" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">same direction, repeated: "capital of" is a consistent offset in this space</text>
+</svg>

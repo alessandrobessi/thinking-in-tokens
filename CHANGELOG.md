@@ -49,3 +49,16 @@
   hard rule in `style-guide.md` §3.0 to catch this and a related bug
   (`<text>` labels overflowing their `viewBox`, found and fixed in
   Chapters 1 and 4) before it recurs.
+- **Corrected the diagram architecture after confirming diagrams still
+  didn't render on GitHub even after the blank-line fix.** Root cause: the
+  earlier premise was wrong — GitHub's Markdown sanitizer strips raw
+  `<svg>` content wherever it's embedded directly in a `.md` file,
+  regardless of formatting; inline SVG in Markdown was never going to
+  render on GitHub. Extracted all 20 diagrams (chapters 1–10) to standalone
+  files under `assets/diagrams/`, referenced via `<img>` — the same pattern
+  already used for the root README's preview image. Verified all 20 render
+  correctly via local rendering (macOS QuickLook thumbnailing). Updated
+  `templates/chapter-template.md`, `style-guide.md` §3, and
+  `scripts/check_svg_bounds.py` (now also fails the build if any chapter
+  file contains a literal `<svg` tag again) so future chapters follow the
+  corrected pattern by default.

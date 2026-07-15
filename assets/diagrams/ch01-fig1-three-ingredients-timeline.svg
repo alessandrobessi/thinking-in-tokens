@@ -1,0 +1,19 @@
+<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#FBF9F6"/>
+  <defs>
+    <marker id="ch01-fig1-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#98A6B3"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="250" x2="560" y2="250" stroke="#1B1B2F" stroke-width="1"/>
+  <text x="300" y="275" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">time</text>
+  <!-- three rising trend lines -->
+  <path d="M 60 240 C 200 235, 350 210, 560 150" fill="none" stroke="#3D5A80" stroke-width="2"/>
+  <text x="595" y="150" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D5A80">data</text>
+  <path d="M 60 245 C 200 240, 350 190, 560 90" fill="none" stroke="#EE964B" stroke-width="2"/>
+  <text x="595" y="75" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#EE964B">compute</text>
+  <path d="M 60 248 C 300 246, 420 220, 560 190" fill="none" stroke="#98A6B3" stroke-width="2"/>
+  <text x="595" y="205" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">architecture (2017)</text>
+  <line x1="430" y1="40" x2="430" y2="255" stroke="#1B1B2F" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="430" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">threshold crossed</text>
+</svg>

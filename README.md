@@ -59,7 +59,8 @@ and status, and [`ROADMAP.md`](ROADMAP.md) for project-level milestones.
 | [`glossary.md`](glossary.md) | Running index of every term, in order of first appearance. |
 | [`misconceptions.md`](misconceptions.md) | The misconception graph: one row per concept, its common misconception, and the correct intuition. |
 | [`concept-graph.md`](concept-graph.md) / [`concept-graph.yaml`](concept-graph.yaml) | Checklist tracker over the blueprint's 9-level concept dependency graph — a concept may never appear in prose before its own level is checked off. The `.yaml` is the machine-readable source of truth (explicit per-concept prerequisites, introduced-in chapter, linked misconceptions); the `.md` is its human-readable mirror. |
-| [`assets/icons/`](assets/icons/) | Canonical hand-drawn icon snippets (token, embedding point, etc.) copied and adapted into each chapter's inline diagrams. |
+| [`assets/diagrams/`](assets/diagrams/) | Every chapter figure, as a standalone, editable SVG file, referenced from chapters via `<img>` (never pasted inline — see `style-guide.md` §3.0 for why that silently fails to render). |
+| [`assets/icons/`](assets/icons/) | Canonical hand-drawn icon snippets (token, embedding point, etc.) copied and adapted into new diagrams. |
 | [`references/`](references/) | Lightweight per-chapter citation trail for empirical/historical claims, plus a master `bibliography.md`. |
 | [`testing/`](testing/) | The reader-validation protocol: methodology, scoring rubric, and a per-chapter question bank (comprehension, transfer, misconception resistance, retention). Ready to run, pending recruiting actual test readers. |
 | [`scripts/check_svg_bounds.py`](scripts/check_svg_bounds.py) | Run before committing any diagram change: flags embedded SVGs broken by an internal blank line (see `style-guide.md` §3.0 — this has already broken every diagram in the manuscript once) and estimates `<text>` elements that overflow their `viewBox`. |

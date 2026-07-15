@@ -31,24 +31,9 @@ This is exactly the trick computers use to represent the meaning of words.
 
 ## 3. Visual Explanation
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="300" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">Cities Placed by Similarity, Not Geography</text>
-  <g stroke="#98A6B3" stroke-width="1" stroke-dasharray="2 4">
-    <line x1="0" y1="90" x2="600" y2="90"/>
-    <line x1="0" y1="150" x2="600" y2="150"/>
-    <line x1="0" y1="210" x2="600" y2="210"/>
-    <line x1="150" y1="50" x2="150" y2="270"/>
-    <line x1="300" y1="50" x2="300" y2="270"/>
-    <line x1="450" y1="50" x2="450" y2="270"/>
-  </g>
-  <circle cx="150" cy="100" r="7" fill="#457B9D"/><text x="150" y="85" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Paris</text>
-  <circle cx="185" cy="120" r="7" fill="#457B9D"/><text x="205" y="130" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Rome</text>
-  <circle cx="440" cy="200" r="7" fill="#B56576"/><text x="440" y="185" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Singapore</text>
-  <circle cx="475" cy="220" r="7" fill="#B56576"/><text x="500" y="235" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Hong Kong</text>
-  <circle cx="270" cy="230" r="7" fill="#84A98C"/><text x="270" y="255" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Kansas town</text>
-  <circle cx="230" cy="245" r="7" fill="#84A98C"/><text x="180" y="260" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Ukraine town</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch05-fig1-cities-by-similarity.svg" alt="Cities Placed by Similarity, Not Geography" width="640"/>
+</p>
 
 *Takeaway: closeness on this map means "similar," and the map's axes have nothing to do with physical geography.*
 
@@ -147,35 +132,9 @@ both cases, "find relevant information" is implemented, underneath, as
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Words Become Points in Space</text>
-  <g stroke="#98A6B3" stroke-width="1" stroke-dasharray="2 4">
-    <line x1="60" y1="120" x2="740" y2="120"/>
-    <line x1="60" y1="220" x2="740" y2="220"/>
-    <line x1="60" y1="320" x2="740" y2="320"/>
-    <line x1="60" y1="420" x2="740" y2="420"/>
-    <line x1="200" y1="80" x2="200" y2="450"/>
-    <line x1="350" y1="80" x2="350" y2="450"/>
-    <line x1="500" y1="80" x2="500" y2="450"/>
-    <line x1="650" y1="80" x2="650" y2="450"/>
-  </g>
-  <!-- animal cluster -->
-  <circle cx="180" cy="150" r="7" fill="#457B9D"/><text x="180" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">cat</text>
-  <circle cx="215" cy="170" r="7" fill="#457B9D"/><text x="235" y="180" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">kitten</text>
-  <circle cx="150" cy="185" r="7" fill="#457B9D"/><text x="130" y="200" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">dog</text>
-  <!-- finance cluster, far away -->
-  <circle cx="620" cy="360" r="7" fill="#B56576"/><text x="620" y="345" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">stock</text>
-  <circle cx="660" cy="380" r="7" fill="#B56576"/><text x="680" y="395" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">market</text>
-  <!-- capital-of relationship, consistent direction -->
-  <circle cx="330" cy="250" r="7" fill="#84A98C"/><text x="300" y="240" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">France</text>
-  <circle cx="380" cy="200" r="9" fill="#EE964B"/><text x="410" y="195" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Paris</text>
-  <line x1="330" y1="250" x2="375" y2="205" stroke="#EE964B" stroke-width="2"/>
-  <circle cx="480" cy="290" r="7" fill="#84A98C"/><text x="450" y="280" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Japan</text>
-  <circle cx="530" cy="240" r="9" fill="#EE964B"/><text x="560" y="235" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">Tokyo</text>
-  <line x1="480" y1="290" x2="525" y2="245" stroke="#EE964B" stroke-width="2"/>
-  <text x="400" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">same direction, repeated: "capital of" is a consistent offset in this space</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch05-fig2-words-become-points.svg" alt="Words Become Points in Space" width="640"/>
+</p>
 
 **Takeaway: embeddings place words as points in a high-dimensional space, where nearby points mean similar usage and consistent directions capture consistent relationships.**
 

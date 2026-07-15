@@ -1,11 +1,20 @@
 #!/usr/bin/env python3
-"""Heuristic check for SVG <text> elements that overflow their viewBox.
+"""Checks for this project's diagram files.
 
-Not a real font-metrics engine -- estimates rendered width as
-(char count) * font-size * AVG_CHAR_WIDTH_FACTOR, which is a reasonable
-approximation for Helvetica/Arial at these sizes. Flags anything that
-overflows by more than a small tolerance so near-misses don't drown out
-real bugs.
+1. Every diagram must live as a standalone file under assets/diagrams/ or
+   assets/icons/, referenced from chapters via <img src="...">. GitHub's
+   Markdown sanitizer strips raw inline <svg> content wherever it appears
+   directly in a .md file's rendered HTML (regardless of blank lines or
+   anything else) -- it never renders. So this script's first job is a
+   regression guard: fail if any book/**/*.md contains a literal <svg tag.
+
+2. Heuristic check for SVG <text> elements that overflow their viewBox.
+   Not a real font-metrics engine -- estimates rendered width as
+   (char count) * font-size * AVG_CHAR_WIDTH_FACTOR, a reasonable
+   approximation for Helvetica/Arial at these sizes. Does not account for
+   transform="rotate(...)" -- verify those by hand instead of trusting the
+   tool. Flags anything past a small tolerance so near-misses don't drown
+   out real bugs.
 """
 import re
 import sys
@@ -16,10 +25,7 @@ TOLERANCE_PX = 3
 
 SVG_RE = re.compile(r"<svg\b([^>]*)>(.*?)</svg>", re.DOTALL)
 VIEWBOX_RE = re.compile(r'viewBox="([\d.\-]+)\s+([\d.\-]+)\s+([\d.\-]+)\s+([\d.\-]+)"')
-TEXT_RE = re.compile(
-    r'<text\b([^>]*)>(.*?)</text>',
-    re.DOTALL,
-)
+TEXT_RE = re.compile(r'<text\b([^>]*)>(.*?)</text>', re.DOTALL)
 ATTR_RE = re.compile(r'([a-zA-Z\-:]+)="([^"]*)"')
 
 
@@ -31,7 +37,18 @@ def strip_tags(s):
     return re.sub(r"<[^>]+>", "", s).strip()
 
 
-def check_file(path):
+def check_inline_svg_regression(root):
+    """book/**/*.md must never contain a literal <svg> again -- it silently
+    fails to render on GitHub. Diagrams belong in assets/diagrams/ as
+    standalone files, referenced via <img>."""
+    offenders = []
+    for f in sorted(root.glob("book/**/*.md")):
+        if "<svg" in f.read_text():
+            offenders.append(f)
+    return offenders
+
+
+def check_overflow(path):
     text = path.read_text()
     issues = []
     for svg_match in SVG_RE.finditer(text):
@@ -73,10 +90,20 @@ def check_file(path):
 
 def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
-    files = sorted(root.glob("book/**/*.md"))
+
+    print("=== Regression check: no inline <svg> in book/**/*.md ===")
+    offenders = check_inline_svg_regression(root)
+    if offenders:
+        for f in offenders:
+            print(f"  FAIL: {f} still contains an inline <svg> -- it will not render on GitHub.")
+    else:
+        print("  OK: no inline <svg> found in any chapter file.")
+
+    print("\n=== Overflow check: assets/diagrams/ and assets/icons/ ===")
+    files = sorted(root.glob("assets/diagrams/*.svg")) + sorted(root.glob("assets/icons/*.svg"))
     total = 0
     for f in files:
-        issues = check_file(f)
+        issues = check_overflow(f)
         if issues:
             print(f"\n{f}")
             for content, anchor, x, font_size, overflow, vb_w in issues:
@@ -85,7 +112,10 @@ def main():
                     f"~{overflow:.0f}px past viewBox edge (width={vb_w:.0f})"
                 )
             total += len(issues)
-    print(f"\n{total} potential overflow(s) found across {len(files)} files.")
+    print(f"\n{total} potential overflow(s) found across {len(files)} diagram files.")
+
+    if offenders:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

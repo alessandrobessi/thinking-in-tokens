@@ -30,28 +30,9 @@ on the list.
 
 ## 3. Visual Explanation
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="300" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">Three Ways to Chop "unbelievable"</text>
-  <text x="30" y="70" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">characters</text>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#FBF9F6">
-    <rect x="30" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="42" y="99" text-anchor="middle">u</text>
-    <rect x="58" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="70" y="99" text-anchor="middle">n</text>
-    <rect x="86" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="98" y="99" text-anchor="middle">b</text>
-    <rect x="114" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="126" y="99" text-anchor="middle">e</text>
-    <rect x="142" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="154" y="99" text-anchor="middle">l</text>
-    <rect x="170" y="80" width="24" height="28" rx="4" fill="#3D5A80"/><text x="182" y="99" text-anchor="middle">…</text>
-  </g>
-  <text x="30" y="150" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">subword tokens</text>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#FBF9F6">
-    <rect x="30" y="160" width="50" height="28" rx="8" fill="#3D5A80"/><text x="55" y="179" text-anchor="middle">un</text>
-    <rect x="86" y="160" width="90" height="28" rx="8" fill="#457B9D"/><text x="131" y="179" text-anchor="middle">believe</text>
-    <rect x="182" y="160" width="60" height="28" rx="8" fill="#3D5A80"/><text x="212" y="179" text-anchor="middle">able</text>
-  </g>
-  <text x="30" y="230" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">whole word</text>
-  <rect x="30" y="240" width="212" height="28" rx="8" fill="#6D597A"/>
-  <text x="136" y="259" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#FBF9F6">unbelievable</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch03-fig1-three-ways-to-chop.svg" alt="Three Ways to Chop "unbelievable"" width="640"/>
+</p>
 
 *Takeaway: the same word can be split at three different grain sizes — subword tokens are the middle ground modern models actually use.*
 
@@ -122,28 +103,9 @@ internal letters to the model in an obvious way.
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Text → Tokens → Numbers</text>
-  <text x="400" y="90" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1B1B2F">"the unbelievable cat"</text>
-  <line x1="400" y1="105" x2="400" y2="140" stroke="#98A6B3" stroke-width="2"/>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#FBF9F6">
-    <rect x="120" y="150" width="70" height="45" rx="8" fill="#3D5A80" stroke="#1B1B2F" stroke-width="2"/><text x="155" y="178" text-anchor="middle">the</text>
-    <rect x="200" y="150" width="55" height="45" rx="8" fill="#457B9D" stroke="#1B1B2F" stroke-width="2"/><text x="227" y="178" text-anchor="middle">un</text>
-    <rect x="265" y="150" width="95" height="45" rx="8" fill="#457B9D" stroke="#1B1B2F" stroke-width="2"/><text x="312" y="178" text-anchor="middle">believ</text>
-    <rect x="370" y="150" width="65" height="45" rx="8" fill="#457B9D" stroke="#1B1B2F" stroke-width="2"/><text x="402" y="178" text-anchor="middle">able</text>
-    <rect x="445" y="150" width="70" height="45" rx="8" fill="#3D5A80" stroke="#1B1B2F" stroke-width="2"/><text x="480" y="178" text-anchor="middle">cat</text>
-  </g>
-  <line x1="400" y1="205" x2="400" y2="240" stroke="#98A6B3" stroke-width="2"/>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1B1B2F">
-    <text x="155" y="270" text-anchor="middle">1723</text>
-    <text x="227" y="270" text-anchor="middle">312</text>
-    <text x="312" y="270" text-anchor="middle">9981</text>
-    <text x="402" y="270" text-anchor="middle">88</text>
-    <text x="480" y="270" text-anchor="middle">5502</text>
-  </g>
-  <text x="400" y="320" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">this numeric sequence is what the model actually receives</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch03-fig2-text-tokens-numbers.svg" alt="Text → Tokens → Numbers" width="640"/>
+</p>
 
 **Takeaway: a language model never sees letters or words — it sees a sequence of token IDs produced by tokenization, some whole words and some fragments.**
 

@@ -1,0 +1,14 @@
+<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#FBF9F6"/>
+  <text x="300" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">Miss, Measure, Adjust, Repeat</text>
+  <circle cx="100" cy="150" r="10" fill="#D7263D"/>
+  <text x="100" y="180" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">big miss</text>
+  <circle cx="220" cy="130" r="8" fill="#EE964B"/>
+  <text x="220" y="160" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">smaller miss</text>
+  <circle cx="340" cy="115" r="6" fill="#EE964B"/>
+  <text x="340" y="145" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">closer</text>
+  <circle cx="460" cy="108" r="4" fill="#2A9D8F"/>
+  <text x="460" y="138" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">very close</text>
+  <path d="M 100 150 Q 160 100 220 130 Q 280 90 340 115 Q 400 95 460 108" fill="none" stroke="#98A6B3" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="300" y="230" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">each nudge is small, but repeated billions of times, it converges</text>
+</svg>

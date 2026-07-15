@@ -33,24 +33,9 @@ more layers stacked on top.
 
 ## 3. Visual Explanation
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="300" y="35" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1B1B2F">A Letter Is Just an Agreed-Upon Pattern</text>
-  <text x="90" y="100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#1B1B2F">E</text>
-  <line x1="60" y1="150" x2="75" y2="150" stroke="#3D5A80" stroke-width="6"/>
-  <text x="67" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">1 dot</text>
-  <text x="290" y="100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#1B1B2F">Q</text>
-  <line x1="230" y1="150" x2="250" y2="150" stroke="#3D5A80" stroke-width="6"/>
-  <line x1="256" y1="150" x2="276" y2="150" stroke="#3D5A80" stroke-width="6"/>
-  <line x1="282" y1="150" x2="292" y2="150" stroke="#3D5A80" stroke-width="6"/>
-  <line x1="298" y1="150" x2="318" y2="150" stroke="#3D5A80" stroke-width="6"/>
-  <text x="274" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">4 pulses</text>
-  <text x="490" y="100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#1B1B2F">0/1</text>
-  <rect x="450" y="140" width="20" height="20" fill="#3D5A80"/>
-  <rect x="480" y="140" width="20" height="20" fill="none" stroke="#3D5A80" stroke-width="2"/>
-  <text x="480" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">voltage on/off</text>
-  <text x="300" y="230" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">Common letters get shorter codes — this is not an accident.</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch02-fig1-morse-code-symbols.svg" alt="A Letter Is Just an Agreed-Upon Pattern" width="640"/>
+</p>
 
 *Takeaway: any symbol can be represented by any physical pattern, as long as sender and receiver agree on the mapping.*
 
@@ -132,27 +117,9 @@ rather than feeling hand-wavy.
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">From Symbol to Information</text>
-  <circle cx="130" cy="140" r="55" fill="none" stroke="#1B1B2F" stroke-width="1"/>
-  <text x="130" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="48" fill="#1B1B2F">E</text>
-  <text x="130" y="220" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1B1B2F">Symbol</text>
-  <text x="130" y="238" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#98A6B3">an agreed-upon stand-in</text>
-  <line x1="200" y1="140" x2="290" y2="140" stroke="#98A6B3" stroke-width="2"/>
-  <rect x="300" y="100" width="150" height="80" rx="8" fill="#3D5A80" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="375" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#FBF9F6">Computation</text>
-  <text x="375" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#FBF9F6">mechanical rule-following</text>
-  <line x1="460" y1="140" x2="540" y2="140" stroke="#98A6B3" stroke-width="2"/>
-  <path d="M 550 190 Q 590 100 630 60 T 700 190" fill="none" stroke="#EE964B" stroke-width="2"/>
-  <text x="625" y="230" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1B1B2F">Probability</text>
-  <text x="625" y="248" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#98A6B3">how surprising is it?</text>
-  <rect x="230" y="330" width="340" height="90" rx="8" fill="#F9DC5C" fill-opacity="0.3" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="400" y="370" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1B1B2F">Information</text>
-  <text x="400" y="395" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">= how much uncertainty is reduced</text>
-  <line x1="375" y1="180" x2="380" y2="330" stroke="#98A6B3" stroke-width="2"/>
-  <line x1="625" y1="230" x2="420" y2="330" stroke="#98A6B3" stroke-width="2"/>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch02-fig2-symbol-to-information.svg" alt="From Symbol to Information" width="640"/>
+</p>
 
 **Takeaway: information is not the symbols themselves or the act of processing them — it's the reduction in uncertainty that a probable or improbable symbol carries.**
 

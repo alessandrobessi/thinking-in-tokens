@@ -29,25 +29,9 @@ parts genuinely carry new information and must be preserved in full.
 
 ## 3. Visual Explanation
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="300" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">Predictable Words Compress Away</text>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#FBF9F6">
-    <rect x="30" y="70" width="60" height="30" rx="8" fill="#98A6B3" opacity="0.5"/><text x="60" y="90" text-anchor="middle" fill="#1B1B2F">I will</text>
-    <rect x="96" y="70" width="30" height="30" rx="8" fill="#98A6B3" opacity="0.5"/><text x="111" y="90" text-anchor="middle" fill="#1B1B2F">be</text>
-    <rect x="132" y="70" width="90" height="30" rx="8" fill="#98A6B3" opacity="0.5"/><text x="177" y="90" text-anchor="middle" fill="#1B1B2F">arriving on</text>
-    <rect x="228" y="70" width="90" height="30" rx="8" fill="#EE964B"/><text x="273" y="90" text-anchor="middle">Tuesday</text>
-  </g>
-  <text x="126" y="120" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#98A6B3">predictable → safe to cut</text>
-  <text x="273" y="120" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#EE964B">carries real information → must keep</text>
-  <line x1="30" y1="160" x2="570" y2="160" stroke="#1B1B2F" stroke-width="1" stroke-dasharray="3 3"/>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#FBF9F6">
-    <rect x="30" y="190" width="90" height="34" rx="8" fill="#3D5A80"/><text x="75" y="212" text-anchor="middle">ARRIVE</text>
-    <rect x="128" y="190" width="110" height="34" rx="8" fill="#3D5A80"/><text x="183" y="212" text-anchor="middle">TUESDAY</text>
-    <rect x="246" y="190" width="90" height="34" rx="8" fill="#3D5A80"/><text x="291" y="212" text-anchor="middle">STOP</text>
-  </g>
-  <text x="300" y="260" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">what remains is exactly the part the reader couldn't have guessed</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch04-fig1-predictable-words-compress.svg" alt="Predictable Words Compress Away" width="640"/>
+</p>
 
 *Takeaway: compressing a message means removing what the reader can predict, not removing meaning.*
 
@@ -119,24 +103,9 @@ material a human would have used.
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Context Resolves Meaning</text>
-  <text x="400" y="90" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1B1B2F">"I sat by the river</text>
-  <text x="590" y="90" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">bank</text>
-  <text x="640" y="90" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1B1B2F">."</text>
-  <rect x="250" y="65" width="330" height="34" rx="6" fill="#F9DC5C" fill-opacity="0.35" stroke="#1B1B2F" stroke-width="1"/>
-  <text x="415" y="120" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">highlighted = the context window around the ambiguous token</text>
-  <line x1="400" y1="140" x2="400" y2="190" stroke="#98A6B3" stroke-width="2"/>
-  <rect x="250" y="200" width="130" height="60" rx="8" fill="#2A9D8F" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="315" y="235" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#FBF9F6">river's edge</text>
-  <rect x="420" y="200" width="130" height="60" rx="8" fill="#98A6B3" stroke="#1B1B2F" stroke-width="2" opacity="0.4"/>
-  <text x="485" y="235" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1B1B2F">financial institution</text>
-  <text x="400" y="300" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">"river" earlier in the context makes one meaning far more probable than the other</text>
-  <rect x="250" y="340" width="330" height="90" rx="8" fill="#FBF9F6" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="415" y="375" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1B1B2F">predictable ↔ compressible</text>
-  <text x="415" y="400" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">the same property, viewed from two angles</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch04-fig2-context-resolves-meaning.svg" alt="Context Resolves Meaning" width="640"/>
+</p>
 
 **Takeaway: context is the highlighted span of surrounding tokens a model uses to resolve ambiguity — and the same predictability that resolves meaning is what makes language compressible.**
 

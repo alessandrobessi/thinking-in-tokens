@@ -35,25 +35,9 @@ narrow and scripted to broad and improvised, is what this book is about.
 Progress in AI did not arrive as a single breakthrough. It arrived as three
 long-running trends quietly crossing a threshold at the same time.
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <defs>
-    <marker id="ch01-fig1-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#98A6B3"/>
-    </marker>
-  </defs>
-  <line x1="40" y1="250" x2="560" y2="250" stroke="#1B1B2F" stroke-width="1"/>
-  <text x="300" y="275" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">time</text>
-  <!-- three rising trend lines -->
-  <path d="M 60 240 C 200 235, 350 210, 560 150" fill="none" stroke="#3D5A80" stroke-width="2"/>
-  <text x="595" y="150" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3D5A80">data</text>
-  <path d="M 60 245 C 200 240, 350 190, 560 90" fill="none" stroke="#EE964B" stroke-width="2"/>
-  <text x="595" y="75" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#EE964B">compute</text>
-  <path d="M 60 248 C 300 246, 420 220, 560 190" fill="none" stroke="#98A6B3" stroke-width="2"/>
-  <text x="595" y="205" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">architecture (2017)</text>
-  <line x1="430" y1="40" x2="430" y2="255" stroke="#1B1B2F" stroke-width="1" stroke-dasharray="3 3"/>
-  <text x="430" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">threshold crossed</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch01-fig1-three-ingredients-timeline.svg" alt="Three long-running trends (data, compute, architecture) crossing a threshold at the same time" width="640"/>
+</p>
 
 *Takeaway: none of the three trends was new — what mattered was that all three crossed a usability threshold at the same time.*
 
@@ -140,30 +124,9 @@ book aims to give you throughout.
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <defs>
-    <marker id="ch01-fig2-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#1B1B2F"/>
-    </marker>
-  </defs>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Three Ingredients, One Threshold</text>
-  <rect x="60" y="90" width="180" height="80" rx="8" fill="#3D5A80" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="150" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#FBF9F6">Data</text>
-  <text x="150" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#FBF9F6">internet-scale text</text>
-  <rect x="310" y="90" width="180" height="80" rx="8" fill="#EE964B" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="400" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#1B1B2F">Compute</text>
-  <text x="400" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1B1B2F">parallel chips</text>
-  <rect x="560" y="90" width="180" height="80" rx="8" fill="#457B9D" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="650" y="135" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#FBF9F6">Architecture</text>
-  <text x="650" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#FBF9F6">the transformer</text>
-  <line x1="150" y1="170" x2="370" y2="330" stroke="#98A6B3" stroke-width="2" marker-end="url(#ch01-fig2-arrowhead)"/>
-  <line x1="400" y1="170" x2="400" y2="330" stroke="#98A6B3" stroke-width="2" marker-end="url(#ch01-fig2-arrowhead)"/>
-  <line x1="650" y1="170" x2="430" y2="330" stroke="#98A6B3" stroke-width="2" marker-end="url(#ch01-fig2-arrowhead)"/>
-  <rect x="250" y="340" width="300" height="90" rx="8" fill="#F9DC5C" fill-opacity="0.3" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="400" y="380" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1B1B2F">Modern AI</text>
-  <text x="400" y="405" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1B1B2F">general, improvised language ability</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch01-fig2-three-ingredients-canonical.svg" alt="Three Ingredients, One Threshold" width="640"/>
+</p>
 
 **Takeaway: modern AI is what you get when internet-scale data, parallel compute, and the transformer architecture arrive together — not a single sudden invention.**
 

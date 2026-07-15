@@ -33,21 +33,9 @@ instead of water.
 
 ## 3. Visual Explanation
 
-<svg viewBox="0 0 600 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="300" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#1B1B2F">One Simple Unit</text>
-  <circle cx="80" cy="150" r="8" fill="#98A6B3"/>
-  <circle cx="80" cy="190" r="8" fill="#98A6B3"/>
-  <circle cx="80" cy="230" r="8" fill="#98A6B3"/>
-  <line x1="88" y1="150" x2="230" y2="180" stroke="#457B9D" stroke-width="2"/>
-  <line x1="88" y1="190" x2="230" y2="180" stroke="#B56576" stroke-width="2"/>
-  <line x1="88" y1="230" x2="230" y2="180" stroke="#84A98C" stroke-width="2"/>
-  <circle cx="240" cy="180" r="18" fill="#3D5A80" stroke="#1B1B2F" stroke-width="2"/>
-  <text x="240" y="230" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#98A6B3">weigh inputs, combine, pass on</text>
-  <line x1="258" y1="180" x2="380" y2="180" stroke="#1B1B2F" stroke-width="2"/>
-  <circle cx="390" cy="180" r="8" fill="#EE964B"/>
-  <text x="240" y="90" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">each connection has its own adjustable weight</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch08-fig1-one-simple-unit.svg" alt="One Simple Unit" width="640"/>
+</p>
 
 *Takeaway: one unit does almost nothing on its own — its power comes from being one of millions, each with its own adjustable weights.*
 
@@ -129,43 +117,9 @@ whole pattern, not localized in any single readable place.
 
 ## 8. Canonical Mental-Model Diagram
 
-<svg viewBox="0 0 800 500" width="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#FBF9F6"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#1B1B2F">Layers of Simple, Weighted Units</text>
-  <text x="120" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">input</text>
-  <text x="400" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">hidden layers</text>
-  <text x="680" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#98A6B3">output</text>
-  <g id="ch08-fig2-nodes">
-    <circle cx="120" cy="140" r="10" fill="#98A6B3"/>
-    <circle cx="120" cy="220" r="10" fill="#98A6B3"/>
-    <circle cx="120" cy="300" r="10" fill="#98A6B3"/>
-    <circle cx="120" cy="380" r="10" fill="#98A6B3"/>
-    <circle cx="330" cy="120" r="10" fill="#3D5A80"/>
-    <circle cx="330" cy="190" r="10" fill="#3D5A80"/>
-    <circle cx="330" cy="260" r="10" fill="#3D5A80"/>
-    <circle cx="330" cy="330" r="10" fill="#3D5A80"/>
-    <circle cx="330" cy="400" r="10" fill="#3D5A80"/>
-    <circle cx="470" cy="140" r="10" fill="#3D5A80"/>
-    <circle cx="470" cy="220" r="10" fill="#3D5A80"/>
-    <circle cx="470" cy="300" r="10" fill="#3D5A80"/>
-    <circle cx="470" cy="380" r="10" fill="#3D5A80"/>
-    <circle cx="680" cy="200" r="10" fill="#EE964B"/>
-    <circle cx="680" cy="280" r="10" fill="#EE964B"/>
-    <circle cx="680" cy="360" r="10" fill="#EE964B"/>
-  </g>
-  <g stroke="#98A6B3" stroke-width="1" opacity="0.6">
-    <line x1="130" y1="140" x2="320" y2="120"/><line x1="130" y1="140" x2="320" y2="260"/>
-    <line x1="130" y1="220" x2="320" y2="190"/><line x1="130" y1="220" x2="320" y2="330"/>
-    <line x1="130" y1="300" x2="320" y2="260"/><line x1="130" y1="300" x2="320" y2="400"/>
-    <line x1="130" y1="380" x2="320" y2="330"/><line x1="130" y1="380" x2="320" y2="120"/>
-    <line x1="340" y1="120" x2="460" y2="140"/><line x1="340" y1="190" x2="460" y2="220"/>
-    <line x1="340" y1="260" x2="460" y2="140"/><line x1="340" y1="330" x2="460" y2="300"/>
-    <line x1="340" y1="400" x2="460" y2="380"/><line x1="340" y1="120" x2="460" y2="380"/>
-    <line x1="480" y1="140" x2="670" y2="200"/><line x1="480" y1="220" x2="670" y2="280"/>
-    <line x1="480" y1="300" x2="670" y2="360"/><line x1="480" y1="380" x2="670" y2="280"/>
-  </g>
-  <text x="400" y="460" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#98A6B3">every connection carries its own adjustable weight — this is where the parameters live</text>
-</svg>
+<p align="center">
+  <img src="../../assets/diagrams/ch08-fig2-layers-of-weighted-units.svg" alt="Layers of Simple, Weighted Units" width="640"/>
+</p>
 
 **Takeaway: a neural network is layers of simple units connected by adjustable weights — its entire capability lives in the pattern of those weights, not in any single unit.**
 

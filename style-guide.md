@@ -50,29 +50,39 @@ the analogy registry (§5).
 
 ## 3. SVG Diagram System
 
-All diagrams are hand-authored inline SVG (no build pipeline, no external
-files transcluded — GitHub markdown renders inline `<svg>` directly but does
-not support cross-file `<use xlink:href>`). Treat `assets/icons/*.svg` as
-reference snippets to copy and adapt by hand, not as includes.
+All diagrams are hand-authored SVG, stored as **standalone files** under
+`assets/diagrams/` (one file per figure — `chNN-fig1-slug.svg` for the
+Visual Explanation figure, `chNN-fig2-slug.svg` for the Canonical
+Mental-Model Diagram), referenced from the chapter file with a plain
+`<img>` tag:
 
-### 3.0 No blank lines inside an `<svg>...</svg>` block — ever
+```html
+<p align="center">
+  <img src="../../assets/diagrams/chNN-fig1-slug.svg" alt="..." width="640"/>
+</p>
+```
 
-This is a hard rule, not a style preference, and it has already broken
-every diagram in the manuscript once (see `CHANGELOG.md`). The reason:
-`<svg>` is not one of GitHub-flavored Markdown's recognized block-level
-HTML tags (`div`, `p`, `table`, etc.). It's parsed as a generic
-"tag-alone-on-its-line" HTML block, and *that* kind of block — like every
-HTML block type in the CommonMark spec — ends at the first blank line.
-Break an `<svg>` across a blank line (e.g. to visually separate element
-groups while authoring) and the parser stops treating everything after
-that blank line as raw HTML. The rest of the SVG, including the closing
-`</svg>` tag, renders as literal, garbled text on the page instead of a
-diagram.
+`assets/icons/*.svg` follows the same standalone-file pattern and is
+treated as reference snippets to copy and adapt by hand when building a new
+diagram, not as an include mechanism.
 
-Concretely: never put a blank line between any two elements inside an
-`<svg>` block. Use a one-line HTML comment (`<!-- like this -->`) if you
-want to visually separate groups of elements while authoring — comments
-don't break the block, blank lines do.
+### 3.0 Never paste a raw `<svg>` directly into a chapter's markdown
+
+This is a hard rule, not a style preference — it has already broken every
+diagram in the manuscript once (see `CHANGELOG.md`). `<svg>` is not
+rendered by GitHub when it appears inline inside a `.md` file's content:
+GitHub's HTML sanitizer strips raw `<svg>` markup wherever it's embedded
+directly in rendered Markdown, full stop, regardless of formatting. (An
+earlier, *different* bug — inline SVGs breaking at internal blank lines
+per CommonMark's HTML-block rules — was fixed first and turned out not to
+be the real blocker; moving to standalone files sidesteps both problems at
+once, since a real `.svg` file is fetched and rendered by the browser as an
+ordinary image, never parsed as part of the page's Markdown/HTML at all.)
+
+Concretely: every diagram is a real file under `assets/diagrams/`,
+referenced via `<img src="...">`. If you ever see a literal `<svg` inside
+a `book/**/*.md` file, that's a regression — extract it to its own file
+immediately.
 
 Before committing any new or edited diagram, run the checker:
 
@@ -80,15 +90,18 @@ Before committing any new or edited diagram, run the checker:
 python3 scripts/check_svg_bounds.py .
 ```
 
-It does two things: (1) flags any embedded `<svg>` that still contains an
-internal blank line (the bug above), and (2) heuristically estimates
-whether any `<text>` element's rendered width would run past its
-`viewBox`'s edge (a second, unrelated failure mode — text positioned
-assuming a short label that turns out to be longer, e.g. "compute" vs.
-"architecture (2017)" sharing one x-position). The width estimate is a
-rough character-count heuristic, not real font metrics, and it does not
-account for `transform="rotate(...)"` — treat its output as "check this by
-hand," not as ground truth, especially for rotated labels.
+It does two things: (1) fails if any `book/**/*.md` file contains a literal
+`<svg` tag (the regression above), and (2) heuristically estimates whether
+any `<text>` element in `assets/diagrams/*.svg` or `assets/icons/*.svg`
+would run past its `viewBox`'s edge (a second, unrelated failure mode —
+text positioned assuming a short label that turns out to be longer, e.g.
+"compute" vs. "architecture (2017)" sharing one x-position). The width
+estimate is a rough character-count heuristic, not real font metrics, and
+it does not account for `transform="rotate(...)"` — treat its output as
+"check this by hand," not as ground truth, especially for rotated labels.
+Since standalone SVG files aren't parsed by Markdown at all, blank lines
+inside them are harmless — feel free to use them for readability while
+authoring.
 
 ### 3.1 Canvas
 
@@ -104,7 +117,7 @@ diagram stays legible regardless of the reader's light/dark theme:
 | Use | viewBox | width attr |
 |---|---|---|
 | Canonical mental-model diagram (template §8) | `0 0 800 500` | `100%` |
-| Supporting inline figures (template §3) | `0 0 600 300` | `100%` |
+| Supporting figures (template §3) | `0 0 600 300` | `100%` |
 
 Never use a fixed pixel width — always `width="100%"` so the SVG scales
 responsively while the viewBox fixes the aspect ratio.
@@ -137,10 +150,12 @@ roles above): `#457B9D`, `#6D597A`, `#B56576`, `#84A98C`.
 
 ### 3.5 ID namespacing
 
-GitHub renders every inline SVG on a page into one shared DOM, so `<defs>` /
-`<marker>` ids are globally scoped across the whole page. Prefix every local
-id with chapter and figure number: `id="ch03-fig1-arrowhead"`,
-`id="ch05-fig2-cluster-grad"`. Never use a bare id like `id="arrowhead"`.
+Now that every diagram is its own standalone file loaded as an `<img>`, its
+`<defs>`/`<marker>` ids are scoped to that file alone — no cross-diagram
+collision is possible any more. Keep prefixing local ids with chapter and
+figure number anyway (`id="ch03-fig1-arrowhead"`, not a bare
+`id="arrowhead"`): it costs nothing, and it's what makes `grep`-ing for a
+specific diagram's markup across `assets/diagrams/` unambiguous.
 
 ### 3.6 Takeaways
 
