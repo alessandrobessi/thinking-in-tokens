@@ -120,7 +120,7 @@ internal letters to the model in an obvious way.
 
 ## 10. Further Reading
 
-- Search for an interactive "tokenizer visualizer" from any major AI lab to see real tokenization of your own sentences — the companion website for this book will include one directly (see "Living Companion" in the project overview).
+- Search for an interactive "tokenizer visualizer" or "tokenizer playground" from any major AI lab — several publish free web tools that show exactly how a sentence you type gets split into tokens and their numeric IDs, which makes this chapter's core idea concrete in under a minute.
 
 ## 11. The Next Obvious Question
 
