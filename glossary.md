@@ -17,7 +17,7 @@ the real explanation lives in the chapter itself.
 | Byte-Pair Encoding (BPE) | An algorithm that builds a token vocabulary by repeatedly merging the most frequent adjacent pair of units. | Ch. 3 |
 | Compression | Representing information with fewer symbols by exploiting redundancy/predictability. | Ch. 4 |
 | Context | The specific surrounding sequence of tokens that disambiguates meaning or aids prediction. | Ch. 4 |
-| Embedding | A learned location (vector) assigned to a token in a high-dimensional space, encoding its meaning. | Ch. 5 |
+| Embedding | A token's learned starting location (vector) in a high-dimensional space, reflecting patterns of usage; attention (Ch. 11) later revises it into a context-specific representation. | Ch. 5 |
 | Vector space | A space with many numeric dimensions in which embeddings are located, generalizing a 2D map. | Ch. 5 |
 | Similarity | Geometric closeness between two embeddings, reflecting similarity of meaning/use. | Ch. 5 |
 | Semantic geometry | The idea that meaningful relationships between words correspond to consistent directions/distances in vector space. | Ch. 5 |

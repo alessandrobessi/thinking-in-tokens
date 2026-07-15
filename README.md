@@ -64,6 +64,7 @@ for the full chapter-by-chapter index and status, and
 | [`concept-graph.md`](concept-graph.md) / [`concept-graph.yaml`](concept-graph.yaml) | Checklist tracker over the blueprint's 9-level concept dependency graph — a concept may never appear in prose before its own level is checked off. The `.yaml` is the machine-readable source of truth (explicit per-concept prerequisites, introduced-in chapter, linked misconceptions); the `.md` is its human-readable mirror. |
 | [`references/`](references/) | Lightweight per-chapter citation trail for empirical/historical claims, plus a master `bibliography.md`. |
 | [`testing/`](testing/) | The reader-validation protocol: methodology, scoring rubric, and a per-chapter question bank (comprehension, transfer, misconception resistance, retention). Ready to run, pending recruiting actual test readers. |
+| [`scripts/validate_concept_graph.py`](scripts/validate_concept_graph.py) / [`scripts/validate_manuscript_index.py`](scripts/validate_manuscript_index.py) | Run before committing changes to the concept graph or the chapter index: checks prerequisite ordering, dependency cycles, misconception-id references, and — separately — that `book/README.md`'s links and titles actually match the manuscript files on disk. |
 
 ## Editorial status and contributions
 

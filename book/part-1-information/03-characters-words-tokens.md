@@ -131,7 +131,7 @@ internal letters to the model in an obvious way.
 
 ## 8. Key Takeaway
 
-**A language model never sees letters or words — it sees a sequence of token IDs produced by tokenization, some whole words and some fragments.**
+**A language model doesn't receive text as human-recognized words — it receives a sequence of token IDs produced by tokenization, some whole words, some fragments, occasionally a single character.**
 
 ## 9. One-Page Summary
 

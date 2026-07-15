@@ -45,9 +45,12 @@ two groups of words are actually used in real text.
 ## 4. Core Intuition
 
 An **embedding** is a location — a point — assigned to a word (or a token)
-in a space with many dimensions, chosen so that words with similar meanings
-end up at nearby points. "Cat" and "kitten" end up close together. "Cat"
-and "stock market" end up far apart.
+in a space with many dimensions, chosen so that words used in similar
+contexts end up at nearby points. "Cat" and "kitten" end up close
+together. "Cat" and "stock market" end up far apart. (Usually this tracks
+similar meaning too — but as the misconceptions below show, "used
+similarly" and "means the same thing" aren't quite the same test, and the
+embedding only ever sees the first one.)
 
 This space is called a **vector space**: instead of two dimensions like a
 paper map, it typically has hundreds of dimensions — far more than we can

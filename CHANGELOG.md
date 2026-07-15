@@ -2,6 +2,30 @@
 
 ## 2026-07-15
 
+- Third review round: verified each claim against the live repository
+  rather than assuming the review was current. Most of the "urgent" items
+  (a duplicate Chapter 7 file, stale links/titles in `book/README.md` and
+  `blueprint.md`, unresolved Ch.2/3/4 technical passages, a testing
+  protocol missing its pre-test, a stale GitHub repo description) were
+  already fixed as of the previous commit — the review was almost
+  certainly reading a cached copy (raw.githubusercontent.com and rendered
+  GitHub pages can lag behind `git push` by several minutes). Confirmed
+  via `git log`, direct file reads, and a direct GitHub API call for the
+  repo description, rather than trusting the review's citations.
+- Two genuinely new, valid issues fixed: Chapter 5's first definition of
+  "embedding" said "words with similar meanings," contradicting the
+  chapter's own later, more careful "similar contexts of use" framing —
+  reworded, and mirrored in `glossary.md`'s embedding entry (which also
+  now reflects the static/contextual distinction). Chapter 3's Key
+  Takeaway said a model "never sees letters," technically false for a
+  token that happens to be a single character — reworded to "doesn't
+  receive text as human-recognized words."
+- Added `scripts/validate_manuscript_index.py`: checks exactly one file
+  per chapter number (catches a rename that left the old file behind),
+  and that every `book/README.md` link resolves and its title matches the
+  target file's actual heading. Both this and
+  `scripts/validate_concept_graph.py` pass clean.
+
 - **Dropped diagrams as a teaching device entirely** (a deliberate
   reversal, not a deferral — see `blueprint.md`'s new "No Diagrams"
   section). Subtitle changed from "A Visual Guide to Modern AI Systems" to
