@@ -73,21 +73,24 @@ and computed freshly rather than felt intuitively.
 
 Formally, a language model computes a probability distribution over its
 entire token vocabulary, conditioned on the sequence of tokens seen so far.
-This calculation draws on the embeddings from Chapter 5 — tokens with
-similar meanings and similar typical contexts produce similar predictions,
-which is precisely why the geometry of Chapter 5 matters here: predicting
-well requires generalizing from the geometric neighborhood of a token, not
-just recalling that exact token's history.
+The calculation begins with the embeddings from Chapter 5, but the model
+transforms those starting representations through its own learned layers
+before producing a prediction — contexts that end up with similar internal
+representations after that transformation tend to produce similar
+predictions. Predicting well means generalizing from that learned
+structure, not just recalling an exact token's history — the mechanism
+doing the transforming is covered starting in Chapter 8, and in its
+specific, modern form in Part III.
 
 This process, where each new token is generated using all previously
 generated tokens as its context, is called autoregressive generation. It
 means the model never "sees" the future of its own output while generating
-the present token — everything downstream is genuinely undetermined until
-it's produced, one narrow step at a time. This has real consequences: it's
-part of why a model can occasionally back itself into an inconsistent
-corner mid-response, since no single step has a view of the entire planned
-answer — a limitation Chapter 24 revisits when discussing how reasoning
-models try to work around it.
+the present token — everything downstream simply hasn't been generated or
+made available to the current step yet, one narrow step at a time. This
+has real consequences: it's part of why a model can occasionally back
+itself into an inconsistent corner mid-response, since no single step has
+a view of the entire planned answer — a limitation Chapter 23 revisits
+when discussing how reasoning models try to work around it.
 
 ## 6. Common Misconceptions
 

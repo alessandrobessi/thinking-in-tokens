@@ -307,7 +307,7 @@ concepts:
     misconception_ids: []
     key_takeaway: null
 
-  # ---------- Level 6 (planned — Part V, unwritten) ----------
+  # ---------- Level 6 (planned — spans Part IV (ch17-18) and Part V (ch21-22), unwritten) ----------
   - id: retrieval
     name: Retrieval
     level: 6

@@ -29,6 +29,16 @@ that direction consistently represents the same relationship: capital-of.
 
 This is exactly the trick computers use to represent the meaning of words.
 
+A note on scope before going further: this chapter uses classic,
+whole-word embeddings (the kind popularized by an early system called
+word2vec) because they make the geometry easiest to see — one word, one
+point, one map. Modern language models apply the same broad idea to
+tokens instead of whole words, and then, critically, keep revising those
+starting points as they read (the subject of the caveat later in this
+chapter, and of Chapter 11). The map metaphor is the same; the resident
+has just moved from "words" to "tokens," and turns out not to stay in one
+place.
+
 ## 3. Worked Example
 
 Picture placing six words on this map: "cat," "kitten," "dog," "puppy,"
@@ -150,7 +160,7 @@ level rather than the single-token level this chapter has focused on.
 
 ## 8. Key Takeaway
 
-**Embeddings place words as points in a high-dimensional space, where nearby points mean similar usage and consistent directions capture consistent relationships.**
+**Embeddings place tokens as points in a high-dimensional space, where nearby points often reflect similar usage, and some recurring relationships can appear as geometric directions.**
 
 ## 9. One-Page Summary
 

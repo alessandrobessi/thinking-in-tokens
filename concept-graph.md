@@ -5,73 +5,98 @@ concept is checked off once the chapter that introduces it is written. No
 concept may be used in prose before its own checkbox (or an earlier level's)
 is checked.
 
-**This file is a human-readable mirror of [`concept-graph.yaml`](concept-graph.yaml).**
-The YAML is the source of truth: it encodes the specific prerequisite(s)
-each concept actually needs (not just "everything from the previous
-level"), which chapter introduces it, whether that chapter is written yet,
-and which `misconceptions.md` rows belong to it. Update both together.
+**This file is generated from [`concept-graph.yaml`](concept-graph.yaml) —
+do not hand-edit it.** Run `python3 scripts/generate_concept_graph_md.py`
+after any change to the YAML and commit both files together.
 
 ## Level 0 — Information, Symbols, Computation, Probability (intuition)
-- [x] Information — Ch. 2
-- [x] Symbols — Ch. 2
-- [x] Computation — Ch. 2
-- [x] Probability (intuition) — Ch. 2
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Information | ✅ written | Ch. 2 | — | 1 | [link](book/part-1-information/02-what-is-information.md#8-key-takeaway) |
+| Symbols | ✅ written | Ch. 2 | — | 0 | [link](book/part-1-information/02-what-is-information.md#3-worked-example) |
+| Computation | ✅ written | Ch. 2 | symbols | 1 | [link](book/part-1-information/02-what-is-information.md#8-key-takeaway) |
+| Probability (intuition) | ✅ written | Ch. 2 | information | 0 | [link](book/part-1-information/02-what-is-information.md#8-key-takeaway) |
 
 ## Level 1 — Characters, Words, Tokens, Tokenization, Compression, Context
-- [x] Characters — Ch. 3
-- [x] Words — Ch. 3
-- [x] Tokens — Ch. 3
-- [x] Tokenization — Ch. 3
-- [x] Compression — Ch. 4
-- [x] Context — Ch. 4
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Characters | ✅ written | Ch. 3 | symbols | 0 | [link](book/part-1-information/03-characters-words-tokens.md#3-worked-example) |
+| Words | ✅ written | Ch. 3 | characters | 0 | [link](book/part-1-information/03-characters-words-tokens.md#3-worked-example) |
+| Tokens | ✅ written | Ch. 3 | characters, words | 1 | [link](book/part-1-information/03-characters-words-tokens.md#8-key-takeaway) |
+| Tokenization | ✅ written | Ch. 3 | tokens | 1 | [link](book/part-1-information/03-characters-words-tokens.md#8-key-takeaway) |
+| Compression | ✅ written | Ch. 4 | information, probability-intuition, tokenization | 1 | [link](book/part-1-information/04-compressing-language.md#8-key-takeaway) |
+| Context | ✅ written | Ch. 4 | tokens | 1 | [link](book/part-1-information/04-compressing-language.md#8-key-takeaway) |
 
 ## Level 2 — Embeddings, Vector spaces, Similarity, Semantic geometry
-- [x] Embeddings — Ch. 5
-- [x] Vector spaces — Ch. 5
-- [x] Similarity — Ch. 5
-- [x] Semantic geometry — Ch. 5
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Embeddings | ✅ written | Ch. 5 | tokens, context | 2 | [link](book/part-1-information/05-meaning-as-geometry.md#8-key-takeaway) |
+| Vector spaces | ✅ written | Ch. 5 | embeddings | 0 | [link](book/part-1-information/05-meaning-as-geometry.md#3-worked-example) |
+| Similarity | ✅ written | Ch. 5 | vector-spaces | 1 | [link](book/part-1-information/05-meaning-as-geometry.md#8-key-takeaway) |
+| Semantic geometry | ✅ written | Ch. 5 | similarity | 0 | [link](book/part-1-information/05-meaning-as-geometry.md#8-key-takeaway) |
 
 ## Level 3 — Prediction, Neural networks, Parameters, Learning, Training, Loss, Scaling laws
-- [x] Prediction — Ch. 6
-- [x] Neural networks — Ch. 8
-- [x] Parameters — Ch. 8
-- [x] Learning — Ch. 9
-- [x] Training — Ch. 9
-- [x] Loss — Ch. 9
-- [x] Scaling laws — Ch. 10
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Prediction | ✅ written | Ch. 6 | probability-intuition, embeddings | 2 | [link](book/part-2-prediction/06-predicting-the-next-token.md#8-key-takeaway) |
+| Neural networks | ✅ written | Ch. 8 | prediction | 2 | [link](book/part-2-prediction/08-neural-networks-without-mathematics.md#8-key-takeaway) |
+| Parameters | ✅ written | Ch. 8 | neural-networks | 1 | [link](book/part-2-prediction/08-neural-networks-without-mathematics.md#8-key-takeaway) |
+| Learning | ✅ written | Ch. 9 | neural-networks, parameters | 1 | [link](book/part-2-prediction/09-learning-from-examples.md#8-key-takeaway) |
+| Training | ✅ written | Ch. 9 | learning | 1 | [link](book/part-2-prediction/09-learning-from-examples.md#8-key-takeaway) |
+| Loss | ✅ written | Ch. 9 | training | 1 | [link](book/part-2-prediction/09-learning-from-examples.md#8-key-takeaway) |
+| Scaling laws | ✅ written | Ch. 10 | parameters, training, loss | 2 | [link](book/part-2-prediction/10-scaling-laws.md#8-key-takeaway) |
 
 ## Level 4 — Attention, Positional encoding, Transformer blocks, Inference, Sampling
-- [ ] Attention — Ch.
-- [ ] Positional encoding — Ch.
-- [ ] Transformer blocks — Ch.
-- [ ] Inference — Ch.
-- [ ] Sampling — Ch.
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Attention | ☐ planned | Ch. 11 | embeddings, context, similarity | 0 | — |
+| Positional encoding | ☐ planned | Ch. 11 | attention | 0 | — |
+| Transformer blocks | ☐ planned | Ch. 12 | attention, positional-encoding, neural-networks | 0 | — |
+| Inference | ☐ planned | Ch. 14 | transformer-blocks | 0 | — |
+| Sampling | ☐ planned | Ch. 14 | inference, probability-intuition | 0 | — |
 
 ## Level 5 — Hallucinations, Fine-tuning, Alignment, Context windows, Memory
-- [ ] Hallucinations — Ch.
-- [ ] Fine-tuning — Ch.
-- [ ] Alignment — Ch.
-- [ ] Context windows — Ch.
-- [ ] Memory — Ch.
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Hallucinations | ☐ planned | Ch. 15 | inference, sampling, training | 0 | — |
+| Fine-tuning | ☐ planned | Ch. 19 | training, parameters | 0 | — |
+| Alignment | ☐ planned | Ch. 19 | fine-tuning | 0 | — |
+| Context windows | ☐ planned | Ch. 16 | context, inference | 0 | — |
+| Memory | ☐ planned | Ch. 16 | context-windows | 0 | — |
 
 ## Level 6 — Retrieval, Vector databases, RAG, Tool calling, MCP, AI agents
-- [ ] Retrieval — Ch.
-- [ ] Vector databases — Ch.
-- [ ] RAG — Ch.
-- [ ] Tool calling — Ch.
-- [ ] Model Context Protocol (MCP) — Ch.
-- [ ] AI agents — Ch.
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Retrieval | ☐ planned | Ch. 17 | similarity, context-windows | 0 | — |
+| Vector databases | ☐ planned | Ch. 17 | embeddings, similarity, retrieval | 0 | — |
+| Retrieval-Augmented Generation (RAG) | ☐ planned | Ch. 18 | retrieval, vector-databases, context-windows, inference | 0 | — |
+| Tool calling | ☐ planned | Ch. 21 | inference, context-windows | 0 | — |
+| Model Context Protocol (MCP) | ☐ planned | Ch. 21 | tool-calling | 0 | — |
+| AI agents | ☐ planned | Ch. 22 | tool-calling, memory, inference | 0 | — |
 
 ## Level 7 — Reasoning models, Multimodality, Mixture of Experts, Quantization, Efficient inference
-- [ ] Reasoning models — Ch.
-- [ ] Multimodality — Ch.
-- [ ] Mixture of Experts — Ch.
-- [ ] Quantization — Ch.
-- [ ] Efficient inference — Ch.
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Reasoning models | ☐ planned | Ch. 23 | inference, sampling, training | 0 | — |
+| Multimodality | ☐ planned | Ch. 24 | tokens, embeddings, transformer-blocks | 0 | — |
+| Mixture of Experts | ☐ planned | Ch. 25 | transformer-blocks, parameters | 0 | — |
+| Quantization | ☐ planned | Ch. 20 | parameters | 0 | — |
+| Efficient inference | ☐ planned | Ch. 20 | inference, quantization | 0 | — |
 
 ## Level 8 — Evaluation, Observability, Security, Safety, AI engineering
-- [ ] Evaluation — Ch.
-- [ ] Observability — Ch.
-- [ ] Security — Ch.
-- [ ] Safety — Ch.
-- [ ] AI engineering — Ch.
+
+| Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
+|---|---|---|---|---|---|
+| Evaluation | ☐ planned | Ch. 26 | hallucinations, training | 0 | — |
+| Observability | ☐ planned | Ch. 27 | evaluation, ai-agents | 0 | — |
+| Security | ☐ planned | Ch. 28 | tool-calling, ai-agents | 0 | — |
+| Safety | ☐ planned | Ch. 28 | alignment, security | 0 | — |
+| AI engineering | ☐ planned | Ch. 27 | evaluation, observability, retrieval, ai-agents | 0 | — |
