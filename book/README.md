@@ -1,6 +1,6 @@
 # The Architecture of Intelligence
 
-*A Conceptual Guide to Modern AI Systems*
+*A Mental Model for Modern AI Systems*
 
 This is the manuscript, organized by Part and Chapter following the concept
 dependency graph in [`../blueprint.md`](../blueprint.md). Chapters are

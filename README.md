@@ -1,6 +1,6 @@
 # The Architecture of Intelligence
 
-### A Conceptual Guide to Modern AI Systems
+### A Mental Model for Modern AI Systems
 
 A conceptual introduction to how modern AI actually works — tokens,
 embeddings, attention, transformers, training, hallucination, retrieval,
@@ -30,8 +30,9 @@ importantly — tell a genuine advance apart from a marketing headline.
 
 ## A preview
 
-Every chapter ends with one bolded, memorable sentence that distills its
-core idea — no diagram required. From Chapter 5, on embeddings:
+Every chapter builds understanding through a story, a worked example, and
+precise technical explanation, then ends with one bolded, memorable
+sentence that distills its core idea. From Chapter 5, on embeddings:
 
 > **Embeddings place words as points in a high-dimensional space, where
 > nearby points mean similar usage and consistent directions capture
@@ -44,13 +45,10 @@ to it, in
 ## Status
 
 **Parts I and II (chapters 1–10, "Information" and "Prediction") are
-written.** Part I began as a pilot to validate voice and pacing before
-committing to the rest of the book. The manuscript teaches entirely
-through prose — stories, worked examples, and analogies — after an earlier
-diagram-based approach was dropped as not pulling its weight (see
-blueprint.md's "No Diagrams" section). Parts III–VI exist only as a
-planned table of contents. See [`book/README.md`](book/README.md) for the
-full chapter-by-chapter index and status, and
+written.** The book builds understanding through stories, worked examples,
+careful analogies, and precise technical explanation. Parts III–VI exist
+only as a planned table of contents. See [`book/README.md`](book/README.md)
+for the full chapter-by-chapter index and status, and
 [`ROADMAP.md`](ROADMAP.md) for project-level milestones.
 
 ## How the project is organized

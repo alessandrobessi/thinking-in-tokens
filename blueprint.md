@@ -1,6 +1,6 @@
 # The Architecture of Intelligence
 
-## A Conceptual Guide to Modern AI Systems
+## A Mental Model for Modern AI Systems
 
 > **Mission**
 >
