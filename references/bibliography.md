@@ -16,3 +16,6 @@ driver," "emergent abilities").
 | `vaswani2017` | A. Vaswani et al., "Attention Is All You Need," *NeurIPS*, 2017. | The transformer architecture (Ch. 1 preview, formally Ch. 11–12) |
 | `sennrich2016bpe` | R. Sennrich, B. Haddow, A. Birch, "Neural Machine Translation of Rare Words with Subword Units," *ACL*, 2016. | Byte-Pair Encoding for tokenization (Ch. 3) |
 | `mikolov2013word2vec` | T. Mikolov et al., "Efficient Estimation of Word Representations in Vector Space," *arXiv:1301.3781*, 2013. | Word embeddings, including the country/capital direction example (Ch. 5) |
+| `kaplan2020scaling` | J. Kaplan et al., "Scaling Laws for Neural Language Models," *arXiv:2001.08361*, 2020. | Original characterization of scaling laws (Ch. 10) |
+| `hoffmann2022chinchilla` | J. Hoffmann et al., "Training Compute-Optimal Large Language Models" (the "Chinchilla" paper), *arXiv:2203.15556*, 2022. | Data/parameter balance and undertraining (Ch. 10) |
+| `rumelhart1986backprop` | D. Rumelhart, G. Hinton, R. Williams, "Learning Representations by Back-Propagating Errors," *Nature*, 1986. | Gradient descent / backpropagation, the parameter-adjustment procedure described conceptually in Ch. 9 |

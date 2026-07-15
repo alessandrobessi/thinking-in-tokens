@@ -32,13 +32,13 @@ and which `misconceptions.md` rows belong to it. Update both together.
 - [x] Semantic geometry — Ch. 5
 
 ## Level 3 — Prediction, Neural networks, Parameters, Learning, Training, Loss, Scaling laws
-- [ ] Prediction — Ch.
-- [ ] Neural networks — Ch.
-- [ ] Parameters — Ch.
-- [ ] Learning — Ch.
-- [ ] Training — Ch.
-- [ ] Loss — Ch.
-- [ ] Scaling laws — Ch.
+- [x] Prediction — Ch. 6
+- [x] Neural networks — Ch. 8
+- [x] Parameters — Ch. 8
+- [x] Learning — Ch. 9
+- [x] Training — Ch. 9
+- [x] Loss — Ch. 9
+- [x] Scaling laws — Ch. 10
 
 ## Level 4 — Attention, Positional encoding, Transformer blocks, Inference, Sampling
 - [ ] Attention — Ch.

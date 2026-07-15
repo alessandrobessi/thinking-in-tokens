@@ -155,6 +155,12 @@ table before writing a new analogy — if the concept already has one, reuse it.
 | Morse code letter-length (common letters get shorter codes) | Information / probability / compression | Ch. 2, reused Ch. 4 | Ties information theory directly to compression — keep reusing rather than inventing a new one. |
 | Telegram/text-speak ("ARRIVE TUESDAY STOP") | Compression via redundancy removal | Ch. 4 | Good source of a second, non-technical grounding for compression alongside Morse. |
 | Fluent reader recognizing whole words/fragments, not sounding out letters | Tokenization | Ch. 3 | Reuse if attention/reading-speed analogies are needed again in Part III. |
+| Phone keyboard's next-word suggestions | Prediction / autoregressive generation | Ch. 6 | Concrete, universally familiar; reuse before introducing sampling (Ch. 14). |
+| Jazz musician improvising note by note | Autoregressive generation (no pre-formed plan) | Ch. 6 | Pairs well with the phone-keyboard analogy above. |
+| Mark V. Shaney (1980s Usenet statistical text bot) | N-gram models and their failure to generalize | Ch. 7 | Real historical example; reuse if a later chapter needs a cautionary "looks fluent, isn't grounded" case. |
+| Factory floor of simple, adjustable valves | Neural networks / parameters | Ch. 8 | Deliberately not the brain analogy — keeps a clean mechanical intuition free of biological over-claiming. |
+| Learning free throws via miss-and-adjust feedback | Loss / training / learning | Ch. 9 | Reuse for fine-tuning (Ch. 19), which is the same loop applied after initial training. |
+| Marathon training's diminishing returns | Scaling laws (predictable but diminishing) | Ch. 10 | Reuse if quantization/efficient-inference (Ch. 20) needs a "more isn't always the answer" callback. |
 
 (Table grows chapter by chapter; append immediately after finishing a chapter
 that introduces a new analogy — see §2.)

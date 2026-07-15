@@ -41,12 +41,12 @@ See it in full context, with labels and the surrounding chapter, in
 
 ## Status
 
-**Part I ("Information," chapters 1–5) is written and is currently a
-pilot** — used to validate voice, pacing, and the diagram system before the
-remaining 25 chapters are drafted. Parts II–VI exist only as a planned
-table of contents. See [`book/README.md`](book/README.md) for the full
-chapter-by-chapter index and status, and [`ROADMAP.md`](ROADMAP.md) for
-project-level milestones.
+**Parts I and II (chapters 1–10, "Information" and "Prediction") are
+written.** Part I began as a pilot to validate voice, pacing, and the
+diagram system before committing to the rest of the book. Parts III–VI
+exist only as a planned table of contents. See
+[`book/README.md`](book/README.md) for the full chapter-by-chapter index
+and status, and [`ROADMAP.md`](ROADMAP.md) for project-level milestones.
 
 ## How the project is organized
 

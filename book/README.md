@@ -11,7 +11,7 @@ Supporting project files: [`../style-guide.md`](../style-guide.md) (palette,
 SVG conventions, icon vocabulary, analogy registry), [`../glossary.md`](../glossary.md),
 [`../misconceptions.md`](../misconceptions.md), [`../concept-graph.md`](../concept-graph.md).
 
-**Status:** Part I is complete (pilot pass). Parts II–VI are planned but not
+**Status:** Parts I and II are complete. Parts III–VI are planned but not
 yet written.
 
 ---
@@ -29,13 +29,18 @@ yet written.
 5. [Meaning as Geometry](part-1-information/05-meaning-as-geometry.md)
    — *How can a computer represent the meaning of a word, not just the word itself?*
 
-## Part II — Prediction *(not yet written)*
+## Part II — Prediction
 
-6. Predicting the Next Token
-7. Why Statistics Are Not Enough
-8. Neural Networks Without Mathematics
-9. Learning From Examples
-10. Scaling Laws
+6. [Predicting the Next Token](part-2-prediction/06-predicting-the-next-token.md)
+   — *Now that a computer can represent meaning as a location in space, how can it use that to predict what comes next?*
+7. [Why Statistics Are Not Enough](part-2-prediction/07-why-statistics-are-not-enough.md)
+   — *Why not just count how often one word follows another in a giant table, instead of building something as complicated as a neural network?*
+8. [Neural Networks Without Mathematics](part-2-prediction/08-neural-networks-without-mathematics.md)
+   — *What is a neural network, actually — without the math?*
+9. [Learning From Examples](part-2-prediction/09-learning-from-examples.md)
+   — *How does a neural network actually learn the right values for its billions of adjustable parameters?*
+10. [Scaling Laws](part-2-prediction/10-scaling-laws.md)
+    — *Is there a predictable relationship between how big a model is and how good it becomes — and does scaling ever stop paying off?*
 
 ## Part III — The Transformer *(not yet written)*
 

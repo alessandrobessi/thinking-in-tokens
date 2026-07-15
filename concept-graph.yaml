@@ -155,63 +155,63 @@ concepts:
     level: 3
     prerequisites: [probability-intuition, embeddings]
     introduced_in: 6
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [model-plans-whole-sentence, prediction-is-lookup]
+    diagram: book/part-2-prediction/06-predicting-the-next-token.md#8-canonical-mental-model-diagram
 
   - id: neural-networks
     name: Neural networks
     level: 3
     prerequisites: [prediction]
     introduced_in: 8
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [nn-simulates-brain, more-parameters-more-understanding]
+    diagram: book/part-2-prediction/08-neural-networks-without-mathematics.md#8-canonical-mental-model-diagram
 
   - id: parameters
     name: Parameters
     level: 3
     prerequisites: [neural-networks]
     introduced_in: 8
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [more-parameters-more-understanding]
+    diagram: book/part-2-prediction/08-neural-networks-without-mathematics.md#8-canonical-mental-model-diagram
 
   - id: learning
     name: Learning
     level: 3
     prerequisites: [neural-networks, parameters]
     introduced_in: 9
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [training-is-memorization]
+    diagram: book/part-2-prediction/09-learning-from-examples.md#8-canonical-mental-model-diagram
 
   - id: training
     name: Training
     level: 3
     prerequisites: [learning]
     introduced_in: 9
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [training-is-memorization]
+    diagram: book/part-2-prediction/09-learning-from-examples.md#8-canonical-mental-model-diagram
 
   - id: loss
     name: Loss
     level: 3
     prerequisites: [training]
     introduced_in: 9
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [lower-loss-is-more-intelligence]
+    diagram: book/part-2-prediction/09-learning-from-examples.md#8-canonical-mental-model-diagram
 
   - id: scaling-laws
     name: Scaling laws
     level: 3
     prerequisites: [parameters, training, loss]
     introduced_in: 10
-    written: false
-    misconception_ids: []
-    diagram: null
+    written: true
+    misconception_ids: [scaling-laws-unlimited, bigger-model-always-better]
+    diagram: book/part-2-prediction/10-scaling-laws.md#8-canonical-mental-model-diagram
 
   # ---------- Level 4 (planned — Part III, unwritten) ----------
   - id: attention

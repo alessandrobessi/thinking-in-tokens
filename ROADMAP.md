@@ -11,10 +11,10 @@ chapter-by-chapter manuscript status, see `book/README.md`.
 - [x] Part I — Information (chapters 1–5), full prose + canonical diagrams
 - [x] Root README, LICENSE, CONTRIBUTING, project scaffolding
 
-## Milestone 2 — Part II: Prediction (in progress)
+## Milestone 2 — Part II: Prediction (done)
 
-- [ ] Chapters 6–10 (Predicting the Next Token → Scaling Laws)
-- [ ] Tracking files updated per chapter, not batched
+- [x] Chapters 6–10 (Predicting the Next Token → Scaling Laws)
+- [x] Tracking files updated per chapter, not batched
 
 ## Milestone 3 — Editorial validation of Part I + II
 
