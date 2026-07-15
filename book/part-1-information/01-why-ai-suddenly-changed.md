@@ -104,12 +104,21 @@ text existed for decades. What changed was that researchers discovered these
 systems obey *scaling laws*: as you increase the amount of training text,
 the number of adjustable internal values ("parameters") in the system, and
 the amount of computation used to train it, performance improves in a
-predictable way — and at large enough scale, the system begins to
-perform tasks it was never explicitly trained to do (translation, basic
-reasoning, code writing) purely as a side effect of getting very good at
-next-piece prediction. This is why AI labs talk constantly about scale:
-scale itself, not any single clever trick, has been the dominant driver of
-recent progress.
+fairly predictable way — and at large enough scale, systems appear to
+perform some tasks they were never explicitly trained to do (translation,
+basic reasoning, code writing), seemingly as a side effect of getting very
+good at next-piece prediction. This is one reason AI labs talk constantly
+about scale: for several years, increasing scale has been one of the
+dominant drivers of progress — though not the only one, and it hasn't made
+older levers (data curation, human feedback, architectural refinement)
+unnecessary.
+
+Researchers still debate how much of this apparent "emergence" reflects a
+genuine capability threshold versus an artifact of which metric is used to
+measure performance — a sudden jump on one scoring method can look like a
+smooth improvement on another. We'll return to this debate when we cover
+evaluation in Part VI; for now, treat "emergent abilities" as a real and
+useful observation, not a fully settled explanation.
 
 ## 6. Common Misconceptions
 

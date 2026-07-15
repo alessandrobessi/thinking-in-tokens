@@ -1,0 +1,457 @@
+# Machine-readable source of truth for the concept dependency graph in
+# blueprint.md. concept-graph.md is this file's human-readable mirror —
+# update both together (or regenerate the .md from this file by hand until
+# a real generator script exists; see ROADMAP.md).
+#
+# Fields:
+#   id                 stable slug, referenced by nothing else yet but
+#                      intended for future cross-linking (diagrams, issues)
+#   name               display name, matches blueprint.md's concept graph
+#   level              0-8, per blueprint.md's Concept Dependency Graph
+#   prerequisites      concept ids that must be introduced first. Encodes
+#                      the *tightest* real dependency, not "everything in
+#                      every earlier level" — transitive prerequisites are
+#                      implied through the chain, not repeated here.
+#   introduced_in      chapter number (new 30-chapter numbering) where this
+#                      concept is first formally taught
+#   written            true if that chapter's prose currently exists
+#   misconception_ids  keys into misconceptions.md's ID column
+#   diagram            where the concept's canonical/reference visual lives
+
+concepts:
+
+  # ---------- Level 0 ----------
+  - id: information
+    name: Information
+    level: 0
+    prerequisites: []
+    introduced_in: 2
+    written: true
+    misconception_ids: [more-data-equals-more-information]
+    diagram: book/part-1-information/02-what-is-information.md#8-canonical-mental-model-diagram
+
+  - id: symbols
+    name: Symbols
+    level: 0
+    prerequisites: []
+    introduced_in: 2
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/02-what-is-information.md#3-visual-explanation
+
+  - id: computation
+    name: Computation
+    level: 0
+    prerequisites: [symbols]
+    introduced_in: 2
+    written: true
+    misconception_ids: [computation-implies-understanding]
+    diagram: book/part-1-information/02-what-is-information.md#8-canonical-mental-model-diagram
+
+  - id: probability-intuition
+    name: Probability (intuition)
+    level: 0
+    prerequisites: [information]
+    introduced_in: 2
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/02-what-is-information.md#8-canonical-mental-model-diagram
+
+  # ---------- Level 1 ----------
+  - id: characters
+    name: Characters
+    level: 1
+    prerequisites: [symbols]
+    introduced_in: 3
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/03-characters-words-tokens.md#3-visual-explanation
+
+  - id: words
+    name: Words
+    level: 1
+    prerequisites: [characters]
+    introduced_in: 3
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/03-characters-words-tokens.md#3-visual-explanation
+
+  - id: tokens
+    name: Tokens
+    level: 1
+    prerequisites: [characters, words]
+    introduced_in: 3
+    written: true
+    misconception_ids: [token-always-one-word]
+    diagram: book/part-1-information/03-characters-words-tokens.md#8-canonical-mental-model-diagram
+
+  - id: tokenization
+    name: Tokenization
+    level: 1
+    prerequisites: [tokens]
+    introduced_in: 3
+    written: true
+    misconception_ids: [model-reads-letter-by-letter]
+    diagram: book/part-1-information/03-characters-words-tokens.md#8-canonical-mental-model-diagram
+
+  - id: compression
+    name: Compression
+    level: 1
+    prerequisites: [information, probability-intuition, tokenization]
+    introduced_in: 4
+    written: true
+    misconception_ids: [compression-loses-meaning]
+    diagram: book/part-1-information/04-compressing-language.md#8-canonical-mental-model-diagram
+
+  - id: context
+    name: Context
+    level: 1
+    prerequisites: [tokens]
+    introduced_in: 4
+    written: true
+    misconception_ids: [context-is-just-topic]
+    diagram: book/part-1-information/04-compressing-language.md#8-canonical-mental-model-diagram
+
+  # ---------- Level 2 ----------
+  - id: embeddings
+    name: Embeddings
+    level: 2
+    prerequisites: [tokens, context]
+    introduced_in: 5
+    written: true
+    misconception_ids: [embeddings-store-definitions, embedding-is-permanent-meaning]
+    diagram: book/part-1-information/05-meaning-as-geometry.md#8-canonical-mental-model-diagram
+
+  - id: vector-spaces
+    name: Vector spaces
+    level: 2
+    prerequisites: [embeddings]
+    introduced_in: 5
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/05-meaning-as-geometry.md#3-visual-explanation
+
+  - id: similarity
+    name: Similarity
+    level: 2
+    prerequisites: [vector-spaces]
+    introduced_in: 5
+    written: true
+    misconception_ids: [similarity-means-synonym]
+    diagram: book/part-1-information/05-meaning-as-geometry.md#8-canonical-mental-model-diagram
+
+  - id: semantic-geometry
+    name: Semantic geometry
+    level: 2
+    prerequisites: [similarity]
+    introduced_in: 5
+    written: true
+    misconception_ids: []
+    diagram: book/part-1-information/05-meaning-as-geometry.md#8-canonical-mental-model-diagram
+
+  # ---------- Level 3 (planned — Part II, unwritten) ----------
+  - id: prediction
+    name: Prediction
+    level: 3
+    prerequisites: [probability-intuition, embeddings]
+    introduced_in: 6
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: neural-networks
+    name: Neural networks
+    level: 3
+    prerequisites: [prediction]
+    introduced_in: 8
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: parameters
+    name: Parameters
+    level: 3
+    prerequisites: [neural-networks]
+    introduced_in: 8
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: learning
+    name: Learning
+    level: 3
+    prerequisites: [neural-networks, parameters]
+    introduced_in: 9
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: training
+    name: Training
+    level: 3
+    prerequisites: [learning]
+    introduced_in: 9
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: loss
+    name: Loss
+    level: 3
+    prerequisites: [training]
+    introduced_in: 9
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: scaling-laws
+    name: Scaling laws
+    level: 3
+    prerequisites: [parameters, training, loss]
+    introduced_in: 10
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  # ---------- Level 4 (planned — Part III, unwritten) ----------
+  - id: attention
+    name: Attention
+    level: 4
+    prerequisites: [embeddings, context, similarity]
+    introduced_in: 11
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: positional-encoding
+    name: Positional encoding
+    level: 4
+    prerequisites: [attention]
+    introduced_in: 11
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: transformer-blocks
+    name: Transformer blocks
+    level: 4
+    prerequisites: [attention, positional-encoding, neural-networks]
+    introduced_in: 12
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: inference
+    name: Inference
+    level: 4
+    prerequisites: [transformer-blocks]
+    introduced_in: 14
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: sampling
+    name: Sampling
+    level: 4
+    prerequisites: [inference, probability-intuition]
+    introduced_in: 14
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  # ---------- Level 5 (planned — Part IV, unwritten) ----------
+  - id: hallucinations
+    name: Hallucinations
+    level: 5
+    prerequisites: [inference, sampling, training]
+    introduced_in: 15
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: fine-tuning
+    name: Fine-tuning
+    level: 5
+    prerequisites: [training, parameters]
+    introduced_in: 19
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: alignment
+    name: Alignment
+    level: 5
+    prerequisites: [fine-tuning]
+    introduced_in: 19
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: context-windows
+    name: Context windows
+    level: 5
+    prerequisites: [context, inference]
+    introduced_in: 16
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: memory
+    name: Memory
+    level: 5
+    prerequisites: [context-windows]
+    introduced_in: 16
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  # ---------- Level 6 (planned — Part V, unwritten) ----------
+  - id: retrieval
+    name: Retrieval
+    level: 6
+    prerequisites: [similarity, context-windows]
+    introduced_in: 17
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: vector-databases
+    name: Vector databases
+    level: 6
+    prerequisites: [embeddings, similarity, retrieval]
+    introduced_in: 18
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: rag
+    name: Retrieval-Augmented Generation (RAG)
+    level: 6
+    prerequisites: [retrieval, vector-databases, context-windows, inference]
+    introduced_in: 17
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: tool-calling
+    name: Tool calling
+    level: 6
+    prerequisites: [inference, context-windows]
+    introduced_in: 21
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: mcp
+    name: Model Context Protocol (MCP)
+    level: 6
+    prerequisites: [tool-calling]
+    introduced_in: 21
+    written: false
+    misconception_ids: []
+    diagram: null
+    note: >
+      Taught inside Chapter 21 ("How Models Reach Into the World") as
+      today's concrete standard, not given its own chapter — see
+      blueprint.md's amended Part V table of contents.
+
+  - id: ai-agents
+    name: AI agents
+    level: 6
+    prerequisites: [tool-calling, memory, inference]
+    introduced_in: 22
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  # ---------- Level 7 (planned — spans Part IV/V, unwritten) ----------
+  - id: reasoning-models
+    name: Reasoning models
+    level: 7
+    prerequisites: [inference, sampling, training]
+    introduced_in: 23
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: multimodality
+    name: Multimodality
+    level: 7
+    prerequisites: [tokens, embeddings, transformer-blocks]
+    introduced_in: 24
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: mixture-of-experts
+    name: Mixture of Experts
+    level: 7
+    prerequisites: [transformer-blocks, parameters]
+    introduced_in: 25
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: quantization
+    name: Quantization
+    level: 7
+    prerequisites: [parameters]
+    introduced_in: 20
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: efficient-inference
+    name: Efficient inference
+    level: 7
+    prerequisites: [inference, quantization]
+    introduced_in: 20
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  # ---------- Level 8 (planned — Part VI, unwritten) ----------
+  - id: evaluation
+    name: Evaluation
+    level: 8
+    prerequisites: [hallucinations, training]
+    introduced_in: 27
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: observability
+    name: Observability
+    level: 8
+    prerequisites: [evaluation, ai-agents]
+    introduced_in: 27
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: security
+    name: Security
+    level: 8
+    prerequisites: [tool-calling, ai-agents]
+    introduced_in: 28
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: safety
+    name: Safety
+    level: 8
+    prerequisites: [alignment, security]
+    introduced_in: 28
+    written: false
+    misconception_ids: []
+    diagram: null
+
+  - id: ai-engineering
+    name: AI engineering
+    level: 8
+    prerequisites: [evaluation, observability, retrieval, ai-agents]
+    introduced_in: 26
+    written: false
+    misconception_ids: []
+    diagram: null

@@ -98,12 +98,27 @@ dimensions instead of two. Two tokens used in near-identical contexts end
 up with near-identical vectors and therefore high similarity.
 
 Crucially, this space captures more than just "these two things are
-similar." Consistent relationships between pairs of words correspond to
+similar." Consistent relationships between pairs of words can correspond to
 consistent directions in the space — the geometric offset from a country's
-embedding to its capital's embedding is roughly the same offset, repeated,
-across many country/capital pairs. This is what "semantic geometry" means:
-meaning-relationships become measurable geometric structure, not just
-proximity.
+embedding to its capital's embedding lands close to the same offset for
+several other country/capital pairs. This is what "semantic geometry"
+means: meaning-relationships can become measurable geometric structure, not
+just proximity. Treat the country/capital example as one clean, memorable
+illustration of the general principle, not a universal law — real embedding
+spaces are messier than this, the pattern holds more cleanly for some
+relationships than others, and it varies from model to model.
+
+One more caveat matters here, and it will matter a great deal in Part III.
+The embedding described in this chapter is a token's *starting* location —
+a general-purpose position learned from that token's typical usage across
+every context it ever appeared in during training. It is not yet the whole
+story. Once a model actually reads a specific sentence, it repeatedly
+revises this starting location based on the exact words surrounding it, so
+that "bank" in "river bank" ends up, temporarily, in a different place than
+"bank" in "investment bank" — even though both start from the same point on
+this chapter's map. That revision process is called attention, and it's the
+subject of Chapter 11. Everything in this chapter describes a token's
+initial position, not its final, in-context one.
 
 ## 6. Common Misconceptions
 
@@ -116,6 +131,11 @@ proximity.
 > **Why it's wrong:** Words end up close together whenever they're used in similar contexts, which captures far more than synonymy — antonyms like "hot" and "cold," for instance, often end up relatively close too, since they're used in nearly identical grammatical contexts ("the water is ___").
 > **Correct intuition:** Closeness reflects similarity of *use and context*, which is a broader and sometimes subtler relationship than "means the same thing."
 > **Analogy:** On the culture-and-economy city map, two rival neighboring capitals might sit close together despite being political opposites — closeness there tracked "type of place," not "gets along with."
+
+> **Misconception:** "An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."
+> **Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — a process called attention (Chapter 11) — producing a different, in-context representation each time.
+> **Correct intuition:** This chapter's embedding is a token's general-purpose starting point, not its final, in-context meaning — the final meaning is computed fresh for every sentence.
+> **Analogy:** A person's home address is a fixed, general-purpose location — but where they actually are right now, in context, changes throughout the day. This chapter describes the home address; Chapter 11 describes where the token actually is right now.
 
 ## 7. Practical Implications
 
@@ -188,5 +208,5 @@ both cases, "find relevant information" is implemented, underneath, as
 ---
 
 **Glossary terms added this chapter:** Embedding, Vector space, Similarity, Semantic geometry → append to `/glossary.md`
-**Misconceptions logged this chapter:** "the model stores dictionary definitions"; "similarity just means synonym" → append to `/misconceptions.md`
+**Misconceptions logged this chapter:** "the model stores dictionary definitions"; "similarity just means synonym"; "an embedding is a word's one true, permanent meaning" → append to `/misconceptions.md`
 **Concept-graph entries checked off:** Level 2 — Embeddings, Vector spaces, Similarity, Semantic geometry, all at Ch. 5

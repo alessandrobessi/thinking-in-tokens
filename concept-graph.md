@@ -5,6 +5,12 @@ concept is checked off once the chapter that introduces it is written. No
 concept may be used in prose before its own checkbox (or an earlier level's)
 is checked.
 
+**This file is a human-readable mirror of [`concept-graph.yaml`](concept-graph.yaml).**
+The YAML is the source of truth: it encodes the specific prerequisite(s)
+each concept actually needs (not just "everything from the previous
+level"), which chapter introduces it, whether that chapter is written yet,
+and which `misconceptions.md` rows belong to it. Update both together.
+
 ## Level 0 — Information, Symbols, Computation, Probability (intuition)
 - [x] Information — Ch. 2
 - [x] Symbols — Ch. 2

@@ -120,7 +120,7 @@ repurposed:
 | Memory | notebook | Ch. 16 |
 | Retrieval | library | Ch. 17 |
 | Tool | wrench | Ch. 21 |
-| Agent | planning loop | Ch. 23 |
+| Agent | planning loop | Ch. 22 |
 | Vector database | constellation | Ch. 18 |
 | External world | white canvas | Ch. 21+ |
 

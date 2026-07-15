@@ -4,7 +4,7 @@
 
 This is the manuscript, organized by Part and Chapter following the concept
 dependency graph in [`../blueprint.md`](../blueprint.md). Chapters are
-numbered globally (01–31) and must be read in order — each chapter's
+numbered globally (01–30) and must be read in order — each chapter's
 vocabulary is a prerequisite for the next.
 
 Supporting project files: [`../style-guide.md`](../style-guide.md) (palette,
@@ -55,17 +55,21 @@ yet written.
 
 ## Part V — AI Systems *(not yet written)*
 
-21. Tool Calling
-22. Model Context Protocol (MCP)
-23. AI Agents
-24. Reasoning Models
-25. Multimodal Models
-26. Mixture of Experts
+Chapters here are named for the durable question they answer, not for the
+specific standard implementing today's answer. MCP, for instance, is taught
+inside Chapter 21 as "today's connection standard," not given its own
+chapter — so the chapter stays true even after the standard changes.
+
+21. How Models Reach Into the World (tool calling, incl. MCP)
+22. From Single Calls to Agents (AI agents)
+23. Thinking Longer, Not Just Faster (reasoning models)
+24. One Model, Many Senses (multimodal models)
+25. Many Experts, One Model (Mixture of Experts)
 
 ## Part VI — The Future *(not yet written)*
 
-27. AI Engineering
-28. Evaluating AI Systems
-29. Security and Safety
-30. Where AI Is Going
-31. How to Keep Learning
+26. AI Engineering
+27. Evaluating AI Systems
+28. Security and Safety
+29. Where AI Is Going
+30. How to Keep Learning
