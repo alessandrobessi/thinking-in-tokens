@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "The Architecture of Intelligence"
+  title: "Thinking in Tokens"
   subtitle: "A Mental Model for Modern AI Systems"
   author: "Alessandro Bessi"
   cover-image: assets/cover.png

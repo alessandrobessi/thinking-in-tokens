@@ -1,4 +1,4 @@
-# The Architecture of Intelligence
+# Thinking in Tokens
 
 ### A Mental Model for Modern AI Systems
 
@@ -70,7 +70,7 @@ This is a first complete draft, not a finished, fully-validated book — see
 
 ## Reading the built book
 
-**[Read it online](https://alessandrobessi.github.io/the-architecture-of-intelligence/)**
+**[Read it online](https://alessandrobessi.github.io/thinking-in-tokens/)**
 — rebuilt automatically on every push to `main`. A PDF and EPUB of the
 same build are attached to the repo's
 [latest release](../../releases/tag/latest-build), also updated on every

@@ -1,4 +1,4 @@
-# The Architecture of Intelligence
+# Thinking in Tokens
 
 *A Mental Model for Modern AI Systems*
 
