@@ -84,9 +84,10 @@ the second implementation.
       into a gitignored `publish/chapters/` build directory — `book/*.md`
       itself is untouched. Minimal title page and a preface adapted from
       `README.md`.
-- [x] Dissolved the visible 11-section headers into flowing prose across
-      all 30 chapters — see `style-guide.md` §2 and
-      `templates/chapter-template.md` for the shipped convention.
+- [ ] Deciding whether to dissolve the visible 11-section headers into
+      flowing prose before a real release — deliberately not done here;
+      see `style-guide.md` §2. The pipeline renders the headers as they
+      currently are.
 - [ ] A real cover; currently a text-only title page.
 
 ## Milestone 6 — Beyond the manuscript

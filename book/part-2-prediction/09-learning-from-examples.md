@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *How does a neural network actually learn the right values for its billions of adjustable parameters?*
+
+## Real-World Story
 
 Think about learning to throw free throws in basketball. Nobody hands you
 a formula for the correct arm angle, wrist snap, and knee bend. Instead,
@@ -28,6 +32,8 @@ the error precisely, nudge every adjustable parameter a tiny bit in the
 direction that would have reduced that error, and repeat — not thousands
 of times, but billions.
 
+## Worked Example
+
 Imagine training on the same single example five times in a row. First
 pass: the model's prediction is wildly off; loss is high; every parameter
 gets a relatively large nudge. Second pass, same example: the prediction
@@ -40,6 +46,8 @@ its own small pull in its own direction. The net result is a set of
 parameters that works reasonably well across all of them at once — not
 perfectly tuned to any single example, but reliably good on the whole
 enormous collection.
+
+## Core Intuition
 
 **Loss** is a single number that measures exactly how wrong a network's
 prediction was for one example — a large loss means "very wrong," a loss
@@ -71,6 +79,8 @@ formula for correctness in advance. Training a neural network is this same
 taste-adjust-repeat loop, automated and run billions of times instead of a
 few dozen.
 
+## Technical Explanation
+
 For language models, a single training example is simple: take a real
 passage of text, hide the next token, and ask the network to predict it.
 The loss compares the network's predicted probability distribution (from
@@ -91,32 +101,25 @@ because parameters that produce low loss on real text were kept and
 reinforced, over and over, while directions that increased loss were
 avoided.
 
-It's tempting to picture all this repetition as training the model to
-memorize its training examples, like a database of stored sentences. It
-doesn't, or at least not primarily: the training process specifically
-rewards parameters that predict well across an enormous, varied set of
-examples — patterns that generalize tend to reduce loss more reliably
-than memorized specifics, especially given far more distinct examples
-than parameters could ever store verbatim. A well-trained model has
-learned generalizable patterns of language, not a searchable copy of its
-training text — though under some conditions (very repeated text,
-insufficient data relative to model size) some memorization can still
-occur, a nuance Chapter 15 returns to. A student who does thousands of
-practice problems learns the underlying method, not a lookup table of
-exactly those problems — though a student who saw the same ten problems
-a thousand times might indeed just memorize those ten.
+## Common Misconceptions
 
-It's similarly tempting to assume a lower loss always means the model has
-gotten more generally "intelligent." Loss measures how well the model
-fits its specific training objective (next-token prediction on its
-training data) — improving at that objective correlates with many useful
-capabilities, but it's a specific, measurable quantity, not a direct
-measure of general intelligence. Treat loss as a precise fitness score
-for one specific task, useful and informative, but distinct from the
-broader, harder question of evaluating a system's overall capability —
-which Chapter 27 addresses directly. A student's score on one specific
-exam is real, useful information about their preparation for that exam —
-but it isn't the same thing as a complete measure of their intelligence.
+### *"Training makes the model memorize its training examples, like a database of stored sentences."*
+
+**Why it's wrong:** The training process specifically rewards parameters that predict well across an enormous, varied set of examples — patterns that generalize tend to reduce loss more reliably than memorized specifics, especially given far more distinct examples than parameters could ever store verbatim.
+
+**Correct intuition:** A well-trained model has learned generalizable patterns of language, not a searchable copy of its training text — though under some conditions (very repeated text, insufficient data relative to model size) some memorization can still occur, a nuance Chapter 15 returns to.
+
+**Analogy:** A student who does thousands of practice problems learns the underlying method, not a lookup table of exactly those problems — though a student who saw the same ten problems a thousand times might indeed just memorize those ten.
+
+### *"A lower loss always means the model has gotten more generally 'intelligent.'"*
+
+**Why it's wrong:** Loss measures how well the model fits its specific training objective (next-token prediction on its training data) — improving at that objective correlates with many useful capabilities, but it's a specific, measurable quantity, not a direct measure of general intelligence.
+
+**Correct intuition:** Treat loss as a precise fitness score for one specific task, useful and informative, but distinct from the broader, harder question of evaluating a system's overall capability — which Chapter 27 addresses directly.
+
+**Analogy:** A student's score on one specific exam is real, useful information about their preparation for that exam — but it isn't the same thing as a complete measure of their intelligence.
+
+## Practical Implications
 
 This is the machinery behind phrases like "training run," "loss curve," and
 "epoch" that show up constantly in AI engineering writing — a loss curve
@@ -127,9 +130,11 @@ a large model requires so much computation: billions of parameters, each
 needing its own small adjustment, repeated across enormous datasets, again
 and again.
 
+## Key Takeaway
+
 **Training is a loop — predict, measure loss, nudge every parameter — repeated billions of times; learning is the name for whatever pattern emerges from it.**
 
-**In short:**
+## One-Page Summary
 
 - Loss is a precise number measuring how wrong a single prediction was.
 - Training is the repeated loop of predicting, measuring loss, and nudging every parameter toward reducing it.
@@ -138,9 +143,11 @@ and again.
 - Well-trained models generalize rather than memorize, though memorization can occur under specific conditions (Chapter 15).
 - Loss measures fit to a specific objective, not general intelligence — a distinction Chapter 27 (Evaluating AI Systems) revisits.
 
-**Go further:**
+## Further Reading
 
 - Search for "gradient descent" and "backpropagation" for the formal names of the parameter-adjustment procedure described conceptually here.
+
+## The Next Obvious Question
 
 *If throwing more examples and more parameters at this training loop keeps improving performance, is there a predictable pattern to how much better it gets — and are there limits?*
 

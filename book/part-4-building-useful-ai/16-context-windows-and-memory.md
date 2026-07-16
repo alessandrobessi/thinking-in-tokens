@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *If a model's own trained-in knowledge can run out or go stale, how can it be given a bigger, more reliable memory to draw from?*
+
+## Real-World Story
 
 Imagine a research assistant with an outstanding general education —
 years of broad, thorough training, exactly like Chapter 9's training loop
@@ -28,6 +32,8 @@ misplaced or degraded. The information you gave them on page one simply
 isn't part of what's currently visible, because the desk has a fixed,
 finite amount of room.
 
+## Worked Example
+
 Trace a long conversation with an assistant that has exactly this kind of
 limit. Early on, you mention you're allergic to peanuts. Many exchanges
 later — well past the point where that detail would still fit on the
@@ -35,21 +41,19 @@ desk — you ask for a recipe recommendation, and the assistant suggests
 one containing peanuts.
 
 This isn't the assistant failing to care, or misremembering in a fuzzy,
-human way — and it's worth being precise here, because it's tempting to
-describe this as the model remembering earlier parts of a conversation
-the way a person does, just imperfectly. There's no active human-style
-recall process happening. As far as the *raw* conversation goes, the
-peanut-allergy detail is either still physically present in the input
-the model is currently working from, or it's entirely absent — there's
-no fuzzy, partially-remembered version of the original sentence sitting
-in between; that part is a clean, binary fact, like a photocopier that
-either has a page in its tray or doesn't. If a system built around this
-assistant wants to avoid this exact failure, it needs a deliberate
-strategy for keeping that detail available even after the raw
-conversation has grown too long to hold it directly — which is precisely
-what "memory," as a system-design idea, is for: not recovering a lost
-original, but making sure the important part survives in some form (even
-compressed or restated) before it would otherwise fall off the desk.
+human way. As far as the *raw* conversation goes, the peanut-allergy
+detail is either still physically present in the input the model is
+currently working from, or it's entirely absent — there's no fuzzy,
+partially-remembered version of the original sentence sitting in between.
+If a system built around this assistant wants to avoid this exact
+failure, it needs a deliberate strategy for keeping that detail available
+even after the raw conversation has grown too long to hold it directly —
+which is precisely what "memory," as a system-design idea, is for: not
+recovering a lost original, but making sure the important part survives
+in some form (even compressed or restated) before it would otherwise fall
+off the desk.
+
+## Core Intuition
 
 A **context window** is the maximum number of tokens (Chapter 3) a model
 can consider at once — the hard size limit on everything currently "in
@@ -62,43 +66,31 @@ recently or clearly it was stated within the same overall conversation.
 window itself — it's the set of strategies for managing what stays
 available despite the window's fixed size as a conversation or task grows
 longer than the window can directly hold. Memory doesn't expand the
-window; it decides, deliberately, what earns a place inside it. This is
-also worth distinguishing from a different, easy-to-make confusion: the
-context window is not the same thing as the model's trained knowledge or
-long-term memory. Trained knowledge (Chapter 9) is baked into the model's
-parameters and persists across every conversation; the context window is
-a separate, temporary, per-conversation input buffer that typically
-resets between sessions and has nothing to do with what the model
-learned during training. A doctor's medical training doesn't reset
-between patients, but their notes on the patient currently in front of
-them are specific to that one visit.
+window; it decides, deliberately, what earns a place inside it.
 
 Being inside the window is necessary for a model to use something, but it
 isn't sufficient for the model to use it *well*. Information outside the
 window is unavailable unless something deliberately reintroduces it —
-that part is genuinely binary, present as tokens in the current input or
-entirely absent, with no fuzzy in-between. But information sitting inside
-a long window is available only "in principle": models often draw on
-information near the beginning or end of a long input more reliably than
-information buried in the middle, even when every token is technically
-present the whole time — a reader skimming a thick stack of pages may
-still absorb the first and last pages more reliably than page two
-hundred, even with every page physically present. Presence in the window
-is the floor, not a guarantee of equal use, and that's a different
-phenomenon entirely from human-style forgetting.
+that part is genuinely binary. But information sitting inside a long
+window is available only "in principle": models often draw on information
+near the beginning or end of a long input more reliably than information
+buried in the middle, even when every token is technically present the
+whole time. Presence in the window is the floor, not a guarantee of equal
+use.
 
-Context window size is a genuine architectural property, not an
-arbitrary policy choice: because standard, dense attention (Chapter 11)
-computes a relevance score between every pair of tokens, its
-computational cost grows much faster than the sequence length itself,
-which is a major reason context windows have practical size limits — a
-bigger window costs disproportionately more compute per step, a tradeoff
-Chapter 20 returns to directly. (Some newer architectures restructure
-attention to reduce this cost, but standard dense attention is still the
-dominant baseline this book describes.) Context window sizes have grown
-substantially across model generations as architectures and
-infrastructure have improved, but they remain fundamentally bounded, not
-unlimited.
+## Technical Explanation
+
+Context window size is a genuine architectural property, not an arbitrary
+policy choice: because standard, dense attention (Chapter 11) computes a
+relevance score between every pair of tokens, its computational cost grows
+much faster than the sequence length itself, which is a major reason
+context windows have practical size limits — a bigger window costs
+disproportionately more compute per step, a tradeoff Chapter 20 returns to
+directly. (Some newer architectures restructure attention to reduce this
+cost, but standard dense attention is still the dominant baseline this
+book describes.) Context window sizes have grown substantially across
+model generations as architectures and infrastructure have improved, but
+they remain fundamentally bounded, not unlimited.
 
 Several concrete strategies implement "memory" within that constraint. A
 simple sliding window just drops the oldest tokens once the limit is
@@ -111,6 +103,26 @@ entirely, and deliberately reinserts it into the window only when it
 becomes relevant again, which is a direct preview of the retrieval
 mechanism covered in Chapter 17.
 
+## Common Misconceptions
+
+### *"The context window is the same thing as the model's trained knowledge or long-term memory."*
+
+**Why it's wrong:** Trained knowledge (Chapter 9) is baked into the model's parameters and persists across every conversation; the context window is a separate, temporary, per-conversation input buffer that typically resets between sessions and has nothing to do with what the model learned during training.
+
+**Correct intuition:** Training gives a model its general knowledge, once, for good (until retrained); the context window is what it can see about this specific conversation, right now.
+
+**Analogy:** A doctor's medical training doesn't reset between patients, but their notes on the patient currently in front of them are specific to that one visit.
+
+### *"A model remembers earlier parts of a long conversation the way a person does, just imperfectly."*
+
+**Why it's wrong:** There's no active human-style recall process happening. Whether raw information is available at all is a clean, binary fact — present as tokens in the current input, or entirely absent, with no fuzzy in-between. But that's not the whole picture: even present information can be used less reliably depending on where it sits in a long input, which is a different phenomenon from human-style forgetting.
+
+**Correct intuition:** "In the window" or "not in the window" is binary; "used well" is a separate, non-binary question about how reliably a model draws on something it technically has access to.
+
+**Analogy:** A photocopier either has a page in the tray or it doesn't — but even with every page present, a reader skimming a thick stack may still absorb the first and last pages more reliably than page two hundred.
+
+## Practical Implications
+
 This is exactly what "context window size" figures in model
 announcements refer to — a genuine, load-bearing spec, not a marketing
 number — and it explains why very long documents sometimes get truncated
@@ -118,12 +130,13 @@ or summarized by AI tools before being processed. It also explains a
 common, very real frustration: a long chatbot conversation that appears
 to "forget" something said earlier, which is not a bug in the emotional
 sense but a direct, predictable consequence of a fixed-size window. This
-sets up exactly why retrieval systems (Chapters 17–18) matter in
-practice.
+sets up exactly why retrieval systems (Chapters 17–18) matter in practice.
+
+## Key Takeaway
 
 **A context window is the fixed-size input budget a model can see at any one moment; memory systems are strategies for managing what stays inside that budget as a conversation grows, not an expansion of the window itself.**
 
-**In short:**
+## One-Page Summary
 
 - A context window is the maximum number of tokens a model can consider at once — everything beyond it simply isn't visible to the model.
 - Context window size is bounded by standard attention's computational cost, which grows faster than sequence length itself.
@@ -132,9 +145,11 @@ practice.
 - Raw information is either present in the current input or it isn't — no fuzzy in-between — but being present doesn't guarantee equally reliable use; information in the middle of a long input can still be underused.
 - This chapter's limitation directly motivates retrieval-augmented approaches, covered next.
 
-**Go further:**
+## Further Reading
 
 - Search for "context length" or "context window size" comparisons across major model releases to see how this figure has grown, and what tradeoffs providers describe when discussing it.
+
+## The Next Obvious Question
 
 *If a context window can't hold everything, how can a model still pull in specific relevant information — like documents it was never trained on — exactly when it's needed?*
 

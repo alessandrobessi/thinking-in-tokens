@@ -290,12 +290,11 @@ The eleven elements every chapter must cover:
 10. Further reading
 11. "The next obvious question..."
 
-The manuscript's working draft used these as literal section headers
-during drafting, precisely because that made the checklist trivial to
-verify chapter by chapter. That drafting scaffold has since been
-dissolved: every chapter is now flowing prose, with no literal `##`
-section headers, per `templates/chapter-template.md` and
-`style-guide.md` §2.
+The manuscript's working draft may still use these as literal section
+headers during drafting, precisely because that makes the checklist
+trivial to verify chapter by chapter. Loosening the *reader-facing*
+presentation is a later editorial pass, not a requirement of the first
+draft.
 
 ------------------------------------------------------------------------
 

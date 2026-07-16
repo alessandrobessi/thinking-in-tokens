@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
+
+## Real-World Story
 
 A medical student spends years in school: studying, practicing, getting
 things wrong, being corrected, adjusting — precisely the training loop
@@ -28,6 +32,8 @@ language model works the same way once training ends: its parameters are
 frozen, and every response is that fixed knowledge being applied, fresh,
 to whatever specific prompt just arrived.
 
+## Worked Example
+
 Take the prompt "The weather today is" and run it through a trained
 model three separate times. Chapter 6 already established that the model
 computes a probability distribution over every possible next token — but
@@ -44,6 +50,8 @@ probability — so the three runs might produce "sunny," "cold," and
 "perfect for a walk." None of these is wrong. They're three different,
 individually reasonable draws from the same underlying distribution.
 
+## Core Intuition
+
 **Inference** is the process of actually running a trained model to
 produce output, using its fixed, already-learned parameters — as opposed
 to training (Chapter 9), where those parameters are still being adjusted.
@@ -51,35 +59,19 @@ Once training ends, the parameters are frozen; inference is simply
 computing forward through the network — embeddings (Chapter 5), attention
 and refinement through transformer blocks (Chapters 11–12), and a
 next-token probability distribution (Chapter 6) — using those fixed
-values, one token at a time. It's tempting to feel, in the middle of a
-long conversation, that the model is still learning or improving as you
-chat with it. Unless a system is specifically built to retrain on
-conversations — unusual, and typically a separate process — inference
-uses frozen parameters, and nothing about a conversation changes the
-model's underlying trained knowledge. What grows during a conversation is
-the context available to the model (Chapter 16), not the model's trained
-parameters themselves. A doctor taking your case history during an exam
-isn't relearning medicine — they're applying fixed training to new,
-specific information.
+values, one token at a time.
 
 **Sampling** is the specific method used to actually pick one token,
 starting from the model's predicted probabilities at each step. The
 options range from always taking the single most likely token
 (deterministic, and often repetitive) to sampling more broadly among
 likely candidates (more varied and natural-feeling, at some risk of an
-occasional odd choice) — and, as the next part of this chapter makes
-precise, most practical sampling methods don't just choose from the
-model's raw predicted probabilities unmodified; they first reshape that
-distribution before drawing from it. It's a natural next assumption that,
-since it's the same model and the same prompt, it should give the exact
-same answer every time. Unless sampling is explicitly configured to
-always pick the top choice, controlled randomness is part of the design —
-repeating the same prompt can, and often does, yield different, still-
-reasonable responses. Identical inputs can produce different outputs by
-design, because sampling deliberately introduces choice among plausible
-candidates rather than always taking the single most likely one. Asking
-three different (equally excellent) writers to finish the same sentence
-naturally produces three different, all-reasonable endings.
+occasional odd choice) — and, as the next section makes precise, most
+practical sampling methods don't just choose from the model's raw
+predicted probabilities unmodified; they first reshape that distribution
+before drawing from it.
+
+## Technical Explanation
 
 Precisely: none of these controls change the model's parameters, and none
 of them rerun training — that much is fixed the moment inference begins.
@@ -108,6 +100,26 @@ never changes. What temperature, top-k, and nucleus sampling change is
 the distribution actually used for sampling at each step, computed *from*
 the model's raw output, not identical to it.
 
+## Common Misconceptions
+
+### *"The model is still learning or improving while I chat with it."*
+
+**Why it's wrong:** Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
+
+**Correct intuition:** What grows during a conversation is the context available to the model (Chapter 16), not the model's trained parameters themselves.
+
+**Analogy:** A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
+
+### *"Since it's the same model and the same prompt, it should give the exact same answer every time."*
+
+**Why it's wrong:** Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
+
+**Correct intuition:** Identical inputs can produce different outputs by design, because sampling deliberately introduces choice among plausible candidates rather than always taking the single most likely one.
+
+**Analogy:** Asking three different (equally excellent) writers to finish the same sentence naturally produces three different, all-reasonable endings.
+
+## Practical Implications
+
 This is exactly what a "temperature" slider or setting in an AI tool or
 API controls directly. It also explains a genuine, recurring business and
 engineering distinction: training is an enormous, largely one-time cost
@@ -117,9 +129,11 @@ in discussions of AI infrastructure costs, and one that becomes
 especially important once Chapter 20 covers making inference cheaper and
 faster.
 
+## Key Takeaway
+
 **Inference is running a trained, frozen model to produce output; sampling is the deliberately controllable randomness in how a specific token gets chosen from the model's predicted probabilities.**
 
-**In short:**
+## One-Page Summary
 
 - Inference is using a trained model's fixed parameters to produce output — as opposed to training, where parameters are still being adjusted.
 - Sampling is the method for choosing one actual token from the model's predicted probability distribution at each step.
@@ -128,9 +142,11 @@ faster.
 - Identical prompts can produce different, equally valid outputs by design, because of this controlled randomness.
 - Training is a large, mostly one-time cost; inference is a smaller, recurring cost paid every time the model is used.
 
-**Go further:**
+## Further Reading
 
 - Search for "temperature sampling" and "nucleus sampling" (top-p sampling) for the formal names of the techniques described in this chapter.
+
+## The Next Obvious Question
 
 *If the model is just sampling plausible-sounding tokens, what happens when "plausible-sounding" and "actually true" come apart?*
 

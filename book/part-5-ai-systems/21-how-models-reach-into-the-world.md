@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *So far, every capability this book has covered has kept the model's own job the same: read context, produce text. Even Chapter 18's retrieval, which genuinely happens outside the model, only ever hands the model more text to read — it isn't something the model itself does. How does a model actually reach outside itself and take an action in the real world?*
+
+## Real-World Story
 
 A financial analyst is finishing a report and needs one more number: today's
 price for a particular stock. She doesn't have it memorized — and even if
@@ -34,6 +38,8 @@ of tool call, but tools aren't limited to fetching information back —
 they can run exact computation, or take an action with a real side
 effect, like sending a message or updating a record, that has no
 equivalent in simply retrieving a passage.
+
+## Worked Example
 
 Ask a language model to multiply 847 by 2,193 using nothing but its own
 next-token prediction (Chapter 6), and it will often get a large
@@ -60,6 +66,8 @@ and the model reads it and reports it back to the user. The model didn't
 every time, instead of predicting a plausible-looking answer that's
 usually — but not reliably — correct.
 
+## Core Intuition
+
 **Tool calling** is a model producing a structured request — naming a
 specific available capability and the exact arguments it needs — instead
 of, or in addition to, producing ordinary prose. That request is executed
@@ -70,48 +78,36 @@ continues generating from, using the exact same generation mechanism
 of ability. It gains a new kind of thing it's allowed to write, and a
 system on the other end that knows what to do when it writes that.
 
+## Technical Explanation
+
 A tool call rests on a division of labor that's easy to blur if you only
 see the finished product. The model is responsible for exactly one thing:
 deciding, based on everything in its context, *whether* calling a tool is
 the most useful next output, *which* available tool fits, and *what*
 arguments to fill in — all of it produced the normal way, as predicted
 text, just text shaped to match a specific expected structure instead of
-free-form prose. It's tempting to picture the model, at this point, as
-directly running code or reaching out onto the internet itself — but it
-never does either. The model only ever produces generated tokens: a
-specifically structured piece of output naming a tool and its arguments.
-Everything after that point is not the model's doing. A surrounding piece
-of software — often called an orchestration layer — parses that
-structured request, actually calls the real function (a calculator, a
-weather API, a database query, an email-sending service, whatever was
-made available), and inserts the result back into the context window
-before generation continues. The model requests; surrounding software
-executes — two different systems with two different jobs, even though the
-finished conversation makes the boundary invisible, the same way the
-analyst never walked onto the trading floor herself; she sent a precise
-request and waited for someone else to come back with the answer. The
-model that produces the next sentence, describing today's weather or
-confirming an email was sent, has that information only because it was
-just handed to it as freshly appended context — the same mechanism
-Chapter 18 used for retrieved documents, now carrying the result of an
-executed action instead of a retrieved passage.
+free-form prose. Everything after that point is not the model's doing. A
+surrounding piece of software — often called an orchestration layer —
+parses that structured request, actually calls the real function (a
+calculator, a weather API, a database query, an email-sending service,
+whatever was made available), and inserts the result back into the
+context window before generation continues. The model that produces the
+next sentence, describing today's weather or confirming an email was
+sent, has that information only because it was just handed to it as
+freshly appended context — the same mechanism Chapter 18 used for
+retrieved documents, now carrying the result of an executed action
+instead of a retrieved passage.
 
 This only works because every available tool is described to the model in
 advance, typically inserted into its context alongside the conversation
 itself, as a **tool schema**: a name, a plain description of what it does,
-and the exact arguments it accepts. It's also tempting to assume tool
-calling means the model can use whatever tool it decides it needs, on its
-own initiative — but the model can only request tools that appear in that
-schema; it has no way to invent access to a capability nobody described
-to it, no matter how plausible a request for one might sound, any more
-than the analyst's colleague could suddenly approve a wire transfer just
-because she phrased a request for one — that specific request line simply
-doesn't exist for him to act on. Available tools are a fixed, predefined
-catalog set up by whoever built the surrounding system, not an open-ended
-set the model can expand on its own. Whether a specific fine-tuned or
-aligned (Chapter 19) model reliably produces well-formed requests, picks
-the right tool, and fills in sensible arguments is itself a trained
-behavior, not a guarantee that comes free with the architecture.
+and the exact arguments it accepts. The model can only request tools that
+appear in that schema — it has no way to invent access to a capability
+nobody described to it, no matter how plausible a request for one might
+sound. Whether a specific fine-tuned or aligned (Chapter 19) model
+reliably produces well-formed requests, picks the right tool, and fills in
+sensible arguments is itself a trained behavior, not a guarantee that
+comes free with the architecture.
 
 That description step is part of what the **Model Context Protocol
 (MCP)** standardizes. Before a shared protocol existed, every pairing of a
@@ -123,45 +119,53 @@ external resources (documents, records, live data) and reusable prompt
 templates, to describe themselves to a model-serving application and be
 invoked or retrieved by it — tool calling in this chapter's sense is the
 part of MCP most relevant here, but the protocol's scope is broader than
-tool schemas alone. MCP removes the need to invent a custom message
-protocol for every pairing — an MCP-compatible application can speak to
-any MCP-compatible server using the same protocol, rather than a one-off
-integration built specifically for that pairing — though a real
-deployment still needs its own configuration, authentication, and
-permission handling on top; the protocol standardizes the conversation,
-not everything around it. It's a mistake to read MCP as a fundamentally
-smarter or more capable kind of AI rather than just a connection
-standard: MCP adds no new reasoning ability to a model at all. It
-standardizes how a tool or data source describes itself and how a
-model-serving application connects to it — the same tool-calling
-mechanism as before, now usable across many tools and providers without
-custom integration code for every single pairing. MCP is a shared plug
-shape, not a new kind of appliance — a standardized electrical outlet
-doesn't make any appliance more powerful, it just means any compliant
-appliance can plug into any compliant socket without a custom adapter
-built for that one pairing. MCP doesn't change what tool calling
-fundamentally is, and it isn't the only way to implement tool calling —
-it's one increasingly adopted open standard for *how the connection
-itself gets standardized*, which is why this chapter teaches it as a
-concrete instance of the durable idea, not as a separate mechanism.
+tool schemas alone. MCP removes the need to invent a custom message protocol for every
+pairing — an MCP-compatible application can speak to any MCP-compatible
+server using the same protocol, rather than a one-off integration built
+specifically for that pairing — though a real deployment still needs its
+own configuration, authentication, and permission handling on top; the
+protocol standardizes the conversation, not everything around it. MCP
+doesn't change what tool calling fundamentally is,
+and it isn't the only way to implement tool calling — it's one
+increasingly adopted open standard for *how the connection itself gets
+standardized*, which is why this chapter teaches it as a concrete instance
+of the durable idea, not as a separate mechanism.
 
-This is what sits underneath the labels "function calling," "tools,"
-"plugins," and "connectors" across different AI products — different
-names for the same underlying pattern just walked through. It's also the
-direct answer to something Chapters 16 and 18 already raised: a model's
-trained knowledge has a fixed cutoff, and while RAG can reach live
-sources too, tool calling is the broader interface — retrieval is one
-kind of tool call, alongside exact computation and actions with a
-real-world effect (sending a message, updating a record) that don't
-reduce to fetching a passage at all. And because the available tools are
-always an explicit, predefined catalog, evaluating any AI product that
-claims to "use tools" or "connect via MCP" comes down to one practical
-question: exactly which tools were exposed to it, and by whom — not some
-open-ended claim about what the model can reach.
+## Common Misconceptions
+
+### *"When a model 'uses a tool,' it's directly running code or reaching out onto the internet itself."*
+
+**Why it's wrong:** The model only ever produces generated tokens — in this case, a specifically structured piece of output naming a tool and its arguments. It does not execute the requested operation itself; a separate system outside the model parses that output and performs the actual action.
+
+**Correct intuition:** The model requests; surrounding software executes. Those are two different systems with two different jobs, even though the finished conversation makes the boundary invisible.
+
+**Analogy:** The financial analyst doesn't walk onto the trading floor herself — she sends a precise request and waits for someone else to come back with the answer.
+
+### *"Tool calling means the model can use whatever tool it decides it needs, on its own initiative."*
+
+**Why it's wrong:** A model can only request tools that were explicitly described to it in advance, in a tool schema listing exactly what's available and what arguments each one takes. It cannot invent access to a capability nobody exposed to it, regardless of how useful or plausible the request would sound.
+
+**Correct intuition:** Available tools are a fixed, predefined catalog set up by whoever built the surrounding system — not an open-ended set the model can expand on its own.
+
+**Analogy:** The analyst's colleague can look up a stock price because that specific request line exists — he can't suddenly also approve a wire transfer just because the analyst phrases a request for one.
+
+### *"MCP is a fundamentally smarter or more capable kind of AI, not just a connection standard."*
+
+**Why it's wrong:** MCP adds no new reasoning ability to a model at all. It standardizes how a tool or data source describes itself and how a model-serving application connects to it — the same tool-calling mechanism as before, now usable across many tools and providers without custom integration code for every single pairing.
+
+**Correct intuition:** MCP is a shared plug shape, not a new kind of appliance — it changes how easily things connect, not what a model can fundamentally do once connected.
+
+**Analogy:** A standardized electrical outlet doesn't make any appliance more powerful — it just means any compliant appliance can plug into any compliant socket without a custom adapter built for that one pairing.
+
+## Practical Implications
+
+This is what sits underneath the labels "function calling," "tools," "plugins," and "connectors" across different AI products — different names for the same underlying pattern this chapter just walked through. It's also the direct answer to something Chapters 16 and 18 already raised: a model's trained knowledge has a fixed cutoff, and while RAG can reach live sources too, tool calling is the broader interface — retrieval is one kind of tool call, alongside exact computation and actions with a real-world effect (sending a message, updating a record) that don't reduce to fetching a passage at all. And because the available tools are always an explicit, predefined catalog, evaluating any AI product that claims to "use tools" or "connect via MCP" comes down to one practical question: exactly which tools were exposed to it, and by whom — not some open-ended claim about what the model can reach.
+
+## Key Takeaway
 
 **A model doesn't reach into the world itself — it emits a precise, structured request naming a predefined tool and its arguments, and a separate system executes that request and hands the result back as new context for the model to keep reasoning from.**
 
-**In short:**
+## One-Page Summary
 
 - Tool calling is a model producing a structured request (a tool name plus arguments) instead of, or alongside, ordinary prose — using the same generation mechanism as always.
 - The model never executes anything itself. A surrounding orchestration layer parses the request, runs the real function, and inserts the result back into the context window as new text.
@@ -170,10 +174,12 @@ open-ended claim about what the model can reach.
 - The Model Context Protocol (MCP) standardizes the communication protocol between tools/data sources and model-serving applications, reducing custom, one-off protocol glue — real deployments still need their own configuration, authentication, and permissions, and MCP doesn't add any new reasoning capability.
 - Producing well-formed, correctly-targeted tool requests is itself a trained behavior (Chapter 19), not a free guarantee of the architecture.
 
-**Go further:**
+## Further Reading
 
-- Search for "function calling" or "tool use" from any major model provider for concrete, current examples of the schema and request format described in this chapter.
-- Search for "Model Context Protocol" or "MCP" for the open standard described above and its growing ecosystem of tool servers.
+- Search for "function calling" or "tool use" from any major model provider for concrete, current examples of the schema and request format described in §5.
+- Search for "Model Context Protocol" or "MCP" for the open standard described in §5 and its growing ecosystem of tool servers.
+
+## The Next Obvious Question
 
 *Once a model can request a single tool and read back a single result, what happens when it's allowed to chain many such requests together on its own — deciding, after each result, what to do next — in order to accomplish a goal that takes more than one step?*
 

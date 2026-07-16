@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *The transformer architecture existed since 2017 — why did it take years before something like ChatGPT appeared?*
+
+## Real-World Story
 
 In the earliest days of using large pretrained models through raw
 developer tools, people learned a strange trick: if you wanted a good
@@ -30,6 +34,8 @@ something more than a well-trained, well-scaled transformer — it required
 deliberately teaching the model to prefer being helpful over merely being
 plausible.
 
+## Worked Example
+
 Compare two ways a model might respond to "What's the capital of France?"
 A model trained only on next-token prediction (Chapters 6 and 9), with no
 further adjustment, might continue with something like "What's the
@@ -43,6 +49,8 @@ and the identical core training objective (Chapter 9). The difference
 is entirely in what happened *after* that core training: one model was
 further adjusted, specifically and deliberately, to prefer direct,
 helpful answers over other statistically plausible continuations.
+
+## Core Intuition
 
 Three more ingredients turn a raw, pretrained transformer into something
 like ChatGPT — none of which change the underlying architecture from
@@ -64,34 +72,14 @@ statistically unremarkable continuations of internet text.
 specific token from its predicted probabilities also shapes how a response
 feels to use, independent of training.
 
-It's tempting to assume that ChatGPT is just a base model like GPT-3,
-exposed directly through a chat interface. It isn't: substantial
-additional training — fine-tuning and human-feedback adjustment — happens
-after pretraining specifically to shape the raw model's behavior into
-something helpful and conversational; the interface alone doesn't produce
-that behavior. A "chat" or "instruct" model is a pretrained model that has
-been through this additional, deliberate behavioral training — not the
-same artifact as the raw pretrained model wearing a different interface.
-A brilliant graduate with encyclopedic knowledge still needs coaching
-before becoming a good teacher — the knowledge alone doesn't guarantee
-the specific, helpful communication style.
-
-It's a related mistake to think the 2017 transformer paper alone explains
-why chatbots suddenly got good. As Chapter 1 established, architecture,
-data, and compute together produced a powerful base model — but the
-specific, helpful, conversational behavior people associate with modern
-chatbots required this additional fine-tuning and human-feedback stage on
-top of that base. The architecture made a powerful predictor possible;
-alignment techniques are what made that predictor feel like a helpful
-assistant. A powerful engine doesn't make a car street-legal or
-comfortable to drive — it still needs the rest of the car built around it.
-
 These stages usually preserve the same basic transformer architecture and
 build on the same underlying knowledge the base model already has. But —
 as Chapter 19 covers in full — "usually preserve" isn't "never change":
 additional training can shift more than surface style, sometimes touching
 the model's factual associations and specific capabilities too, not just
 how it's been pointed toward using what it already knew.
+
+## Technical Explanation
 
 Precisely: **pretraining** is the massive, generic phase covered since
 Chapter 9 — learning to predict the next token across enormous, broad
@@ -116,6 +104,26 @@ small extra components rather than adjusting the whole thing, which
 Chapter 19 also covers — and what changes most directly, across all of
 this, is the training signal being optimized against.
 
+## Common Misconceptions
+
+### *"ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."*
+
+**Why it's wrong:** Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
+
+**Correct intuition:** A "chat" or "instruct" model is a pretrained model that has been through additional, deliberate behavioral training — not the same artifact as the raw pretrained model wearing a different interface.
+
+**Analogy:** A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
+
+### *"The 2017 transformer paper alone explains why chatbots suddenly got good."*
+
+**Why it's wrong:** As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
+
+**Correct intuition:** The architecture made a powerful predictor possible; alignment techniques are what made that predictor feel like a helpful assistant.
+
+**Analogy:** A powerful engine doesn't make a car street-legal or comfortable to drive — it still needs the rest of the car built around it.
+
+## Practical Implications
+
 This is why AI providers distinguish "base model" from "chat" or
 "instruct" versions of what is, underneath, the same pretrained
 architecture — and why a base model, used directly, can behave in
@@ -125,9 +133,11 @@ carefully trained-in helpfulness is part of what certain adversarial
 prompting techniques try to exploit — a topic Chapter 28 returns to under
 security and safety.
 
+## Key Takeaway
+
 **A helpful chatbot isn't just a scaled-up transformer — it's a pretrained model further shaped by fine-tuning and human feedback to prefer responses judged more helpful over merely statistically plausible continuations.**
 
-**In short:**
+## One-Page Summary
 
 - A raw pretrained transformer predicts statistically plausible continuations, which don't automatically mean helpful or direct answers.
 - Fine-tuning reuses Chapter 9's training loop on a smaller, curated dataset showing the desired style of behavior.
@@ -135,9 +145,11 @@ security and safety.
 - These stages usually preserve the same basic transformer architecture (Chapters 11–12), but they can substantially reshape behavior and may also alter particular capabilities, factual associations, or trainable components — not merely redirect knowledge that stays otherwise untouched.
 - "Base model" versus "chat"/"instruct" model is exactly this distinction: same architecture, different amount of post-pretraining shaping.
 
-**Go further:**
+## Further Reading
 
 - Search for "RLHF" (Reinforcement Learning from Human Feedback) and "instruction tuning" for the formal names of the techniques previewed in this chapter.
+
+## The Next Obvious Question
 
 *Once a model has all this training baked in, what actually happens, step by step, when it generates a response to your prompt?*
 

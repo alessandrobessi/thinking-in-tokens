@@ -92,13 +92,13 @@ chapter — so the chapter stays true even after the standard changes.
 
 ## Part VI — AI in the Real World
 
-26. [Evaluating AI Systems](part-6-the-future/26-evaluating-ai-systems.md)
+26. [Evaluating AI Systems](part-6-ai-in-the-real-world/26-evaluating-ai-systems.md)
     — *How does anyone actually know, in a rigorous way, whether a given AI system is good?*
-27. [AI Engineering and Observability](part-6-the-future/27-ai-engineering-and-observability.md)
+27. [AI Engineering and Observability](part-6-ai-in-the-real-world/27-ai-engineering-and-observability.md)
     — *Once a system is live, handling real, unpredictable user requests, how do you know it's still working correctly?*
-28. [Security and Safety](part-6-the-future/28-security-and-safety.md)
+28. [Security and Safety](part-6-ai-in-the-real-world/28-security-and-safety.md)
     — *What happens when someone is deliberately trying to make the system fail, leak information, or behave in ways it wasn't meant to?*
-29. [How to Judge What Comes Next](part-6-the-future/29-how-to-judge-what-comes-next.md)
+29. [How to Judge What Comes Next](part-6-ai-in-the-real-world/29-how-to-judge-what-comes-next.md)
     — *Given everything covered so far, where does this technology actually go from here?*
-30. [How to Keep Learning](part-6-the-future/30-how-to-keep-learning.md)
+30. [How to Keep Learning](part-6-ai-in-the-real-world/30-how-to-keep-learning.md)
     — *Now that this mental model exists, how does a reader actually keep it current as the field keeps moving?*

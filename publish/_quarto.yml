@@ -45,11 +45,11 @@ book:
         - chapters/part-5-ai-systems/25-many-experts-one-model.md
     - part: "Part VI — AI in the Real World"
       chapters:
-        - chapters/part-6-the-future/26-evaluating-ai-systems.md
-        - chapters/part-6-the-future/27-ai-engineering-and-observability.md
-        - chapters/part-6-the-future/28-security-and-safety.md
-        - chapters/part-6-the-future/29-how-to-judge-what-comes-next.md
-        - chapters/part-6-the-future/30-how-to-keep-learning.md
+        - chapters/part-6-ai-in-the-real-world/26-evaluating-ai-systems.md
+        - chapters/part-6-ai-in-the-real-world/27-ai-engineering-and-observability.md
+        - chapters/part-6-ai-in-the-real-world/28-security-and-safety.md
+        - chapters/part-6-ai-in-the-real-world/29-how-to-judge-what-comes-next.md
+        - chapters/part-6-ai-in-the-real-world/30-how-to-keep-learning.md
 
 format:
   html:

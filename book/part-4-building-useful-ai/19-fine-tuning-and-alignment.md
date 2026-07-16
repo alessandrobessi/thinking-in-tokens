@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *How does additional training after pretraining actually work, and how does a model get pointed toward being safe and aligned with the goals its designers set for it?*
+
+## Real-World Story
 
 A doctor completes medical school — years of broad, general training,
 covering an enormous range of conditions and cases. Then they enter a
@@ -27,6 +31,8 @@ residency: the same underlying learning mechanism, applied afterward to a
 smaller, much more specifically curated set of examples, aimed at a
 particular goal.
 
+## Worked Example
+
 Suppose a model is shown two candidate responses to a sensitive user
 request, and a human rater is asked which one they prefer — perhaps one
 response is more careful and appropriately cautious, the other more
@@ -40,19 +46,15 @@ data is used to further adjust the model's parameters — using the exact
 same predict/measure-error/nudge loop from Chapter 9 — so that future
 responses trend toward the style humans rated more highly.
 
+## Core Intuition
+
 **Fine-tuning** is continuing the training process (Chapter 9) on a new,
 typically smaller and more specifically curated dataset, after the
-large-scale pretraining phase is already complete. It's tempting to think
-of fine-tuning and pretraining as fundamentally different kinds of
-processes, but they aren't — fine-tuning reuses the identical
-predict/measure-error/adjust loop from Chapter 9; the only thing that
-changes is the dataset and the specific goal it's aimed at, not the
-underlying mechanism, in the same way a medical residency uses the same
-underlying learning process as medical school — observe, get corrected,
-adjust — just applied to a narrower set of cases. Only now it's aimed at
-a narrower goal, like following instructions reliably, answering
-directly, or matching a particular style, instead of generic text
-continuation.
+large-scale pretraining phase is already complete. It reuses the exact
+same predict/measure-error/adjust loop — nothing about the underlying
+mechanism changes — only now it's aimed at a narrower goal, like following
+instructions reliably, answering directly, or matching a particular
+style, instead of generic text continuation.
 
 **Alignment** is the broader goal fine-tuning (and related techniques) is
 used to pursue: making a model's behavior actually match some set of
@@ -64,6 +66,8 @@ to particular objectives set by particular designers, evaluators, or
 policies, and those can conflict with each other or with what any given
 user wants in the moment — "aligned" is not a single, universally-agreed
 target.
+
+## Technical Explanation
 
 Several broad techniques are widely used, often in combination.
 **Supervised fine-tuning** trains directly on example input/output pairs
@@ -96,24 +100,37 @@ small number of additional parameters (often called adapters) bolted onto
 it, which changes the mechanics slightly while keeping the same basic
 idea: reuse a pretrained model, adjust it further toward a narrower goal.
 
-It's important to be precise about what this achieves, since it's
-tempting to describe an aligned model as one that has been made to
-genuinely understand and agree with human values. Alignment techniques
-adjust a model's *output tendencies* to match patterns of behavior that
-were rated favorably during training — this is a real, measurable, and
-useful behavioral shift, not evidence that the model has come to
-genuinely understand or agree with human values in any deeper sense; that
-question echoes Chapter 2's original distinction between mechanical
-computation and understanding, and remains genuinely unresolved. Treat
-"aligned" as a description of trained behavioral tendencies, not a claim
-about the model's inner understanding — a distinction worth holding onto
-rather than resolving prematurely, the same way a well-trained customer
-service employee can reliably follow a company's values in every
-interaction without that proving they personally hold those values; the
-training shapes behavior either way. Alignment is also an ongoing,
-actively researched effort rather than a solved, one-time fix — a model
-can still behave in subtly misaligned ways after this process, which is
-part of why Chapter 28 revisits safety directly.
+It's important to be precise about what this achieves. Alignment
+techniques adjust a model's *output tendencies* to match patterns of
+behavior that were rated favorably during training — this is a real,
+measurable, and useful behavioral shift. It is not evidence that the
+model has come to genuinely understand or agree with human values in any
+deeper sense; that question echoes Chapter 2's original distinction
+between mechanical computation and understanding, and remains
+genuinely unresolved. Alignment is also an ongoing, actively researched
+effort rather than a solved, one-time fix — a model can still behave in
+subtly misaligned ways after this process, which is part of why Chapter
+28 revisits safety directly.
+
+## Common Misconceptions
+
+### *"Fine-tuning and pretraining are fundamentally different kinds of processes."*
+
+**Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
+
+**Correct intuition:** Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
+
+**Analogy:** A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
+
+### *"An aligned model has been made to genuinely understand and agree with human values."*
+
+**Why it's wrong:** Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
+
+**Correct intuition:** Treat "aligned" as a description of trained behavioral tendencies, not a claim about the model's inner understanding — a distinction worth holding onto rather than resolving prematurely.
+
+**Analogy:** A well-trained customer service employee can reliably follow a company's values in every interaction without that proving they personally hold those values — the training shapes behavior either way.
+
+## Practical Implications
 
 This is exactly what "fine-tuned," "instruction-tuned," and "RLHF" mean
 in AI product announcements, and it explains why a single company often
@@ -124,9 +141,11 @@ been "fully aligned" or is "guaranteed safe" — alignment techniques are
 genuinely useful and improving, but they remain an ongoing, imperfect
 effort, not a completed guarantee.
 
+## Key Takeaway
+
 **Fine-tuning is Chapter 9's training loop applied again after pretraining, on a narrower goal; alignment is the broader aim that loop is pointed at — matching a model's behavior to some set of intended goals, not just what's statistically plausible.**
 
-**In short:**
+## One-Page Summary
 
 - Fine-tuning reuses Chapter 9's core training loop on a smaller, more specifically curated dataset, after pretraining is complete.
 - Alignment is the broader goal fine-tuning serves — matching model behavior to particular designers'/evaluators' intended goals, which can themselves conflict, not just statistically plausible continuations.
@@ -135,9 +154,11 @@ effort, not a completed guarantee.
 - Alignment adjusts output tendencies, not necessarily genuine understanding or agreement — a distinction worth holding onto rather than resolving.
 - Alignment is an ongoing, imperfect, actively researched effort, not a one-time, completed fix.
 
-**Go further:**
+## Further Reading
 
 - Search for "InstructGPT" and "RLHF" for the research that formalized much of the fine-tuning and alignment approach described in this chapter, and "Direct Preference Optimization" (DPO) for a widely-used alternative that skips the separate reward model.
+
+## The Next Obvious Question
 
 *If a model can be fine-tuned to behave better, can it also be adjusted to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
 

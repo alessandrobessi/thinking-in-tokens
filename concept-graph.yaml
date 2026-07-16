@@ -17,8 +17,7 @@
 #                      concept is first formally taught
 #   written            true if that chapter's prose currently exists
 #   misconception_ids  keys into misconceptions.md's ID column
-#   key_takeaway       the concept's chapter file (chapters are flowing prose
-#                      with no internal heading anchors to link into) —
+#   key_takeaway       anchor into the concept's chapter §8 (Key Takeaway) —
 #                      this project does not use diagrams; see blueprint.md's
 #                      "No Diagrams" section
 
@@ -32,7 +31,7 @@ concepts:
     introduced_in: 2
     written: true
     misconception_ids: [more-data-equals-more-information]
-    key_takeaway: book/part-1-information/02-what-is-information.md
+    key_takeaway: book/part-1-information/02-what-is-information.md#key-takeaway
 
   - id: symbols
     name: Symbols
@@ -41,7 +40,7 @@ concepts:
     introduced_in: 2
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/02-what-is-information.md
+    key_takeaway: book/part-1-information/02-what-is-information.md#worked-example
 
   - id: computation
     name: Computation
@@ -50,7 +49,7 @@ concepts:
     introduced_in: 2
     written: true
     misconception_ids: [computation-implies-understanding]
-    key_takeaway: book/part-1-information/02-what-is-information.md
+    key_takeaway: book/part-1-information/02-what-is-information.md#key-takeaway
 
   - id: probability-intuition
     name: Probability (intuition)
@@ -59,7 +58,7 @@ concepts:
     introduced_in: 2
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/02-what-is-information.md
+    key_takeaway: book/part-1-information/02-what-is-information.md#key-takeaway
 
   # ---------- Level 1 ----------
   - id: characters
@@ -69,7 +68,7 @@ concepts:
     introduced_in: 3
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/03-characters-words-tokens.md
+    key_takeaway: book/part-1-information/03-characters-words-tokens.md#worked-example
 
   - id: words
     name: Words
@@ -78,7 +77,7 @@ concepts:
     introduced_in: 3
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/03-characters-words-tokens.md
+    key_takeaway: book/part-1-information/03-characters-words-tokens.md#worked-example
 
   - id: tokens
     name: Tokens
@@ -87,7 +86,7 @@ concepts:
     introduced_in: 3
     written: true
     misconception_ids: [token-always-one-word]
-    key_takeaway: book/part-1-information/03-characters-words-tokens.md
+    key_takeaway: book/part-1-information/03-characters-words-tokens.md#key-takeaway
 
   - id: tokenization
     name: Tokenization
@@ -96,7 +95,7 @@ concepts:
     introduced_in: 3
     written: true
     misconception_ids: [model-reads-letter-by-letter]
-    key_takeaway: book/part-1-information/03-characters-words-tokens.md
+    key_takeaway: book/part-1-information/03-characters-words-tokens.md#key-takeaway
 
   - id: compression
     name: Compression
@@ -105,7 +104,7 @@ concepts:
     introduced_in: 4
     written: true
     misconception_ids: [compression-loses-meaning]
-    key_takeaway: book/part-1-information/04-compressing-language.md
+    key_takeaway: book/part-1-information/04-compressing-language.md#key-takeaway
 
   - id: context
     name: Context
@@ -114,7 +113,7 @@ concepts:
     introduced_in: 4
     written: true
     misconception_ids: [context-is-just-topic]
-    key_takeaway: book/part-1-information/04-compressing-language.md
+    key_takeaway: book/part-1-information/04-compressing-language.md#key-takeaway
 
   # ---------- Level 2 ----------
   - id: embeddings
@@ -124,7 +123,7 @@ concepts:
     introduced_in: 5
     written: true
     misconception_ids: [embeddings-store-definitions, embedding-is-permanent-meaning]
-    key_takeaway: book/part-1-information/05-meaning-as-geometry.md
+    key_takeaway: book/part-1-information/05-meaning-as-geometry.md#key-takeaway
 
   - id: vector-spaces
     name: Vector spaces
@@ -133,7 +132,7 @@ concepts:
     introduced_in: 5
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/05-meaning-as-geometry.md
+    key_takeaway: book/part-1-information/05-meaning-as-geometry.md#worked-example
 
   - id: similarity
     name: Similarity
@@ -142,7 +141,7 @@ concepts:
     introduced_in: 5
     written: true
     misconception_ids: [similarity-means-synonym]
-    key_takeaway: book/part-1-information/05-meaning-as-geometry.md
+    key_takeaway: book/part-1-information/05-meaning-as-geometry.md#key-takeaway
 
   - id: semantic-geometry
     name: Semantic geometry
@@ -151,7 +150,7 @@ concepts:
     introduced_in: 5
     written: true
     misconception_ids: []
-    key_takeaway: book/part-1-information/05-meaning-as-geometry.md
+    key_takeaway: book/part-1-information/05-meaning-as-geometry.md#key-takeaway
 
   # ---------- Level 3 (written — Part II) ----------
   - id: prediction
@@ -161,7 +160,7 @@ concepts:
     introduced_in: 6
     written: true
     misconception_ids: [model-plans-whole-sentence, prediction-is-lookup]
-    key_takeaway: book/part-2-prediction/06-predicting-the-next-token.md
+    key_takeaway: book/part-2-prediction/06-predicting-the-next-token.md#key-takeaway
 
   - id: neural-networks
     name: Neural networks
@@ -170,7 +169,7 @@ concepts:
     introduced_in: 8
     written: true
     misconception_ids: [nn-simulates-brain, more-parameters-more-understanding]
-    key_takeaway: book/part-2-prediction/08-neural-networks-without-mathematics.md
+    key_takeaway: book/part-2-prediction/08-neural-networks-without-mathematics.md#key-takeaway
 
   - id: parameters
     name: Parameters
@@ -179,7 +178,7 @@ concepts:
     introduced_in: 8
     written: true
     misconception_ids: [more-parameters-more-understanding]
-    key_takeaway: book/part-2-prediction/08-neural-networks-without-mathematics.md
+    key_takeaway: book/part-2-prediction/08-neural-networks-without-mathematics.md#key-takeaway
 
   - id: learning
     name: Learning
@@ -188,7 +187,7 @@ concepts:
     introduced_in: 9
     written: true
     misconception_ids: [training-is-memorization]
-    key_takeaway: book/part-2-prediction/09-learning-from-examples.md
+    key_takeaway: book/part-2-prediction/09-learning-from-examples.md#key-takeaway
 
   - id: training
     name: Training
@@ -197,7 +196,7 @@ concepts:
     introduced_in: 9
     written: true
     misconception_ids: [training-is-memorization]
-    key_takeaway: book/part-2-prediction/09-learning-from-examples.md
+    key_takeaway: book/part-2-prediction/09-learning-from-examples.md#key-takeaway
 
   - id: loss
     name: Loss
@@ -206,7 +205,7 @@ concepts:
     introduced_in: 9
     written: true
     misconception_ids: [lower-loss-is-more-intelligence]
-    key_takeaway: book/part-2-prediction/09-learning-from-examples.md
+    key_takeaway: book/part-2-prediction/09-learning-from-examples.md#key-takeaway
 
   - id: scaling-laws
     name: Scaling laws
@@ -215,7 +214,7 @@ concepts:
     introduced_in: 10
     written: true
     misconception_ids: [scaling-laws-unlimited, bigger-model-always-better]
-    key_takeaway: book/part-2-prediction/10-scaling-laws.md
+    key_takeaway: book/part-2-prediction/10-scaling-laws.md#key-takeaway
 
   # ---------- Level 4 (written — Part III) ----------
   - id: attention
@@ -225,7 +224,7 @@ concepts:
     introduced_in: 11
     written: true
     misconception_ids: [attention-reads-sequentially, attention-sees-future-tokens]
-    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#key-takeaway
 
   - id: causal-masking
     name: Causal masking
@@ -234,7 +233,7 @@ concepts:
     introduced_in: 11
     written: true
     misconception_ids: [attention-sees-future-tokens]
-    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#key-takeaway
 
   - id: attention-heads
     name: Attention heads (multi-head attention)
@@ -243,7 +242,7 @@ concepts:
     introduced_in: 11
     written: true
     misconception_ids: []
-    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#key-takeaway
 
   - id: positional-encoding
     name: Positional encoding
@@ -252,7 +251,7 @@ concepts:
     introduced_in: 11
     written: true
     misconception_ids: [positional-encoding-teaches-grammar]
-    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md
+    key_takeaway: book/part-3-the-transformer/11-the-attention-revolution.md#key-takeaway
 
   - id: transformer-blocks
     name: Transformer blocks
@@ -261,7 +260,7 @@ concepts:
     introduced_in: 12
     written: true
     misconception_ids: [every-transformer-layer-same, more-layers-just-slower]
-    key_takeaway: book/part-3-the-transformer/12-building-a-transformer.md
+    key_takeaway: book/part-3-the-transformer/12-building-a-transformer.md#key-takeaway
 
   - id: inference
     name: Inference
@@ -270,7 +269,7 @@ concepts:
     introduced_in: 14
     written: true
     misconception_ids: [model-learns-during-conversation]
-    key_takeaway: book/part-3-the-transformer/14-inference-and-text-generation.md
+    key_takeaway: book/part-3-the-transformer/14-inference-and-text-generation.md#key-takeaway
 
   - id: sampling
     name: Sampling
@@ -279,7 +278,7 @@ concepts:
     introduced_in: 14
     written: true
     misconception_ids: [same-prompt-same-answer-always]
-    key_takeaway: book/part-3-the-transformer/14-inference-and-text-generation.md
+    key_takeaway: book/part-3-the-transformer/14-inference-and-text-generation.md#key-takeaway
 
   # ---------- Level 5 (spans Part III ch15 and Part IV ch16/19, written) ----------
   - id: hallucinations
@@ -289,7 +288,7 @@ concepts:
     introduced_in: 15
     written: true
     misconception_ids: [hallucination-is-rare-bug, model-knows-its-making-things-up]
-    key_takeaway: book/part-3-the-transformer/15-why-models-hallucinate.md
+    key_takeaway: book/part-3-the-transformer/15-why-models-hallucinate.md#key-takeaway
 
   - id: fine-tuning
     name: Fine-tuning
@@ -298,7 +297,7 @@ concepts:
     introduced_in: 19
     written: true
     misconception_ids: [finetuning-pretraining-fundamentally-different]
-    key_takeaway: book/part-4-building-useful-ai/19-fine-tuning-and-alignment.md
+    key_takeaway: book/part-4-building-useful-ai/19-fine-tuning-and-alignment.md#key-takeaway
 
   - id: alignment
     name: Alignment
@@ -307,7 +306,7 @@ concepts:
     introduced_in: 19
     written: true
     misconception_ids: [aligned-model-genuinely-understands-values]
-    key_takeaway: book/part-4-building-useful-ai/19-fine-tuning-and-alignment.md
+    key_takeaway: book/part-4-building-useful-ai/19-fine-tuning-and-alignment.md#key-takeaway
 
   - id: context-windows
     name: Context windows
@@ -316,7 +315,7 @@ concepts:
     introduced_in: 16
     written: true
     misconception_ids: [context-window-is-trained-knowledge]
-    key_takeaway: book/part-4-building-useful-ai/16-context-windows-and-memory.md
+    key_takeaway: book/part-4-building-useful-ai/16-context-windows-and-memory.md#key-takeaway
 
   - id: memory
     name: Memory
@@ -325,7 +324,7 @@ concepts:
     introduced_in: 16
     written: true
     misconception_ids: [model-remembers-fuzzily-like-person]
-    key_takeaway: book/part-4-building-useful-ai/16-context-windows-and-memory.md
+    key_takeaway: book/part-4-building-useful-ai/16-context-windows-and-memory.md#key-takeaway
 
   # ---------- Level 6 (retrieval/vector-databases/rag written in Part IV; tool-calling/mcp/ai-agents written in Part V) ----------
   - id: retrieval
@@ -335,7 +334,7 @@ concepts:
     introduced_in: 17
     written: true
     misconception_ids: [retrieval-is-smarter-keyword-search]
-    key_takeaway: book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md
+    key_takeaway: book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#key-takeaway
 
   - id: vector-databases
     name: Vector databases
@@ -344,7 +343,7 @@ concepts:
     introduced_in: 17
     written: true
     misconception_ids: [vector-db-is-regular-db-with-search]
-    key_takeaway: book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md
+    key_takeaway: book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#key-takeaway
 
   - id: rag
     name: Retrieval-Augmented Generation (RAG)
@@ -353,7 +352,7 @@ concepts:
     introduced_in: 18
     written: true
     misconception_ids: [rag-means-retrained-on-documents, rag-eliminates-hallucination-entirely]
-    key_takeaway: book/part-4-building-useful-ai/18-retrieval-augmented-generation.md
+    key_takeaway: book/part-4-building-useful-ai/18-retrieval-augmented-generation.md#key-takeaway
 
   - id: tool-calling
     name: Tool calling
@@ -362,7 +361,7 @@ concepts:
     introduced_in: 21
     written: true
     misconception_ids: [tool-execution-happens-inside-model, model-calls-any-tool-it-imagines]
-    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md
+    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md#key-takeaway
 
   - id: mcp
     name: Model Context Protocol (MCP)
@@ -371,7 +370,7 @@ concepts:
     introduced_in: 21
     written: true
     misconception_ids: [mcp-is-new-ai-capability]
-    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md
+    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md#key-takeaway
     note: >
       Taught inside Chapter 21 ("How Models Reach Into the World") as
       today's concrete standard, not given its own chapter — see
@@ -384,7 +383,7 @@ concepts:
     introduced_in: 22
     written: true
     misconception_ids: [agent-is-different-model, agent-has-genuine-autonomy, agent-looping-means-more-accurate]
-    key_takeaway: book/part-5-ai-systems/22-from-single-calls-to-agents.md
+    key_takeaway: book/part-5-ai-systems/22-from-single-calls-to-agents.md#key-takeaway
 
   # ---------- Level 7 (quantization/efficient-inference written in Part IV; reasoning/multimodality/MoE written in Part V) ----------
   - id: reasoning-models
@@ -394,7 +393,7 @@ concepts:
     introduced_in: 23
     written: true
     misconception_ids: [reasoning-model-thinks-like-human, longer-reasoning-always-more-correct, reasoning-trace-is-faithful-readout]
-    key_takeaway: book/part-5-ai-systems/23-thinking-longer-not-just-faster.md
+    key_takeaway: book/part-5-ai-systems/23-thinking-longer-not-just-faster.md#key-takeaway
 
   - id: multimodality
     name: Multimodality
@@ -403,7 +402,7 @@ concepts:
     introduced_in: 24
     written: true
     misconception_ids: [multimodal-is-two-models-glued, model-sees-like-human, new-modality-automatic, one-universal-multimodal-architecture]
-    key_takeaway: book/part-5-ai-systems/24-one-model-many-senses.md
+    key_takeaway: book/part-5-ai-systems/24-one-model-many-senses.md#key-takeaway
 
   - id: mixture-of-experts
     name: Mixture of Experts
@@ -412,7 +411,7 @@ concepts:
     introduced_in: 25
     written: true
     misconception_ids: [moe-experts-are-labeled-topics, moe-cheap-as-dense-model, moe-is-separate-models]
-    key_takeaway: book/part-5-ai-systems/25-many-experts-one-model.md
+    key_takeaway: book/part-5-ai-systems/25-many-experts-one-model.md#key-takeaway
 
   - id: quantization
     name: Quantization
@@ -421,7 +420,7 @@ concepts:
     introduced_in: 20
     written: true
     misconception_ids: [quantization-makes-model-dumber]
-    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md
+    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#key-takeaway
 
   - id: efficient-inference
     name: Efficient inference
@@ -430,7 +429,7 @@ concepts:
     introduced_in: 20
     written: true
     misconception_ids: [efficient-model-is-different-smaller-model]
-    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md
+    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#key-takeaway
 
   - id: kv-cache
     name: KV cache
@@ -439,7 +438,7 @@ concepts:
     introduced_in: 20
     written: true
     misconception_ids: []
-    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md
+    key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#key-takeaway
 
   # ---------- Level 8 (written — Part VI) ----------
   - id: evaluation
@@ -449,7 +448,7 @@ concepts:
     introduced_in: 26
     written: true
     misconception_ids: [benchmark-score-means-better, llm-judge-as-trustworthy-as-human, higher-overall-score-strictly-better]
-    key_takeaway: book/part-6-the-future/26-evaluating-ai-systems.md
+    key_takeaway: book/part-6-ai-in-the-real-world/26-evaluating-ai-systems.md#key-takeaway
 
   - id: observability
     name: Observability
@@ -458,7 +457,7 @@ concepts:
     introduced_in: 27
     written: true
     misconception_ids: [evaluation-passed-means-no-monitoring, single-error-means-system-broken]
-    key_takeaway: book/part-6-the-future/27-ai-engineering-and-observability.md
+    key_takeaway: book/part-6-ai-in-the-real-world/27-ai-engineering-and-observability.md#key-takeaway
 
   - id: security
     name: Security
@@ -467,7 +466,7 @@ concepts:
     introduced_in: 28
     written: true
     misconception_ids: [injection-is-like-sql-injection, only-obvious-inputs-cause-injection]
-    key_takeaway: book/part-6-the-future/28-security-and-safety.md
+    key_takeaway: book/part-6-ai-in-the-real-world/28-security-and-safety.md#key-takeaway
 
   - id: safety
     name: Safety
@@ -476,7 +475,7 @@ concepts:
     introduced_in: 28
     written: true
     misconception_ids: [alignment-alone-makes-safe]
-    key_takeaway: book/part-6-the-future/28-security-and-safety.md
+    key_takeaway: book/part-6-ai-in-the-real-world/28-security-and-safety.md#key-takeaway
 
   - id: ai-engineering
     name: AI engineering
@@ -485,4 +484,4 @@ concepts:
     introduced_in: 27
     written: true
     misconception_ids: [ai-engineering-means-training-models]
-    key_takeaway: book/part-6-the-future/27-ai-engineering-and-observability.md
+    key_takeaway: book/part-6-ai-in-the-real-world/27-ai-engineering-and-observability.md#key-takeaway

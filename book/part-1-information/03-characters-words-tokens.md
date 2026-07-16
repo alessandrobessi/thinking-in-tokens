@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *How does a computer break language into pieces it can actually work with?*
+
+## Real-World Story
 
 Try to teach a child to read, and you don't start with whole words. You
 start with letters, then blend them into syllables, then into words. But a
@@ -28,6 +32,8 @@ Chop it into pieces too large (whole words only) and you're stuck: languages
 invent new words constantly, people misspell things, and a system that only
 knows a fixed list of whole words breaks the instant it meets one that isn't
 on the list.
+
+## Worked Example
 
 Take the word "unbelievable" and split it three different ways, to see
 exactly what's at stake in each choice.
@@ -47,6 +53,8 @@ reusable fragment that shows up across hundreds of other words too
 separate entry for "unbelievable" itself; it just needed these three
 smaller, far more frequently reused pieces.
 
+## Core Intuition
+
 A **character** is the smallest unit of written text — a single letter,
 digit, or punctuation mark. A **word** is a familiar, larger unit — but
 "word" turns out to be a slippery concept computationally, since new words
@@ -57,24 +65,7 @@ A **token** is the actual unit a language model works with — a chunk of
 text that might be a whole word, a piece of a word, a single character, or
 even a punctuation mark, chosen by a process called **tokenization** that
 looks at enormous amounts of text in advance and decides which chunks are
-common enough to deserve their own reusable piece. It's tempting to assume,
-given that, that the model reads text one letter at a time, like sounding
-out a word — but character-by-character processing is far too slow and
-loses too much structure for large-scale models; subword tokenization
-deliberately groups common sequences into single units to avoid this. The
-model reads a sequence of tokens, most of which are whole words or common
-word-fragments, not individual letters — the same way a fluent reader
-doesn't sound out "the" letter by letter, but recognizes it instantly as a
-single familiar shape.
-
-It's equally tempting to assume the reverse — that a token is always
-exactly one word. It isn't: tokenizers deliberately split rare, long, or
-unfamiliar words into multiple sub-word tokens, and can also merge very
-common short words with surrounding punctuation. A token is whatever chunk
-of text the vocabulary happened to assign a single ID to — sometimes a
-whole word, sometimes a fragment, sometimes less than a word — the same way
-postal abbreviations aren't one-per-word either: common words get short
-codes ("St.," "Ave.") while unusual street names are spelled out in full.
+common enough to deserve their own reusable piece.
 
 The key design insight: build a fixed-size set of a few tens of thousands of
 these chunks, chosen so that common words get their own single token
@@ -82,6 +73,8 @@ these chunks, chosen so that common words get their own single token
 familiar sub-pieces ("un" + "believ" + "able"). This way, the model never
 encounters a word it has literally no way to represent — it can always fall
 back to smaller, familiar pieces.
+
+## Technical Explanation
 
 Most modern language models use some form of subword or byte-level
 tokenization — a family of approaches that all solve the same basic
@@ -109,7 +102,7 @@ into a sequence of these numerical IDs, which is the actual input a model
 receives — the model never sees letters or words as such, only this
 sequence of numbers.
 
-Try it yourself: how do you think a tokenizer would handle "quokka" — a
+**Try it yourself:** how do you think a tokenizer would handle "quokka" — a
 real word, but rare enough that most vocabularies never earned it a
 dedicated token? Most likely as two or three familiar pieces ("quok" +
 "ka," or similar), the same way it would handle a name it's never
@@ -117,6 +110,26 @@ encountered, like an uncommon surname, or a product name invented last
 week. This is the design working as intended: the tokenizer never fails
 outright on something unfamiliar, it just falls back to smaller, more
 common pieces it already has tokens for.
+
+## Common Misconceptions
+
+### *"The model reads text one letter at a time, like sounding out a word."*
+
+**Why it's wrong:** Character-by-character processing is far too slow and loses too much structure for large-scale models; subword tokenization deliberately groups common sequences into single units to avoid this.
+
+**Correct intuition:** The model reads a sequence of tokens, most of which are whole words or common word-fragments, not individual letters.
+
+**Analogy:** A fluent reader doesn't sound out "the" letter by letter — they recognize it instantly as a single familiar shape.
+
+### *"A token is always exactly one word."*
+
+**Why it's wrong:** Tokenizers deliberately split rare, long, or unfamiliar words into multiple sub-word tokens, and can also merge very common short words with surrounding punctuation.
+
+**Correct intuition:** A token is whatever chunk of text the vocabulary happened to assign a single ID to — sometimes a whole word, sometimes a fragment, sometimes less than a word.
+
+**Analogy:** Postal abbreviations aren't one-per-word either — common words get short codes ("St.," "Ave.") while unusual street names are spelled out in full.
+
+## Practical Implications
 
 This is why AI providers bill by "tokens," not by words or characters — and
 why the same sentence can cost a different amount depending on the
@@ -127,9 +140,11 @@ letter-by-letter, and it can stumble — because it isn't actually seeing
 individual letters, it's seeing tokens, and a token doesn't expose its own
 internal letters to the model in an obvious way.
 
+## Key Takeaway
+
 **A language model doesn't receive text as human-recognized words — it receives a sequence of token IDs produced by tokenization, some whole words, some fragments, occasionally a single character.**
 
-**In short:**
+## One-Page Summary
 
 - Characters are the smallest text units; words are a familiar but computationally slippery unit; tokens are the actual chunks a model uses.
 - Tokenization builds a fixed vocabulary (tens of thousands of tokens) where common sequences become single tokens and rare ones stay split into pieces.
@@ -138,9 +153,11 @@ internal letters to the model in an obvious way.
 - This design guarantees any input text can be represented, even words the model has never seen whole.
 - Token-based billing and letter-counting failures both trace back directly to this chapter's ideas.
 
-**Go further:**
+## Further Reading
 
 - Search for an interactive "tokenizer visualizer" or "tokenizer playground" from any major AI lab — several publish free web tools that show exactly how a sentence you type gets split into tokens and their numeric IDs, which makes this chapter's core idea concrete in under a minute.
+
+## The Next Obvious Question
 
 *If text becomes a long sequence of small tokens, how does a model deal with the fact that meaning is spread out and repeated across that sequence — and can that sequence be represented more efficiently?*
 

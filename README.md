@@ -40,7 +40,7 @@ sentence that distills its core idea. From Chapter 5, on embeddings:
 
 See it in full context, with the story and worked example that build up
 to it, in
-[`05-meaning-as-geometry.md`](book/part-1-information/05-meaning-as-geometry.md).
+[`05-meaning-as-geometry.md`](book/part-1-information/05-meaning-as-geometry.md#key-takeaway).
 
 ## Status
 

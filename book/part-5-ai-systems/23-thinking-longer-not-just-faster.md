@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *So far, a model produces one predicted step at a time, whether working alone or looping through an agent. What happens when a model is specifically trained to spend more of its own generated text working through a problem before committing to a final answer?*
+
+## Real-World Story
 
 Two students face the same hard word problem in a math competition. The
 first reads it and writes down an answer almost immediately — pattern
@@ -26,6 +30,8 @@ full chain does she commit to a final answer. Both students eventually
 write down one number as their answer. But the second student's scratch
 paper isn't just showing her work for the grader's benefit — it's the
 actual process that got her to a reliable answer in the first place.
+
+## Worked Example
 
 Ask a model: "A store has 120 apples. It sells one third of them on
 Monday, then one quarter of what's left on Tuesday. How many apples
@@ -48,6 +54,8 @@ context (Chapter 16) available when predicting the Tuesday step. The
 second step is now a much easier, narrower prediction — "80 ÷ 4"— instead
 of a single unbroken leap from the full question to a final number.
 
+## Core Intuition
+
 **Test-time compute** is spending additional computation at inference
 time — beyond a single, one-shot prediction — to improve the odds of a
 correct answer on a hard problem, trading more time and cost (Chapter 14,
@@ -64,6 +72,8 @@ This chapter focuses on written, trained reasoning because it's
 currently the most common and most product-visible instance of the
 broader idea, not because it's the only one.
 
+## Technical Explanation
+
 The effect rests directly on autoregressive generation (Chapter 6): every
 token a model generates, including an intermediate reasoning step, joins
 the context window (Chapter 16) that every later token conditions on.
@@ -73,21 +83,7 @@ next prediction narrower and more tractable than trying to solve the
 whole problem in one silent internal leap. This is the same underlying
 mechanism behind "chain-of-thought" prompting, which produced this
 accuracy improvement in ordinary models simply by asking them, in the
-prompt, to reason step by step before answering. It's tempting to picture
-a reasoning model as deliberately thinking behind the scenes, the way a
-person reflects before speaking — but every reasoning token is generated
-by the same autoregressive next-token prediction mechanism as any other
-token this book has covered. Mechanically, the "thinking" is the visible
-(or hidden-but-still-generated) token sequence itself, produced by
-generation, not a separate process running somewhere else that
-generation merely reports on. What's different about a reasoning model
-isn't a new kind of internal process — it's that generating and
-reinforcing useful intermediate steps has been specifically trained,
-changing what gets generated, not how generation fundamentally works,
-the same way the second student isn't running some fundamentally
-different kind of brain than the first; she's using the same mind to
-actually write out the steps, and that act of writing is itself what
-improves the outcome.
+prompt, to reason step by step before answering.
 
 Reasoning models take a further step past relying on a prompt asking
 nicely, though the exact training recipe varies by model and isn't
@@ -120,19 +116,7 @@ across width (many attempts) or backtracking (checked, revisable paths)
 rather than length. None of these require a readable chain of steps at
 all — which is exactly why "test-time compute" is the more durable term
 for the underlying idea, and "reasoning model" names one popular way of
-spending it. It's also worth resisting the assumption that longer
-reasoning always means a more correct answer: more reasoning tokens
-increase the chance of catching and fixing an error on a genuinely hard,
-multi-step problem, but each reasoning step is still produced by the
-same fallible generation process covered in Chapter 15 — reasoning text
-can itself state a wrong intermediate step confidently, and excessive
-reasoning on a simple problem can introduce unnecessary uncertainty
-rather than resolve it. More reasoning space raises the odds of a
-correct answer on hard problems; it doesn't guarantee one, and it isn't
-free or automatically beneficial on easy ones — a student who reasons
-carefully on a genuinely hard problem does better than one who blurts an
-answer, but a student who overthinks a trivially simple question can
-talk themselves into the wrong answer.
+spending it.
 
 It's worth being precise about what hasn't changed in any of these. A
 reasoning model isn't running some different decoding primitive behind
@@ -143,38 +127,46 @@ training has built a strong, specifically reinforced capacity to use
 that extra generated text productively, and system design organizes more
 inference-time computation around difficult problems — not that a
 different underlying generation mechanism has appeared. The same is true
-of the wider and search-based variants: more computation, organized
-differently, on top of the same generation mechanism throughout — not a
-different kind of system underneath.
+of the wider and
+search-based variants: more computation, organized differently, on top of
+the same generation mechanism throughout — not a different kind of
+system underneath.
 
-That precision matters because it's tempting to read the reasoning a
-model prints out as a transparent, fully accurate window into its actual
-internal computation. Printed reasoning text is generated the same way
-as any other output, and it does causally shape the final answer by
-becoming part of the context — but that's a different claim from the
-printed trace being a guaranteed, faithful report of everything actually
-happening inside the model's computation. The two can diverge. Visible
-reasoning genuinely influences the final answer, which is useful and
-real — but treat it as the model's stated reasoning, not a verified,
-complete transcript of its internal process, the same way a student's
-scratch paper reliably shapes what she writes next, and is worth
-reading, but it's her account of her thinking, not a machine readout of
-every neuron that fired along the way.
+## Common Misconceptions
 
-This is the mechanism behind "reasoning mode," "extended thinking," or
-"thinking longer" toggles in current AI products — an explicit tradeoff
-between latency/cost and accuracy on harder problems, directly connected
-to Chapter 14's and Chapter 20's inference-cost concepts. It's why
-reasoning models are emphasized specifically for math, coding, and
-multi-step logic tasks, and are often unnecessary overhead for simple
-factual lookups a single prediction handles fine. And it's a direct
-reason not to treat a model's visible reasoning trace as a guaranteed
-explanation of its behavior when something goes wrong — useful evidence,
-not proof.
+### *"A reasoning model is deliberately thinking behind the scenes, the way a person reflects before speaking."*
+
+**Why it's wrong:** Every reasoning token is generated by the same autoregressive next-token prediction mechanism (Chapter 6) as any other token this book has covered. Mechanically, the "thinking" is the visible (or hidden-but-still-generated) token sequence itself, produced by generation — not a separate process running somewhere else that generation merely reports on.
+
+**Correct intuition:** What's different about a reasoning model isn't a new kind of internal process — it's that generating and reinforcing useful intermediate steps has been specifically trained, changing what gets generated, not how generation fundamentally works.
+
+**Analogy:** The second student isn't running some fundamentally different kind of brain than the first — she's using the same mind to actually write out the steps, and that act of writing is itself what improves the outcome.
+
+### *"Longer reasoning always means a more correct answer."*
+
+**Why it's wrong:** More reasoning tokens increase the chance of catching and fixing an error on a genuinely hard, multi-step problem, but each reasoning step is still produced by the same fallible generation process covered in Chapter 15 — reasoning text can itself state a wrong intermediate step confidently, and excessive reasoning on a simple problem can introduce unnecessary uncertainty rather than resolve it.
+
+**Correct intuition:** More reasoning space raises the odds of a correct answer on hard problems; it doesn't guarantee one, and it isn't free or automatically beneficial on easy ones.
+
+**Analogy:** A student who reasons carefully on a genuinely hard problem does better than one who blurts an answer — but a student who overthinks a trivially simple question can talk themselves into the wrong answer.
+
+### *"The reasoning a model prints out is a transparent, fully accurate window into its actual internal computation."*
+
+**Why it's wrong:** Printed reasoning text is generated the same way as any other output, and it does causally shape the final answer by becoming part of the context (§5) — but that's a different claim from the printed trace being a guaranteed, faithful report of everything actually happening inside the model's computation. The two can diverge.
+
+**Correct intuition:** Visible reasoning genuinely influences the final answer, which is useful and real — but treat it as the model's stated reasoning, not a verified, complete transcript of its internal process.
+
+**Analogy:** A student's scratch paper reliably shapes what she writes next, and is worth reading — but it's her account of her thinking, not a machine readout of every neuron that fired along the way.
+
+## Practical Implications
+
+This is the mechanism behind "reasoning mode," "extended thinking," or "thinking longer" toggles in current AI products — an explicit tradeoff between latency/cost and accuracy on harder problems, directly connected to Chapter 14's and Chapter 20's inference-cost concepts. It's why reasoning models are emphasized specifically for math, coding, and multi-step logic tasks, and are often unnecessary overhead for simple factual lookups a single prediction handles fine. And it's a direct reason not to treat a model's visible reasoning trace as a guaranteed explanation of its behavior when something goes wrong — useful evidence, not proof.
+
+## Key Takeaway
 
 **Spending more inference-time computation — whether as a longer written chain, several checked candidate attempts, or a searched set of paths — trades time and cost for a higher chance of getting hard, multi-step problems right; a reasoning model's written chain is the most visible way of doing this, not the only one.**
 
-**In short:**
+## One-Page Summary
 
 - Test-time compute is spending additional computation at inference time, beyond a single one-shot prediction, to improve reliability on hard problems.
 - Reasoning models generate explicit intermediate steps before a final answer, often trained with some combination of outcome-based reinforcement learning, supervised reasoning examples, process-level feedback, or distillation (building on Chapter 19) to use that space productively — the most visible current instance of test-time compute, not the only one.
@@ -185,12 +177,14 @@ not proof.
 - A model's printed reasoning trace genuinely shapes its final answer but isn't a guaranteed, fully faithful transcript of its actual internal computation.
 - This underlies "reasoning mode" / "extended thinking" toggles — an explicit latency/cost-versus-accuracy tradeoff.
 
-**Go further:**
+## Further Reading
 
-- Search for "chain-of-thought prompting" for the original prompting-based version of the effect described above.
-- Search for "chain-of-thought faithfulness" for ongoing research on how closely a model's stated reasoning tracks its actual computation, directly relevant to the third misconception above.
-- Search for "test-time compute scaling" or "best-of-N sampling" for the broader family of techniques — width and search, not just length — described above.
-- Search for "DeepSeek-R1" for one publicly documented example of outcome-based reinforcement learning on reasoning trajectories — one real recipe among several described above, not the only one.
+- Search for "chain-of-thought prompting" for the original prompting-based version of the effect described in §5.
+- Search for "chain-of-thought faithfulness" for ongoing research on how closely a model's stated reasoning tracks its actual computation, directly relevant to §6's third misconception.
+- Search for "test-time compute scaling" or "best-of-N sampling" for the broader family of techniques — width and search, not just length — described in §5.
+- Search for "DeepSeek-R1" for one publicly documented example of outcome-based reinforcement learning on reasoning trajectories — one real recipe among several §5 describes, not the only one.
+
+## The Next Obvious Question
 
 *So far, every model in this book has read and written nothing but text. How does a model built entirely around predicting the next token learn to also make sense of an image or a sound?*
 

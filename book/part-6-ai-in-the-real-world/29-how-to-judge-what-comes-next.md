@@ -10,7 +10,11 @@
 
 ---
 
+## Opening Question
+
 *This book has now covered, in careful detail, how today's AI systems are built, used, evaluated, and protected. Given everything covered so far, where does this technology actually go from here?*
+
+## Real-World Story
 
 In the same week, a reader encounters two pieces of AI news. The first is
 a breathless press release: a bold claim of a fundamentally new kind of
@@ -28,6 +32,8 @@ matter. Which one names a specific mechanism? Which one has real,
 checkable evaluation evidence behind it? Which one is honest about its
 tradeoffs? The answers, not the marketing, are what tell her which
 announcement deserves her attention.
+
+## Worked Example
 
 Return to Chapter 1's own opening story: AI seemed to suddenly get much
 better around 2022. At the time, that chapter could only promise an
@@ -48,6 +54,8 @@ vague story about a model "getting smarter" — it's a precise, checkable
 answer, and it's the same shape of answer this chapter argues is worth
 demanding of whatever comes next.
 
+## Core Intuition
+
 The specific tools, benchmarks, and product names covered in this book
 will keep changing — that's guaranteed, and no chapter here has promised
 otherwise. What doesn't change nearly as fast is a small set of durable
@@ -63,6 +71,8 @@ given tools or agency, what are the security and safety implications
 (Chapters 21, 22, and 28)? A reader who can ask these of any headline has
 this book's actual promise fulfilled, whatever specific technology
 prompted the headline.
+
+## Technical Explanation
 
 Look back across Parts III through VI and a consistent shape emerges.
 Nearly every capability introduced past the core transformer (Chapters
@@ -94,61 +104,41 @@ breakthroughs are identifiable by the same standard as incremental ones:
 a specific, articulable mechanism solving a specific, articulable
 limitation, not a vague claim of generalized improvement.
 
-It's tempting, seeing this list, to conclude that every new AI
-announcement represents a fundamentally new kind of intelligence or
-architecture. Most don't: most announced improvements are new, specific,
-deliberately trained additions to the same core mechanism from Chapters
-6 and 11 traced just above, not a wholesale replacement of it. "New
-capability" and "new underlying mechanism" are different claims — most
-announcements are the former, applied on top of the mechanisms this book
-already covered, the same way a car with a new engine feature is still a
-car, and recognizing the difference between a genuinely new kind of
-vehicle and a specific improvement to an existing one takes exactly the
-kind of specific, mechanism-level question this chapter is built around.
+## Common Misconceptions
 
-It's equally tempting to swing the other way: because AI has improved so
-quickly and consistently, to assume that trend is guaranteed to continue
-at the same pace indefinitely. Chapter 10 already established that
-scaling produces real, predictable improvement but with diminishing
-returns, not an unlimited, guaranteed trajectory. Extrapolating any trend
-indefinitely is exactly the kind of unexamined claim this book has
-equipped its reader to question rather than assume. Past improvement is
-real evidence about the mechanisms already covered — it isn't a
-guarantee about mechanisms or constraints that don't exist yet, the same
-way a marathon runner's steady pace over the first ten miles is real
-information about their fitness, but it still doesn't guarantee the same
-pace over the next ten, once fatigue and terrain change the underlying
-conditions.
+### *"Because AI has improved so quickly and consistently, that trend is guaranteed to continue at the same pace indefinitely."*
 
-This chapter's five questions form a reusable checklist for reading any
-future AI news story or product launch, one that stays useful well past
-this book's own shelf life: what's the mechanism, what's actually
-driving the improvement, what's the real evaluation evidence, what's the
-cost tradeoff, and what are the security and safety implications if
-tools or agency are involved. And it's worth being clear about what
-actually ages here and what doesn't: since specific tools, benchmarks,
-and company names will become outdated, it's easy to assume the
-technical mechanisms this book teaches will become outdated along with
-them — but tokens, embeddings, attention, gradient-based training, and
-the recurring pattern of "specific gap, specific deliberate addition"
-are considerably more durable than any single product name or
-benchmark, which has been this book's premise since Chapter 1, and
-nothing in Parts III through VI has broken it. Specific names age; the
-underlying mechanisms and the pattern of how new capabilities get built
-on top of them age far more slowly — specific car models come and go
-every year, but the underlying mechanics of an internal combustion
-engine explained the vehicles on the road for a century, and
-understanding the mechanism outlasts any specific model name built on
-top of it.
+**Why it's wrong:** Chapter 10 already established that scaling produces real, predictable improvement but with diminishing returns, not an unlimited, guaranteed trajectory. Extrapolating any trend indefinitely is exactly the kind of unexamined claim this book has equipped its reader to question rather than assume.
 
-This is the book's promise from its very first page, made concrete and
-reusable: distinguishing a genuine advance from marketing hype, not by
-having every future model memorized, but by knowing exactly what
-questions to ask of any of them.
+**Correct intuition:** Past improvement is real evidence about the mechanisms already covered — it isn't a guarantee about mechanisms or constraints that don't exist yet.
+
+**Analogy:** A marathon runner's steady pace over the first ten miles is real information about their fitness — it still doesn't guarantee the same pace over the next ten, once fatigue and terrain change the underlying conditions.
+
+### *"Every new AI announcement represents a fundamentally new kind of intelligence or architecture."*
+
+**Why it's wrong:** As §5 laid out, most announced improvements are new, specific, deliberately trained additions to the same core mechanism from Chapters 6 and 11, not a wholesale replacement of it. Recognizing which is which is exactly the durable skill this chapter is building.
+
+**Correct intuition:** "New capability" and "new underlying mechanism" are different claims — most announcements are the former, applied on top of the mechanisms this book already covered.
+
+**Analogy:** A car with a new engine feature is still a car — recognizing the difference between a genuinely new kind of vehicle and a specific improvement to an existing one takes exactly the kind of specific, mechanism-level question this chapter is built around.
+
+### *"Since specific tools, benchmarks, and company names will become outdated, the technical mechanisms this book teaches will also become outdated."*
+
+**Why it's wrong:** Tokens, embeddings, attention, gradient-based training, and the recurring pattern of "specific gap, specific deliberate addition" are considerably more durable than any single product name or benchmark — that has been this book's premise since Chapter 1, and nothing in Parts III through VI has broken it.
+
+**Correct intuition:** Specific names age; the underlying mechanisms and the pattern of how new capabilities get built on top of them age far more slowly.
+
+**Analogy:** Specific car models come and go every year, but the underlying mechanics of an internal combustion engine explained the vehicles on the road for a century — understanding the mechanism outlasts any specific model name built on top of it.
+
+## Practical Implications
+
+This chapter's five questions form a reusable checklist for reading any future AI news story or product launch, one that stays useful well past this book's own shelf life: what's the mechanism, what's actually driving the improvement, what's the real evaluation evidence, what's the cost tradeoff, and what are the security and safety implications if tools or agency are involved. This is the book's promise from its very first page, made concrete and reusable: distinguishing a genuine advance from marketing hype, not by having every future model memorized, but by knowing exactly what questions to ask of any of them.
+
+## Key Takeaway
 
 **Specific tools and benchmarks will keep changing — what doesn't is the durable question worth asking of any new AI development: what specific gap does it close, and by what specific, deliberate mechanism, not by a vague appeal to "the model got smarter."**
 
-**In short:**
+## One-Page Summary
 
 - The specific tools, benchmarks, and product names in this book will keep changing; the underlying mechanisms and the pattern of how capabilities get added to them change far more slowly.
 - Every major capability since Chapter 13 followed the same shape: an existing mechanism, plus one specific, deliberately built addition closing one specific gap.
@@ -158,10 +148,12 @@ questions to ask of any of them.
 - Past improvement trends are real evidence, not a guarantee of continued pace (Chapter 10's diminishing returns).
 - This chapter's questions are this book's core promise made concrete: distinguishing genuine advances from hype.
 
-**Go further:**
+## Further Reading
 
 - Revisit Chapter 1's opening story and Chapter 10's scaling laws alongside this chapter — together they show the same evaluation pattern applied to the book's own founding example.
-- When reading any new AI announcement, apply this chapter's five questions directly as a practical exercise.
+- When reading any new AI announcement, apply §4's five questions directly as a practical exercise.
+
+## The Next Obvious Question
 
 *This book has built one complete, durable mental model of how modern AI works, chapter by chapter. Now that the model exists, how does a reader actually keep it current as the field keeps moving?*
 

@@ -37,31 +37,21 @@ revisiting that decision explicitly.
 ## 2. Chapter Mechanics
 
 - Every chapter must substantively cover all 11 elements of
-  `templates/chapter-template.md` — completeness is mandatory, the
-  reader-facing presentation is not (blueprint.md's "Standard Chapter
-  Template" section). As of the whole-manuscript prose pass, every
-  chapter is dissolved into flowing prose: no literal `##`/`###` section
-  headers survive anywhere in a chapter's body. The one fixed convention
-  that remains is typographic, not a heading: a chapter opens on an
-  unheaded, italicized question (§1) and closes on an unheaded,
-  italicized question (§11), with two light bulleted closers just before
-  the final question — `**In short:**` (§9, the one-page summary) and
-  `**Go further:**` (§10, further reading) — each a bold lead-in phrase,
-  not a header. `templates/chapter-template.md` shows the exact shape.
+  `templates/chapter-template.md` — completeness is mandatory, but per
+  blueprint.md's amended "Standard Chapter Template" section, the
+  reader-facing presentation is not. During this drafting phase, every
+  chapter still uses the 11 headers verbatim, in order, because that makes
+  completeness trivial to verify chapter by chapter. Loosening the visible
+  headers into freer prose is a deliberate later editorial pass, not
+  something to improvise chapter by chapter now — doing it piecemeal would
+  make the 11-point completeness check unreliable across 30 chapters.
 - §3 (Worked Example) and §8 (Key Takeaway) are text-only — no images, no
   diagrams. §3 is a second, fully-written concrete example distinct from
-  the opening story, not a recap of it. §8 is one bolded, standalone
-  sentence, not a paragraph, positioned near the chapter's end.
-- §6 (Common Misconceptions) is woven directly into the narrative at the
-  point a reader is most likely to actually hold the misconception —
-  "you might expect X — that's not quite right, because Y" — carrying
-  its analogy along in the same passage, not set apart as its own
-  labeled block. Still log each one as its own row in `misconceptions.md`
-  regardless of how it's woven into the prose.
+  the opening story, not a recap of it. §8 is one bolded sentence, not a
+  paragraph.
 - Every chapter answers exactly one question from the Narrative Graph
   (blueprint.md, "Narrative Graph" section) and ends by provoking the next.
-  A chapter's closing question (§11) and the next chapter's opening
-  question (§1) must express the same idea.
+  §11 of chapter N and §1 of chapter N+1 must express the same question.
 - Never introduce a concept before its prerequisites (blueprint.md, "Concept
   Dependency Graph"). The test: does the sentence require the reader to
   already understand *how* the later concept works to parse it correctly?
