@@ -66,3 +66,29 @@ the real explanation lives in the chapter itself.
 | Efficient inference | The broader set of techniques (including quantization) for making inference faster and cheaper without retraining. | Ch. 20 |
 | KV cache | Reusing each token's already-computed key and value (Chapter 11) instead of recomputing the whole sequence's attention at every generation step. | Ch. 20 |
 | Prefix caching | Reusing KV-cached work across separate requests that share an identical starting prompt. | Ch. 20 |
+| Tool calling | A model producing a structured request naming an available capability and its arguments, executed by software outside the model, with the result inserted back into context. | Ch. 21 |
+| Tool schema | The advance description of an available tool given to a model: its name, what it does, and the exact arguments it accepts. | Ch. 21 |
+| Model Context Protocol (MCP) | A standardized protocol for how tools/data sources describe themselves and connect to model-serving applications, replacing custom per-pairing integration code. | Ch. 21 |
+| Orchestration layer | The surrounding software that parses a model's tool-call request, executes the real function, and returns the result to the model's context. | Ch. 21 |
+| AI agent | A model operating inside a loop — read context, decide the next action, execute it, append the result, repeat — deciding its own next step until it judges the goal met. | Ch. 22 |
+| Agent loop | The surrounding code that repeatedly feeds tool-call results back into a model's context and calls it again, without a human re-prompting between steps. | Ch. 22 |
+| Reasoning model | A model that generates explicit intermediate steps before a final answer, often trained via reinforcement learning to use that space productively on hard problems. | Ch. 23 |
+| Chain-of-thought | Prompting or training a model to generate intermediate reasoning steps as context before its final answer. | Ch. 23 |
+| Multimodality | A model's ability to accept or produce more than one kind of data by converting each into the same kind of embedding its transformer machinery already processes. | Ch. 24 |
+| Patch embedding | An image patch (a small square region of pixels) converted into an embedding vector, analogous to a text token. | Ch. 24 |
+| Cross-modal alignment | Training that pulls a genuinely matching pair's embeddings (e.g. image and caption) together and pushes mismatched pairs apart, so different modalities land in a shared, comparable space. | Ch. 24 |
+| Mixture of Experts (MoE) | An architecture where each layer contains several expert sub-networks and a router activates only a small subset per token. | Ch. 25 |
+| Expert | One of several sub-networks within a Mixture-of-Experts layer, only some of which process any given token. | Ch. 25 |
+| Router | The learned component in a Mixture-of-Experts layer that decides which experts process a given token. | Ch. 25 |
+| Total parameters / Active parameters | Total parameters is a model's full learned capacity across every expert; active parameters is how many are actually used to process one token. | Ch. 25 |
+| Evaluation | Measuring whether an AI model is actually good at something, trustworthy enough to compare models, catch regressions, and decide deployment readiness. | Ch. 26 |
+| Benchmark | A fixed set of test questions or tasks with known correct answers, scored automatically. | Ch. 26 |
+| Contamination (evaluation) | A benchmark's exact test questions leaking into a model's training data, inflating its score without genuine capability improvement. | Ch. 26 |
+| LLM-as-judge | Using a separate model to score or compare outputs against a rubric, instead of a human doing it directly. | Ch. 26 |
+| Observability | Instrumenting a live AI system — logging, tracing, and metrics — to see what it's actually doing in production and diagnose failures after the fact. | Ch. 27 |
+| Logging (AI systems) | Recording inputs, outputs, and intermediate steps of a live system so a specific request can be reconstructed and inspected later. | Ch. 27 |
+| Tracing (AI systems) | Connecting every step of one multi-step tool-call or agent sequence into a single reviewable timeline. | Ch. 27 |
+| AI engineering | The discipline of building and operating production systems on top of foundation models — retrieval, tool calling, agents, evaluation, and observability combined. | Ch. 27 |
+| Security (AI systems) | Protecting an AI system against inputs specifically crafted to make it behave in unintended, harmful ways. | Ch. 28 |
+| Prompt injection | Instructions hidden inside content a model merely processes (a document, email, webpage) being treated as if they were legitimate commands. | Ch. 28 |
+| Safety | Ensuring a system's behavior, including any real-world actions its tools and agency let it take, actually matches human intent and doesn't cause harm. | Ch. 28 |

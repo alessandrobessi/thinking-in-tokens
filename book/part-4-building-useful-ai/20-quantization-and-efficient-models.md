@@ -104,21 +104,29 @@ at inference time, not to relearn it.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "Quantization makes a model noticeably dumber, in a way any user would clearly notice."
+### Misconception
+*"Quantization makes a model noticeably dumber, in a way any user would clearly notice."*
 
-**Why it's wrong:** At reasonable levels, the accuracy loss from quantization is typically small enough to be barely noticeable in normal use — though it is a genuine tradeoff, and very aggressive quantization can cause real, noticeable degradation, so it isn't a completely free lunch either.
+#### Why it's wrong
+At reasonable levels, the accuracy loss from quantization is typically small enough to be barely noticeable in normal use — though it is a genuine tradeoff, and very aggressive quantization can cause real, noticeable degradation, so it isn't a completely free lunch either.
 
-**Correct intuition:** Quantization is a tunable tradeoff between precision and efficiency, usually a strongly favorable one at moderate settings, not a guaranteed-invisible or guaranteed-safe operation at every setting.
+#### Correct intuition:
+Quantization is a tunable tradeoff between precision and efficiency, usually a strongly favorable one at moderate settings, not a guaranteed-invisible or guaranteed-safe operation at every setting.
 
-**Analogy:** A well-made JPEG looks essentially identical to its RAW source for ordinary viewing — but compress the same image far more aggressively, and the quality loss eventually becomes obvious.
+#### Analogy:
+A well-made JPEG looks essentially identical to its RAW source for ordinary viewing — but compress the same image far more aggressively, and the quality loss eventually becomes obvious.
 
-**Misconception:** "An efficient or quantized version of a model is a smaller, differently-trained model."
+### Misconception
+*"An efficient or quantized version of a model is a smaller, differently-trained model."*
 
-**Why it's wrong:** Quantization approximates the exact same trained model's weights at lower precision, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch. The parameter *values* do change (they're rounded); what's preserved is the architecture, and the goal is preserving behavior as closely as possible.
+#### Why it's wrong
+Quantization approximates the exact same trained model's weights at lower precision, or serves them with smarter infrastructure — it is not the same thing as training a genuinely smaller or differently structured model from scratch. The parameter *values* do change (they're rounded); what's preserved is the architecture, and the goal is preserving behavior as closely as possible.
 
-**Correct intuition:** Same architecture, same learned pattern approximated at lower precision, aiming for nearly the same behavior — not literally identical parameter values, and not a different model.
+#### Correct intuition:
+Same architecture, same learned pattern approximated at lower precision, aiming for nearly the same behavior — not literally identical parameter values, and not a different model.
 
-**Analogy:** A compressed photo and its RAW original show the same scene, even though the compressed file's actual pixel values are different from the original's — compressing the file didn't send a different photographer back to reshoot it smaller.
+#### Analogy:
+A compressed photo and its RAW original show the same scene, even though the compressed file's actual pixel values are different from the original's — compressing the file didn't send a different photographer back to reshoot it smaller.
 
 ## 7. Practical Implications
 

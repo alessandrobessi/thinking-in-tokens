@@ -102,21 +102,29 @@ the model's raw output, not identical to it.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "The model is still learning or improving while I chat with it."
+### Misconception
+*"The model is still learning or improving while I chat with it."*
 
-**Why it's wrong:** Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
+#### Why it's wrong
+Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
 
-**Correct intuition:** What grows during a conversation is the context available to the model (Chapter 16), not the model's trained parameters themselves.
+#### Correct intuition:
+What grows during a conversation is the context available to the model (Chapter 16), not the model's trained parameters themselves.
 
-**Analogy:** A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
+#### Analogy:
+A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
 
-**Misconception:** "Since it's the same model and the same prompt, it should give the exact same answer every time."
+### Misconception
+*"Since it's the same model and the same prompt, it should give the exact same answer every time."*
 
-**Why it's wrong:** Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
+#### Why it's wrong
+Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
 
-**Correct intuition:** Identical inputs can produce different outputs by design, because sampling deliberately introduces choice among plausible candidates rather than always taking the single most likely one.
+#### Correct intuition:
+Identical inputs can produce different outputs by design, because sampling deliberately introduces choice among plausible candidates rather than always taking the single most likely one.
 
-**Analogy:** Asking three different (equally excellent) writers to finish the same sentence naturally produces three different, all-reasonable endings.
+#### Analogy:
+Asking three different (equally excellent) writers to finish the same sentence naturally produces three different, all-reasonable endings.
 
 ## 7. Practical Implications
 

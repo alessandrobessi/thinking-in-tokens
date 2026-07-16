@@ -98,21 +98,29 @@ network provides.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "A big enough counting table would eventually solve this — it's just a matter of collecting more data."
+### Misconception
+*"A big enough counting table would eventually solve this — it's just a matter of collecting more data."*
 
-**Why it's wrong:** The space of possible word sequences grows so explosively with length that no realistic amount of counting closes the gap — most sequences a system needs to handle will always be ones it has never exactly seen.
+#### Why it's wrong
+The space of possible word sequences grows so explosively with length that no realistic amount of counting closes the gap — most sequences a system needs to handle will always be ones it has never exactly seen.
 
-**Correct intuition:** The problem isn't insufficient data — it's that counting exact matches can never generalize to new-but-similar cases, no matter how much data you have.
+#### Correct intuition:
+The problem isn't insufficient data — it's that counting exact matches can never generalize to new-but-similar cases, no matter how much data you have.
 
-**Analogy:** No matter how many recipes a cookbook contains, it can never contain the exact recipe for every possible combination of ingredients in your kitchen — you need to actually understand cooking principles, not just look up matches.
+#### Analogy:
+No matter how many recipes a cookbook contains, it can never contain the exact recipe for every possible combination of ingredients in your kitchen — you need to actually understand cooking principles, not just look up matches.
 
-**Misconception:** "Modern AI is just a much bigger version of this same counting approach."
+### Misconception
+*"Modern AI is just a much bigger version of this same counting approach."*
 
-**Why it's wrong:** The core mechanism is different in kind, not just in scale: a counting table only ever reports exact historical frequencies, while a neural network (Chapter 8) learns a general-purpose function that can generalize to sequences it has never encountered.
+#### Why it's wrong
+The core mechanism is different in kind, not just in scale: a counting table only ever reports exact historical frequencies, while a neural network (Chapter 8) learns a general-purpose function that can generalize to sequences it has never encountered.
 
-**Correct intuition:** Scale alone doesn't fix a counting table's fundamental inability to generalize — a different mechanism was required, and finding it is what Chapter 8 covers.
+#### Correct intuition:
+Scale alone doesn't fix a counting table's fundamental inability to generalize — a different mechanism was required, and finding it is what Chapter 8 covers.
 
-**Analogy:** A phrasebook that's ten times longer is still just a phrasebook — it still can't handle a sentence nobody thought to include.
+#### Analogy:
+A phrasebook that's ten times longer is still just a phrasebook — it still can't handle a sentence nobody thought to include.
 
 ## 7. Practical Implications
 

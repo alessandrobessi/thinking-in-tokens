@@ -63,6 +63,18 @@ ALLOWLIST = {
     # cited for embeddings, immediately before the transformer-blocks
     # keyword, not a claim about transformer-blocks' own home chapter.
     ("14-inference-and-text-generation.md", "transformer block", 5),
+    # "attention (Chapter 11), transformer blocks (Chapter 12), everything
+    # built on top of them..." -- Chapter 11 is correctly cited for
+    # attention, immediately before the transformer-blocks keyword, not a
+    # claim about transformer-blocks' own home chapter (which the very
+    # next parenthetical correctly names as Chapter 12).
+    ("24-one-model-many-senses.md", "transformer block", 11),
+    # "retrieval (Chapters 17-18), tool calling and agents (Chapters
+    # 21-22), evaluation (Chapter 26)..." -- the checker's regex only
+    # matches singular "Chapter N", not the plural "Chapters N-M" range
+    # immediately following "tool calling and agents", so it skips past
+    # to the next singular match (Chapter 26, for evaluation) instead.
+    ("27-ai-engineering-and-observability.md", "tool calling", 26),
     # "RAG changes nothing about the model's parameters (Chapter 8). It's
     # entirely a matter of what gets placed in the context window..." --
     # Chapter 8 is correctly cited for parameters, immediately before the

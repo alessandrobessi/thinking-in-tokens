@@ -359,18 +359,18 @@ concepts:
     level: 6
     prerequisites: [inference, context-windows]
     introduced_in: 21
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [tool-execution-happens-inside-model, model-calls-any-tool-it-imagines]
+    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md#8-key-takeaway
 
   - id: mcp
     name: Model Context Protocol (MCP)
     level: 6
     prerequisites: [tool-calling]
     introduced_in: 21
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [mcp-is-new-ai-capability]
+    key_takeaway: book/part-5-ai-systems/21-how-models-reach-into-the-world.md#8-key-takeaway
     note: >
       Taught inside Chapter 21 ("How Models Reach Into the World") as
       today's concrete standard, not given its own chapter — see
@@ -381,9 +381,9 @@ concepts:
     level: 6
     prerequisites: [tool-calling, memory, inference]
     introduced_in: 22
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [agent-is-different-model, agent-has-genuine-autonomy, agent-looping-means-more-accurate]
+    key_takeaway: book/part-5-ai-systems/22-from-single-calls-to-agents.md#8-key-takeaway
 
   # ---------- Level 7 (quantization/efficient-inference written in Part IV; reasoning/multimodality/MoE planned for Part V) ----------
   - id: reasoning-models
@@ -391,27 +391,27 @@ concepts:
     level: 7
     prerequisites: [inference, sampling, training]
     introduced_in: 23
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [reasoning-model-thinks-like-human, longer-reasoning-always-more-correct, reasoning-trace-is-faithful-readout]
+    key_takeaway: book/part-5-ai-systems/23-thinking-longer-not-just-faster.md#8-key-takeaway
 
   - id: multimodality
     name: Multimodality
     level: 7
     prerequisites: [tokens, embeddings, transformer-blocks]
     introduced_in: 24
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [multimodal-is-two-models-glued, model-sees-like-human, new-modality-automatic]
+    key_takeaway: book/part-5-ai-systems/24-one-model-many-senses.md#8-key-takeaway
 
   - id: mixture-of-experts
     name: Mixture of Experts
     level: 7
     prerequisites: [transformer-blocks, parameters]
     introduced_in: 25
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [moe-experts-are-labeled-topics, moe-cheap-as-dense-model, moe-is-separate-models]
+    key_takeaway: book/part-5-ai-systems/25-many-experts-one-model.md#8-key-takeaway
 
   - id: quantization
     name: Quantization
@@ -446,42 +446,42 @@ concepts:
     level: 8
     prerequisites: [hallucinations, training]
     introduced_in: 26
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [benchmark-score-means-better, llm-judge-as-trustworthy-as-human, higher-overall-score-strictly-better]
+    key_takeaway: book/part-6-the-future/26-evaluating-ai-systems.md#8-key-takeaway
 
   - id: observability
     name: Observability
     level: 8
     prerequisites: [evaluation, ai-agents]
     introduced_in: 27
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [evaluation-passed-means-no-monitoring, single-error-means-system-broken]
+    key_takeaway: book/part-6-the-future/27-ai-engineering-and-observability.md#8-key-takeaway
 
   - id: security
     name: Security
     level: 8
     prerequisites: [tool-calling, ai-agents]
     introduced_in: 28
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [injection-is-like-sql-injection, only-obvious-inputs-cause-injection]
+    key_takeaway: book/part-6-the-future/28-security-and-safety.md#8-key-takeaway
 
   - id: safety
     name: Safety
     level: 8
     prerequisites: [alignment, security]
     introduced_in: 28
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [alignment-alone-makes-safe]
+    key_takeaway: book/part-6-the-future/28-security-and-safety.md#8-key-takeaway
 
   - id: ai-engineering
     name: AI engineering
     level: 8
     prerequisites: [evaluation, observability, retrieval, ai-agents]
     introduced_in: 27
-    written: false
-    misconception_ids: []
-    key_takeaway: null
+    written: true
+    misconception_ids: [ai-engineering-means-training-models]
+    key_takeaway: book/part-6-the-future/27-ai-engineering-and-observability.md#8-key-takeaway

@@ -16,8 +16,7 @@ Supporting project files: [`../style-guide.md`](../style-guide.md) (voice,
 analogy registry), [`../glossary.md`](../glossary.md),
 [`../misconceptions.md`](../misconceptions.md), [`../concept-graph.md`](../concept-graph.md).
 
-**Status:** Parts I–IV are complete. Parts V–VI are planned but not yet
-written.
+**Status:** The full manuscript, Parts I–VI (Chapters 1–30), is written.
 
 ---
 
@@ -73,23 +72,33 @@ written.
 20. [Quantization and Efficient Models](part-4-building-useful-ai/20-quantization-and-efficient-models.md)
     — *Can a trained model be made to run cheaper and faster, without retraining it from scratch or changing what it fundamentally knows?*
 
-## Part V — AI Systems *(not yet written)*
+## Part V — AI Systems
 
 Chapters here are named for the durable question they answer, not for the
 specific standard implementing today's answer. MCP, for instance, is taught
 inside Chapter 21 as "today's connection standard," not given its own
 chapter — so the chapter stays true even after the standard changes.
 
-21. How Models Reach Into the World (tool calling, incl. MCP)
-22. From Single Calls to Agents (AI agents)
-23. Thinking Longer, Not Just Faster (reasoning models)
-24. One Model, Many Senses (multimodal models)
-25. Many Experts, One Model (Mixture of Experts)
+21. [How Models Reach Into the World](part-5-ai-systems/21-how-models-reach-into-the-world.md)
+    — *How does a model actually reach outside itself and take an action in the real world?*
+22. [From Single Calls to Agents](part-5-ai-systems/22-from-single-calls-to-agents.md)
+    — *What happens when a model is allowed to chain many tool requests together on its own, deciding after each result what to do next?*
+23. [Thinking Longer, Not Just Faster](part-5-ai-systems/23-thinking-longer-not-just-faster.md)
+    — *What happens when a model is specifically trained to spend more of its own generated text working through a problem before committing to a final answer?*
+24. [One Model, Many Senses](part-5-ai-systems/24-one-model-many-senses.md)
+    — *How does a model built entirely around predicting the next token learn to also make sense of an image or a sound?*
+25. [Many Experts, One Model](part-5-ai-systems/25-many-experts-one-model.md)
+    — *Is there a way to build an enormous model without paying the full computational cost of using all of it on every request?*
 
-## Part VI — The Future *(not yet written)*
+## Part VI — The Future
 
-26. Evaluating AI Systems
-27. AI Engineering and Observability
-28. Security and Safety
-29. Where AI Is Going
-30. How to Keep Learning
+26. [Evaluating AI Systems](part-6-the-future/26-evaluating-ai-systems.md)
+    — *How does anyone actually know, in a rigorous way, whether a given AI system is good?*
+27. [AI Engineering and Observability](part-6-the-future/27-ai-engineering-and-observability.md)
+    — *Once a system is live, handling real, unpredictable user requests, how do you know it's still working correctly?*
+28. [Security and Safety](part-6-the-future/28-security-and-safety.md)
+    — *What happens when someone is deliberately trying to make the system fail, leak information, or behave in ways it wasn't meant to?*
+29. [Where AI Is Going](part-6-the-future/29-where-ai-is-going.md)
+    — *Given everything covered so far, where does this technology actually go from here?*
+30. [How to Keep Learning](part-6-the-future/30-how-to-keep-learning.md)
+    — *Now that this mental model exists, how does a reader actually keep it current as the field keeps moving?*

@@ -99,21 +99,29 @@ when discussing how reasoning models try to work around it.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "The model plans out the entire sentence in advance, then writes it down."
+### Misconception
+*"The model plans out the entire sentence in advance, then writes it down."*
 
-**Why it's wrong:** The basic generation mechanism doesn't begin with a hidden, fully-written draft sitting somewhere and being read off token by token — each token is predicted using only what's been generated so far. A model can still produce something that looks like a plan (an outline, "step 1, step 2...") — but if it does, that plan is itself just earlier tokens, generated the same way as everything else, not consulted from some separate pre-formed source.
+#### Why it's wrong
+The basic generation mechanism doesn't begin with a hidden, fully-written draft sitting somewhere and being read off token by token — each token is predicted using only what's been generated so far. A model can still produce something that looks like a plan (an outline, "step 1, step 2...") — but if it does, that plan is itself just earlier tokens, generated the same way as everything else, not consulted from some separate pre-formed source.
 
-**Correct intuition:** Coherence emerges from consistently good next-token predictions; any "plan" the model appears to follow had to be developed through the visible context, not fetched from an upfront outline written before the first token.
+#### Correct intuition:
+Coherence emerges from consistently good next-token predictions; any "plan" the model appears to follow had to be developed through the visible context, not fetched from an upfront outline written before the first token.
 
-**Analogy:** A jazz musician improvising a solo doesn't have the whole solo pre-written — each note is chosen in light of everything played so far, and the result can still sound coherent, even if the musician settles into a recognizable pattern partway through.
+#### Analogy:
+A jazz musician improvising a solo doesn't have the whole solo pre-written — each note is chosen in light of everything played so far, and the result can still sound coherent, even if the musician settles into a recognizable pattern partway through.
 
-**Misconception:** "Predicting the next token means looking up the answer in a giant table of memorized sentences."
+### Misconception
+*"Predicting the next token means looking up the answer in a giant table of memorized sentences."*
 
-**Why it's wrong:** The model computes a fresh probability distribution from the current context every time; it isn't matching against a stored table of full sentences (Chapter 7 explains in detail why a table-based approach doesn't work at this scale).
+#### Why it's wrong
+The model computes a fresh probability distribution from the current context every time; it isn't matching against a stored table of full sentences (Chapter 7 explains in detail why a table-based approach doesn't work at this scale).
 
-**Correct intuition:** Prediction is a computation performed by the model's learned parameters over the current context — starting from the geometry of Chapter 5, not ending there — rather than a lookup.
+#### Correct intuition:
+Prediction is a computation performed by the model's learned parameters over the current context — starting from the geometry of Chapter 5, not ending there — rather than a lookup.
 
-**Analogy:** A weather forecaster doesn't look up "what happened on a day exactly like this one" in a logbook — they compute a forecast from current conditions using a general-purpose model of the atmosphere.
+#### Analogy:
+A weather forecaster doesn't look up "what happened on a day exactly like this one" in a logbook — they compute a forecast from current conditions using a general-purpose model of the atmosphere.
 
 ## 7. Practical Implications
 

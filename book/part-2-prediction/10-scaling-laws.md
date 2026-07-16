@@ -107,21 +107,29 @@ the energy required to produce it.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "Scaling laws mean you can scale forever with no real limit."
+### Misconception
+*"Scaling laws mean you can scale forever with no real limit."*
 
-**Why it's wrong:** Returns diminish predictably — each further order-of-magnitude increase in scale buys a progressively smaller improvement — and practical ceilings exist in available high-quality data, compute cost, and energy.
+#### Why it's wrong
+Returns diminish predictably — each further order-of-magnitude increase in scale buys a progressively smaller improvement — and practical ceilings exist in available high-quality data, compute cost, and energy.
 
-**Correct intuition:** Scaling laws describe a reliable but diminishing-returns curve, not an unlimited runway.
+#### Correct intuition:
+Scaling laws describe a reliable but diminishing-returns curve, not an unlimited runway.
 
-**Analogy:** Training for a marathon reliably improves your time the more you train — but the tenth month of training buys you far less improvement than the first, and eventually further training yields almost nothing extra.
+#### Analogy:
+Training for a marathon reliably improves your time the more you train — but the tenth month of training buys you far less improvement than the first, and eventually further training yields almost nothing extra.
 
-**Misconception:** "A bigger model is automatically the better choice for any given use case."
+### Misconception
+*"A bigger model is automatically the better choice for any given use case."*
 
-**Why it's wrong:** Scaling laws predict lower loss on the training objective, not that a bigger model is the right cost, speed, or capability tradeoff for every task — a smaller, well-matched model is often the better engineering choice.
+#### Why it's wrong
+Scaling laws predict lower loss on the training objective, not that a bigger model is the right cost, speed, or capability tradeoff for every task — a smaller, well-matched model is often the better engineering choice.
 
-**Correct intuition:** Treat "bigger, following the scaling curve" as one axis of a decision, not the whole decision — Part IV's chapter on quantization and efficient models covers the other side of this tradeoff.
+#### Correct intuition:
+Treat "bigger, following the scaling curve" as one axis of a decision, not the whole decision — Part IV's chapter on quantization and efficient models covers the other side of this tradeoff.
 
-**Analogy:** A commercial airliner is a better choice than a small plane for a transatlantic flight, and a much worse choice for a quick hop between two nearby small towns — bigger isn't better in some absolute sense, it's better for a particular job.
+#### Analogy:
+A commercial airliner is a better choice than a small plane for a transatlantic flight, and a much worse choice for a quick hop between two nearby small towns — bigger isn't better in some absolute sense, it's better for a particular job.
 
 ## 7. Practical Implications
 

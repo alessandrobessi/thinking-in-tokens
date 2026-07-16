@@ -123,21 +123,29 @@ useful observation, not a fully settled explanation.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "AI suddenly became conscious or started truly understanding language overnight."
+### Misconception
+*"AI suddenly became conscious or started truly understanding language overnight."*
 
-**Why it's wrong:** Nothing changed in a single moment. Data, compute, and architecture had been improving continuously for years; the perceived "suddenness" is the public noticing a threshold that had been approached gradually.
+#### Why it's wrong
+Nothing changed in a single moment. Data, compute, and architecture had been improving continuously for years; the perceived "suddenness" is the public noticing a threshold that had been approached gradually.
 
-**Correct intuition:** What arrived suddenly was public *access* to systems that had been quietly improving for years — the underlying capability crossed a threshold that made it useful for ordinary conversation, not a threshold of consciousness.
+#### Correct intuition:
+What arrived suddenly was public *access* to systems that had been quietly improving for years — the underlying capability crossed a threshold that made it useful for ordinary conversation, not a threshold of consciousness.
 
-**Analogy:** A pot of water doesn't decide to boil — it crosses 100°C after a long, steady rise in temperature. The boiling looks sudden only if you weren't watching the thermometer.
+#### Analogy:
+A pot of water doesn't decide to boil — it crosses 100°C after a long, steady rise in temperature. The boiling looks sudden only if you weren't watching the thermometer.
 
-**Misconception:** "This is just a much bigger version of the chatbots we already had."
+### Misconception
+*"This is just a much bigger version of the chatbots we already had."*
 
-**Why it's wrong:** Older chatbots worked by matching your input against a fixed script written by humans. Modern systems generate a response by predicting likely text, which lets them handle inputs no one scripted for.
+#### Why it's wrong
+Older chatbots worked by matching your input against a fixed script written by humans. Modern systems generate a response by predicting likely text, which lets them handle inputs no one scripted for.
 
-**Correct intuition:** The shift is from "matching your words to a pre-written answer" to "generating a plausible answer word by word," which is a difference in kind, not just in size.
+#### Correct intuition:
+The shift is from "matching your words to a pre-written answer" to "generating a plausible answer word by word," which is a difference in kind, not just in size.
 
-**Analogy:** A phrasebook can only handle sentences someone already translated for you. A fluent speaker can handle a sentence they've never heard before.
+#### Analogy:
+A phrasebook can only handle sentences someone already translated for you. A fluent speaker can handle a sentence they've never heard before.
 
 ## 7. Practical Implications
 

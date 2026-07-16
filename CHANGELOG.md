@@ -19,6 +19,32 @@
   free-text impressions, no scoring) and a technical review by at least
   one ML practitioner. Updated `README.md`'s file-index table to drop the
   now-deleted `testing/` row.
+- Updated `templates/chapter-template.md`'s "Common Misconceptions" block
+  from bold-paragraph style to explicit sub-headings (`### Misconception`
+  / `#### Why it's wrong` / `#### Correct intuition:` / `#### Analogy:`)
+  and mechanically reformatted all 21 written chapters (1–21 at the time)
+  to match, content unchanged. (Script-driven; a first pass had a bug that
+  dropped the blank line before every chapter's "## 7. Practical
+  Implications" heading — caught and fixed before committing.)
+- **Drafted and completed Parts V and VI — the full 30-chapter manuscript
+  is now written.** Chapters 21–25 (Part V, AI Systems): "How Models Reach
+  Into the World" (tool calling, MCP), "From Single Calls to Agents" (AI
+  agents), "Thinking Longer, Not Just Faster" (reasoning models), "One
+  Model, Many Senses" (multimodality), "Many Experts, One Model" (Mixture
+  of Experts). Chapters 26–30 (Part VI, The Future): "Evaluating AI
+  Systems," "AI Engineering and Observability," "Security and Safety,"
+  "Where AI Is Going" and "How to Keep Learning" (both synthesis chapters,
+  no new formal concepts — matching Chapter 13's precedent). Each chapter
+  updated `concept-graph.yaml`, `glossary.md`, `misconceptions.md`, its own
+  `references/chapter-NN.md`, `bibliography.md` where a real citation
+  applied, `style-guide.md`'s analogy registry, and `book/README.md`,
+  chapter by chapter as drafted, not batched. `ROADMAP.md`'s Milestone 4 is
+  now fully checked off. All three validator scripts
+  (`validate_concept_graph.py`, `validate_manuscript_index.py`,
+  `validate_cross_references.py`) pass clean; two legitimate
+  nearest-chapter-mention false positives in the cross-reference checker
+  were allowlisted (same pattern as the pre-existing Chapter 14 entry —
+  the checker's regex doesn't parse plural "Chapters N–M" ranges).
 
 ## 2026-07-15
 

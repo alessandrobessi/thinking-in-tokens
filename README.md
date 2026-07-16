@@ -44,12 +44,14 @@ to it, in
 
 ## Status
 
-**Parts I–IV (chapters 1–20 — Information, Prediction, The Transformer,
-and Building Useful AI) are written.** The book builds understanding
-through stories, worked examples, careful analogies, and precise technical
-explanation. Parts V–VI exist only as a planned table of contents. See
+**The full manuscript, Parts I–VI (chapters 1–30), is written** —
+Information, Prediction, The Transformer, Building Useful AI, AI Systems,
+and The Future. The book builds understanding through stories, worked
+examples, careful analogies, and precise technical explanation. See
 [`book/README.md`](book/README.md) for the full chapter-by-chapter index
 and status, and [`ROADMAP.md`](ROADMAP.md) for project-level milestones.
+This is a first complete draft, not a finished, fully-validated book — see
+"Editorial status and contributions" below.
 
 ## How the project is organized
 

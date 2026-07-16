@@ -71,9 +71,9 @@ the second implementation.
 
 - [x] Part III — The Transformer (11–15)
 - [x] Part IV — Building Useful AI (16–20)
-- [ ] Part V — AI Systems (21–25, durable-question framing per blueprint's
+- [x] Part V — AI Systems (21–25, durable-question framing per blueprint's
       current TOC — see note on Chapter 21/MCP)
-- [ ] Part VI — The Future (26–30)
+- [x] Part VI — The Future (26–30)
 
 ## Milestone 5 — Beyond the manuscript
 

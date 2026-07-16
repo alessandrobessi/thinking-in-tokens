@@ -126,21 +126,29 @@ probable one (a mechanism Chapter 14 covers in detail).
 
 ## 6. Common Misconceptions
 
-**Misconception:** "A computer that processes information understands what that information means."
+### Misconception
+*"A computer that processes information understands what that information means."*
 
-**Why it's wrong:** Computation, by its formal definition, requires only mechanical rule-following — not comprehension. A telegraph relay "processes" Morse code perfectly without understanding English.
+#### Why it's wrong
+Computation, by its formal definition, requires only mechanical rule-following — not comprehension. A telegraph relay "processes" Morse code perfectly without understanding English.
 
-**Correct intuition:** A computer manipulates symbols according to rules; whether or not any "understanding" is happening is a separate, much harder question this book will return to.
+#### Correct intuition:
+A computer manipulates symbols according to rules; whether or not any "understanding" is happening is a separate, much harder question this book will return to.
 
-**Analogy:** A vending machine correctly processes coin-shaped-and-weighted metal without knowing what money is.
+#### Analogy:
+A vending machine correctly processes coin-shaped-and-weighted metal without knowing what money is.
 
-**Misconception:** "More information means more data — a longer message always contains more information."
+### Misconception
+*"More information means more data — a longer message always contains more information."*
 
-**Why it's wrong:** Information is a measure of how much a message reduces your uncertainty, not how many words or bytes it contains. A long, entirely predictable message can carry almost no information.
+#### Why it's wrong
+Information is a measure of how much a message reduces your uncertainty, not how many words or bytes it contains. A long, entirely predictable message can carry almost no information.
 
-**Correct intuition:** Information content depends on how surprising the message is, not on its length.
+#### Correct intuition:
+Information content depends on how surprising the message is, not on its length.
 
-**Analogy:** A weather forecast that just says "it will be exactly like every other day this month" can be a hundred pages long and still tell you almost nothing you didn't already expect.
+#### Analogy:
+A weather forecast that just says "it will be exactly like every other day this month" can be a hundred pages long and still tell you almost nothing you didn't already expect.
 
 ## 7. Practical Implications
 

@@ -105,21 +105,29 @@ mechanism covered in Chapter 17.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "The context window is the same thing as the model's trained knowledge or long-term memory."
+### Misconception
+*"The context window is the same thing as the model's trained knowledge or long-term memory."*
 
-**Why it's wrong:** Trained knowledge (Chapter 9) is baked into the model's parameters and persists across every conversation; the context window is a separate, temporary, per-conversation input buffer that typically resets between sessions and has nothing to do with what the model learned during training.
+#### Why it's wrong
+Trained knowledge (Chapter 9) is baked into the model's parameters and persists across every conversation; the context window is a separate, temporary, per-conversation input buffer that typically resets between sessions and has nothing to do with what the model learned during training.
 
-**Correct intuition:** Training gives a model its general knowledge, once, for good (until retrained); the context window is what it can see about this specific conversation, right now.
+#### Correct intuition:
+Training gives a model its general knowledge, once, for good (until retrained); the context window is what it can see about this specific conversation, right now.
 
-**Analogy:** A doctor's medical training doesn't reset between patients, but their notes on the patient currently in front of them are specific to that one visit.
+#### Analogy:
+A doctor's medical training doesn't reset between patients, but their notes on the patient currently in front of them are specific to that one visit.
 
-**Misconception:** "A model remembers earlier parts of a long conversation the way a person does, just imperfectly."
+### Misconception
+*"A model remembers earlier parts of a long conversation the way a person does, just imperfectly."*
 
-**Why it's wrong:** There's no active human-style recall process happening. Whether raw information is available at all is a clean, binary fact — present as tokens in the current input, or entirely absent, with no fuzzy in-between. But that's not the whole picture: even present information can be used less reliably depending on where it sits in a long input, which is a different phenomenon from human-style forgetting.
+#### Why it's wrong
+There's no active human-style recall process happening. Whether raw information is available at all is a clean, binary fact — present as tokens in the current input, or entirely absent, with no fuzzy in-between. But that's not the whole picture: even present information can be used less reliably depending on where it sits in a long input, which is a different phenomenon from human-style forgetting.
 
-**Correct intuition:** "In the window" or "not in the window" is binary; "used well" is a separate, non-binary question about how reliably a model draws on something it technically has access to.
+#### Correct intuition:
+"In the window" or "not in the window" is binary; "used well" is a separate, non-binary question about how reliably a model draws on something it technically has access to.
 
-**Analogy:** A photocopier either has a page in the tray or it doesn't — but even with every page present, a reader skimming a thick stack may still absorb the first and last pages more reliably than page two hundred.
+#### Analogy:
+A photocopier either has a page in the tray or it doesn't — but even with every page present, a reader skimming a thick stack may still absorb the first and last pages more reliably than page two hundred.
 
 ## 7. Practical Implications
 

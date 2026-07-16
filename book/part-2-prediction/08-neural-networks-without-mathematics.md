@@ -118,21 +118,29 @@ literal blueprint of one.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "A neural network is basically a simulation of a human brain."
+### Misconception
+*"A neural network is basically a simulation of a human brain."*
 
-**Why it's wrong:** The units are only loosely, historically inspired by biological neurons; they don't simulate real neuron behavior, brain structure, or biological learning mechanisms.
+#### Why it's wrong
+The units are only loosely, historically inspired by biological neurons; they don't simulate real neuron behavior, brain structure, or biological learning mechanisms.
 
-**Correct intuition:** A neural network is a mathematical system of simple, adjustable units — the biological name is a historical artifact of where the idea originally came from, not a claim of biological accuracy.
+#### Correct intuition:
+A neural network is a mathematical system of simple, adjustable units — the biological name is a historical artifact of where the idea originally came from, not a claim of biological accuracy.
 
-**Analogy:** An airplane wing is inspired by a bird's wing, but nobody mistakes a Boeing 747 for a mechanical bird.
+#### Analogy:
+An airplane wing is inspired by a bird's wing, but nobody mistakes a Boeing 747 for a mechanical bird.
 
-**Misconception:** "More parameters automatically means the network understands more, in a simple, linear way."
+### Misconception
+*"More parameters automatically means the network understands more, in a simple, linear way."*
 
-**Why it's wrong:** Parameter count matters, but how those parameters are structured, trained, and balanced against the amount of training data all matter too — a large but poorly trained network can underperform a smaller, well-trained one.
+#### Why it's wrong
+Parameter count matters, but how those parameters are structured, trained, and balanced against the amount of training data all matter too — a large but poorly trained network can underperform a smaller, well-trained one.
 
-**Correct intuition:** Parameter count is one important ingredient among several, not a standalone score of capability — Chapter 10 covers how these ingredients interact.
+#### Correct intuition:
+Parameter count is one important ingredient among several, not a standalone score of capability — Chapter 10 covers how these ingredients interact.
 
-**Analogy:** A car with a bigger engine isn't automatically faster if the rest of the car — transmission, weight, aerodynamics — isn't built to use that power well.
+#### Analogy:
+A car with a bigger engine isn't automatically faster if the rest of the car — transmission, weight, aerodynamics — isn't built to use that power well.
 
 ## 7. Practical Implications
 

@@ -27,3 +27,13 @@ driver," "emergent abilities").
 | `frantar2022gptq` | E. Frantar et al., "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers," *arXiv:2210.17323*, 2022. | Calibrated post-training quantization (Ch. 20) |
 | `mata2023avianca` | *Mata v. Avianca, Inc.*, No. 22-cv-1461 (S.D.N.Y. June 22, 2023), Order on Sanctions. | The fabricated legal citations incident used as Ch. 15's real-world story |
 | `ji2023hallucination` | Z. Ji et al., "Survey of Hallucination in Natural Language Generation," *ACM Computing Surveys*, 2023 (`arXiv:2202.03629`). | General hallucination-rate and mitigation claims (Ch. 15) |
+| `openai2023functions` | OpenAI, "Function calling and other API updates," OpenAI blog, June 2023. | Mainstream introduction of structured tool/function calling (Ch. 21) |
+| `anthropic2024mcp` | Anthropic, "Introducing the Model Context Protocol," Anthropic blog, November 2024. | The Model Context Protocol as a standardized tool-connection format (Ch. 21) |
+| `yao2022react` | S. Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models," *arXiv:2210.03629*, 2022. | Early, influential description of interleaving reasoning with tool calls in a loop (Ch. 22) |
+| `wei2022cot` | J. Wei et al., "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models," *arXiv:2201.11903*, 2022. | Original chain-of-thought prompting result (Ch. 23) |
+| `dosovitskiy2020vit` | A. Dosovitskiy et al., "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale," *arXiv:2010.11929*, 2020. | Patch-based image tokenization (Vision Transformer / ViT) (Ch. 24) |
+| `radford2021clip` | A. Radford et al., "Learning Transferable Visual Models From Natural Language Supervision" (CLIP), *arXiv:2103.00020*, 2021. | Contrastive image-text alignment into a shared embedding space (Ch. 24) |
+| `shazeer2017moe` | N. Shazeer et al., "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer," *arXiv:1701.06538*, 2017. | Original sparsely-gated Mixture-of-Experts formulation (Ch. 25) |
+| `fedus2021switch` | W. Fedus, B. Zoph, N. Shazeer, "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity," *arXiv:2101.03961*, 2021. | Simplified single-expert-per-token routing at scale (Ch. 25) |
+| `zheng2023judge` | L. Zheng et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena," *arXiv:2306.05685*, 2023. | LLM-as-judge evaluation methodology (Ch. 26) |
+| `greshake2023injection` | K. Greshake et al., "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection," *arXiv:2302.12173*, 2023. | Indirect prompt injection via retrieved/tool-fetched content (Ch. 28) |

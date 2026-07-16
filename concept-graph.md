@@ -79,17 +79,17 @@ after any change to the YAML and commit both files together.
 | Retrieval | ✅ written | Ch. 17 | similarity, context-windows | 1 | [link](book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#8-key-takeaway) |
 | Vector databases | ✅ written | Ch. 17 | embeddings, similarity, retrieval | 1 | [link](book/part-4-building-useful-ai/17-semantic-retrieval-and-vector-databases.md#8-key-takeaway) |
 | Retrieval-Augmented Generation (RAG) | ✅ written | Ch. 18 | retrieval, context-windows, inference | 2 | [link](book/part-4-building-useful-ai/18-retrieval-augmented-generation.md#8-key-takeaway) |
-| Tool calling | ☐ planned | Ch. 21 | inference, context-windows | 0 | — |
-| Model Context Protocol (MCP) | ☐ planned | Ch. 21 | tool-calling | 0 | — |
-| AI agents | ☐ planned | Ch. 22 | tool-calling, memory, inference | 0 | — |
+| Tool calling | ✅ written | Ch. 21 | inference, context-windows | 2 | [link](book/part-5-ai-systems/21-how-models-reach-into-the-world.md#8-key-takeaway) |
+| Model Context Protocol (MCP) | ✅ written | Ch. 21 | tool-calling | 1 | [link](book/part-5-ai-systems/21-how-models-reach-into-the-world.md#8-key-takeaway) |
+| AI agents | ✅ written | Ch. 22 | tool-calling, memory, inference | 3 | [link](book/part-5-ai-systems/22-from-single-calls-to-agents.md#8-key-takeaway) |
 
 ## Level 7 — Reasoning models, Multimodality, Mixture of Experts, Quantization, Efficient inference
 
 | Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
 |---|---|---|---|---|---|
-| Reasoning models | ☐ planned | Ch. 23 | inference, sampling, training | 0 | — |
-| Multimodality | ☐ planned | Ch. 24 | tokens, embeddings, transformer-blocks | 0 | — |
-| Mixture of Experts | ☐ planned | Ch. 25 | transformer-blocks, parameters | 0 | — |
+| Reasoning models | ✅ written | Ch. 23 | inference, sampling, training | 3 | [link](book/part-5-ai-systems/23-thinking-longer-not-just-faster.md#8-key-takeaway) |
+| Multimodality | ✅ written | Ch. 24 | tokens, embeddings, transformer-blocks | 3 | [link](book/part-5-ai-systems/24-one-model-many-senses.md#8-key-takeaway) |
+| Mixture of Experts | ✅ written | Ch. 25 | transformer-blocks, parameters | 3 | [link](book/part-5-ai-systems/25-many-experts-one-model.md#8-key-takeaway) |
 | Quantization | ✅ written | Ch. 20 | parameters | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
 | Efficient inference | ✅ written | Ch. 20 | inference, quantization | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
 | KV cache | ✅ written | Ch. 20 | attention, inference | 0 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
@@ -98,8 +98,8 @@ after any change to the YAML and commit both files together.
 
 | Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
 |---|---|---|---|---|---|
-| Evaluation | ☐ planned | Ch. 26 | hallucinations, training | 0 | — |
-| Observability | ☐ planned | Ch. 27 | evaluation, ai-agents | 0 | — |
-| Security | ☐ planned | Ch. 28 | tool-calling, ai-agents | 0 | — |
-| Safety | ☐ planned | Ch. 28 | alignment, security | 0 | — |
-| AI engineering | ☐ planned | Ch. 27 | evaluation, observability, retrieval, ai-agents | 0 | — |
+| Evaluation | ✅ written | Ch. 26 | hallucinations, training | 3 | [link](book/part-6-the-future/26-evaluating-ai-systems.md#8-key-takeaway) |
+| Observability | ✅ written | Ch. 27 | evaluation, ai-agents | 2 | [link](book/part-6-the-future/27-ai-engineering-and-observability.md#8-key-takeaway) |
+| Security | ✅ written | Ch. 28 | tool-calling, ai-agents | 2 | [link](book/part-6-the-future/28-security-and-safety.md#8-key-takeaway) |
+| Safety | ✅ written | Ch. 28 | alignment, security | 1 | [link](book/part-6-the-future/28-security-and-safety.md#8-key-takeaway) |
+| AI engineering | ✅ written | Ch. 27 | evaluation, observability, retrieval, ai-agents | 1 | [link](book/part-6-the-future/27-ai-engineering-and-observability.md#8-key-takeaway) |

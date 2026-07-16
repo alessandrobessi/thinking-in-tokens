@@ -103,21 +103,29 @@ consequential form, when we cover context windows and memory in Part IV.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "Compressing language means losing quality or meaning, like a blurry, low-resolution photo."
+### Misconception
+*"Compressing language means losing quality or meaning, like a blurry, low-resolution photo."*
 
-**Why it's wrong:** Good compression specifically targets redundant, predictable content — the exact opposite of the parts of a message that carry meaning.
+#### Why it's wrong
+Good compression specifically targets redundant, predictable content — the exact opposite of the parts of a message that carry meaning.
 
-**Correct intuition:** Compression removes what could be reconstructed anyway; what's left is precisely the informative core of the message.
+#### Correct intuition:
+Compression removes what could be reconstructed anyway; what's left is precisely the informative core of the message.
 
-**Analogy:** Removing the words "I will be" from "I will be arriving Tuesday" loses nothing a reader couldn't reconstruct — unlike smudging out a photo's details, which are never recoverable.
+#### Analogy:
+Removing the words "I will be" from "I will be arriving Tuesday" loses nothing a reader couldn't reconstruct — unlike smudging out a photo's details, which are never recoverable.
 
-**Misconception:** "Context just means 'the general topic' being discussed."
+### Misconception
+*"Context just means 'the general topic' being discussed."*
 
-**Why it's wrong:** Context, in this technical sense, is the specific sequence of surrounding tokens — not a vague subject label — and it can resolve very fine-grained ambiguity, not just topic.
+#### Why it's wrong
+Context, in this technical sense, is the specific sequence of surrounding tokens — not a vague subject label — and it can resolve very fine-grained ambiguity, not just topic.
 
-**Correct intuition:** Context is the exact material immediately around a token that a model actually conditions its interpretation on.
+#### Correct intuition:
+Context is the exact material immediately around a token that a model actually conditions its interpretation on.
 
-**Analogy:** Knowing the "topic" of a conversation is a river — but knowing the *exact previous sentence* is what tells you whether "bank" means the water's edge or the building down the street.
+#### Analogy:
+Knowing the "topic" of a conversation is a river — but knowing the *exact previous sentence* is what tells you whether "bank" means the water's edge or the building down the street.
 
 ## 7. Practical Implications
 

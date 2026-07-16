@@ -114,21 +114,29 @@ subtly misaligned ways after this process, which is part of why Chapter
 
 ## 6. Common Misconceptions
 
-**Misconception:** "Fine-tuning and pretraining are fundamentally different kinds of processes."
+### Misconception
+*"Fine-tuning and pretraining are fundamentally different kinds of processes."*
 
-**Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
+#### Why it's wrong
+Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
 
-**Correct intuition:** Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
+#### Correct intuition:
+Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
 
-**Analogy:** A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
+#### Analogy:
+A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
 
-**Misconception:** "An aligned model has been made to genuinely understand and agree with human values."
+### Misconception
+*"An aligned model has been made to genuinely understand and agree with human values."*
 
-**Why it's wrong:** Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
+#### Why it's wrong
+Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
 
-**Correct intuition:** Treat "aligned" as a description of trained behavioral tendencies, not a claim about the model's inner understanding — a distinction worth holding onto rather than resolving prematurely.
+#### Correct intuition:
+Treat "aligned" as a description of trained behavioral tendencies, not a claim about the model's inner understanding — a distinction worth holding onto rather than resolving prematurely.
 
-**Analogy:** A well-trained customer service employee can reliably follow a company's values in every interaction without that proving they personally hold those values — the training shapes behavior either way.
+#### Analogy:
+A well-trained customer service employee can reliably follow a company's values in every interaction without that proving they personally hold those values — the training shapes behavior either way.
 
 ## 7. Practical Implications
 

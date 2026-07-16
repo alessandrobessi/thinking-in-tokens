@@ -83,21 +83,29 @@ fast, without checking every point individually.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "Retrieval works by searching for matching keywords, just with some extra intelligence layered on."
+### Misconception
+*"Retrieval works by searching for matching keywords, just with some extra intelligence layered on."*
 
-**Why it's wrong:** Semantic retrieval finds meaning-level matches even when zero words are shared between the query and the result, exactly as in the refund/reimbursement example — it isn't keyword search with improvements, it's a different underlying operation entirely.
+#### Why it's wrong
+Semantic retrieval finds meaning-level matches even when zero words are shared between the query and the result, exactly as in the refund/reimbursement example — it isn't keyword search with improvements, it's a different underlying operation entirely.
 
-**Correct intuition:** Retrieval compares locations in Chapter 5's meaning-space, not overlapping vocabulary.
+#### Correct intuition:
+Retrieval compares locations in Chapter 5's meaning-space, not overlapping vocabulary.
 
-**Analogy:** The librarian-by-meaning finds you the right book by what it's about, not by whether its title happens to share words with your question.
+#### Analogy:
+The librarian-by-meaning finds you the right book by what it's about, not by whether its title happens to share words with your question.
 
-**Misconception:** "A vector database is just a regular database with a search feature added."
+### Misconception
+*"A vector database is just a regular database with a search feature added."*
 
-**Why it's wrong:** The core operation — approximate nearest-neighbor search over points in a high-dimensional space — is fundamentally different from what conventional databases (built for exact lookups, filtering, and sorting) are optimized to do, even though modern systems increasingly combine both kinds of capability.
+#### Why it's wrong
+The core operation — approximate nearest-neighbor search over points in a high-dimensional space — is fundamentally different from what conventional databases (built for exact lookups, filtering, and sorting) are optimized to do, even though modern systems increasingly combine both kinds of capability.
 
-**Correct intuition:** A vector database is built around a genuinely different question — "what's nearby in meaning-space" — not an enhancement of "what exactly matches this value."
+#### Correct intuition:
+A vector database is built around a genuinely different question — "what's nearby in meaning-space" — not an enhancement of "what exactly matches this value."
 
-**Analogy:** A library organized by meaning and a library organized alphabetically are solving different problems, even though both are technically "libraries."
+#### Analogy:
+A library organized by meaning and a library organized alphabetically are solving different problems, even though both are technically "libraries."
 
 ## 7. Practical Implications
 

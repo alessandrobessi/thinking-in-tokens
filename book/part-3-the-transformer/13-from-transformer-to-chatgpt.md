@@ -106,21 +106,29 @@ this, is the training signal being optimized against.
 
 ## 6. Common Misconceptions
 
-**Misconception:** "ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."
+### Misconception
+*"ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."*
 
-**Why it's wrong:** Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
+#### Why it's wrong
+Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
 
-**Correct intuition:** A "chat" or "instruct" model is a pretrained model that has been through additional, deliberate behavioral training — not the same artifact as the raw pretrained model wearing a different interface.
+#### Correct intuition:
+A "chat" or "instruct" model is a pretrained model that has been through additional, deliberate behavioral training — not the same artifact as the raw pretrained model wearing a different interface.
 
-**Analogy:** A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
+#### Analogy:
+A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
 
-**Misconception:** "The 2017 transformer paper alone explains why chatbots suddenly got good."
+### Misconception
+*"The 2017 transformer paper alone explains why chatbots suddenly got good."*
 
-**Why it's wrong:** As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
+#### Why it's wrong
+As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
 
-**Correct intuition:** The architecture made a powerful predictor possible; alignment techniques are what made that predictor feel like a helpful assistant.
+#### Correct intuition:
+The architecture made a powerful predictor possible; alignment techniques are what made that predictor feel like a helpful assistant.
 
-**Analogy:** A powerful engine doesn't make a car street-legal or comfortable to drive — it still needs the rest of the car built around it.
+#### Analogy:
+A powerful engine doesn't make a car street-legal or comfortable to drive — it still needs the rest of the car built around it.
 
 ## 7. Practical Implications
 
