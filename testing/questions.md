@@ -170,6 +170,14 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What does 'attention' let a model do, in your own
   words?"
+- **Transfer:** "In the sentence 'The trophy didn't fit in the suitcase
+  because it was too big,' at what point in reading the sentence could a
+  model first work out what 'it' refers to? What lets it do that instead
+  of just reading strictly left to right?" (Correct answer: only once
+  later context — 'because it was too big' — has been read; the
+  resolution happens through attention weighing 'trophy' as more relevant
+  than 'suitcase' at that later position, not by reading ahead or
+  rewriting the earlier representation of 'it.')
 - **Misconception resistance** (`attention-reads-sequentially`): "A
   colleague says a model 'reads' a sentence one word at a time in order,
   the way a person does. How would you respond?"
@@ -186,6 +194,14 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What is a transformer block, and what does
   'stacking' many of them actually buy you?"
+- **Transfer:** "A team wants a model that's good at simple, surface-level
+  word patterns but doesn't need to handle nuanced, multi-step reasoning.
+  Would you expect that model to need many transformer layers or relatively
+  few? Explain your reasoning." (Correct answer: relatively few — each
+  additional layer builds progressively more refined, higher-level
+  representations on top of the last, so simple surface patterns don't
+  need many rounds of refinement, while nuanced reasoning benefits from
+  more.)
 - **Misconception resistance** (`every-transformer-layer-same`): "A
   friend says 'all the layers in a transformer are doing the same thing,
   just repeated.' How would you respond?"
@@ -197,6 +213,13 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "Why did it take more than just the transformer
   architecture to get something like ChatGPT?"
+- **Transfer:** "A startup takes a raw pretrained model and changes only
+  the chat interface around it — no additional training. Would you
+  expect it to behave like ChatGPT? Explain why or why not." (Correct
+  answer: no — without fine-tuning and human-feedback adjustment, the
+  underlying model still tends to continue text in statistically plausible
+  but unhelpful ways, e.g. extending a list of questions rather than
+  answering one; the interface alone doesn't produce chat-like behavior.)
 - **Misconception resistance** (`chatgpt-is-base-model-with-interface`):
   "A colleague says 'ChatGPT is just GPT-3 with a chat window slapped on
   it.' How would you respond?"
@@ -208,6 +231,14 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What's the difference between training and
   inference?"
+- **Transfer:** "You're building two features on top of the same model:
+  one for open-ended creative brainstorming, one for pulling a single
+  exact figure out of a document. How would you set sampling differently
+  for each, and why?" (Correct answer: lower temperature / narrower
+  sampling — closer to always picking the most likely token — for the
+  exact-extraction task, since variability there is a liability; higher
+  temperature / broader sampling for creative brainstorming, where varied,
+  less-predictable continuations are the point.)
 - **Misconception resistance** (`model-learns-during-conversation`): "A
   friend says 'the model is learning and getting smarter as I chat with
   it.' Explain what's actually happening."
@@ -225,6 +256,16 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "Why do models 'hallucinate' — what's actually
   happening?"
+- **Transfer:** "A support chatbot needs to answer questions about a
+  company's exact return policy without making anything up. Simply
+  telling the model in the prompt to 'be more careful and only say true
+  things' — what would you add or change instead, and why does that
+  address the root cause rather than just asking nicely?" (Correct
+  answer: something like retrieval-augmentation — grounding answers in
+  the actual policy document — because the underlying issue is that
+  generation has no reliable fact-checking step against outside truth;
+  asking the model to 'be careful' doesn't add that missing verification
+  step.)
 - **Misconception resistance** (`hallucination-is-rare-bug`): "Someone
   says 'hallucination is just a rare bug that will get fixed as models
   improve.' How would you respond?"
@@ -236,6 +277,13 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What's the difference between a model's trained
   knowledge and its context window?"
+- **Transfer:** "A user's conversation has grown so long the model starts
+  missing details from early messages. Give two different ways you could
+  address this, and what tradeoff each involves." (Correct answer:
+  e.g. summarizing/compressing earlier turns to fit more content in the
+  same window — losing some detail — versus using a model with a larger
+  context window — costing more compute per request; retrieval, pulling
+  only relevant earlier turns back in on demand, is a third valid answer.)
 - **Misconception resistance** (`context-window-is-trained-knowledge`):
   "Someone says 'the context window is basically the model's memory, same
   as what it learned in training.' Explain the difference."
@@ -248,6 +296,15 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "How does semantic retrieval find relevant documents
   without matching exact words?"
+- **Transfer:** "A user searches 'car problems' and expects results
+  mentioning 'vehicle issues,' even though those exact words never
+  overlap. What has to be true about how the documents are represented
+  for that search to work, and why wouldn't a keyword search find it?"
+  (Correct answer: both the query and the documents must be embedded as
+  vectors positioned by meaning/use rather than exact wording, so
+  semantically similar phrases land close together in that space; keyword
+  search matches literal tokens and has no notion of 'car' and 'vehicle'
+  being related.)
 - **Misconception resistance** (`retrieval-is-smarter-keyword-search`):
   "A colleague says 'semantic retrieval is really just keyword search
   with some AI sprinkled on.' How would you respond?"
@@ -258,6 +315,16 @@ is what gets scored (see README.md's 0/1/2 rubric).
 ## Chapter 18 — Retrieval-Augmented Generation
 
 - **Comprehension:** "What does RAG actually do, step by step?"
+- **Transfer:** "A company wants a chatbot that (a) answers questions
+  using next week's updated pricing sheet, and (b) always responds in a
+  very specific, consistent brand voice. For each requirement, would you
+  reach for RAG, fine-tuning, both, or neither? Explain." (Correct answer:
+  (a) RAG — pricing changes weekly, and RAG surfaces current documents at
+  query time without retraining; (b) fine-tuning — a consistent style is
+  a behavioral pattern best instilled through additional training, not
+  something retrieved documents alone would produce; a system doing both
+  would combine them rather than treat them as substitutes for each
+  other.)
 - **Misconception resistance** (`rag-means-retrained-on-documents`): "A
   friend says 'if a chatbot uses RAG, it must have been retrained on
   those documents.' Is that right? Explain."
@@ -269,6 +336,16 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What's the difference between fine-tuning and
   pretraining?"
+- **Transfer:** "A company wants a model that (a) knows their internal
+  product terminology, and (b) reliably refuses unsafe requests. Which of
+  these is fine-tuning on curated examples primarily suited for, which is
+  human-feedback-based alignment primarily suited for, and could one
+  technique reasonably serve both goals?" (Correct answer: (a) is a good
+  fit for fine-tuning on domain-specific examples; (b) is the kind of
+  behavioral shaping alignment/RLHF specifically targets; both reuse the
+  same underlying training loop from Chapter 9, so a combined training
+  pass touching both goals is realistic — they aren't mutually exclusive
+  processes.)
 - **Misconception resistance**
   (`finetuning-pretraining-fundamentally-different`): "A colleague says
   'fine-tuning is a totally different process from pretraining.' Explain
@@ -282,6 +359,18 @@ is what gets scored (see README.md's 0/1/2 rubric).
 
 - **Comprehension:** "What is quantization, and why doesn't it usually
   hurt a model's behavior much?"
+- **Transfer:** "You need to (a) fit a large model onto a single
+  consumer GPU, (b) speed up a chatbot that keeps regenerating long,
+  shared prompt prefixes, and (c) permanently shrink a model's parameter
+  count for a resource-constrained deployment. Which technique from this
+  chapter fits each case — quantization, KV/prefix caching, or training a
+  genuinely smaller model — and why don't the other two solve it as well?"
+  (Correct answer: (a) quantization, which reduces the memory each
+  parameter takes up; (b) prefix caching, which reuses already-computed
+  keys/values for a shared prompt instead of recomputing them; (c) a
+  smaller model, since quantization and caching don't reduce parameter
+  count or fundamentally change what was learned — they change precision
+  or avoid redundant computation.)
 - **Misconception resistance** (`quantization-makes-model-dumber`): "A
   friend says 'a quantized model is obviously going to be noticeably
   worse.' How would you respond?"

@@ -64,12 +64,12 @@ real source — regardless of how confidently it's phrased. Confident,
 fluent delivery is the most attention-grabbing case, but a model can
 hallucinate while sounding tentative too; confidence of phrasing and
 accuracy of content are produced by the same process and aren't reliably
-linked. This isn't the model lying (it has no intention, and nothing
-resembling a separate "belief" it's concealing) — it's that next-token
-prediction (Chapter 6) optimizes for statistical plausibility given
-training-data patterns, and standard generation doesn't include a
-reliable, separate fact-checking step weighing "is this actually true"
-against the outside world.
+linked. Explaining this behavior doesn't require assuming deception:
+next-token prediction (Chapter 6) optimizes for statistical plausibility
+given training-data patterns, and the generation process has no reliably
+exposed, independent record of factual belief that it consults — no
+separate fact-checking step weighing "is this actually true" against the
+outside world — before producing each claim.
 
 ## 5. Technical Explanation
 
@@ -98,7 +98,7 @@ that default, it commonly produces one instead of a flagged absence.
 
 **Misconception:** "Hallucination is a rare bug that will simply get fixed as models improve."
 
-**Why it's wrong:** It's less a discrete defect than a structural tension between next-token prediction's default pull toward a fluent, confident-sounding continuation and the separate goal of only stating things that are true — a tension inherent to how the mechanism works, not a simple coding error.
+**Why it's wrong:** It's less a discrete defect than a structural risk of generation systems that optimize for a fluent, confident-sounding continuation without reliable grounding or verification against the separate goal of only stating things that are true — a risk arising from how standard next-token generation works, not a simple coding error, and not necessarily one every future system design must share.
 
 **Correct intuition:** Mitigations exist and genuinely help (better alignment, retrieval-augmentation in Chapters 17–18, improved calibration of uncertainty), but treat hallucination as an ongoing tradeoff to manage, not a bug awaiting a final patch.
 

@@ -135,14 +135,14 @@ security and safety.
 
 ## 8. Key Takeaway
 
-**A helpful chatbot isn't just a scaled-up transformer — it's a pretrained model further shaped by fine-tuning and human feedback to prefer being genuinely helpful over merely statistically plausible.**
+**A helpful chatbot isn't just a scaled-up transformer — it's a pretrained model further shaped by fine-tuning and human feedback to prefer responses judged more helpful over merely statistically plausible continuations.**
 
 ## 9. One-Page Summary
 
 - A raw pretrained transformer predicts statistically plausible continuations, which don't automatically mean helpful or direct answers.
 - Fine-tuning reuses Chapter 9's training loop on a smaller, curated dataset showing the desired style of behavior.
 - Human feedback (e.g. RLHF) trains a separate reward model on human preferences, then uses that reward model to further adjust the language model.
-- None of this changes the underlying architecture (Chapters 11–12) or what the model fundamentally learned during pretraining — it changes what behavior that knowledge gets pointed toward.
+- These stages usually preserve the same basic transformer architecture (Chapters 11–12), but they can substantially reshape behavior and may also alter particular capabilities, factual associations, or trainable components — not merely redirect knowledge that stays otherwise untouched.
 - "Base model" versus "chat"/"instruct" model is exactly this distinction: same architecture, different amount of post-pretraining shaping.
 
 ## 10. Further Reading

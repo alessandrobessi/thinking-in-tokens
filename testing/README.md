@@ -78,7 +78,7 @@ them unless a question specifies otherwise:
    land, a term used before its explanation arrived).
 
 `questions.md` has the exact comprehension/transfer/misconception prompts
-for all 10 written chapters (1–10), pulled directly from each chapter's own
+for all 20 written chapters (1–20), pulled directly from each chapter's own
 logged misconceptions so this protocol stays in sync with the manuscript
 rather than drifting into a separate, parallel set of questions.
 

@@ -70,15 +70,17 @@ it has learned.
 This works, at a basic level, because of exactly the property Chapter 8
 established: a neural network's capability is distributed across the
 overall pattern of its parameters, not localized in any single one, so
-naive, independent rounding of every weight tends not to change overall
-behavior much — in the same way a slightly lower-resolution thumbnail of
+the network often has enough numerical redundancy to tolerate moderate
+approximation — in the same way a slightly lower-resolution thumbnail of
 a photo remains clearly recognizable even though every individual pixel's
-value has changed. In practice, the better quantization methods do more
-than naive independent rounding: they calibrate the rounding using a
-sample of real data, so the approximation is deliberately shaped to
-preserve the patterns that matter most, rather than relying purely on
-errors coincidentally washing out. Very aggressive quantization — rounding
-far more coarsely than a model can comfortably absorb — does eventually
+value has changed. But naively rounding every weight independently, with
+no regard for scale or sensitivity, can still damage important behavior.
+In practice, the better quantization methods do more than naive
+independent rounding: they calibrate the rounding using a sample of real
+data, so the approximation is deliberately shaped to preserve the
+patterns that matter most, rather than relying purely on errors
+coincidentally washing out. Very aggressive quantization — rounding far
+more coarsely than a model can comfortably absorb — does eventually
 produce noticeable degradation regardless of method, which is why
 quantization is a genuine tradeoff to tune carefully, not a cost-free
 operation.
@@ -96,9 +98,9 @@ separate requests that happen to share an identical starting prompt.
 Specialized hardware and software, built specifically around the pattern
 of computation transformers (Chapters 11–12) perform, can run the exact
 same calculations significantly faster than general-purpose systems. None
-of these techniques change what the model learned during training
-(Chapter 9) — they change how efficiently that already-learned knowledge
-gets applied at inference time.
+of these techniques repeat the training process (Chapter 9) — they aim to
+execute an approximation of the already-learned function more efficiently
+at inference time, not to relearn it.
 
 ## 6. Common Misconceptions
 
