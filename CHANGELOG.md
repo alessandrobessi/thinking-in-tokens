@@ -2,10 +2,46 @@
 
 ## 2026-07-16
 
+- **Polish pass on Chapters 21, 23, 24, and 26, driven by a third external
+  review of commit `16c8c0f`.** Verified the review's claims first
+  (confirmed Ch.21's and Ch.23's and Ch.26's summary bullets still
+  carried the pre-fix, unhedged wording their own chapter bodies had
+  already moved past; confirmed Ch.24's "essentially the same map from
+  Chapter 5" overstated CLIP's space as literally the same one word
+  tokens live in; confirmed the cross-attention misconception's "trains
+  it jointly with the language model" doesn't hold for architectures
+  like Flamingo that freeze the pretrained backbones and train only the
+  new bridge). Fixed:
+  - **Ch.21**: aligned two summary bullets (MCP integration claim,
+    retrieval-as-tool-call claim) with the hedged wording already used in
+    the chapter body.
+  - **Ch.23**: aligned the training-recipe summary bullet with the body's
+    broader framing. Reframed three "no cognitive process" claims
+    (Technical Explanation, a misconception, and a summary bullet) into
+    purely mechanistic language — "no different decoding primitive," not
+    a claim about cognition — the same kind of unnecessary philosophical
+    commitment already corrected in Chapter 15's intention/belief passage
+    earlier in the project. Added `deepseekai2025r1` as a real, publicly
+    documented example of outcome-based-RL reasoning-model training,
+    explicitly framed as one recipe among several, not the only one.
+  - **Ch.24**: clarified that CLIP's joint embedding space is a
+    separately-learned space using the same geometric principle as
+    Chapter 5's word embeddings, not literally the same map. Described
+    projector training as commonly multi-stage (a frozen-backbone
+    alignment pass, then instruction-tuning). Corrected the
+    cross-attention-bridge description to acknowledge pretrained
+    backbones can stay frozen while only the new bridge trains.
+  - **Ch.26**: aligned the human-evaluation summary bullet with the
+    body's already-hedged "can track... depends on task/rubric/rater
+    quality" framing.
+  - Fixed a stray verb tense in this changelog's own previous entry
+    ("genuinely conflates" → "conflated," describing the pre-fix state).
+  - All three validators pass clean.
+
 - **Narrow follow-up pass on Chapters 21, 22, 23, 24, and 26, driven by a
   second external review of commit `d85135c`.** Verified the review's
   claims against the actual text first (confirmed the Ch.24 worked
-  example genuinely conflates CLIP's whole-image/whole-caption
+  example genuinely conflated CLIP's whole-image/whole-caption
   contrastive alignment with patch-level attention, that Ch.21's "a live
   stock price isn't sitting in any document" contradicts Ch.18's own
   "retrieval doesn't require a static corpus" line, and that Ch.23

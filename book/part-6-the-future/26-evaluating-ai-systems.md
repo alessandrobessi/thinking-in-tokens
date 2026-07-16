@@ -148,7 +148,7 @@ It's also why a serious evaluation plan for a real product tests more than the m
 
 - Evaluation is the general problem of measuring whether a complete AI system — the model plus retrieval, tools, and orchestration around it, not just the model in isolation — actually performs well under realistic conditions.
 - Benchmarks are fast and repeatable but vulnerable to contamination (test questions leaking into training data) and Goodhart's-law-style overfitting once they become an explicit optimization target.
-- Human evaluation tracks real-world usefulness more faithfully but is slow, expensive, and subject to rater inconsistency.
+- Human evaluation can track real-world usefulness more faithfully, but that depends on the task, rubric, and rater expertise and consistency — and it's slow and expensive besides.
 - LLM-as-judge evaluation is cheap and scalable, correlates reasonably with human judgment, but inherits its own blind spots — including hallucination and susceptibility to being gamed.
 - No single evaluation method is sufficient alone; each is an imperfect proxy with different specific failure modes.
 - A single aggregate score can mask capability-specific regressions even while it goes up overall.

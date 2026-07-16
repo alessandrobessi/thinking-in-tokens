@@ -7,9 +7,10 @@
 - `wang2022selfconsistency` — the source for multiple-candidate/majority-
   vote test-time compute, cited in §5 as one concrete instance of the
   "wider, not just longer" family of techniques.
-- Reinforcement-learning-trained reasoning models (§5) are a fast-moving,
-  now-standard technique without one single canonical paper cited here —
-  flagged for a future citation pass if a specific primary source is
-  wanted.
+- `deepseekai2025r1` — a publicly documented example of outcome-based
+  reinforcement learning on reasoning trajectories, cited in §5 as one
+  concrete, real recipe among the several named there — not presented as
+  the only way reasoning models are trained, since §5 is explicit that
+  the exact recipe varies by model and isn't always disclosed.
 
 See `bibliography.md` for full citations.

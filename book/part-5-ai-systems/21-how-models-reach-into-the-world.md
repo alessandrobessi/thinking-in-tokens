@@ -173,8 +173,8 @@ This is what sits underneath the labels "function calling," "tools," "plugins," 
 - Tool calling is a model producing a structured request (a tool name plus arguments) instead of, or alongside, ordinary prose — using the same generation mechanism as always.
 - The model never executes anything itself. A surrounding orchestration layer parses the request, runs the real function, and inserts the result back into the context window as new text.
 - Available tools form a fixed, predefined catalog described to the model in advance as a tool schema — the model cannot request a tool that was never exposed to it.
-- Tool calling is the broader interface: retrieval (Chapter 18) is one kind of tool call, alongside exact computation and real-world actions that don't reduce to fetching a passage at all.
-- The Model Context Protocol (MCP) standardizes how tools/data sources describe themselves and connect to model-serving applications, replacing custom, one-off integration code per pairing — it doesn't add any new reasoning capability.
+- Tool calling is the broader interface: retrieval (Chapter 18) can be implemented as one kind of tool call, alongside exact computation and real-world actions that don't reduce to fetching a passage at all.
+- The Model Context Protocol (MCP) standardizes the communication protocol between tools/data sources and model-serving applications, reducing custom, one-off protocol glue — real deployments still need their own configuration, authentication, and permissions, and MCP doesn't add any new reasoning capability.
 - Producing well-formed, correctly-targeted tool requests is itself a trained behavior (Chapter 19), not a free guarantee of the architecture.
 
 ## 10. Further Reading

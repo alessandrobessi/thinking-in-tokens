@@ -51,8 +51,12 @@ one, the two encoders learn to pull a genuinely matching pair's
 whole-image and whole-caption vectors toward each other, and push
 mismatched pairs — this same photo paired with an unrelated caption
 about a city skyline — apart. The result: a photo and its true caption
-land as neighboring points on essentially the same map from Chapter 5.
-Notice what this alone does and doesn't buy you: it's enough to tell
+land as neighboring points in a jointly learned multimodal space — built
+on the same geometric principle as Chapter 5's word-embedding map
+(nearby points reflect similarity), but its own separately-learned
+space, not literally the same map the language model's own word tokens
+live on. Notice what this alone does and doesn't buy you: it's enough to
+tell
 whether a photo and a caption match, which is genuinely useful for
 search and retrieval, but nothing here has taught any individual word to
 attend to any individual patch of the photo — the alignment happened at
@@ -94,11 +98,15 @@ encoder is often one whose overall sense of similarity was shaped the
 way §3's worked example described, but producing per-patch features and
 translating them for a language model is a distinct second stage, not
 the same step. A small additional network, the **projector**, is trained
-— typically alongside the language model itself, on instruction-following
-examples, using the same next-token-prediction objective from Chapters 6
-and 9 rather than §3's contrastive matching objective — to translate
-those patch features into the same numeric space the language model's
-own token embeddings live in. Once translated, the language model's
+to translate those patch features into the same numeric space the
+language model's own token embeddings live in — commonly in more than
+one stage: an initial pass often trains just the projector, with the
+encoder and language model held frozen, purely to align the translated
+features to the language model's existing space; a later pass then
+fine-tunes on instruction-following examples, sometimes updating parts
+of the language model too. Either stage reuses the same next-token-
+prediction objective from Chapters 6 and 9, not §3's contrastive
+matching objective. Once translated, the language model's
 existing attention mechanism (Chapter 11) can treat them like any other
 token in the sequence — it doesn't need to know they originated as
 pixels rather than words.
@@ -110,7 +118,10 @@ information from the other modality while generating text. The image is
 never merged into one shared sequence with the words — it stays a
 separate pool of information the model selectively consults through this
 dedicated channel, rather than something sitting directly alongside the
-words it attends over.
+words it attends over. This bridge is what actually gets trained; the
+pretrained vision and language components on either side of it can often
+stay frozen throughout, with only the new cross-attention layers learning
+from scratch.
 
 **Unified early-fusion tokens.** A third approach skips building a bridge
 on top of an already-trained language model at all: images, audio, and
@@ -155,7 +166,7 @@ system actually supports.
 ### Misconception
 *"A multimodal model is really two separate models — one for vision, one for language — glued together, only exchanging a final summary."*
 
-**Why it's wrong:** Each modality does usually need some dedicated input representation process — an encoder, tokenizer, or codec — to perform the initial conversion into features, and that step genuinely is modality-specific. But depending on the pattern (§5), what happens next isn't two independently-reasoning systems handing off a finished conclusion: an encoder-plus-projector or unified-token system feeds the converted representation directly into the same reasoning process as the text; a cross-attention system keeps a dedicated channel to the other modality but trains it jointly with the language model, consulting it step by step rather than reading one final report.
+**Why it's wrong:** Each modality does usually need some dedicated input representation process — an encoder, tokenizer, or codec — to perform the initial conversion into features, and that step genuinely is modality-specific. But depending on the pattern (§5), what happens next isn't two independently-reasoning systems handing off a finished conclusion: an encoder-plus-projector or unified-token system feeds the converted representation directly into the same reasoning process as the text; a cross-attention system integrates the other modality through a dedicated, trained bridge, consulting it step by step during generation rather than reading one final report — even when the pretrained vision and language backbones on either side of that bridge stay frozen and only the bridge itself trains.
 
 **Correct intuition:** The specialization lives in how a modality is first converted or connected — not in running two fully separate, independently-trained systems that only talk to each other through a finished summary.
 
