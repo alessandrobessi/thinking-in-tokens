@@ -39,7 +39,7 @@ the second implementation.
   amended `blueprint.md` (new subtitle, "No Diagrams" section, updated
   Core Design Principles) so the reversal is documented, not silent.
 
-## Milestone 3 — Editorial validation of Parts I–IV
+## Milestone 3 — Editorial consolidation of Parts I–IV
 
 - [x] Lightweight citation pass on empirical/historical claims (`references/`)
   — added `levesque2012winograd`, `holtzman2019degeneration`,
@@ -49,19 +49,22 @@ the second implementation.
   `chapter-19.md`, and `chapter-20.md`. KV caching (Ch.20) still has no
   single canonical paper cited — flagged in that reference file for a
   future pass if one is wanted.
-- [x] `testing/questions.md` now covers Chapters 1–20 (Parts I–IV) —
-  extended with Comprehension and scenario-based Misconception Resistance
-  questions for Chapters 11–20, following the same format and tied to the
-  misconception IDs in `misconceptions.md`.
-- [ ] Track A — Pedagogy: 5+ non-technical target readers, following the
-  structured protocol in `testing/` — pre-test, comprehension, transfer,
-  misconception resistance (scenario-based, scored 0-2), retention, and
-  reading-experience notes, per chapter, per reader. Requires actually
-  recruiting readers; the protocol itself is ready to run.
-- [ ] Track B — Technical correctness: 1-2 ML practitioners review the
-  chapter text directly (not the question bank) for factual/technical
-  issues. Already partially substituted by external review rounds (see
-  `CHANGELOG.md`); a dedicated practitioner pass is still open.
+- [x] Technical precision pass on Chapters 11, 12, 13, 15, and 20 (causal
+  masking, RAG's dependency graph, hallucination framing, quantization) —
+  see `CHANGELOG.md`.
+- [ ] Informal beta read: 2–3 target-audience readers per completed Part,
+  asked where they got lost, what felt repetitive, what they can now
+  explain that they couldn't before, and which explanation or example
+  stuck with them. No formal scoring or per-chapter protocol — the
+  previous structured reader-validation system (`testing/`, pre-test/
+  transfer/misconception/retention scoring across 5+ readers) was judged
+  disproportionate to a book at this stage and dropped; see `CHANGELOG.md`
+  for the reasoning. It remains recoverable from git history (see the
+  commit that removed it) if a future course or workshop wants it.
+- [ ] Technical review: at least one ML practitioner reviewing Parts I–IV
+  directly for inaccurate, overconfident, or misleading claims. Already
+  partially informed by external review rounds (see `CHANGELOG.md`); a
+  dedicated practitioner pass is still open.
 - [ ] Cross-theme, cross-chapter consistency pass on analogies and voice
 
 ## Milestone 4 — Parts III–VI

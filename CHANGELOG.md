@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-07-16
+
+- **Removed the formal reader-validation system (`testing/`) as a project
+  workstream.** The structured protocol — pre-test, comprehension,
+  transfer, scenario-based misconception resistance scored 0–2, one-week
+  retention, per chapter, per reader, across 5+ readers — was judged
+  disproportionate to a solo popular-technical book at this stage: with
+  20 chapters already written, running it properly meant hundreds of
+  individually administered and scored interactions before Part V could
+  even start. It also risked optimizing chapters to pass narrow scripted
+  questions rather than for a genuinely rewarding reading experience.
+  Deleted `testing/README.md` and `testing/questions.md` outright (not
+  archived) — full history, including the Chapter 11–20 transfer
+  questions added the same week, remains recoverable via git. Replaced
+  Milestone 3's Track A/Track B items in `ROADMAP.md` with a lighter
+  two-part process: an informal beta read (2–3 target readers per Part,
+  free-text impressions, no scoring) and a technical review by at least
+  one ML practitioner. Updated `README.md`'s file-index table to drop the
+  now-deleted `testing/` row.
+
 ## 2026-07-15
 
 - Reformatted all 20 written chapters to match an updated
