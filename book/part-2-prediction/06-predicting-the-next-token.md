@@ -129,7 +129,7 @@ can matter disproportionately to how the rest of the response unfolds.
 
 **Text is generated one token at a time — predict a distribution, choose a token, append it, and predict again with the longer sequence as new context.**
 
-## One-Page Summary
+## What to Remember
 
 - Prediction means assigning a probability to every token in the vocabulary, given everything before it.
 - Text generation is autoregressive: predict, choose, append, repeat — one token at a time.

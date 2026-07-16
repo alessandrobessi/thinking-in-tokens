@@ -137,7 +137,7 @@ not optional.
 
 **Quantization shrinks a model's memory and compute needs by storing its parameters more coarsely — exploiting the fact that a network's behavior lives in the overall pattern of billions of weights, not in any single weight's exact precision.**
 
-## One-Page Summary
+## What to Remember
 
 - Quantization approximates a model's stored parameters at lower numerical precision, shrinking memory and compute needs — the values change, but the architecture and (as closely as possible) the behavior are preserved.
 - This works partly because network behavior lives in the overall pattern of parameters (Chapter 8), not any single weight's exact value; the best methods also calibrate rounding against real data rather than relying purely on independent errors washing out.

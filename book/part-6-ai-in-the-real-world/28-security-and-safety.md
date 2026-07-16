@@ -150,7 +150,7 @@ This is why AI products that let a model read untrusted content — browsing the
 
 **A model's context window has no enforced boundary between trusted instructions and content it's merely reading — role tags help but don't close that gap — which is exactly what prompt injection exploits, and why real security for a tool-using AI system has to come from safeguards outside the model, not from the model alone.**
 
-## One-Page Summary
+## What to Remember
 
 - Security, here, centers on prompt injection: instructions hidden inside content a model merely processes (a document, email, webpage) getting treated as legitimate commands.
 - The root cause is structural: role tags (system/developer/user/tool) let a model be trained to weight content differently, but that's a trained hint, not an enforced boundary the way a programming language separates code from data.

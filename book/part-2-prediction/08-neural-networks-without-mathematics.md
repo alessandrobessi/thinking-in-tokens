@@ -149,7 +149,7 @@ whole pattern, not localized in any single readable place.
 
 **A neural network is layers of simple units connected by adjustable weights — its entire capability lives in the pattern of those weights, not in any single unit.**
 
-## One-Page Summary
+## What to Remember
 
 - A neural network is built from many simple units, loosely inspired by (not simulating) biological neurons.
 - Each connection between units has its own adjustable weight — a parameter — controlling how much that input matters.

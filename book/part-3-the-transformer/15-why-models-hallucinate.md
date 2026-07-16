@@ -128,7 +128,7 @@ knowledge and obscure or narrow topics.
 
 **Hallucination isn't the model lying — it's next-token prediction continuing exactly as designed, without a reliable fact-checking step, in a case where statistical plausibility and factual truth have quietly come apart.**
 
-## One-Page Summary
+## What to Remember
 
 - A hallucination is factually wrong or unsupported output — it doesn't require confident phrasing, though confident delivery is the most noticeable case.
 - Next-token prediction (Chapter 6) optimizes for statistical plausibility relative to training text, not for truth about the real world.

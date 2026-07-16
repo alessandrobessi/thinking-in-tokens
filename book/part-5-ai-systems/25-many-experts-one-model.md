@@ -143,7 +143,7 @@ This is the mechanism behind headline claims like "this model has N total parame
 
 **Mixture of Experts lets a model have an enormous total number of parameters while only activating a small, learned subset of them per token — trading a larger memory footprint for a computational cost much closer to a far smaller model's.**
 
-## One-Page Summary
+## What to Remember
 
 - Mixture of Experts replaces selected feed-forward layers' single network with several expert sub-networks plus a small router that picks a handful of experts per token — usually applied to some of a model's layers, not necessarily every one.
 - Only the selected experts' parameters process a given token; routing is learned during training, not assigned by a human in advance.

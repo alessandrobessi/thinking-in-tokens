@@ -134,7 +134,7 @@ and again.
 
 **Training is a loop — predict, measure loss, nudge every parameter — repeated billions of times; learning is the name for whatever pattern emerges from it.**
 
-## One-Page Summary
+## What to Remember
 
 - Loss is a precise number measuring how wrong a single prediction was.
 - Training is the repeated loop of predicting, measuring loss, and nudging every parameter toward reducing it.

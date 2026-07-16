@@ -166,7 +166,7 @@ This is the mechanism behind "reasoning mode," "extended thinking," or "thinking
 
 **Spending more inference-time computation — whether as a longer written chain, several checked candidate attempts, or a searched set of paths — trades time and cost for a higher chance of getting hard, multi-step problems right; a reasoning model's written chain is the most visible way of doing this, not the only one.**
 
-## One-Page Summary
+## What to Remember
 
 - Test-time compute is spending additional computation at inference time, beyond a single one-shot prediction, to improve reliability on hard problems.
 - Reasoning models generate explicit intermediate steps before a final answer, often trained with some combination of outcome-based reinforcement learning, supervised reasoning examples, process-level feedback, or distillation (building on Chapter 19) to use that space productively — the most visible current instance of test-time compute, not the only one.

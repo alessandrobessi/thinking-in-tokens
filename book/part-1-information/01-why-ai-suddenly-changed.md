@@ -153,7 +153,7 @@ book aims to give you throughout.
 
 **Modern AI is what you get when internet-scale data, parallel compute, and a new kind of architecture arrive together — not a single sudden invention.**
 
-## One-Page Summary
+## What to Remember
 
 - What the public experienced as a sudden leap was the convergence of three long-running trends: data, compute, and a new architecture.
 - Internet-scale text gave systems enough examples of language patterns to learn from.

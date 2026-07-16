@@ -138,7 +138,7 @@ announcements oversell.
 
 **Scaling laws let researchers predict a large model's loss from smaller experiments — a real, reliable, but diminishing-returns pattern, not an unlimited or unconditional guarantee.**
 
-## One-Page Summary
+## What to Remember
 
 - Scaling laws are an empirical finding: loss falls in a smooth, forecastable way as data, parameters, and compute increase together — visible as a straight line once both axes are stretched into equal ratios (×10, ×100, ×1000), which is what reveals the underlying power-law relationship.
 - A small remaining part of loss ("irreducible loss") doesn't shrink with scale alone — the power-law description applies to the part that does.

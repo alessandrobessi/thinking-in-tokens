@@ -165,7 +165,7 @@ This is what sits underneath the labels "function calling," "tools," "plugins," 
 
 **A model doesn't reach into the world itself — it emits a precise, structured request naming a predefined tool and its arguments, and a separate system executes that request and hands the result back as new context for the model to keep reasoning from.**
 
-## One-Page Summary
+## What to Remember
 
 - Tool calling is a model producing a structured request (a tool name plus arguments) instead of, or alongside, ordinary prose — using the same generation mechanism as always.
 - The model never executes anything itself. A surrounding orchestration layer parses the request, runs the real function, and inserts the result back into the context window as new text.

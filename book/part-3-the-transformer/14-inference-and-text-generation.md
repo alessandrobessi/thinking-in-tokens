@@ -133,7 +133,7 @@ faster.
 
 **Inference is running a trained, frozen model to produce output; sampling is the deliberately controllable randomness in how a specific token gets chosen from the model's predicted probabilities.**
 
-## One-Page Summary
+## What to Remember
 
 - Inference is using a trained model's fixed parameters to produce output — as opposed to training, where parameters are still being adjusted.
 - Sampling is the method for choosing one actual token from the model's predicted probability distribution at each step.

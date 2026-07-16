@@ -148,7 +148,7 @@ This is why production AI teams invest specifically in logging, tracing, and das
 
 **Passing an evaluation suite tells you a system worked on the cases you thought to test — observability is what tells you, continuously, whether it's actually working on the far more varied cases real users are sending it right now.**
 
-## One-Page Summary
+## What to Remember
 
 - Observability is instrumenting a live AI system — logging, tracing multi-step tool-call/agent sequences, and tracking metrics — to see what it's actually doing in production.
 - Real user traffic is far more varied than any fixed evaluation set, which is why evaluation alone, run once before launch, isn't sufficient.

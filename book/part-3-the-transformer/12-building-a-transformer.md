@@ -126,7 +126,7 @@ just making one computation bigger.
 
 **A transformer is many stacked blocks, each combining attention and individual refinement — depth is what turns one weighing step into a rich, layered understanding.**
 
-## One-Page Summary
+## What to Remember
 
 - A transformer block combines an attention step (gathering relevant context from itself and every earlier token) with a feed-forward step (refining each token's representation individually).
 - A transformer stacks many such blocks, each with its own independently learned parameters, each refining the output of the one before it.

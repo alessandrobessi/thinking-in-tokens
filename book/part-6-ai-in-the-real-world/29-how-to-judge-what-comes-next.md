@@ -138,7 +138,7 @@ This chapter's five questions form a reusable checklist for reading any future A
 
 **Specific tools and benchmarks will keep changing — what doesn't is the durable question worth asking of any new AI development: what specific gap does it close, and by what specific, deliberate mechanism, not by a vague appeal to "the model got smarter."**
 
-## One-Page Summary
+## What to Remember
 
 - The specific tools, benchmarks, and product names in this book will keep changing; the underlying mechanisms and the pattern of how capabilities get added to them change far more slowly.
 - Every major capability since Chapter 13 followed the same shape: an existing mechanism, plus one specific, deliberately built addition closing one specific gap.

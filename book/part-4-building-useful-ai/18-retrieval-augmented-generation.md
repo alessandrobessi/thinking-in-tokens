@@ -118,7 +118,7 @@ Chapter 15 together equip you to spot.
 
 **RAG grounds a model's answer in passages retrieved from an external source and placed directly in its context window at query time — expanding what it can draw on, in the simplest and most common pattern without changing a single trained parameter.**
 
-## One-Page Summary
+## What to Remember
 
 - RAG combines retrieval (Chapter 17) with generation (Chapter 6): retrieve relevant passages from some external source first, then generate an answer using them.
 - Semantic search over a vector database is the most common retrieval mechanism, but RAG's definition doesn't require it — keyword search, direct database queries, or web search can fill the same role.

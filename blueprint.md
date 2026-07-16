@@ -286,7 +286,7 @@ The eleven elements every chapter must cover:
 7.  Practical implications
 8.  Key takeaway --- one bolded, memorable sentence that crystallizes the
     chapter's single most important idea
-9.  One-page summary
+9.  What to remember
 10. Further reading
 11. "The next obvious question..."
 

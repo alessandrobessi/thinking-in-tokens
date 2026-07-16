@@ -114,7 +114,7 @@ branding.
 
 **Retrieval finds relevant passages by meaning, not exact words, by comparing passage-level embeddings in a vector database built for fast nearest-neighbor search at huge scale.**
 
-## One-Page Summary
+## What to Remember
 
 - Retrieval finds relevant documents or passages using semantic similarity (Chapter 5), not exact keyword matching.
 - Vector databases store enormous numbers of passage embeddings and quickly find the ones nearest to a query's embedding.

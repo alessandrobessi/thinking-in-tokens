@@ -137,7 +137,7 @@ security and safety.
 
 **A helpful chatbot isn't just a scaled-up transformer — it's a pretrained model further shaped by fine-tuning and human feedback to prefer responses judged more helpful over merely statistically plausible continuations.**
 
-## One-Page Summary
+## What to Remember
 
 - A raw pretrained transformer predicts statistically plausible continuations, which don't automatically mean helpful or direct answers.
 - Fine-tuning reuses Chapter 9's training loop on a smaller, curated dataset showing the desired style of behavior.

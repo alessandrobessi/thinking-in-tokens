@@ -134,7 +134,7 @@ material a human would have used.
 
 **Context is the span of surrounding tokens a model uses to resolve ambiguity — and the same predictability that resolves meaning is what makes language compressible.**
 
-## One-Page Summary
+## What to Remember
 
 - Compression exploits redundancy: predictable content is cheap to represent; unpredictable content must be preserved in full.
 - This is the same principle behind Morse code letter-lengths and behind subword tokenization — both compress by favoring common patterns.

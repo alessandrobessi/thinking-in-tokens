@@ -57,7 +57,7 @@ engineering blog, or conversation.]
 chapter if they remember nothing else. Not a paragraph, not a diagram — the chapter's one
 load-bearing sentence.]**
 
-## One-Page Summary
+## What to Remember
 
 - [Bullet recap, 5–8 bullets max]
 

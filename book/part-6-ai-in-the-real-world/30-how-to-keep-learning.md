@@ -127,7 +127,7 @@ Concretely, going forward: read primary technical announcements directly, applyi
 
 **This book didn't hand you a fixed snapshot of today's AI — it built you a mental model durable enough to make sense of whatever specific technique, benchmark, or headline comes next.**
 
-## One-Page Summary
+## What to Remember
 
 - This book built a durable set of mechanisms — tokens, embeddings, attention, training, and the recurring pattern of specific additions closing specific gaps — not an exhaustive, final inventory of every AI technique.
 - The useful ongoing question for something new isn't "which chapter covers this," but "which existing part of this mental model does this attach to."

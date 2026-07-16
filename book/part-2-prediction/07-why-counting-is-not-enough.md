@@ -128,7 +128,7 @@ already seen.
 
 **A counting table can only report what it's already seen; a system built on geometric similarity can generalize to what it hasn't.**
 
-## One-Page Summary
+## What to Remember
 
 - Counting how often one word follows another is the simplest possible prediction method, and it fails at scale for two structural reasons.
 - The number of possible word sequences grows explosively with length, so most sequences a system must handle were never observed during counting.

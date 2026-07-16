@@ -144,7 +144,7 @@ internal letters to the model in an obvious way.
 
 **A language model doesn't receive text as human-recognized words — it receives a sequence of token IDs produced by tokenization, some whole words, some fragments, occasionally a single character.**
 
-## One-Page Summary
+## What to Remember
 
 - Characters are the smallest text units; words are a familiar but computationally slippery unit; tokens are the actual chunks a model uses.
 - Tokenization builds a fixed vocabulary (tens of thousands of tokens) where common sequences become single tokens and rare ones stay split into pieces.

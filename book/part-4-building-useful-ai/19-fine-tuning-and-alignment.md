@@ -145,7 +145,7 @@ effort, not a completed guarantee.
 
 **Fine-tuning is Chapter 9's training loop applied again after pretraining, on a narrower goal; alignment is the broader aim that loop is pointed at — matching a model's behavior to some set of intended goals, not just what's statistically plausible.**
 
-## One-Page Summary
+## What to Remember
 
 - Fine-tuning reuses Chapter 9's core training loop on a smaller, more specifically curated dataset, after pretraining is complete.
 - Alignment is the broader goal fine-tuning serves — matching model behavior to particular designers'/evaluators' intended goals, which can themselves conflict, not just statistically plausible continuations.

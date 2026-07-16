@@ -141,7 +141,7 @@ It's also why a serious evaluation plan for a real product tests more than the m
 
 **A benchmark score is a proxy for real-world capability, not the capability itself — and the more a score becomes an explicit target to optimize against, the more it risks measuring how well a system games that specific test rather than how good it actually is.**
 
-## One-Page Summary
+## What to Remember
 
 - Evaluation is the general problem of measuring whether a complete AI system — the model plus retrieval, tools, and orchestration around it, not just the model in isolation — actually performs well under realistic conditions.
 - Benchmarks are fast and repeatable but vulnerable to contamination (test questions leaking into training data) and Goodhart's-law-style overfitting once they become an explicit optimization target.

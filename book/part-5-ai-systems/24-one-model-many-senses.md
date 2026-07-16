@@ -205,7 +205,7 @@ This is why multimodal AI products list specific supported input types — image
 
 **A multimodal model doesn't have one universal architecture — it bridges different formats through a projector, a cross-attention channel, or a shared token vocabulary, and knowing which bridge a system actually uses matters more than assuming every multimodal model works the same way underneath.**
 
-## One-Page Summary
+## What to Remember
 
 - Multimodality is a model's ability to make sense of — and, with additional components, produce — more than one kind of data: text, images, audio.
 - There's no single universal architecture: three broad real patterns are encoder-plus-projector, a cross-attention bridge, and unified early-fusion tokens (§5).

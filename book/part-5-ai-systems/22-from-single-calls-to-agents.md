@@ -151,7 +151,7 @@ This is the mechanism behind "AI agent," "agentic workflow," and "autonomous cod
 
 **An AI agent isn't a smarter model — it's the same inference-and-tool-calling loop from Chapter 21, run repeatedly, with the model deciding after each result what to do next, until the loop's stopping condition — its own judgment, a separate verifier, or a hard limit — says otherwise.**
 
-## One-Page Summary
+## What to Remember
 
 - An AI agent is a model operating inside a loop: read context, decide the next action, execute it (often a tool call), append the result, repeat.
 - The mechanism is identical to Chapter 21's single tool call — what's new is that the model itself decides whether another step is needed, without a human re-prompting in between.

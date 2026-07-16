@@ -188,7 +188,7 @@ earlier words a model weighted heavily when producing a given output.
 
 **Attention lets a model weigh its own and every earlier token's relevance when interpreting or predicting from any given token — never later ones, by design — and positional encoding is what lets it also know where each token sits in the sequence.**
 
-## One-Page Summary
+## What to Remember
 
 - Attention computes, for each token, a weight reflecting how relevant it itself and every *earlier* token is to it right now — a direct, numerical version of Chapter 4's "context."
 - This weighing happens in parallel across the whole sequence during training, not as a sequential left-to-right scan — but it is restricted to earlier tokens only.

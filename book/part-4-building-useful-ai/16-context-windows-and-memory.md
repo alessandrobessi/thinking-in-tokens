@@ -136,7 +136,7 @@ sets up exactly why retrieval systems (Chapters 17–18) matter in practice.
 
 **A context window is the fixed-size input budget a model can see at any one moment; memory systems are strategies for managing what stays inside that budget as a conversation grows, not an expansion of the window itself.**
 
-## One-Page Summary
+## What to Remember
 
 - A context window is the maximum number of tokens a model can consider at once — everything beyond it simply isn't visible to the model.
 - Context window size is bounded by standard attention's computational cost, which grows faster than sequence length itself.

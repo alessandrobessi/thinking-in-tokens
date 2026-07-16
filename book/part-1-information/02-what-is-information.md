@@ -155,7 +155,7 @@ rather than feeling hand-wavy.
 
 **Information is not the symbols themselves or the act of processing them — it's the reduction in uncertainty that a probable or improbable symbol carries.**
 
-## One-Page Summary
+## What to Remember
 
 - A symbol stands for something else purely by agreement, not by resemblance.
 - Computation is mechanical, rule-based symbol manipulation — it requires no understanding of what the symbols mean.

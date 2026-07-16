@@ -176,7 +176,7 @@ level rather than the single-token level this chapter has focused on.
 
 **Embeddings place tokens as points in a high-dimensional space, where nearby points often reflect similar usage, and some recurring relationships can appear as geometric directions.**
 
-## One-Page Summary
+## What to Remember
 
 - An embedding is a location (a vector — a list of numbers) assigned to each token in a high-dimensional space.
 - Words with similar meanings and contexts end up at nearby points, learned automatically from patterns of use, not assigned by hand.
