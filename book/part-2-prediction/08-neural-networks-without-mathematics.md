@@ -118,8 +118,7 @@ literal blueprint of one.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"A neural network is basically a simulation of a human brain."*
+### *"A neural network is basically a simulation of a human brain."*
 
 **Why it's wrong:** The units are only loosely, historically inspired by biological neurons; they don't simulate real neuron behavior, brain structure, or biological learning mechanisms.
 
@@ -127,8 +126,7 @@ literal blueprint of one.
 
 **Analogy:** An airplane wing is inspired by a bird's wing, but nobody mistakes a Boeing 747 for a mechanical bird.
 
-### Misconception
-*"More parameters automatically means the network understands more, in a simple, linear way."*
+### *"More parameters automatically means the network understands more, in a simple, linear way."*
 
 **Why it's wrong:** Parameter count matters, but how those parameters are structured, trained, and balanced against the amount of training data all matter too — a large but poorly trained network can underperform a smaller, well-trained one.
 

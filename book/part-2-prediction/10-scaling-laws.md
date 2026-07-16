@@ -107,8 +107,7 @@ the energy required to produce it.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Scaling laws mean you can scale forever with no real limit."*
+### *"Scaling laws mean you can scale forever with no real limit."*
 
 **Why it's wrong:** Returns diminish predictably — each further order-of-magnitude increase in scale buys a progressively smaller improvement — and practical ceilings exist in available high-quality data, compute cost, and energy.
 
@@ -116,8 +115,7 @@ the energy required to produce it.
 
 **Analogy:** Training for a marathon reliably improves your time the more you train — but the tenth month of training buys you far less improvement than the first, and eventually further training yields almost nothing extra.
 
-### Misconception
-*"A bigger model is automatically the better choice for any given use case."*
+### *"A bigger model is automatically the better choice for any given use case."*
 
 **Why it's wrong:** Scaling laws predict lower loss on the training objective, not that a bigger model is the right cost, speed, or capability tradeoff for every task — a smaller, well-matched model is often the better engineering choice.
 

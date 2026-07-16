@@ -111,8 +111,7 @@ the complete picture of what it costs to serve one well.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"A Mixture-of-Experts model has one expert per topic — a 'math expert,' a 'history expert' — that a person could identify and label."*
+### *"A Mixture-of-Experts model has one expert per topic — a 'math expert,' a 'history expert' — that a person could identify and label."*
 
 **Why it's wrong:** Routing decisions are learned automatically during training, not assigned by a human. While some rough specialization can emerge, individual experts don't cleanly correspond to interpretable human categories, and a single sentence's tokens are often routed across several different, not-obviously-related experts.
 
@@ -120,8 +119,7 @@ the complete picture of what it costs to serve one well.
 
 **Analogy:** The law firm's intake coordinator doesn't route by a clean, textbook category system either — real cases often blend specialties in ways that don't map neatly onto "the tax expert" or "the patent expert."
 
-### Misconception
-*"Since only a couple of experts are used per token, a Mixture-of-Experts model is just as cheap to run as a small dense model of that active size."*
+### *"Since only a couple of experts are used per token, a Mixture-of-Experts model is just as cheap to run as a small dense model of that active size."*
 
 **Why it's wrong:** Every expert's parameters, used or not for a given token, still have to be stored — often across many machines in a serving system — even though compute cost per token only scales with the active subset. MoE reduces compute cost, not memory footprint, and the tension between the two is often the central practical challenge of actually deploying these models.
 
@@ -129,8 +127,7 @@ the complete picture of what it costs to serve one well.
 
 **Analogy:** The hospital still has to keep every specialist on payroll and on-site, even on a day when only two of them happen to see patients — maintaining that full roster costs the hospital something, regardless of how light any single day's actual workload is.
 
-### Misconception
-*"Mixture of Experts means the model is literally made of several completely separate smaller models."*
+### *"Mixture of Experts means the model is literally made of several completely separate smaller models."*
 
 **Why it's wrong:** The router and every expert are trained jointly, inside one architecture and one training run, sharing everything else in the transformer — attention, other layers, the rest of the model. It isn't several independently trained models glued together afterward, the way an ensemble of separately trained models would be.
 

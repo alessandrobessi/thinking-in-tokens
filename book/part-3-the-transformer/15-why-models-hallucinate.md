@@ -96,8 +96,7 @@ that default, it commonly produces one instead of a flagged absence.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Hallucination is a rare bug that will simply get fixed as models improve."*
+### *"Hallucination is a rare bug that will simply get fixed as models improve."*
 
 **Why it's wrong:** It's less a discrete defect than a structural risk of generation systems that optimize for a fluent, confident-sounding continuation without reliable grounding or verification against the separate goal of only stating things that are true — a risk arising from how standard next-token generation works, not a simple coding error, and not necessarily one every future system design must share.
 
@@ -105,8 +104,7 @@ that default, it commonly produces one instead of a flagged absence.
 
 **Analogy:** A student trained their whole life to always give a confident-sounding answer on every exam question will keep bluffing convincingly on the questions they don't actually know, even after years of additional coaching — the tendency has to be specifically retrained, not merely reduced by getting generally smarter.
 
-### Misconception
-*"The model knows it's making something up and is choosing to deceive."*
+### *"The model knows it's making something up and is choosing to deceive."*
 
 **Why it's wrong:** There's no separate module tracking "what I actually know is true" apart from "what token comes next" — it's the same fluent generation process whether the content happens to be accurate or fabricated. Some research suggests a model's internal computations can carry information correlated with how likely a claim is to be wrong, but normal generation doesn't reliably surface that signal as a calibrated statement of uncertainty — so confident phrasing still isn't a dependable indicator of accuracy in practice.
 

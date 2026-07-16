@@ -62,8 +62,11 @@ format:
     toc: true
     toc-depth: 1
     number-sections: false
+    template-partials:
+      - typst-show.typ
     include-before-body:
       - part-style.typ
   epub:
     toc: true
     toc-depth: 1
+    epub-cover-image: assets/cover-epub.png

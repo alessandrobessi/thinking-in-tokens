@@ -113,8 +113,7 @@ common pieces it already has tokens for.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"The model reads text one letter at a time, like sounding out a word."*
+### *"The model reads text one letter at a time, like sounding out a word."*
 
 **Why it's wrong:** Character-by-character processing is far too slow and loses too much structure for large-scale models; subword tokenization deliberately groups common sequences into single units to avoid this.
 
@@ -122,8 +121,7 @@ common pieces it already has tokens for.
 
 **Analogy:** A fluent reader doesn't sound out "the" letter by letter — they recognize it instantly as a single familiar shape.
 
-### Misconception
-*"A token is always exactly one word."*
+### *"A token is always exactly one word."*
 
 **Why it's wrong:** Tokenizers deliberately split rare, long, or unfamiliar words into multiple sub-word tokens, and can also merge very common short words with surrounding punctuation.
 

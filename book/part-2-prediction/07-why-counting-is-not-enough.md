@@ -98,8 +98,7 @@ network provides.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"A big enough counting table would eventually solve this — it's just a matter of collecting more data."*
+### *"A big enough counting table would eventually solve this — it's just a matter of collecting more data."*
 
 **Why it's wrong:** The space of possible word sequences grows so explosively with length that no realistic amount of counting closes the gap — most sequences a system needs to handle will always be ones it has never exactly seen.
 
@@ -107,8 +106,7 @@ network provides.
 
 **Analogy:** No matter how many recipes a cookbook contains, it can never contain the exact recipe for every possible combination of ingredients in your kitchen — you need to actually understand cooking principles, not just look up matches.
 
-### Misconception
-*"Modern AI is just a much bigger version of this same counting approach."*
+### *"Modern AI is just a much bigger version of this same counting approach."*
 
 **Why it's wrong:** The core mechanism is different in kind, not just in scale: a counting table only ever reports exact historical frequencies, while a neural network (Chapter 8) learns a general-purpose function that can generalize to sequences it has never encountered.
 

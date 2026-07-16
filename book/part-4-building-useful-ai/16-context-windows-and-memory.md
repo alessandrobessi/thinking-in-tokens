@@ -105,8 +105,7 @@ mechanism covered in Chapter 17.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"The context window is the same thing as the model's trained knowledge or long-term memory."*
+### *"The context window is the same thing as the model's trained knowledge or long-term memory."*
 
 **Why it's wrong:** Trained knowledge (Chapter 9) is baked into the model's parameters and persists across every conversation; the context window is a separate, temporary, per-conversation input buffer that typically resets between sessions and has nothing to do with what the model learned during training.
 
@@ -114,8 +113,7 @@ mechanism covered in Chapter 17.
 
 **Analogy:** A doctor's medical training doesn't reset between patients, but their notes on the patient currently in front of them are specific to that one visit.
 
-### Misconception
-*"A model remembers earlier parts of a long conversation the way a person does, just imperfectly."*
+### *"A model remembers earlier parts of a long conversation the way a person does, just imperfectly."*
 
 **Why it's wrong:** There's no active human-style recall process happening. Whether raw information is available at all is a clean, binary fact — present as tokens in the current input, or entirely absent, with no fuzzy in-between. But that's not the whole picture: even present information can be used less reliably depending on where it sits in a long input, which is a different phenomenon from human-style forgetting.
 

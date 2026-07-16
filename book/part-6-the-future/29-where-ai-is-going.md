@@ -106,8 +106,7 @@ limitation, not a vague claim of generalized improvement.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Because AI has improved so quickly and consistently, that trend is guaranteed to continue at the same pace indefinitely."*
+### *"Because AI has improved so quickly and consistently, that trend is guaranteed to continue at the same pace indefinitely."*
 
 **Why it's wrong:** Chapter 10 already established that scaling produces real, predictable improvement but with diminishing returns, not an unlimited, guaranteed trajectory. Extrapolating any trend indefinitely is exactly the kind of unexamined claim this book has equipped its reader to question rather than assume.
 
@@ -115,8 +114,7 @@ limitation, not a vague claim of generalized improvement.
 
 **Analogy:** A marathon runner's steady pace over the first ten miles is real information about their fitness — it still doesn't guarantee the same pace over the next ten, once fatigue and terrain change the underlying conditions.
 
-### Misconception
-*"Every new AI announcement represents a fundamentally new kind of intelligence or architecture."*
+### *"Every new AI announcement represents a fundamentally new kind of intelligence or architecture."*
 
 **Why it's wrong:** As §5 laid out, most announced improvements are new, specific, deliberately trained additions to the same core mechanism from Chapters 6 and 11, not a wholesale replacement of it. Recognizing which is which is exactly the durable skill this chapter is building.
 
@@ -124,8 +122,7 @@ limitation, not a vague claim of generalized improvement.
 
 **Analogy:** A car with a new engine feature is still a car — recognizing the difference between a genuinely new kind of vehicle and a specific improvement to an existing one takes exactly the kind of specific, mechanism-level question this chapter is built around.
 
-### Misconception
-*"Since specific tools, benchmarks, and company names will become outdated, the technical mechanisms this book teaches will also become outdated."*
+### *"Since specific tools, benchmarks, and company names will become outdated, the technical mechanisms this book teaches will also become outdated."*
 
 **Why it's wrong:** Tokens, embeddings, attention, gradient-based training, and the recurring pattern of "specific gap, specific deliberate addition" are considerably more durable than any single product name or benchmark — that has been this book's premise since Chapter 1, and nothing in Parts III through VI has broken it.
 

@@ -118,8 +118,7 @@ uses as its central, concrete example.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Prompt injection is basically the same as a classic software bug like SQL injection, and gets fixed the same definitive way."*
+### *"Prompt injection is basically the same as a classic software bug like SQL injection, and gets fixed the same definitive way."*
 
 **Why it's wrong:** Parameterized queries let traditional software enforce a hard syntactic boundary between a query's structure and user-supplied values, and that fix is reliable across the vast majority of real cases — though even there, unusual situations like dynamically constructed identifiers can still need careful handling by hand. Prompt injection's instruction-versus-content distinction is fuzzier still, and more fundamentally so: one model processes both in the exact same medium (natural-language tokens) using the exact same mechanism, and no current fix provides an equivalent enforced boundary, even an imperfect one.
 
@@ -127,8 +126,7 @@ uses as its central, concrete example.
 
 **Analogy:** Separating a form's data field from its instructions is straightforward when they're written in two different languages; it's much harder when both arrive as the same kind of plain English sentence.
 
-### Misconception
-*"Only obviously suspicious-looking inputs can cause a prompt injection."*
+### *"Only obviously suspicious-looking inputs can cause a prompt injection."*
 
 **Why it's wrong:** Because there's no reliable built-in way to distinguish instruction-like content from ordinary content, an injected instruction can be hidden in innocuous-looking text — invisible formatting, a normal-seeming email, a webpage's metadata — specifically to avoid drawing attention, not just delivered in an obviously suspicious message.
 
@@ -136,8 +134,7 @@ uses as its central, concrete example.
 
 **Analogy:** The malicious line in the executive's mail didn't look like a threat — it looked like an ordinary note, which was exactly the point.
 
-### Misconception
-*"Alignment training alone makes a system safe, regardless of what tools or agency it has."*
+### *"Alignment training alone makes a system safe, regardless of what tools or agency it has."*
 
 **Why it's wrong:** Alignment training (Chapter 19) shapes tendencies in a model's outputs; it doesn't guarantee behavior under adversarial pressure or unanticipated situations. Once a system has tools and agency (Chapters 21–22), safety also depends on system-level safeguards — approval gates, permission boundaries, monitoring — sitting outside the model itself.
 

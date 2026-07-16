@@ -163,8 +163,7 @@ system actually supports.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"A multimodal model is really two separate models — one for vision, one for language — glued together, only exchanging a final summary."*
+### *"A multimodal model is really two separate models — one for vision, one for language — glued together, only exchanging a final summary."*
 
 **Why it's wrong:** Each modality does usually need some dedicated input representation process — an encoder, tokenizer, or codec — to perform the initial conversion into features, and that step genuinely is modality-specific. But depending on the pattern (§5), what happens next isn't two independently-reasoning systems handing off a finished conclusion: an encoder-plus-projector or unified-token system feeds the converted representation directly into the same reasoning process as the text; a cross-attention system integrates the other modality through a dedicated, trained bridge, consulting it step by step during generation rather than reading one final report — even when the pretrained vision and language backbones on either side of that bridge stay frozen and only the bridge itself trains.
 
@@ -172,8 +171,7 @@ system actually supports.
 
 **Analogy:** The local doesn't run a separate "photo brain" and "language brain" that trade a finished note — he converts what he's shown, photo or words, into an understanding of which street is meant, consulting whichever source is relevant as he works it out, not reading a pre-written conclusion from someone else.
 
-### Misconception
-*"A model that processes images 'sees' the way a human visually perceives the world."*
+### *"A model that processes images 'sees' the way a human visually perceives the world."*
 
 **Why it's wrong:** The model has no visual experience or perception. Whichever bridging pattern it uses (§5), it converts pixels into a learned, pattern-based representation and reasons over that representation the same statistical way it reasons over word embeddings.
 
@@ -181,8 +179,7 @@ system actually supports.
 
 **Analogy:** The local recognizing the street in a photo isn't the same kind of event as him standing on that street and perceiving it directly — one is a comparison of representations, the other is lived experience.
 
-### Misconception
-*"All multimodal models bridge image and text the same underlying way — the specific method doesn't really matter."*
+### *"All multimodal models bridge image and text the same underlying way — the specific method doesn't really matter."*
 
 **Why it's wrong:** As §5 covers, real systems use meaningfully different patterns — an encoder-plus-projector approach, a cross-attention bridge, or unified early-fusion tokens — and these have real practical differences: whether a system can be extended to a new modality without retraining the whole thing, how directly an image and a word can influence each other, and how the components were trained in the first place.
 
@@ -190,8 +187,7 @@ system actually supports.
 
 **Analogy:** Two bridges can both get you across the same river while being built completely differently — a suspension bridge and a tunnel solve the same problem in structurally different ways, and which one a city has actually built affects what you can and can't do with it.
 
-### Misconception
-*"Since a model can already process images, it can handle any new kind of input automatically, with no additional training."*
+### *"Since a model can already process images, it can handle any new kind of input automatically, with no additional training."*
 
 **Why it's wrong:** Supporting a new modality requires training that modality's own input representation process and bridge to actually connect to the language model, using the kind of training process described in §5. Nothing about the transformer's core attention mechanism automatically extends to a modality it has never been trained to handle properly.
 

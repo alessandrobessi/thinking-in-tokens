@@ -130,8 +130,7 @@ initial position, not its final, in-context one.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*The model stores dictionary definitions.*
+### *The model stores dictionary definitions.*
 
 **Why it's wrong:** Nowhere in an embedding is there a stored sentence explaining what a word means — there is only a location in space, learned from patterns of use.
 
@@ -139,8 +138,7 @@ initial position, not its final, in-context one.
 
 **Analogy:** Cities on a map.
 
-### Misconception
-*"Similarity in this space just means 'these words are synonyms.'"*
+### *"Similarity in this space just means 'these words are synonyms.'"*
 
 **Why it's wrong:** Words end up close together whenever they're used in similar contexts, which captures far more than synonymy — antonyms like "hot" and "cold," for instance, often end up relatively close too, since they're used in nearly identical grammatical contexts ("the water is ___").
 
@@ -150,8 +148,7 @@ initial position, not its final, in-context one.
 
 > **Try it yourself, before reading on:** would you expect "hot" to sit closer to "cold," or closer to "sandwich," on this map? Most people's first instinct is "sandwich" — hot and cold feel like opposites, so surely they shouldn't be neighbors. But "hot" is actually closer to "cold": both fill the same slot in the same kinds of sentences ("the water is ___," "turn the ___ tap"), while "sandwich" almost never does. If your first guess was "sandwich," you were reasoning about *meaning-as-agreement* rather than *meaning-as-use* — exactly the misconception above, caught in the act.
 
-### Misconception
-*"An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."*
+### *"An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."*
 
 **Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — a process called attention (Chapter 11) — producing a different, in-context representation each time.
 

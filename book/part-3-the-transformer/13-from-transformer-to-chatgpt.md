@@ -106,8 +106,7 @@ this, is the training signal being optimized against.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."*
+### *"ChatGPT is just a base model like GPT-3, exposed directly through a chat interface."*
 
 **Why it's wrong:** Substantial additional training — fine-tuning and human-feedback adjustment — happens after pretraining specifically to shape the raw model's behavior into something helpful and conversational; the interface alone doesn't produce that behavior.
 
@@ -115,8 +114,7 @@ this, is the training signal being optimized against.
 
 **Analogy:** A brilliant graduate with encyclopedic knowledge still needs coaching before becoming a good teacher — the knowledge alone doesn't guarantee the specific, helpful communication style.
 
-### Misconception
-*"The 2017 transformer paper alone explains why chatbots suddenly got good."*
+### *"The 2017 transformer paper alone explains why chatbots suddenly got good."*
 
 **Why it's wrong:** As Chapter 1 established, architecture, data, and compute together produced a powerful base model — but the specific, helpful, conversational behavior people associate with modern chatbots required this additional fine-tuning and human-feedback stage on top of that base.
 

@@ -116,8 +116,7 @@ covered in Chapters 6 through 10.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"If a system passed its evaluation suite before launch, it's been fully verified and doesn't need further monitoring."*
+### *"If a system passed its evaluation suite before launch, it's been fully verified and doesn't need further monitoring."*
 
 **Why it's wrong:** Offline evaluation only tests a fixed, necessarily limited set of cases. Real production traffic routinely surfaces failure patterns — edge cases, downstream outages, unusual input combinations — that no evaluation set anticipated, which is exactly why observability is a separate, ongoing practice, not a redundant afterthought to evaluation.
 
@@ -125,8 +124,7 @@ covered in Chapters 6 through 10.
 
 **Analogy:** The pre-flight checklist verifies the aircraft is fit to fly — it says nothing about the weather the plane will actually fly through six hours later.
 
-### Misconception
-*"AI engineering means training or fine-tuning models."*
+### *"AI engineering means training or fine-tuning models."*
 
 **Why it's wrong:** Most people working under this title never train a foundation model from scratch — an expensive, specialized undertaking covered in Chapters 9 and 10. The day-to-day work centers on building and operating the surrounding system — retrieval, tool calling, agents, evaluation, monitoring — around an existing, already-pretrained model; fine-tuning (Chapter 19) can be one tool in that system-building work, but it isn't the discipline's defining activity.
 
@@ -134,8 +132,7 @@ covered in Chapters 6 through 10.
 
 **Analogy:** Building and maintaining an airline's flight operations is a different job from designing the aircraft's engine — both matter, but they draw on entirely different skills.
 
-### Misconception
-*"A single error or customer complaint means the whole system is broken and needs to be pulled."*
+### *"A single error or customer complaint means the whole system is broken and needs to be pulled."*
 
 **Why it's wrong:** Observability's whole point is distinguishing an isolated, one-off failure from a systemic pattern — a specific downstream outage affecting a narrow subset of requests, as in the worked example, looks very different in aggregated metrics and traces than a genuine, widespread failure does. But frequency isn't the only axis that matters: one ordinary complaint may say little on its own, while a single severe incident — a privacy exposure, an unauthorized payment — can justify immediate action even without a second occurrence to confirm a pattern.
 

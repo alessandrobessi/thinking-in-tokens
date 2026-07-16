@@ -102,8 +102,7 @@ the model's raw output, not identical to it.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"The model is still learning or improving while I chat with it."*
+### *"The model is still learning or improving while I chat with it."*
 
 **Why it's wrong:** Unless a system is specifically built to retrain on conversations (unusual, and typically a separate process), inference uses frozen parameters — nothing about a conversation changes the model's underlying trained knowledge.
 
@@ -111,8 +110,7 @@ the model's raw output, not identical to it.
 
 **Analogy:** A doctor taking your case history during an exam isn't relearning medicine — they're applying fixed training to new, specific information.
 
-### Misconception
-*"Since it's the same model and the same prompt, it should give the exact same answer every time."*
+### *"Since it's the same model and the same prompt, it should give the exact same answer every time."*
 
 **Why it's wrong:** Unless sampling is explicitly configured to always pick the top choice, controlled randomness is part of the design — repeating the same prompt can, and often does, yield different, still-reasonable responses.
 

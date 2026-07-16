@@ -96,8 +96,7 @@ feed-forward processing, rather than from raw, unrefined embeddings.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Every layer in a transformer does the same thing — it's the same computation repeated identically."*
+### *"Every layer in a transformer does the same thing — it's the same computation repeated identically."*
 
 **Why it's wrong:** Each block has its own independently learned parameters; different blocks tend to specialize in different kinds of patterns as a byproduct of training, not identical, interchangeable copies of one computation.
 
@@ -105,8 +104,7 @@ feed-forward processing, rather than from raw, unrefined embeddings.
 
 **Analogy:** Twenty-four editors reading the same manuscript don't make identical changes — each brings a different kind of scrutiny, even though they're all doing "editing."
 
-### Misconception
-*"Adding more layers just makes the same computation take longer, without changing what the model can do."*
+### *"Adding more layers just makes the same computation take longer, without changing what the model can do."*
 
 **Why it's wrong:** Additional layers give the network more rounds of refinement to build increasingly elaborate representations — similar to how Chapter 8's hidden layers build on patterns detected by the layer before, just now with attention included at every stage.
 

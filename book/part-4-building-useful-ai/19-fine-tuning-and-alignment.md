@@ -114,8 +114,7 @@ subtly misaligned ways after this process, which is part of why Chapter
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Fine-tuning and pretraining are fundamentally different kinds of processes."*
+### *"Fine-tuning and pretraining are fundamentally different kinds of processes."*
 
 **Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
 
@@ -123,8 +122,7 @@ subtly misaligned ways after this process, which is part of why Chapter
 
 **Analogy:** A medical residency uses the same underlying learning process as medical school — observe, get corrected, adjust — just applied to a narrower set of cases.
 
-### Misconception
-*"An aligned model has been made to genuinely understand and agree with human values."*
+### *"An aligned model has been made to genuinely understand and agree with human values."*
 
 **Why it's wrong:** Alignment techniques adjust which outputs the model tends to produce, based on patterns rated favorably during training — a behavioral adjustment, not demonstrated evidence of genuine comprehension or agreement with the values behind those ratings.
 

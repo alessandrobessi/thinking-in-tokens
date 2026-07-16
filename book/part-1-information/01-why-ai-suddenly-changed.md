@@ -123,8 +123,7 @@ useful observation, not a fully settled explanation.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"AI suddenly became conscious or started truly understanding language overnight."*
+### *"AI suddenly became conscious or started truly understanding language overnight."*
 
 **Why it's wrong:** Nothing changed in a single moment. Data, compute, and architecture had been improving continuously for years; the perceived "suddenness" is the public noticing a threshold that had been approached gradually.
 
@@ -132,8 +131,7 @@ useful observation, not a fully settled explanation.
 
 **Analogy:** A pot of water doesn't decide to boil — it crosses 100°C after a long, steady rise in temperature. The boiling looks sudden only if you weren't watching the thermometer.
 
-### Misconception
-*"This is just a much bigger version of the chatbots we already had."*
+### *"This is just a much bigger version of the chatbots we already had."*
 
 **Why it's wrong:** Older chatbots worked by matching your input against a fixed script written by humans. Modern systems generate a response by predicting likely text, which lets them handle inputs no one scripted for.
 

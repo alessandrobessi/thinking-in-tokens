@@ -95,8 +95,7 @@ is precisely what Parts I through III were built to be.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Now that I've finished this book, I know everything I need to know about AI."*
+### *"Now that I've finished this book, I know everything I need to know about AI."*
 
 **Why it's wrong:** This book built a durable mental model, not an exhaustive or final inventory of every technique. Chapter 29 was explicit that new, specific developments will keep appearing — genuine fluency means continuing to extend the model onto them, not treating the model as a closed, completed reference.
 
@@ -104,8 +103,7 @@ is precisely what Parts I through III were built to be.
 
 **Analogy:** Learning to read fluently doesn't mean you've read every book that will ever be written — it means every new book is now accessible to you without needing someone to read it to you first.
 
-### Misconception
-*"Keeping up with AI means consuming as much news and commentary as possible, as fast as possible."*
+### *"Keeping up with AI means consuming as much news and commentary as possible, as fast as possible."*
 
 **Why it's wrong:** Chapter 26 already established that a lot of what circulates is secondhand, unverified, or actively optimized to look impressive rather than to be accurate. Depth on primary sources, filtered through Chapter 29's five questions, produces more real understanding than a high volume of unfiltered secondhand takes.
 
@@ -113,8 +111,7 @@ is precisely what Parts I through III were built to be.
 
 **Analogy:** Reading one careful, technical writeup closely teaches more than skimming twenty breathless headlines about the same announcement.
 
-### Misconception
-*"Because I'm not a programmer or ML researcher, I still can't meaningfully engage with primary technical sources like blog posts or papers."*
+### *"Because I'm not a programmer or ML researcher, I still can't meaningfully engage with primary technical sources like blog posts or papers."*
 
 **Why it's wrong:** This book taught tokens, embeddings, attention, training, retrieval, agents, and more, without requiring mathematics or programming at any point, precisely so this specific misconception would stop being true for its reader by the final chapter.
 

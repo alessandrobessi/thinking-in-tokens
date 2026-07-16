@@ -99,8 +99,7 @@ when discussing how reasoning models try to work around it.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"The model plans out the entire sentence in advance, then writes it down."*
+### *"The model plans out the entire sentence in advance, then writes it down."*
 
 **Why it's wrong:** The basic generation mechanism doesn't begin with a hidden, fully-written draft sitting somewhere and being read off token by token — each token is predicted using only what's been generated so far. A model can still produce something that looks like a plan (an outline, "step 1, step 2...") — but if it does, that plan is itself just earlier tokens, generated the same way as everything else, not consulted from some separate pre-formed source.
 
@@ -108,8 +107,7 @@ when discussing how reasoning models try to work around it.
 
 **Analogy:** A jazz musician improvising a solo doesn't have the whole solo pre-written — each note is chosen in light of everything played so far, and the result can still sound coherent, even if the musician settles into a recognizable pattern partway through.
 
-### Misconception
-*"Predicting the next token means looking up the answer in a giant table of memorized sentences."*
+### *"Predicting the next token means looking up the answer in a giant table of memorized sentences."*
 
 **Why it's wrong:** The model computes a fresh probability distribution from the current context every time; it isn't matching against a stored table of full sentences (Chapter 7 explains in detail why a table-based approach doesn't work at this scale).
 

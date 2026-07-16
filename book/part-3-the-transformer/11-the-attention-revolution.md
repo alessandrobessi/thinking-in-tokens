@@ -146,8 +146,7 @@ somehow, since attention itself carries none) hasn't changed.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Attention means the model reads one word at a time, left to right, like a person reading a sentence."*
+### *"Attention means the model reads one word at a time, left to right, like a person reading a sentence."*
 
 **Why it's wrong:** Attention lets a model weigh every earlier token against every other earlier token simultaneously — it isn't a sequential scan, it's a parallel weighing computed in one step, just restricted to tokens already available (see the next misconception).
 
@@ -155,8 +154,7 @@ somehow, since attention itself carries none) hasn't changed.
 
 **Analogy:** A conductor doesn't process an orchestra one instrument at a time in sequence — they attend to the whole ensemble at once, adjusting emphasis on different sections based on what the whole piece needs at that moment.
 
-### Misconception
-*"Since attention lets a model weigh every token's relevance, it can look at the entire sentence, including words that come later — the same way a human reading the whole sentence at once can."*
+### *"Since attention lets a model weigh every token's relevance, it can look at the entire sentence, including words that come later — the same way a human reading the whole sentence at once can."*
 
 **Why it's wrong:** For a generative model, attention is deliberately restricted, by the causal mask, to the current token and everything before it — never anything after. This isn't a memory limitation; it's a rule enforced because next-token prediction (Chapter 6) requires it.
 
@@ -164,8 +162,7 @@ somehow, since attention itself carries none) hasn't changed.
 
 **Analogy:** A detective solving a case in real time can only use clues discovered so far, not clues that will turn up tomorrow — even though the eventual case file will contain the whole story.
 
-### Misconception
-*"Positional encoding gives the model an understanding of grammar and word order, the way a person learns syntax rules."*
+### *"Positional encoding gives the model an understanding of grammar and word order, the way a person learns syntax rules."*
 
 **Why it's wrong:** Positional encoding is just a numerical tag marking where a token sits in the sequence — it doesn't encode any grammatical rule directly; whatever use the model makes of position (including anything resembling grammar) has to be learned during training (Chapter 9), the same way everything else is.
 

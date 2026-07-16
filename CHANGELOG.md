@@ -2,6 +2,28 @@
 
 ## 2026-07-16
 
+- Updated `templates/chapter-template.md` again: merged `### Misconception`
+  + `*[...]*` into a single `### *[...]*` heading. Mechanically applied to
+  all 30 chapters (73 misconception blocks); each one now renders as its
+  own numbered sub-heading (e.g. "6.1", "6.2") with the misconception's
+  own wording as the heading text, instead of a generic "Misconception"
+  label. Verified by rendering the book and visually inspecting a page.
+- **Added a cover to the PDF and EPUB**, from user-supplied artwork
+  (`publish/assets/cover.png`, resized to `cover-epub.png` for EPUB to
+  stay under Quarto's documented under-1000px recommendation). Getting
+  this right took real investigation: `@preview/orange-book` (the Typst
+  package Quarto auto-applies to every book-format-typst project)
+  unconditionally overlays a title/subtitle/author text block on top of
+  whatever image is passed to its own `cover:` parameter — tried and
+  rejected after actually rendering it and seeing the text sitting
+  directly on the brain illustration. `publish/typst-show.typ` instead
+  overrides the bundled partial to prepend a full-bleed image page before
+  `#show: book.with(...)` runs at all, so the artwork is the literal
+  first page, with the package's own formal title page following as page
+  two — a standard convention, verified by rendering and inspecting the
+  actual PDF pages as images (page 0 is the clean cover, page 1 the
+  title page, no overlay, no duplicated text). EPUB cover verified
+  byte-identical against the source file via the archive's manifest.
 - **Polish pass on Chapters 21, 23, 24, and 26, driven by a third external
   review of commit `16c8c0f`.** Verified the review's claims first
   (confirmed Ch.21's and Ch.23's and Ch.26's summary bullets still

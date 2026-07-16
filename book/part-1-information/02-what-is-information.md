@@ -126,8 +126,7 @@ probable one (a mechanism Chapter 14 covers in detail).
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"A computer that processes information understands what that information means."*
+### *"A computer that processes information understands what that information means."*
 
 **Why it's wrong:** Computation, by its formal definition, requires only mechanical rule-following — not comprehension. A telegraph relay "processes" Morse code perfectly without understanding English.
 
@@ -135,8 +134,7 @@ probable one (a mechanism Chapter 14 covers in detail).
 
 **Analogy:** A vending machine correctly processes coin-shaped-and-weighted metal without knowing what money is.
 
-### Misconception
-*"More information means more data — a longer message always contains more information."*
+### *"More information means more data — a longer message always contains more information."*
 
 **Why it's wrong:** Information is a measure of how much a message reduces your uncertainty, not how many words or bytes it contains. A long, entirely predictable message can carry almost no information.
 

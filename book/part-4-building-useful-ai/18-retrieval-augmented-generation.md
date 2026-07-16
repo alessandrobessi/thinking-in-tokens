@@ -87,8 +87,7 @@ itself failed to find the genuinely relevant passage.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"RAG means the model has been retrained on the retrieved documents."*
+### *"RAG means the model has been retrained on the retrieved documents."*
 
 **Why it's wrong:** In the standard, simplest deployment pattern, no training or parameter update happens anywhere in this process — it's entirely a context-window technique, performed freshly at each individual query, exactly like handing a student pages for one specific exam rather than sending them back to school. (More elaborate setups can add retriever or generator fine-tuning on top, but that's an addition to the core pattern, not what makes something RAG.)
 
@@ -96,8 +95,7 @@ itself failed to find the genuinely relevant passage.
 
 **Analogy:** Handing someone a reference sheet during a test doesn't require re-teaching them the whole subject — the reference sheet is temporary, per-question help.
 
-### Misconception
-*"RAG eliminates hallucination entirely, since the model now has real sources to work from."*
+### *"RAG eliminates hallucination entirely, since the model now has real sources to work from."*
 
 **Why it's wrong:** The model can still misinterpret retrieved text, blend it incorrectly with unrelated trained-in knowledge, or hallucinate confidently when the retrieval step itself fails to find the genuinely relevant passage — grounding reduces the risk substantially, but doesn't remove it.
 

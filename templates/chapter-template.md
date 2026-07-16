@@ -36,8 +36,7 @@ happens, and land on the same insight the story already pointed at, now doubly g
 
 ## 6. Common Misconceptions
 
-### Misconception
-*[...]*
+### *[...]*
 
 **Why it's wrong:** [...]
 

@@ -103,8 +103,7 @@ avoided.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Training makes the model memorize its training examples, like a database of stored sentences."*
+### *"Training makes the model memorize its training examples, like a database of stored sentences."*
 
 **Why it's wrong:** The training process specifically rewards parameters that predict well across an enormous, varied set of examples — patterns that generalize tend to reduce loss more reliably than memorized specifics, especially given far more distinct examples than parameters could ever store verbatim.
 
@@ -112,8 +111,7 @@ avoided.
 
 **Analogy:** A student who does thousands of practice problems learns the underlying method, not a lookup table of exactly those problems — though a student who saw the same ten problems a thousand times might indeed just memorize those ten.
 
-### Misconception
-*"A lower loss always means the model has gotten more generally 'intelligent.'"*
+### *"A lower loss always means the model has gotten more generally 'intelligent.'"*
 
 **Why it's wrong:** Loss measures how well the model fits its specific training objective (next-token prediction on its training data) — improving at that objective correlates with many useful capabilities, but it's a specific, measurable quantity, not a direct measure of general intelligence.
 

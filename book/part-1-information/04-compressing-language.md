@@ -103,8 +103,7 @@ consequential form, when we cover context windows and memory in Part IV.
 
 ## 6. Common Misconceptions
 
-### Misconception
-*"Compressing language means losing quality or meaning, like a blurry, low-resolution photo."*
+### *"Compressing language means losing quality or meaning, like a blurry, low-resolution photo."*
 
 **Why it's wrong:** Good compression specifically targets redundant, predictable content — the exact opposite of the parts of a message that carry meaning.
 
@@ -112,8 +111,7 @@ consequential form, when we cover context windows and memory in Part IV.
 
 **Analogy:** Removing the words "I will be" from "I will be arriving Tuesday" loses nothing a reader couldn't reconstruct — unlike smudging out a photo's details, which are never recoverable.
 
-### Misconception
-*"Context just means 'the general topic' being discussed."*
+### *"Context just means 'the general topic' being discussed."*
 
 **Why it's wrong:** Context, in this technical sense, is the specific sequence of surrounding tokens — not a vague subject label — and it can resolve very fine-grained ambiguity, not just topic.
 
