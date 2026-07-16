@@ -6,7 +6,7 @@
 
 **Prerequisites:** Chapter 6 (prediction), Chapter 14 (sampling), Chapter 19 (fine-tuning)
 
-**New concepts introduced:** Reasoning models
+**New concepts introduced:** Test-time compute, Reasoning models
 
 ---
 
@@ -55,15 +55,21 @@ of a single unbroken leap from the full question to a final number.
 
 ## 4. Core Intuition
 
-**Reasoning models** are models that generate explicit intermediate
-reasoning text — a written-out chain of steps — before producing a final
-answer, and that have often additionally been trained to make good,
-extensive use of that reasoning space on genuinely hard problems, rather
-than merely producing it because a prompt asked nicely. This effectively
-trades more inference-time computation — more generated tokens, more
-time, more cost (Chapter 14, Chapter 20) — for a meaningfully higher
-chance of a correct final answer on problems where a single unbroken leap
-from question to answer is unreliable.
+**Test-time compute** is spending additional computation at inference
+time — beyond a single, one-shot prediction — to improve the odds of a
+correct answer on a hard problem, trading more time and cost (Chapter 14,
+Chapter 20) for more reliability. **Reasoning models** are the most
+visible current way of doing this: models that generate explicit
+intermediate reasoning text before a final answer, often specifically
+trained to make good, extensive use of that reasoning space on genuinely
+hard problems, rather than merely producing it because a prompt asked
+nicely. Writing a longer chain of steps is one way to spend that extra
+computation, but not the only one — generating several independent
+attempts and checking them, or searching through alternative solution
+paths, spend the same kind of extra computation in a different shape.
+This chapter focuses on written, trained reasoning because it's
+currently the most common and most product-visible instance of the
+broader idea, not because it's the only one.
 
 ## 5. Technical Explanation
 
@@ -89,14 +95,34 @@ more tokens on a hard problem and far fewer on an easy one — reasoning
 length becomes something the model itself adjusts based on the problem,
 not a fixed amount fixed by a prompt template.
 
-It's worth being precise about what hasn't changed. A reasoning model is
-not performing some different, deliberate cognitive process running
-behind the scenes. Every reasoning token is produced by the identical
-next-token-prediction mechanism as every other token this book has
-covered — visible reasoning steps included. What's different is that
-training has built a strong, specifically reinforced capacity to use that
-extra generated text productively, not that a qualitatively new kind of
-thinking has appeared underneath.
+Written, trained reasoning isn't the only shape test-time compute takes.
+A system can instead generate several independent candidate answers to
+the same problem — using the sampling randomness Chapter 14 already
+covered, so different attempts genuinely differ — and then select among
+them, whether by taking whichever answer the most candidates agree on or
+by using a separate check to score and filter them. Alternatively, a
+system can search through multiple partial solution paths, using a
+verifier to catch a bad step early and try a different continuation
+instead of committing to the first path generated all the way through.
+Both spend more inference-time computation than a single one-shot
+prediction, exactly like a longer written chain does, just distributed
+across width (many attempts) or backtracking (checked, revisable paths)
+rather than length. None of these require a readable chain of steps at
+all — which is exactly why "test-time compute" is the more durable term
+for the underlying idea, and "reasoning model" names one popular way of
+spending it.
+
+It's worth being precise about what hasn't changed in any of these. A
+reasoning model is not performing some different, deliberate cognitive
+process running behind the scenes. Every reasoning token is produced by
+the identical next-token-prediction mechanism as every other token this
+book has covered — visible reasoning steps included. What's different is
+that training has built a strong, specifically reinforced capacity to use
+that extra generated text productively, not that a qualitatively new kind
+of thinking has appeared underneath. The same is true of the wider and
+search-based variants: more computation, organized differently, on top of
+the same generation mechanism throughout — not a different kind of
+system underneath.
 
 ## 6. Common Misconceptions
 
@@ -133,14 +159,15 @@ This is the mechanism behind "reasoning mode," "extended thinking," or "thinking
 
 ## 8. Key Takeaway
 
-**A reasoning model doesn't think differently — it generates explicit intermediate steps as context for itself, trading more inference-time computation for a higher chance of getting hard, multi-step problems right.**
+**Spending more inference-time computation — whether as a longer written chain, several checked candidate attempts, or a searched set of paths — trades time and cost for a higher chance of getting hard, multi-step problems right; a reasoning model's written chain is the most visible way of doing this, not the only one.**
 
 ## 9. One-Page Summary
 
-- Reasoning models generate explicit intermediate steps before a final answer, often specifically trained (via reinforcement learning on correctness, building on Chapter 19) to use that space productively.
+- Test-time compute is spending additional computation at inference time, beyond a single one-shot prediction, to improve reliability on hard problems.
+- Reasoning models generate explicit intermediate steps before a final answer, often specifically trained (via reinforcement learning on correctness, building on Chapter 19) to use that space productively — the most visible current instance of test-time compute, not the only one.
 - This works because every generated token, including reasoning steps, becomes context for later tokens (Chapter 6, Chapter 16) — writing out a step makes the next prediction narrower and more reliable than one unbroken leap.
-- Chain-of-thought prompting produces a version of this effect in ordinary models; reasoning models are trained to do it well and adaptively, using more tokens on harder problems.
-- No new cognitive process is involved — every reasoning token is produced by the same next-token prediction mechanism as any other output.
+- Generating multiple candidate answers and selecting among them, or searching through alternative paths with a verifier, spend the same kind of extra computation in a different shape — wider or checked, rather than longer.
+- No new cognitive process is involved in any of these — every reasoning token is produced by the same next-token prediction mechanism as any other output.
 - More reasoning tokens raise the odds of a correct answer on hard problems but don't guarantee one, and can be unnecessary or even counterproductive on easy ones.
 - A model's printed reasoning trace genuinely shapes its final answer but isn't a guaranteed, fully faithful transcript of its actual internal computation.
 - This underlies "reasoning mode" / "extended thinking" toggles — an explicit latency/cost-versus-accuracy tradeoff.
@@ -149,6 +176,7 @@ This is the mechanism behind "reasoning mode," "extended thinking," or "thinking
 
 - Search for "chain-of-thought prompting" for the original prompting-based version of the effect described in §5.
 - Search for "chain-of-thought faithfulness" for ongoing research on how closely a model's stated reasoning tracks its actual computation, directly relevant to §6's third misconception.
+- Search for "test-time compute scaling" or "best-of-N sampling" for the broader family of techniques — width and search, not just length — described in §5.
 
 ## 11. The Next Obvious Question
 
@@ -156,7 +184,7 @@ This is the mechanism behind "reasoning mode," "extended thinking," or "thinking
 
 ---
 
-**Glossary terms added this chapter:** Reasoning model, Chain-of-thought → append to `/glossary.md`
+**Glossary terms added this chapter:** Test-time compute, Reasoning model, Chain-of-thought → append to `/glossary.md`
 
 **Misconceptions logged this chapter:** "a reasoning model is deliberately thinking behind the scenes"; "longer reasoning always means a more correct answer"; "printed reasoning is a transparent window into internal computation" → append to `/misconceptions.md`
 

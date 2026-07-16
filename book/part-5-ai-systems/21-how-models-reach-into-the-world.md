@@ -12,7 +12,7 @@
 
 ## 1. Opening Question
 
-*So far, everything this book has covered happens entirely inside the model's own reasoning — reading, predicting, retrieving, remembering. How does a model actually reach outside itself and take an action in the real world?*
+*So far, every capability this book has covered has kept the model's own job the same: read context, produce text. Even Chapter 18's retrieval, which genuinely happens outside the model, only ever hands the model more text to read — it isn't something the model itself does. How does a model actually reach outside itself and take an action in the real world?*
 
 ## 2. Real-World Story
 
@@ -38,12 +38,16 @@ price" isn't a search over static text; it's a request for a system to go
 
 Ask a language model to multiply 847 by 2,193 using nothing but its own
 next-token prediction (Chapter 6), and it will often get a large
-multiplication like this at least slightly wrong. That's not a knowledge
-gap — nothing about "knowing more" would fix it, because the model was
-never doing arithmetic in the first place. It was predicting a
-plausible-looking sequence of digits, the same way it predicts a
-plausible-looking next word in a sentence (Chapter 7 covered exactly this
-distinction between pattern-matching and the operation you actually want).
+multiplication like this at least slightly wrong. That's not simply a
+knowledge gap — a model can pick up rough internal patterns for
+arithmetic from its training data, and those patterns sometimes get
+smaller calculations right, but they're learned approximations, not a
+guaranteed, exact procedure. Predicting each digit is still fundamentally
+the same operation as predicting a plausible-looking next word in a
+sentence (Chapter 7 covered exactly this distinction between
+pattern-matching and the operation you actually want), and that operation
+comes with no guarantee of exactness the way a calculator's arithmetic
+does.
 
 Now give the same model access to a calculator tool. Instead of predicting
 digits directly, the model instead predicts a small, structured request:
@@ -52,9 +56,10 @@ model's own token-by-token guessing at all — it's handed to an actual
 calculator program, which computes 1,857,471 using ordinary, exact
 arithmetic, the same way a spreadsheet would. That exact number is then
 inserted back into the model's context window (Chapter 16) as new text,
-and the model reads it and reports it back to the user. The model never
-"got better at math." It got access to something that was never doing
-prediction at all.
+and the model reads it and reports it back to the user. The model didn't
+"get better at math." It got access to something that computes exactly,
+every time, instead of predicting a plausible-looking answer that's
+usually — but not reliably — correct.
 
 ## 4. Core Intuition
 
@@ -99,18 +104,21 @@ reliably produces well-formed requests, picks the right tool, and fills in
 sensible arguments is itself a trained behavior, not a guarantee that
 comes free with the architecture.
 
-That description step is precisely what the **Model Context Protocol
+That description step is part of what the **Model Context Protocol
 (MCP)** standardizes. Before a shared protocol existed, every pairing of a
 specific model-serving application and a specific external tool or data
 source needed its own custom integration code — a combinatorial problem
 that got worse as more tools and more model providers appeared. MCP
-defines a common, standardized way for a tool or data source to describe
-itself and for a model-serving application to request and receive that
-description and issue calls against it, so any MCP-compatible application
-can connect to any MCP-compatible tool server without bespoke, one-off
-glue code for that specific pairing. MCP doesn't change what tool calling
-fundamentally is, and it isn't the only way to implement tool calling —
-it's today's leading answer to *how the connection itself gets
+defines a common, standardized way for tools, and more broadly for
+external resources (documents, records, live data) and reusable prompt
+templates, to describe themselves to a model-serving application and be
+invoked or retrieved by it — tool calling in this chapter's sense is the
+part of MCP most relevant here, but the protocol's scope is broader than
+tool schemas alone. Any MCP-compatible application can connect to any
+MCP-compatible server without bespoke, one-off glue code for that
+specific pairing. MCP doesn't change what tool calling fundamentally is,
+and it isn't the only way to implement tool calling — it's one
+increasingly adopted open standard for *how the connection itself gets
 standardized*, which is why this chapter teaches it as a concrete instance
 of the durable idea, not as a separate mechanism.
 

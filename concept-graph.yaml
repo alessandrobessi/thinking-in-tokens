@@ -326,7 +326,7 @@ concepts:
     misconception_ids: [model-remembers-fuzzily-like-person]
     key_takeaway: book/part-4-building-useful-ai/16-context-windows-and-memory.md#8-key-takeaway
 
-  # ---------- Level 6 (retrieval/vector-databases/rag written in Part IV; tool-calling/mcp/ai-agents planned for Part V) ----------
+  # ---------- Level 6 (retrieval/vector-databases/rag written in Part IV; tool-calling/mcp/ai-agents written in Part V) ----------
   - id: retrieval
     name: Retrieval
     level: 6
@@ -385,7 +385,7 @@ concepts:
     misconception_ids: [agent-is-different-model, agent-has-genuine-autonomy, agent-looping-means-more-accurate]
     key_takeaway: book/part-5-ai-systems/22-from-single-calls-to-agents.md#8-key-takeaway
 
-  # ---------- Level 7 (quantization/efficient-inference written in Part IV; reasoning/multimodality/MoE planned for Part V) ----------
+  # ---------- Level 7 (quantization/efficient-inference written in Part IV; reasoning/multimodality/MoE written in Part V) ----------
   - id: reasoning-models
     name: Reasoning models
     level: 7
@@ -401,7 +401,7 @@ concepts:
     prerequisites: [tokens, embeddings, transformer-blocks]
     introduced_in: 24
     written: true
-    misconception_ids: [multimodal-is-two-models-glued, model-sees-like-human, new-modality-automatic]
+    misconception_ids: [multimodal-is-two-models-glued, model-sees-like-human, new-modality-automatic, one-universal-multimodal-architecture]
     key_takeaway: book/part-5-ai-systems/24-one-model-many-senses.md#8-key-takeaway
 
   - id: mixture-of-experts
@@ -440,7 +440,7 @@ concepts:
     misconception_ids: []
     key_takeaway: book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway
 
-  # ---------- Level 8 (planned — Part VI, unwritten) ----------
+  # ---------- Level 8 (written — Part VI) ----------
   - id: evaluation
     name: Evaluation
     level: 8

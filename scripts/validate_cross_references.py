@@ -39,14 +39,39 @@ KEYWORD_TO_CONCEPT = {
     "scaling law": "scaling-laws",
 }
 
-CHAPTER_RE = re.compile(r"Chapter\s+(\d+)")
-# Maximum character distance between a keyword occurrence and a "Chapter N"
+# Matches a whole "Chapter(s) N[, M][-P][ and Q]"-style span, e.g.
+# "Chapter 9", "Chapters 11-12", "Chapters 17-18", "Chapters 13 and 19".
+# The whole span is treated as *one* mention covering a set of chapter
+# numbers (see find_chapter_mentions below), not one mention per digit --
+# "Chapters 11-12" is a single, legitimate combined citation, and a
+# concept whose home is either 11 or 12 is correctly referenced by that
+# whole range, not just by whichever digit happens to sit closest to the
+# keyword. A plain r"Chapter\s+(\d+)" regex only ever matches the singular
+# form and silently skips past any plural range entirely, which used to
+# make "nearest chapter mention" skip past a correctly-adjacent range to
+# some much farther singular mention instead.
+CHAPTER_SPAN_RE = re.compile(r"Chapters?\s+\d+(?:\s*(?:[-–—]|,|and)\s*\d+)*")
+NUMBER_RE = re.compile(r"\d+")
+# Maximum character distance between a keyword occurrence and a chapter
 # mention for the two to count as referring to each other. A synthesis
 # chapter (e.g. RAG, which legitimately cites several earlier chapters for
 # several different concepts in one paragraph) means whole-paragraph
 # matching produces false positives -- only the *nearest* chapter mention
 # to a given keyword occurrence is a claim about that keyword's concept.
 MAX_DISTANCE = 70
+
+
+def find_chapter_mentions(text):
+    """Return (start, end, {numbers}) for every "Chapter(s) ..." span,
+    with every individual chapter number in a plural range grouped into
+    that one span's number set -- so "Chapters 21-22" is one mention
+    covering {21, 22}, not two independent single-number mentions."""
+    mentions = []
+    for span in CHAPTER_SPAN_RE.finditer(text):
+        numbers = {int(n) for n in NUMBER_RE.findall(span.group(0))}
+        mentions.append((span.start(), span.end(), numbers))
+    return mentions
+
 
 # Manually verified false positives: the keyword and chapter number are
 # genuinely close together (same sentence), but the chapter number cites a
@@ -58,28 +83,27 @@ ALLOWLIST = {
     # "Fine-tuning reuses Chapter 9's training loop..." -- Chapter 9 is
     # correctly cited for *training*, not as fine-tuning's home chapter.
     ("13-from-transformer-to-chatgpt.md", "fine-tun", 9),
-    # "...embeddings (Chapter 5), attention and refinement through
-    # transformer blocks (Chapters 11-12)..." -- Chapter 5 is correctly
-    # cited for embeddings, immediately before the transformer-blocks
-    # keyword, not a claim about transformer-blocks' own home chapter.
-    ("14-inference-and-text-generation.md", "transformer block", 5),
     # "attention (Chapter 11), transformer blocks (Chapter 12), everything
-    # built on top of them..." -- Chapter 11 is correctly cited for
-    # attention, immediately before the transformer-blocks keyword, not a
-    # claim about transformer-blocks' own home chapter (which the very
-    # next parenthetical correctly names as Chapter 12).
+    # built on top of them..." -- both are singular, adjacent mentions on
+    # either side of the keyword with near-identical character distance;
+    # "Chapter 11" (correctly cited for attention) wins the nearest-mention
+    # tiebreak even though "Chapter 12" (transformer-blocks' actual home)
+    # sits right after the keyword too. Not a plural-range parsing issue --
+    # a genuine adjacency tie between two correct-but-different citations.
     ("24-one-model-many-senses.md", "transformer block", 11),
-    # "retrieval (Chapters 17-18), tool calling and agents (Chapters
-    # 21-22), evaluation (Chapter 26)..." -- the checker's regex only
-    # matches singular "Chapter N", not the plural "Chapters N-M" range
-    # immediately following "tool calling and agents", so it skips past
-    # to the next singular match (Chapter 26, for evaluation) instead.
-    ("27-ai-engineering-and-observability.md", "tool calling", 26),
     # "RAG changes nothing about the model's parameters (Chapter 8). It's
     # entirely a matter of what gets placed in the context window..." --
     # Chapter 8 is correctly cited for parameters, immediately before the
     # context-window keyword, not a claim about context-windows' home.
     ("18-retrieval-augmented-generation.md", "context window", 8),
+    # "combining retrieval (Chapters 17-18), tool calling and agents
+    # (Chapters 21-22)..." -- two different, correctly-cited ranges for
+    # two different concepts sitting back-to-back in a list; "Chapters
+    # 17-18" (correctly cited for retrieval/RAG) wins the nearest-mention
+    # tiebreak over "Chapters 21-22" (tool-calling's actual home) despite
+    # sitting right before the keyword. Same adjacency-tie pattern as the
+    # transformer-blocks entry above, not a range-parsing issue.
+    ("27-ai-engineering-and-observability.md", "tool calling", 18),
 }
 
 
@@ -117,7 +141,7 @@ def check_file(path, chapter_by_concept):
     normalized = re.sub(r"\s+", " ", boundary_marked)
     lowered = normalized.lower()
 
-    chapter_matches = list(CHAPTER_RE.finditer(normalized))
+    chapter_matches = find_chapter_mentions(normalized)
     if not chapter_matches:
         return errors
 
@@ -135,32 +159,33 @@ def check_file(path, chapter_by_concept):
             # those, only the nearest one -- not just any mention anywhere
             # in the same segment.
             candidates = [
-                m
-                for m in chapter_matches
-                if "\x00" not in normalized[min(m.start(), kw_match.start()) : max(m.end(), kw_match.end())]
+                cm
+                for cm in chapter_matches
+                if "\x00" not in normalized[min(cm[0], kw_match.start()) : max(cm[1], kw_match.end())]
             ]
             if not candidates:
                 continue
             nearest = min(
                 candidates,
-                key=lambda m: min(
-                    abs(m.start() - kw_match.end()), abs(kw_match.start() - m.end())
+                key=lambda cm: min(
+                    abs(cm[0] - kw_match.end()), abs(kw_match.start() - cm[1])
                 ),
             )
             distance = min(
-                abs(nearest.start() - kw_match.end()), abs(kw_match.start() - nearest.end())
+                abs(nearest[0] - kw_match.end()), abs(kw_match.start() - nearest[1])
             )
             if distance > MAX_DISTANCE:
                 continue
-            referenced = int(nearest.group(1))
-            if referenced != expected:
-                if (path.name, keyword, referenced) in ALLOWLIST:
+            referenced = nearest[2]
+            if expected not in referenced:
+                shown = min(referenced, key=lambda n: abs(n - expected))
+                if (path.name, keyword, shown) in ALLOWLIST:
                     continue
-                start = max(0, min(kw_match.start(), nearest.start()) - 20)
-                end = min(len(normalized), max(kw_match.end(), nearest.end()) + 20)
+                start = max(0, min(kw_match.start(), nearest[0]) - 20)
+                end = min(len(normalized), max(kw_match.end(), nearest[1]) + 20)
                 snippet = normalized[start:end].replace("\x00", " ").strip()
                 errors.append(
-                    f"{path}: mentions '{keyword}' near 'Chapter {referenced}', "
+                    f"{path}: mentions '{keyword}' near 'Chapter {shown}', "
                     f"but concept-graph.yaml assigns {concept_id} to Chapter {expected} "
                     f"-- \"{snippet}\""
                 )

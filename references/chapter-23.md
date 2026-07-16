@@ -4,6 +4,9 @@
   and §10 as the original demonstration that generating intermediate
   reasoning steps improves accuracy in ordinary (non-specially-trained)
   models.
+- `wang2022selfconsistency` — the source for multiple-candidate/majority-
+  vote test-time compute, cited in §5 as one concrete instance of the
+  "wider, not just longer" family of techniques.
 - Reinforcement-learning-trained reasoning models (§5) are a fast-moving,
   now-standard technique without one single canonical paper cited here —
   flagged for a future citation pass if a specific primary source is

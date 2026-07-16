@@ -56,16 +56,21 @@ a goal.
 
 ## 4. Core Intuition
 
-An **AI agent** is a model operating inside a loop: read the current
-context (including the results of any tool calls made so far) → decide
-the single next action, which may be another tool call (Chapter 21) or a
-final answer → execute it → append the result back into context → repeat
-— continuing until the model itself judges the goal satisfied, or an
-external limit stops it. Nothing about the model changes between "a model
-making one tool call" and "a model acting as an agent." What changes is
-that the deciding-what-to-do-next step, normally done once, now happens
+This book uses **AI agent** for a model operating inside a loop: read the
+current context (including the results of any tool calls made so far) →
+decide the single next action, which may be another tool call (Chapter
+21) or a final answer → execute it → append the result back into context
+→ repeat — continuing until the loop's stopping condition is met, whether
+that's the model itself judging the goal satisfied, a separate verifier
+or controller making that call, or an external limit stopping things
+regardless. Nothing about the model changes between "a model making one
+tool call" and "a model acting as an agent." What changes is that the
+deciding-what-to-do-next step, normally done once, now happens
 repeatedly, each time conditioned on everything that's happened so far in
-that same loop.
+that loop. (The word "agent" is used more loosely elsewhere — sometimes
+for systems built around a fixed planner, an external controller, or a
+verifier standing outside the model — this chapter's definition is the
+specific, mechanism-level case that pattern most commonly takes.)
 
 ## 5. Technical Explanation
 
@@ -85,18 +90,28 @@ model itself decides whether another tool call is warranted, based on
 what the last one returned, already is.
 
 This depends directly on memory (Chapter 16): everything tried and
-learned earlier in the same loop has to remain visible in context, or the
-model has no way to build on it, avoid repeating itself, or recognize
-that the goal has actually been reached. And because nothing in the
-mechanism itself guarantees the loop will recognize success and stop
-cleanly — a model can misjudge whether the goal is met, or get stuck
-retrying a step that keeps failing the same way — real systems add
-external limits on top of the model's own judgment: a maximum number of
-steps, a budget, or a required checkpoint where a human approves before
-the loop continues. "Autonomous" here means specifically that the model
-picks its own next step without a human in the loop between steps — not
-that it has goals, preferences, or persistence beyond the task and
-context it was given.
+learned earlier in the same loop has to remain available to the model
+when it decides its next step, or it has no way to build on prior
+results, avoid repeating itself, or recognize that the goal has actually
+been reached. That doesn't require every earlier step to sit untouched in
+the context window — a real system might summarize older steps to save
+space, store the full history externally and pull back only what's
+relevant, or reconstruct state from a structured record rather than raw
+transcript — but whatever form it takes, the model's next decision has to
+be conditioned on that accumulated history, not just the original task.
+
+Because nothing in the mechanism itself guarantees the loop will
+recognize success and stop cleanly — a model can misjudge whether the
+goal is met, or get stuck retrying a step that keeps failing the same way
+— real systems typically don't leave termination to the model's own
+judgment alone. A separate verifier can check whether the actual goal
+condition is met, an external controller can decide the loop is done
+independent of what the model itself claims, or hard limits — a maximum
+number of steps, a budget, a required human-approval checkpoint — can cut
+things off regardless of what the model thinks. "Autonomous" here means
+specifically that the model picks its own next step without a human
+re-prompting between steps — not that it has goals, preferences, or
+persistence beyond the task and context it was given.
 
 ## 6. Common Misconceptions
 
@@ -133,15 +148,15 @@ This is the mechanism behind "AI agent," "agentic workflow," and "autonomous cod
 
 ## 8. Key Takeaway
 
-**An AI agent isn't a smarter model — it's the same inference-and-tool-calling loop from Chapter 21, run repeatedly, with the model itself deciding after each result what to do next until it judges the goal met.**
+**An AI agent isn't a smarter model — it's the same inference-and-tool-calling loop from Chapter 21, run repeatedly, with the model deciding after each result what to do next, until the loop's stopping condition — its own judgment, a separate verifier, or a hard limit — says otherwise.**
 
 ## 9. One-Page Summary
 
 - An AI agent is a model operating inside a loop: read context, decide the next action, execute it (often a tool call), append the result, repeat.
 - The mechanism is identical to Chapter 21's single tool call — what's new is that the model itself decides whether another step is needed, without a human re-prompting in between.
 - A fixed, pre-scripted sequence of tool calls isn't agentic; a model choosing its own next step based on the result of its last one is.
-- This depends on memory (Chapter 16): earlier steps in the same loop must stay visible in context for the model to build on them.
-- Nothing guarantees the loop terminates cleanly on its own — real systems add external limits (max steps, budgets, human approval gates) on top of the model's own judgment.
+- This depends on memory (Chapter 16): earlier steps in the same loop must stay available to the model when deciding its next step — as raw context, a summary, or externally stored state.
+- Nothing guarantees the loop terminates cleanly on its own — real systems typically don't leave that to the model's own judgment alone, adding a separate verifier, an external controller, or hard limits (max steps, budgets, human approval gates).
 - "Autonomous" means the loop makes its own sequential decisions without human intervention between steps — not independent goals or persistent desires.
 - Looping doesn't guarantee correctness; each step is still generated the same fallible way, and errors can compound across steps as easily as they can get caught.
 

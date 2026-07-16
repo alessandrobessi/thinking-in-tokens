@@ -6,7 +6,7 @@
 
 **Prerequisites:** Chapter 3 (tokens), Chapter 5 (embeddings), Chapter 12 (transformer blocks)
 
-**New concepts introduced:** Multimodality
+**New concepts introduced:** Multimodality, Projector, Cross-attention bridge, Unified early-fusion tokens
 
 ---
 
@@ -25,25 +25,28 @@ same street both point at the same real place. A photograph and a
 sentence are completely different formats, made of completely different
 stuff, but they can refer to the exact same thing.
 
-That's the whole puzzle a multimodal model has to solve. Its entire
+That's the whole puzzle a multimodal model has to solve. Its language
 machinery — attention (Chapter 11), transformer blocks (Chapter 12),
-everything built on top of them — was designed to weigh relevance across
-a sequence of word embeddings. An
-image isn't made of words. For a model to make any use of one at all,
-something has to turn a photograph and a sentence about that photograph
-into the same kind of thing.
+everything built on top of them — was designed to work over a sequence
+of word embeddings. An image isn't made of words. For a model to make
+any use of one at all, something has to bridge a photograph and a
+sentence about that photograph into a form the model can actually
+connect — and, as this chapter covers, real systems build that bridge in
+more than one way.
 
 ## 3. Worked Example
 
-Recall Chapter 5's map: words get positioned as points in a
-high-dimensional space, where nearby points reflect similar meaning or
-use. Now take a photo of a golden retriever running on a beach, and the
-caption "a golden retriever running on a beach." Cut the photo into a
-grid of small square patches — like slicing it into postage stamps — and
-convert each patch into a vector using a learned encoder, landing it
-somewhere in a space built the same way Chapter 5's word-embedding space
-was built. Do the same for the caption's words, using the encoding this
-book has covered since Chapter 5.
+Here's one concrete way to build that bridge — not the only way, but a
+common and easy-to-follow one. Recall Chapter 5's map: words get
+positioned as points in a high-dimensional space, where nearby points
+reflect similar meaning or use. Now take a photo of a golden retriever
+running on a beach, and the caption "a golden retriever running on a
+beach." Cut the photo into a grid of small square patches — like slicing
+it into postage stamps — and convert each patch into a vector using a
+learned encoder, landing it somewhere in a space built the same way
+Chapter 5's word-embedding space was built. Do the same for the
+caption's words, using the encoding this book has covered since Chapter
+5.
 
 Trained on enormous numbers of matched photo/caption pairs like this one,
 the model learns to pull a genuinely matching pair's embeddings toward
@@ -51,71 +54,112 @@ each other and push mismatched pairs — this same photo paired with an
 unrelated caption about a city skyline — apart. The result: the image's
 patch embeddings and the caption's word embeddings end up as neighboring
 points on essentially the same map from Chapter 5, not two separate,
-unrelated coordinate systems that happen to sit side by side.
+unrelated coordinate systems that happen to sit side by side. As §5
+covers, this is one instance of a broader pattern — other real systems
+bridge image and text differently, without ever placing patches directly
+alongside words on one shared map.
 
 ## 4. Core Intuition
 
-**Multimodality** is a model's ability to accept or produce more than one
-kind of data — text, images, audio — by converting each modality into the
-same kind of numeric representation (tokens and embeddings, Chapters 3
-and 5) its existing transformer machinery already knows how to process,
-rather than building an entirely separate reasoning system per modality.
-Once an image patch and a word are both just vectors positioned in a
-shared space, attention (Chapter 11) can weigh relevance across them
-exactly the way it already weighs relevance across words in a sentence —
-the mechanism doesn't need to know, or care, which modality a given
-vector originally came from.
+**Multimodality** is a model's ability to make sense of — and, with
+additional components, produce — more than one kind of data: text,
+images, audio. Every approach has to solve the same problem the tourist's
+photo did: bridging different formats so a shared model can actually use
+them together. But there's no single universal way to build that bridge.
+It might be a small learned network that translates one modality's
+features into the language model's own embedding space (Chapters 3 and
+5), a set of dedicated attention layers that let the language model
+consult the other modality without merging it into one shared sequence,
+or a single shared vocabulary that represents every modality as tokens
+from the very start. Different real systems pick different bridges;
+knowing that there are several real patterns, not one, is more useful
+than assuming every multimodal model works the same way underneath.
 
 ## 5. Technical Explanation
 
-For images, a common approach splits the image into a grid of fixed-size
-patches and converts each patch into an embedding vector using a learned
-encoder — directly analogous to Chapter 3's tokenization, just operating
-on an image instead of text: the image becomes a sequence of "patch
-tokens" instead of word tokens. Each patch embedding is combined with
-positional encoding (Chapter 11) marking where it sits in the image, and
-the resulting sequence is fed into transformer blocks alongside or
-instead of text tokens. From that point on, the same attention mechanism
-covered since Chapter 11 lets any patch or word attend to any other patch
-or word based on learned relevance — the caption word "beach" can attend
-directly to the specific patches showing sand, the same way one word
-attends to another in ordinary text.
+Three broad patterns cover most real multimodal systems, though the exact
+engineering varies system to system.
 
-Getting image and text embeddings to land in a genuinely comparable space
-in the first place is itself a trained outcome, not a given. Models are
-trained on enormous numbers of matched pairs — an image with its caption,
-audio with its transcript — using a training objective that pulls a true
-match's embeddings together and pushes mismatched pairs apart. This
-extends Chapter 9's core predict/measure-error/adjust loop to a
-cross-modal matching goal; it is not a fundamentally different learning
-procedure, just a different target for the same mechanism. Audio works
-analogously: a waveform is converted into a sequence of embeddings, often
-through an intermediate spectrogram-like representation, that the same
-transformer machinery then processes as another kind of token sequence.
-Note that each modality still requires its own dedicated encoder to
-perform this initial conversion — that first step genuinely is
-modality-specific — but once converted, everything downstream is the same
-shared reasoning machinery.
+**Encoder plus projector.** A separate, often independently pretrained
+encoder converts an image or audio clip into a set of feature vectors —
+this is what §3's worked example walked through, with patches encoded
+via a learned image encoder trained the way that section described, so
+its output space is already organized around meaningful similarity, the
+way Chapter 5's word embeddings are. A small additional network, the
+**projector**, then translates those feature vectors into the same
+numeric space the language model's own token embeddings live in. Once
+translated, the language model's existing attention mechanism (Chapter
+11) can treat them like any other token in the sequence — it doesn't
+need to know they originated as pixels rather than words.
+
+**Cross-attention bridge.** Instead of translating image features into
+the main token sequence at all, some systems give the language model
+extra, dedicated attention layers built specifically to look up relevant
+information from the other modality while generating text. The image is
+never merged into one shared sequence with the words — it stays a
+separate pool of information the model selectively consults through this
+dedicated channel, rather than something sitting directly alongside the
+words it attends over.
+
+**Unified early-fusion tokens.** A third approach skips building a bridge
+on top of an already-trained language model at all: images, audio, and
+text are converted into tokens from one shared vocabulary from the very
+start, and the whole system — encoder and language model together — is
+trained as a single unit on that unified token stream. There's no
+separate add-on component translating between formats after the fact,
+because every format was designed into the same representation from the
+beginning.
+
+Whichever pattern a system uses, getting a non-text modality's
+representation to land somewhere the language model can actually use is
+a trained outcome, not a given. This commonly involves training on
+enormous numbers of matched pairs — an image with its caption, audio
+with its transcript — using an objective that pulls a true match's
+representations together and pushes mismatches apart, exactly like §3's
+worked example. This extends Chapter 9's core predict/measure-error/adjust
+loop to a cross-modal matching goal; it is not a fundamentally different
+learning procedure, just a different target for the same mechanism.
+
+Everything above covers a model making sense of a non-text *input* —
+turning an image or sound into something the model can reason about and
+describe. Producing new image or audio *output* is a related but
+distinct problem: it typically requires an additional output-side
+component — a decoder or dedicated generative model — that converts the
+language model's internal representations back into pixels or sound,
+separate from the encoders and bridges this chapter has covered for the
+understanding direction. A system can be genuinely strong at
+understanding images without generating any at all, and vice versa;
+"multimodal" alone doesn't specify which direction, or both, a given
+system actually supports.
 
 ## 6. Common Misconceptions
 
 ### Misconception
-*"A multimodal model is really two separate models — one for vision, one for language — glued together."*
+*"A multimodal model is really two separate models — one for vision, one for language — glued together, only exchanging a final summary."*
 
-**Why it's wrong:** Each modality does need its own dedicated encoder to perform the initial conversion into embeddings — that specific step genuinely is modality-specific. But once converted, the same shared transformer machinery and the same attention mechanism process every modality's embeddings together, in one unified reasoning process — not two separate systems that only exchange a final summary.
+**Why it's wrong:** Each modality does typically need its own dedicated encoder to perform the initial conversion into features — that step genuinely is modality-specific. But depending on the pattern (§5), what happens next isn't two independently-reasoning systems handing off a finished conclusion: an encoder-plus-projector or unified-token system feeds the converted representation directly into the same reasoning process as the text; a cross-attention system keeps a dedicated channel to the other modality but trains it jointly with the language model, consulting it step by step rather than reading one final report.
 
-**Correct intuition:** The specialization lives entirely in the initial conversion step; everything downstream of it is one shared mechanism working over a common representation, not two independent models bolted together at the end.
+**Correct intuition:** The specialization lives in how a modality is first converted or connected — not in running two fully separate, independently-trained systems that only talk to each other through a finished summary.
 
-**Analogy:** The local doesn't run a separate "photo brain" and "language brain" that trade notes — he converts what he's shown, photo or words, into the same understanding of which street is meant, then reasons from that one shared understanding.
+**Analogy:** The local doesn't run a separate "photo brain" and "language brain" that trade a finished note — he converts what he's shown, photo or words, into an understanding of which street is meant, consulting whichever source is relevant as he works it out, not reading a pre-written conclusion from someone else.
 
 ### Misconception
 *"A model that processes images 'sees' the way a human visually perceives the world."*
 
-**Why it's wrong:** The model has no visual experience or perception. It converts pixel patches into embeddings using the same kind of learned, pattern-based mapping used for text, and reasons over those embeddings the same statistical way it reasons over word embeddings.
+**Why it's wrong:** The model has no visual experience or perception. Whichever bridging pattern it uses (§5), it converts pixels into a learned, pattern-based representation and reasons over that representation the same statistical way it reasons over word embeddings.
 
-**Correct intuition:** "Seeing," for a model, means "converted into the shared representation space this chapter describes" — a mechanical conversion and comparison process, not a claim about visual experience.
+**Correct intuition:** "Seeing," for a model, means "converted or connected into a representation the model can reason over" — a mechanical conversion process, not a claim about visual experience.
 
 **Analogy:** The local recognizing the street in a photo isn't the same kind of event as him standing on that street and perceiving it directly — one is a comparison of representations, the other is lived experience.
+
+### Misconception
+*"All multimodal models bridge image and text the same underlying way — the specific method doesn't really matter."*
+
+**Why it's wrong:** As §5 covers, real systems use meaningfully different patterns — an encoder-plus-projector approach, a cross-attention bridge, or unified early-fusion tokens — and these have real practical differences: whether a system can be extended to a new modality without retraining the whole thing, how directly an image and a word can influence each other, and how the components were trained in the first place.
+
+**Correct intuition:** "Multimodal" describes a capability, not a specific architecture — knowing which bridging pattern a given system actually uses says something real about how it works, not just an implementation detail.
+
+**Analogy:** Two bridges can both get you across the same river while being built completely differently — a suspension bridge and a tunnel solve the same problem in structurally different ways, and which one a city has actually built affects what you can and can't do with it.
 
 ### Misconception
 *"Since a model can already process images, it can handle any new kind of input automatically, with no additional training."*
@@ -128,26 +172,28 @@ shared reasoning machinery.
 
 ## 7. Practical Implications
 
-This is why multimodal AI products list specific supported input types — images, audio, PDFs, video — as a discrete, deliberately trained set rather than an open-ended "handles anything" claim: each one needed its own encoder and its own matched-pair training data. It also explains why feeding a model a photo of a document sometimes works better, and sometimes worse, than feeding it the same content as extracted text — it depends on what the shared embedding space actually captured well during training. And because the underlying generation mechanism hasn't changed, a model can still "hallucinate" about image or audio content the same way Chapter 15 described for text — confidently describing something in an image that isn't actually there.
+This is why multimodal AI products list specific supported input types — images, audio, PDFs, video — as a discrete, deliberately trained set rather than an open-ended "handles anything" claim: each one needed its own bridge and its own training data, whichever pattern that bridge uses. It's also why "multimodal" alone doesn't tell you everything about a product: whether it understands images, generates them, or both are separate questions (§5), and which architectural pattern a system uses can affect real, practical things — how directly text and image can influence each other, and how easily a new modality can be added later. And because the underlying generation mechanism hasn't changed in any of these patterns, a model can still "hallucinate" about image or audio content the same way Chapter 15 described for text — confidently describing something in an image that isn't actually there.
 
 ## 8. Key Takeaway
 
-**A multimodal model doesn't have separate senses bolted together — it converts each modality into the same kind of embedding the model already reasons over, so one shared attention mechanism can weigh relevance across words, image patches, and audio alike.**
+**A multimodal model doesn't have one universal architecture — it bridges different formats through a projector, a cross-attention channel, or a shared token vocabulary, and knowing which bridge a system actually uses matters more than assuming every multimodal model works the same way underneath.**
 
 ## 9. One-Page Summary
 
-- Multimodality is a model's ability to convert different kinds of data — text, images, audio — into the same kind of embedding its existing transformer machinery already processes.
-- Images are typically split into patches and embedded much like Chapter 3's tokenization, just applied to pixels instead of text; audio is converted through an intermediate representation into a comparable sequence of embeddings.
-- Getting different modalities' embeddings to land in a genuinely shared space is a trained outcome, achieved by training on matched pairs (image/caption, audio/transcript) that pulls true matches together and pushes mismatches apart — an extension of Chapter 9's core training loop.
-- Each modality still needs its own dedicated encoder for the initial conversion step — that part is genuinely modality-specific — but everything downstream is one shared attention mechanism, not separate reasoning systems glued together.
-- "Seeing" or "hearing," for a model, means "converted into the shared representation space" — not visual or auditory experience.
-- Supporting a new modality requires real additional training; it isn't a free extension of the existing architecture.
+- Multimodality is a model's ability to make sense of — and, with additional components, produce — more than one kind of data: text, images, audio.
+- There's no single universal architecture: three broad real patterns are encoder-plus-projector, a cross-attention bridge, and unified early-fusion tokens (§5).
+- The worked example (patches encoded, then processed by the same attention as text) is one concrete instance of one pattern, not the definition of multimodality itself.
+- Getting a non-text modality's representation to land somewhere the language model can use is a trained outcome in any pattern, commonly via matched-pair training (image/caption, audio/transcript) — an extension of Chapter 9's core training loop.
+- Understanding a modality (input) and generating it (output) are related but distinct problems; output generation typically needs an additional decoder or generative component this chapter doesn't cover in depth.
+- "Seeing" or "hearing," for a model, means "converted or connected into a representation it can reason over" — not visual or auditory experience.
+- Supporting a new modality requires real additional training in any pattern; it isn't a free extension of the existing architecture.
 - Hallucination (Chapter 15) applies to non-text modalities too, since the underlying generation mechanism is unchanged.
 
 ## 10. Further Reading
 
-- Search for "CLIP" or "contrastive image-text pretraining" for the specific technique described in §3/§5 for aligning image and text embeddings in a shared space.
-- Search for "vision transformer" or "ViT" for more on the patch-based image tokenization approach described in §5.
+- Search for "CLIP" or "contrastive image-text pretraining" for the alignment technique behind §3's worked example and the encoder-plus-projector pattern.
+- Search for "vision transformer" or "ViT" for more on patch-based image tokenization, used in more than one of §5's patterns.
+- Search for "Flamingo" for a concrete cross-attention-bridge system, and "Chameleon" or "early fusion multimodal" for a concrete unified-token system — both described conceptually in §5.
 
 ## 11. The Next Obvious Question
 
@@ -155,8 +201,8 @@ This is why multimodal AI products list specific supported input types — image
 
 ---
 
-**Glossary terms added this chapter:** Multimodality, Patch embedding, Cross-modal alignment → append to `/glossary.md`
+**Glossary terms added this chapter:** Multimodality, Patch embedding, Cross-modal alignment, Projector, Cross-attention bridge, Unified early-fusion tokens → append to `/glossary.md`
 
-**Misconceptions logged this chapter:** "a multimodal model is really two separate models glued together"; "a model that processes images sees the way a human does"; "a model can handle any new modality automatically, with no additional training" → append to `/misconceptions.md`
+**Misconceptions logged this chapter:** "a multimodal model is really two separate models glued together, only exchanging a final summary"; "a model that processes images sees the way a human does"; "a model can handle any new modality automatically, with no additional training"; "all multimodal models bridge image and text the same underlying way" → append to `/misconceptions.md`
 
 **Concept-graph entries checked off:** Level 7 — Multimodality, at Ch. 24

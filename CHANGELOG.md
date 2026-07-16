@@ -2,6 +2,78 @@
 
 ## 2026-07-16
 
+- **Consolidation pass on Chapters 21–28 and 30, driven by an external
+  technical review of commit `8af666c`.** Verified the review's concrete,
+  checkable claims against the actual text before acting (a real
+  contradiction in Ch.21's opening line with Ch.18's RAG, stale
+  `concept-graph.yaml` comments, and Ch.24 overgeneralizing one
+  architecture) and confirmed the broader claims independently, then
+  fixed by chapter:
+  - **Ch.21** (tool calling/MCP): fixed the opening-question contradiction
+    with Ch.18 (retrieval already happens outside the model); softened
+    "the model was never doing arithmetic" to acknowledge learned-but-
+    unreliable internal arithmetic vs. an exact calculator; broadened
+    MCP's description beyond tool schemas to include resources and prompt
+    templates, and softened "today's leading answer" to "one increasingly
+    adopted open standard."
+  - **Ch.22** (AI agents): scoped the "agent" definition as this book's
+    specific working definition rather than a universal one; noted a
+    separate verifier/controller can decide termination, not only the
+    model itself; noted prior state can be summarized or stored
+    externally rather than staying raw in the context window.
+  - **Ch.23** (reasoning models): broadened the chapter around the more
+    durable concept of test-time compute, with written chain-of-thought
+    plus RL-trained reasoning as one concrete instance and multiple-
+    candidate sampling/search-with-verification named as siblings. Added
+    `wang2022selfconsistency` citation.
+  - **Ch.24** (multimodality): rewritten around three real architectural
+    patterns (encoder-plus-projector, cross-attention bridge, unified
+    early-fusion tokens) instead of presenting one (CLIP/ViT-style patch
+    embedding) as the general mechanism; the original worked example is
+    now framed as one concrete instance. Narrowed/clarified the "accept
+    or produce" promise to distinguish understanding from generation, the
+    latter requiring a separate decoder this chapter doesn't cover in
+    depth. Added a 4th misconception directly addressing architectural
+    homogeneity. Added `alayrac2022flamingo` and `chameleon2024`
+    citations.
+  - **Ch.25** (Mixture of Experts): "each layer" → "selected feed-forward
+    layers" (MoE is typically applied to a subset of layers); clarified
+    active parameters is a useful proxy for compute cost, not the
+    complete picture (router overhead, cross-machine communication,
+    uneven routing).
+  - **Ch.26** (evaluation): broadened the definition from evaluating the
+    model alone to evaluating the complete system (retrieval, tools,
+    orchestration), matching the chapter's own title; softened the
+    Goodhart framing from an automatic transition to a risk that scales
+    with how much a score becomes an explicit target.
+  - **Ch.27** (AI engineering/observability): added privacy/redaction
+    nuance to "log everything"; added idempotency to the refund worked
+    example as the actual preventive fix, distinct from observability
+    diagnosing the bug after the fact; distinguished frequency from
+    severity in the "one complaint isn't proof of a broken system"
+    misconception; softened "AI engineering means training models" to
+    acknowledge fine-tuning as one technique within the discipline, not
+    excluded from it.
+  - **Ch.28** (security/safety): acknowledged real systems' role/channel
+    tagging (system/user/tool) while preserving the point that it's a
+    trained hint, not an enforced boundary; softened the SQL-injection
+    comparison to acknowledge dynamic-identifier edge cases rather than
+    claiming a universally perfect fix; broadened the Safety section
+    beyond alignment to include privacy, bias, high-stakes reliability,
+    misuse by legitimate users, and excessive permissions.
+  - **Ch.30** (closing chapter): softened self-certifying claims ("removed
+    the need for translators," "is itself proof/demonstration") into
+    aspirational, testable language.
+  - Fixed `concept-graph.yaml`'s stale Level 6–8 section comments (still
+    said "planned"/"unwritten" after those parts were written).
+  - Rewrote `scripts/validate_cross_references.py`'s chapter-mention
+    matching to treat a "Chapters N-M" range as one span covering a set
+    of numbers, rather than only matching the singular form — a real bug
+    fix, not just more allowlisting; net effect was one allowlist entry
+    added and one removed, with the remainder now caught by genuine
+    range-parsing instead of hand-verified exceptions.
+  - All three validators pass clean.
+
 - Updated `templates/chapter-template.md`'s "Common Misconceptions" block
   again: kept `### Misconception` / italic claim, but reverted the
   `#### Why it's wrong` / `#### Correct intuition:` / `#### Analogy:`

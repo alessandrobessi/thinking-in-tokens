@@ -88,7 +88,7 @@ after any change to the YAML and commit both files together.
 | Concept | Status | Chapter | Prerequisites | Misconceptions | Key Takeaway |
 |---|---|---|---|---|---|
 | Reasoning models | ✅ written | Ch. 23 | inference, sampling, training | 3 | [link](book/part-5-ai-systems/23-thinking-longer-not-just-faster.md#8-key-takeaway) |
-| Multimodality | ✅ written | Ch. 24 | tokens, embeddings, transformer-blocks | 3 | [link](book/part-5-ai-systems/24-one-model-many-senses.md#8-key-takeaway) |
+| Multimodality | ✅ written | Ch. 24 | tokens, embeddings, transformer-blocks | 4 | [link](book/part-5-ai-systems/24-one-model-many-senses.md#8-key-takeaway) |
 | Mixture of Experts | ✅ written | Ch. 25 | transformer-blocks, parameters | 3 | [link](book/part-5-ai-systems/25-many-experts-one-model.md#8-key-takeaway) |
 | Quantization | ✅ written | Ch. 20 | parameters | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |
 | Efficient inference | ✅ written | Ch. 20 | inference, quantization | 1 | [link](book/part-4-building-useful-ai/20-quantization-and-efficient-models.md#8-key-takeaway) |

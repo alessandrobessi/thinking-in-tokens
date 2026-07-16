@@ -4,7 +4,7 @@
 
 **Concept Level:** Level 8
 
-**Prerequisites:** Chapter 9 (training), Chapter 15 (hallucinations)
+**Prerequisites:** Chapter 9 (training), Chapter 15 (hallucinations), Chapter 18 (RAG), Chapter 22 (AI agents)
 
 **New concepts introduced:** Evaluation
 
@@ -55,13 +55,20 @@ to mean.
 
 ## 4. Core Intuition
 
-**Evaluation** is the general problem of measuring whether an AI model is
-actually good at something, in a way trustworthy enough to compare
-models, catch regressions, and decide whether a system is ready to
-deploy. Benchmarks, human judgment, and using another model as a judge
-are three different tools for approximating "how good is this" — each
-useful, and each with its own specific blind spots a reader needs to
-know about before trusting a number produced by any one of them alone.
+**Evaluation** is the general problem of measuring whether an AI system —
+not just the underlying model in isolation, but the model together with
+whatever retrieval (Chapters 17–18), tools, and orchestration (Chapters
+21–22) surround it — actually performs its intended task well under
+realistic conditions, in a way trustworthy enough to compare versions,
+catch regressions, and decide whether it's ready to deploy. A model can
+score well on its own while the complete system still fails a user, if
+something surrounding it is broken — retrieval returning the wrong
+passage, a tool interface behaving unsafely — so evaluation has to reach
+the whole thing, not stop at the model at its core. Benchmarks, human
+judgment, and using another model as a judge are three different tools
+for approximating "how good is this," each useful, and each with its own
+specific blind spots a reader needs to know about before trusting a
+number produced by any one of them alone.
 
 ## 5. Technical Explanation
 
@@ -131,13 +138,15 @@ not a substitute for the thing it's approximating.
 
 This is why AI providers publish tables of many separate named benchmarks rather than one single score — no single number is trustworthy enough to stand alone, for exactly the reasons this chapter covered. It's also why practitioners are consistently urged to build evaluation sets specific to their own actual use case rather than relying solely on general public benchmarks, which may not reflect their domain and may already be contaminated or specifically optimized against by model developers. And it's the direct reason "LLM-as-judge" pipelines have become a common piece of real product evaluation workflows: not because they're perfectly reliable, but because they make frequent, cheap evaluation possible at a scale exhaustive human review never could reach.
 
+It's also why a serious evaluation plan for a real product tests more than the model's raw answers: whether retrieval (Chapters 17–18) actually surfaces the right passage, whether a tool-using agent (Chapters 21–22) picks the right tool and recovers sensibly when a step fails, and how the complete pipeline performs end to end — not just a benchmark score for the model sitting at its core, which can look excellent while the surrounding system still lets users down.
+
 ## 8. Key Takeaway
 
-**A benchmark score is a proxy for real-world capability, not the capability itself — and the moment a score becomes the explicit target being optimized against, it starts measuring how well a model games that specific test, not just how good it actually is.**
+**A benchmark score is a proxy for real-world capability, not the capability itself — and the more a score becomes an explicit target to optimize against, the more it risks measuring how well a system games that specific test rather than how good it actually is.**
 
 ## 9. One-Page Summary
 
-- Evaluation is the general problem of measuring whether a model is actually good at something, trustworthy enough to compare models and catch regressions.
+- Evaluation is the general problem of measuring whether a complete AI system — the model plus retrieval, tools, and orchestration around it, not just the model in isolation — actually performs well under realistic conditions.
 - Benchmarks are fast and repeatable but vulnerable to contamination (test questions leaking into training data) and Goodhart's-law-style overfitting once they become an explicit optimization target.
 - Human evaluation tracks real-world usefulness more faithfully but is slow, expensive, and subject to rater inconsistency.
 - LLM-as-judge evaluation is cheap and scalable, correlates reasonably with human judgment, but inherits its own blind spots — including hallucination and susceptibility to being gamed.

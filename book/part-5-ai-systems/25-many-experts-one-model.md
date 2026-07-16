@@ -54,13 +54,14 @@ partners at a time.
 
 ## 4. Core Intuition
 
-**Mixture of Experts (MoE)** is a way of building a model where each
-layer contains many separate "expert" sub-networks, and a small router
-decides, for each individual token, which small subset of those experts
-actually processes it. The model's total parameter count — its total
-learned capacity — can be far larger than the computational cost incurred
-per token, because that cost only scales with however many experts
-actually get activated for it, not the full total sitting in the model.
+**Mixture of Experts (MoE)** is a way of building a model where selected
+feed-forward layers each contain many separate "expert" sub-networks
+instead of one, and a small router decides, for each individual token,
+which small subset of those experts actually processes it. The model's
+total parameter count — its total learned capacity — can be far larger
+than the computation those layers spend per token, because that cost
+scales mainly with however many experts actually get activated, not the
+full total sitting in the model.
 
 ## 5. Technical Explanation
 
@@ -74,7 +75,12 @@ learned component that looks at a token's current representation and
 decides which handful of experts, commonly two, are best suited to
 process it. That decision is itself learned during training the same way
 any other parameter is learned (Chapter 9), not hand-programmed by anyone
-who decided in advance what each expert should specialize in.
+who decided in advance what each expert should specialize in. Real
+systems commonly apply this only to some of the model's layers — often
+alternating MoE layers with ordinary dense ones — rather than converting
+every single layer; the other transformer machinery (attention, and any
+dense layers) still processes every token the same way Chapter 12
+already described.
 
 Only the selected experts' parameters are actually applied to a given
 token; the rest of that layer's experts sit unused for it, though a
@@ -85,11 +91,23 @@ across experts tends to emerge over the course of training — but it
 emerges from the router and experts training jointly, not from anyone
 assigning a topic to each expert in advance. This is why Mixture-of-
 Experts models are described using two separate numbers: **total
-parameters** (the sum across every expert in every layer — the model's
-total learned capacity) and **active parameters** (how many parameters
-actually get used to process one token — the real computational cost of
-a single forward pass). The entire appeal of the approach is making the
+parameters** (the sum across every expert in every MoE layer, plus the
+model's ordinary dense components — the model's total learned capacity)
+and **active parameters** (how many parameters actually get used to
+process one token). The entire appeal of the approach is making the
 first number far larger than the second.
+
+Active parameters is a useful proxy for per-token compute, not the whole
+cost of actually running the model. The router itself costs a small
+amount of computation to make its decision every token. When a model is
+spread across multiple machines, sending each token's representation to
+wherever its chosen experts live costs communication time that a dense
+model of the same active size doesn't pay. And if tokens don't route
+evenly — some experts getting picked far more often than others — the
+busiest expert can become a bottleneck the raw active-parameter count
+doesn't capture. Active parameters is the right first-order number for
+understanding *why* MoE is cheaper than its total size suggests; it isn't
+the complete picture of what it costs to serve one well.
 
 ## 6. Common Misconceptions
 
@@ -130,9 +148,9 @@ This is the mechanism behind headline claims like "this model has N total parame
 
 ## 9. One-Page Summary
 
-- Mixture of Experts replaces a transformer layer's single feed-forward network with several expert sub-networks plus a small router that picks a handful of experts per token.
+- Mixture of Experts replaces selected feed-forward layers' single network with several expert sub-networks plus a small router that picks a handful of experts per token — usually applied to some of a model's layers, not necessarily every one.
 - Only the selected experts' parameters process a given token; routing is learned during training, not assigned by a human in advance.
-- Total parameters (full model capacity) and active parameters (per-token compute cost) are two distinct, separately meaningful numbers for an MoE model.
+- Total parameters (full model capacity) and active parameters (a useful proxy for per-token compute cost) are two distinct, separately meaningful numbers for an MoE model — router overhead, cross-machine communication, and uneven routing mean active parameters isn't the complete cost picture.
 - Some specialization across experts can emerge from training, but it isn't clean, human-interpretable topic assignment.
 - MoE reduces per-token compute cost, not memory footprint — the full parameter set still has to be stored regardless of how few experts activate on average.
 - Router and experts are trained jointly inside one architecture, not stitched together from separately trained models.

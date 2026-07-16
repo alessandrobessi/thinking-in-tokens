@@ -47,17 +47,19 @@ and is it comparable to anything she's seen contaminated before (Chapter
 
 By the end of one paragraph, she's placed the unfamiliar term inside the
 mental model this book built — not because she looked up a definition,
-but because she already owns the surrounding structure that definition
-would have to fit into. That's the actual skill this book was building
-the entire time: not a fixed list of terms, but a structure sturdy enough
-to absorb new ones.
+but because she's carrying the surrounding structure that definition
+would have to fit into. That's the actual skill this book has been
+aiming to build the whole way through: not a fixed list of terms, but a
+structure sturdy enough to absorb new ones.
 
 ## 4. Core Intuition
 
 Keeping this book's mental model current isn't about consuming more AI
 content faster. It's a small number of durable habits: read primary
-technical sources directly, now that this book has removed the need for
-someone else to translate them; apply Chapter 29's five questions as a
+technical sources directly — you should now be better equipped to follow
+the plain-language portions of technical blog posts, system cards, and
+engineering reports than before this book, even where some mathematical
+detail sits outside its scope; apply Chapter 29's five questions as a
 standing habit, not a one-time exercise; when an unfamiliar term appears,
 first ask which of the concepts already covered it extends or combines,
 before reaching for an outside explanation; and periodically explain a
@@ -116,7 +118,7 @@ is precisely what Parts I through III were built to be.
 
 **Why it's wrong:** This book taught tokens, embeddings, attention, training, retrieval, agents, and more, without requiring mathematics or programming at any point, precisely so this specific misconception would stop being true for its reader by the final chapter.
 
-**Correct intuition:** Following the reasoning in a technical blog post or paper's plain-language sections was exactly what this book's no-jargon, mechanism-first approach was built to make possible — and finishing twenty-nine technical chapters without either math or code is itself the demonstration that it worked.
+**Correct intuition:** Following the reasoning in a technical blog post or paper's plain-language sections is exactly what this book's no-jargon, mechanism-first approach was built to make possible — finishing twenty-nine technical chapters without either math or code is a reasonable basis for that expectation, though it's worth testing directly against a real source rather than taking on faith.
 
 **Analogy:** Learning to read sheet music doesn't require becoming a professional composer — it requires learning what the symbols mean, which is precisely the kind of thing this book spent thirty chapters doing for AI's own vocabulary.
 
@@ -133,10 +135,10 @@ Concretely, going forward: read primary technical announcements directly, applyi
 - This book built a durable set of mechanisms — tokens, embeddings, attention, training, and the recurring pattern of specific additions closing specific gaps — not an exhaustive, final inventory of every AI technique.
 - The useful ongoing question for something new isn't "which chapter covers this," but "which existing part of this mental model does this attach to."
 - Apply Chapter 29's five questions as a standing habit, not a one-time exercise, when encountering new AI developments.
-- Reading primary technical sources directly, now genuinely accessible without math or programming background, beats consuming high volumes of secondhand commentary.
+- Reading primary technical sources directly, without needing math or programming background to follow their plain-language reasoning, beats consuming high volumes of secondhand commentary.
 - Explaining a concept to someone else is the real test of whether understanding has stuck — recognizing it while reading isn't the same thing.
 - Revisiting earlier chapters' misconception sections periodically helps, since misconceptions fade faster than the core concepts they correct.
-- Finishing this book without needing math or code at any point is itself proof that primary AI sources are now within reach.
+- Finishing this book without needing math or code at any point is a reasonable basis for expecting primary AI sources to be more within reach — worth testing directly, not just assuming.
 
 ## 10. Further Reading
 

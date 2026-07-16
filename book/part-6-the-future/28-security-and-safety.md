@@ -58,10 +58,13 @@ notably **prompt injection**, where instructions hidden inside content a
 model merely processes get treated as if they were legitimate commands.
 **Safety** is the broader goal of ensuring a system's behavior — including
 whatever real-world actions its tools and agency (Chapters 21–22) let it
-take — actually matches human intent and doesn't cause harm, extending
-Chapter 19's alignment concept to systems where a misaligned or
-successfully attacked response can now do something in the world, not
-just say something.
+take — actually matches human intent and doesn't cause harm. That
+includes extending Chapter 19's alignment concept to systems where a
+misaligned or successfully attacked response can now do something in the
+world, but it reaches further still: privacy and data exposure, biased or
+unequal treatment, unreliable behavior in high-stakes decisions, misuse
+by people who are otherwise legitimate users, and a system being handed
+more permission or autonomy than its actual reliability warrants.
 
 ## 5. Technical Explanation
 
@@ -69,12 +72,18 @@ The root cause of prompt injection is structural, not a bug that slipped
 through. A model's context window (Chapter 16) mixes several different
 kinds of content — a developer's system instructions, a user's actual
 request, and, via retrieval (Chapter 18) or tool calls (Chapter 21),
-fetched text from external, potentially untrusted sources — into one
-undifferentiated sequence of tokens. Nothing about next-token prediction
-inherently distinguishes "an instruction I should obey" from "a piece of
-text I'm just supposed to read and report on"; both are simply tokens in
-context. Text embedded anywhere a model reads — a webpage, a document, an
-email, even a filename — can therefore attempt to redirect its behavior,
+fetched text from external, potentially untrusted sources. Real systems
+commonly tag these with different roles — system, developer, user, tool —
+so a model can be trained to weight them differently, and most production
+systems do exactly this. But a role tag is a hint the model was trained
+to respect, not a hard boundary enforced the way a programming language
+separates code from data: nothing about next-token prediction guarantees
+that content tagged "tool output" actually gets treated with less
+authority than a genuine system instruction, especially once an attacker
+knows what that tagged content will look like by the time it reaches the
+model. That's the real gap role separation reduces but doesn't close.
+Text embedded anywhere a model reads — a webpage, a document, an email,
+even a filename — can therefore still attempt to redirect its behavior,
 and once that model has tools capable of taking real actions (Chapter
 21), a successful injection becomes something more consequential than a
 wrong sentence.
@@ -90,22 +99,31 @@ safeguard Chapter 22 already introduced for agent loops in general —
 since no purely model-level fix has proven fully reliable on its own.
 
 Safety sits one level up from security specifically. It includes security
-— defending against a deliberate attacker — but also covers alignment
-training (Chapter 19) aimed at getting a model's own behavior to reflect
-intended values even with no attacker involved at all, plus the broader
-system-level safeguards — approval gates, rate limits, monitoring via
-Chapter 27's observability — that matter specifically once a system has
-genuine tool-using agency and its mistakes or misuses can have real
-consequences beyond a wrong answer.
+— defending against a deliberate attacker — but covers considerably more
+ground: alignment training (Chapter 19) aimed at getting a model's own
+behavior to reflect intended values even with no attacker involved at
+all; privacy, since a system handling real user data can expose or leak
+information whether or not anyone is attacking it; bias and unequal
+treatment, where a system's behavior systematically favors or
+disadvantages certain groups; reliability in high-stakes decisions, where
+a confident-sounding but wrong output (Chapter 15) matters far more than
+it would in casual use; misuse by people who are otherwise legitimate,
+authorized users, not just external attackers; and excessive permissions
+— a system handed more autonomy or access than its actual reliability
+warrants, independent of whether anyone is attacking it at all. The
+system-level safeguards this chapter has already covered — approval
+gates, rate limits, monitoring via Chapter 27's observability — apply
+across all of these, not only the prompt-injection case this chapter
+uses as its central, concrete example.
 
 ## 6. Common Misconceptions
 
 ### Misconception
 *"Prompt injection is basically the same as a classic software bug like SQL injection, and gets fixed the same definitive way."*
 
-**Why it's wrong:** SQL injection has a fully reliable, mechanical fix — parameterized queries cleanly separate code from data as two different things at the language level. Prompt injection's underlying instruction-versus-content distinction is fuzzier, because one model processes both in the exact same medium (natural-language tokens) using the exact same mechanism, and no current fix provides that same airtight, structural guarantee.
+**Why it's wrong:** Parameterized queries let traditional software enforce a hard syntactic boundary between a query's structure and user-supplied values, and that fix is reliable across the vast majority of real cases — though even there, unusual situations like dynamically constructed identifiers can still need careful handling by hand. Prompt injection's instruction-versus-content distinction is fuzzier still, and more fundamentally so: one model processes both in the exact same medium (natural-language tokens) using the exact same mechanism, and no current fix provides an equivalent enforced boundary, even an imperfect one.
 
-**Correct intuition:** Prompt injection is a genuine, actively-researched risk to be reduced and layered against with multiple defenses — not a solved problem with one definitive patch, the way SQL injection now effectively is.
+**Correct intuition:** Traditional software can enforce a hard boundary between code and data in nearly every real situation; current language models have no equivalent enforced boundary between instructions and content at all — that gap, not "SQL injection is flawless and prompt injection isn't," is the real difference.
 
 **Analogy:** Separating a form's data field from its instructions is straightforward when they're written in two different languages; it's much harder when both arrive as the same kind of plain English sentence.
 
@@ -133,16 +151,16 @@ This is why AI products that let a model read untrusted content — browsing the
 
 ## 8. Key Takeaway
 
-**A model's context window doesn't reliably distinguish trusted instructions from content it's merely reading — which is exactly what prompt injection exploits, and why real security for a tool-using AI system has to come from safeguards outside the model, not from the model alone.**
+**A model's context window has no enforced boundary between trusted instructions and content it's merely reading — role tags help but don't close that gap — which is exactly what prompt injection exploits, and why real security for a tool-using AI system has to come from safeguards outside the model, not from the model alone.**
 
 ## 9. One-Page Summary
 
 - Security, here, centers on prompt injection: instructions hidden inside content a model merely processes (a document, email, webpage) getting treated as legitimate commands.
-- The root cause is structural: a model's context window mixes trusted instructions and untrusted content as one undifferentiated sequence of tokens, with nothing inherently distinguishing the two.
+- The root cause is structural: role tags (system/developer/user/tool) let a model be trained to weight content differently, but that's a trained hint, not an enforced boundary the way a programming language separates code from data.
 - This becomes more consequential once a model has tools (Chapter 21) capable of taking real actions, not just generating a wrong sentence.
-- Defenses combine marking trusted-versus-untrusted content, training models to weight legitimate instructions more heavily, and system-level safeguards like permission boundaries and approval gates.
-- Safety is broader than security: it includes defending against attackers, but also alignment training (Chapter 19) and system-level safeguards for unintended, non-adversarial failures.
-- Unlike SQL injection, prompt injection has no single, fully reliable mechanical fix — it's a layered, ongoing risk-reduction problem.
+- Defenses combine role/content separation, training models to weight legitimate instructions more heavily, and system-level safeguards like permission boundaries and approval gates.
+- Safety is broader than security: alongside defending against attackers and alignment training (Chapter 19), it also covers privacy, bias, high-stakes reliability, misuse by legitimate users, and excessive permissions.
+- Unlike prompt injection, SQL injection has a syntactic fix (parameterized queries) that's reliable in nearly every real case — prompt injection has no equivalent enforced boundary at all, which is the more fundamental gap.
 - Injected instructions can be hidden in innocuous-looking content specifically to avoid detection.
 
 ## 10. Further Reading
