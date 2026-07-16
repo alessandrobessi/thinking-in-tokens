@@ -55,8 +55,12 @@ smaller, far more frequently reused pieces.
 
 ## Core Intuition
 
-A **character** is the smallest unit of written text — a single letter,
-digit, or punctuation mark. A **word** is a familiar, larger unit — but
+A **character** is, for this book's purposes, the smallest unit of
+written text — a single letter, digit, or punctuation mark. ("Character"
+is itself a slightly fuzzy idea in practice — Unicode code points, the
+grapheme clusters a reader perceives as one character, and raw bytes
+don't always line up one-to-one — but that distinction won't matter for
+anything in this book.) A **word** is a familiar, larger unit — but
 "word" turns out to be a slippery concept computationally, since new words
 appear constantly and different languages don't even agree on where one
 word ends and another begins.
@@ -72,7 +76,11 @@ these chunks, chosen so that common words get their own single token
 ("the," "is," "cat") while rare or unfamiliar words get broken into
 familiar sub-pieces ("un" + "believ" + "able"). This way, the model never
 encounters a word it has literally no way to represent — it can always fall
-back to smaller, familiar pieces.
+back to smaller, familiar pieces. (That guarantee specifically holds for
+byte-level or byte-fallback tokenizer designs, common in practice; a
+tokenizer built only from a fixed set of whole characters could still meet
+genuinely unrepresented input — a rare symbol, an unfamiliar script — and
+needs its own explicit fallback for that case.)
 
 ## Technical Explanation
 
@@ -81,7 +89,9 @@ tokenization — a family of approaches that all solve the same basic
 problem (build a fixed vocabulary of reusable chunks between "character"
 and "whole word") in somewhat different ways. The most widely used
 variant is Byte-Pair Encoding (BPE), which works, conceptually, like this:
-start with individual characters as the smallest possible units. Scan a
+start with individual characters as the smallest possible units (some BPE
+variants start from raw bytes instead, which is common in practice, but
+the merging logic that follows is identical either way). Scan a
 huge amount of text and find the pair of units that appears together most
 frequently. Merge that pair into a single new unit. Repeat this merging
 process tens of thousands of times. The result is a fixed vocabulary
@@ -107,9 +117,10 @@ real word, but rare enough that most vocabularies never earned it a
 dedicated token? Most likely as two or three familiar pieces ("quok" +
 "ka," or similar), the same way it would handle a name it's never
 encountered, like an uncommon surname, or a product name invented last
-week. This is the design working as intended: the tokenizer never fails
-outright on something unfamiliar, it just falls back to smaller, more
-common pieces it already has tokens for.
+week. This is the design working as intended for byte-level or
+byte-fallback tokenizers: rather than failing outright on something
+unfamiliar, it falls back to smaller, more common pieces it already has
+tokens for.
 
 ## Common Misconceptions
 
@@ -134,11 +145,14 @@ common pieces it already has tokens for.
 This is why AI providers bill by "tokens," not by words or characters — and
 why the same sentence can cost a different amount depending on the
 language it's written in (some languages tokenize less efficiently than
-English in many popular tokenizers). It also explains a famous class of
-AI failures: ask a model to count the letters in a word, or reverse a word
-letter-by-letter, and it can stumble — because it isn't actually seeing
-individual letters, it's seeing tokens, and a token doesn't expose its own
-internal letters to the model in an obvious way.
+English in many popular tokenizers). It also contributes to a famous class
+of AI failures: ask a model to count the letters in a word, or reverse a
+word letter-by-letter, and it can stumble — in part because it isn't
+actually seeing individual letters, it's seeing tokens, and a token
+doesn't expose its own internal letters to the model in an obvious way
+(models also generally lack a dedicated training signal or built-in
+mechanism for symbolic character counting, so tokenization is a real
+contributing factor here, not the whole explanation).
 
 ## Key Takeaway
 
@@ -150,8 +164,8 @@ internal letters to the model in an obvious way.
 - Tokenization builds a fixed vocabulary (tens of thousands of tokens) where common sequences become single tokens and rare ones stay split into pieces.
 - Byte-Pair Encoding (BPE) is the most widely used approach: repeatedly merge the most frequent adjacent pair of units to build up the vocabulary. Other approaches (e.g. unigram tokenization) solve the same problem differently.
 - Every token is assigned a numeric ID; a model's actual input is a sequence of these IDs, never raw letters or words.
-- This design guarantees any input text can be represented, even words the model has never seen whole.
-- Token-based billing and letter-counting failures both trace back directly to this chapter's ideas.
+- Byte-level or byte-fallback tokenizer designs guarantee any input text can be represented, even words the model has never seen whole; a fixed-character-set tokenizer without such a fallback can still meet genuinely unrepresented input.
+- Token-based billing and letter-counting failures both trace back in part to this chapter's ideas — tokenization is a real contributing factor, not the sole cause.
 
 ## Further Reading
 

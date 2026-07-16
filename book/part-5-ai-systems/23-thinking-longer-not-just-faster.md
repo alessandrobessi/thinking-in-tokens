@@ -157,7 +157,7 @@ system underneath.
 
 ### *"The reasoning a model prints out is a transparent, fully accurate window into its actual internal computation."*
 
-**Why it's wrong:** Printed reasoning text is generated the same way as any other output, and it does causally shape the final answer by becoming part of the context (§5) — but that's a different claim from the printed trace being a guaranteed, faithful report of everything actually happening inside the model's computation. The two can diverge.
+**Why it's wrong:** Printed reasoning text is generated the same way as any other output, and it does causally shape the final answer by becoming part of the context (§5) — but that's a different claim from the printed trace being a guaranteed, faithful report of everything actually happening inside the model's computation. The two can diverge in a couple of concrete ways: the trace can omit something that actually influenced the answer without ever mentioning it, or it can read as a tidy justification constructed after the fact for an answer the model arrived at some other way, rather than an accurate account of how it actually got there.
 
 **Correct intuition:** Visible reasoning genuinely influences the final answer, which is useful and real — but treat it as the model's stated reasoning, not a verified, complete transcript of its internal process.
 

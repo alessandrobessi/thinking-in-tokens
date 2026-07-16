@@ -27,7 +27,11 @@ Side by side, the JPEG looks essentially identical to the RAW original
 for nearly every practical purpose. The image hasn't been "dumbed down"
 in any way a viewer would notice; it's simply been stored with just
 enough precision to look right, instead of far more precision than
-anyone could use.
+anyone could use. (JPEG's actual mechanism involves more than this —
+color-space conversion and frequency-based compression on top of coarser
+storage — so treat the comparison as being about the *outcome*, a much
+smaller file with imperceptible loss, not a claim that a JPEG and a
+quantized model are built the same way underneath.)
 
 ## Worked Example
 
@@ -89,6 +93,20 @@ more coarsely than a model can comfortably absorb — does eventually
 produce noticeable degradation regardless of method, which is why
 quantization is a genuine tradeoff to tune carefully, not a cost-free
 operation.
+
+This chapter has focused on **weight quantization** — reducing the
+precision of the model's own stored parameters — but it isn't the only
+kind. **Activation quantization** reduces the precision of the
+intermediate values computed during a forward pass, not just the weights
+that produced them. **KV-cache quantization** applies the same idea to
+the cached keys and values described below, storing them at lower
+precision to save memory, distinct from simply reusing them once
+computed. And quantization can happen at different points in a model's
+life: **post-training quantization** (what this chapter's Worked Example
+describes) is applied to an already-trained model, after the fact;
+**quantization-aware training** builds the eventual precision reduction
+into training itself, which typically holds up better at very aggressive
+precision levels than quantizing after the fact.
 
 Other efficient-inference techniques address different parts of the same
 underlying problem. The most important one for autoregressive generation

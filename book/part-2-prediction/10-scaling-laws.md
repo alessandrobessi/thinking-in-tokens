@@ -30,7 +30,12 @@ their results, and extrapolate the line forward to forecast — with useful
 accuracy, within a given model family and training setup — how good a
 model ten or a hundred times larger will be, before ever training it.
 Predictability at this scale, in a field this young, was not something
-researchers expected to find.
+researchers expected to find. "Within a given model family and training
+setup" is doing real work in that sentence: change the architecture, the
+tokenizer, the quality or composition of the training data, the training
+objective, or the optimizer, and the fitted curve doesn't automatically
+carry over — each new combination needs its own small-scale check before
+its extrapolation can be trusted.
 
 ## Worked Example
 

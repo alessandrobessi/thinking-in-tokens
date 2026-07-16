@@ -51,7 +51,11 @@ math reasoning" from "happened to have this specific test's answers in
 its training data." Only checking for this kind of overlap — known as
 contamination — reveals which explanation is actually true, and once
 it's found, the 92%-versus-89% comparison stops meaning what it appeared
-to mean.
+to mean. And even setting contamination aside, a 3-point gap on its own
+doesn't say much without knowing how many questions the benchmark
+actually contains, how much the score moves across repeated runs, and
+whether both models were evaluated under identical conditions — a small
+difference can easily sit inside ordinary run-to-run noise.
 
 ## Core Intuition
 
@@ -66,9 +70,12 @@ something surrounding it is broken — retrieval returning the wrong
 passage, a tool interface behaving unsafely — so evaluation has to reach
 the whole thing, not stop at the model at its core. "How good is this
 system" also isn't one single question — it splits into several distinct
-ones: raw capability on the task, factual reliability, robustness to
-unusual or adversarial input, fairness across different users, latency
-and cost, and security, among others. Benchmarks, human judgment, and
+ones: raw capability on the task, factual reliability, faithfulness (is
+an answer actually grounded in its cited source, as distinct from merely
+being true), calibration (does the model's stated confidence match its
+real accuracy), robustness to unusual or adversarial input, fairness
+across different users, latency and cost, and security, among others.
+Benchmarks, human judgment, and
 using another model as a judge are three different tools for
 approximating "how good is this," each useful, and each with its own
 specific blind spots a reader needs to know about before trusting a
@@ -109,10 +116,15 @@ and a well-specified rubric — its judgments can correlate reasonably well
 with what human raters would say in many settings. But a judge model
 inherits its own blind spots: it can hallucinate a
 justification for a wrong verdict the same way Chapter 15 described for
-any other generated claim, and outputs can be specifically styled to
-appeal to that particular judge's known preferences rather than
-genuinely being better — a judge is one more imperfect measurement tool,
-not a substitute for the thing it's approximating.
+any other generated claim, and it can carry specific, documented biases —
+favoring whichever answer it happens to see first or second (position
+bias), shifting its verdict based on small wording changes in the rubric
+(prompt sensitivity), favoring longer answers regardless of actual
+quality (verbosity preference), rating outputs from its own model family
+more favorably (self-preference bias), and being more or less reliable
+depending on the kind of task being judged — a judge is one more
+imperfect measurement tool, not a substitute for the thing it's
+approximating.
 
 ## Common Misconceptions
 
@@ -145,6 +157,8 @@ not a substitute for the thing it's approximating.
 This is why AI providers publish tables of many separate named benchmarks rather than one single score — no single number is trustworthy enough to stand alone, for exactly the reasons this chapter covered. It's also why practitioners are consistently urged to build evaluation sets specific to their own actual use case rather than relying solely on general public benchmarks, which may not reflect their domain and may already be contaminated or specifically optimized against by model developers. And it's the direct reason "LLM-as-judge" pipelines have become a common piece of real product evaluation workflows: not because they're perfectly reliable, but because they make frequent, cheap evaluation possible at a scale exhaustive human review never could reach.
 
 It's also why a serious evaluation plan for a real product tests more than the model's raw answers: whether retrieval (Chapters 17–18) actually surfaces the right passage, whether a tool-using agent (Chapters 21–22) picks the right tool and recovers sensibly when a step fails, and how the complete pipeline performs end to end — not just a benchmark score for the model sitting at its core, which can look excellent while the surrounding system still lets users down.
+
+A reported score is also only as trustworthy as what stands behind it. Worth checking before treating any comparison as settled: how many test cases the score is actually based on (sample size), whether it was measured once or across repeated runs (generation is often stochastic, so a single run isn't necessarily representative), how much it moves run to run (variance), whether that variance is small enough to trust a given gap (confidence), how much independent raters agree with each other on the same cases (evaluator agreement), and whether a handful of severe failures are being averaged away by many minor successes (failure severity) — an aggregate percentage can look reassuring while hiding exactly the kind of failure that matters most in production.
 
 ## Key Takeaway
 

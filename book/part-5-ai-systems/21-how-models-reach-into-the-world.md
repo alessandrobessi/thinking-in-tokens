@@ -71,12 +71,16 @@ usually — but not reliably — correct.
 **Tool calling** is a model producing a structured request — naming a
 specific available capability and the exact arguments it needs — instead
 of, or in addition to, producing ordinary prose. That request is executed
-by software outside the model itself; the result is then inserted back
-into the model's context window as new text, which the model reads and
-continues generating from, using the exact same generation mechanism
-(Chapter 6, Chapter 14) it always uses. The model doesn't gain a new kind
-of ability. It gains a new kind of thing it's allowed to write, and a
-system on the other end that knows what to do when it writes that.
+by software outside the model itself; the result eventually reaches the
+model as new context it reads and continues generating from, using the
+exact same generation mechanism (Chapter 6, Chapter 14) it always uses —
+though the raw result isn't always already text. A tool can hand back
+structured data, a file, an image, or a status object, and the
+surrounding system commonly has to convert or summarize that into
+something the model can actually read before it lands in context. The
+model doesn't gain a new kind of ability. It gains a new kind of thing
+it's allowed to write, and a system on the other end that knows what to
+do when it writes that.
 
 ## Technical Explanation
 

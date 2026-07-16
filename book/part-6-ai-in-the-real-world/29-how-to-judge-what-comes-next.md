@@ -74,11 +74,14 @@ improvement — more scale, a new architecture, or a new, specific,
 deliberately trained addition targeting one gap? What's the real
 evaluation evidence behind the claim, and could it be contaminated or
 gamed (Chapter 26)? What's the cost and efficiency tradeoff, and is it
-actually deployable or a research demo (Chapters 20 and 25)? And, if it's
-given tools or agency, what are the security and safety implications
-(Chapters 21, 22, and 28)? A reader who can ask these of any headline has
-this book's actual promise fulfilled, whatever specific technology
-prompted the headline.
+actually deployable or a research demo (Chapters 20 and 25) — not just
+technically, but given the hardware and energy it needs, whether the
+data it depends on is actually available and usable, and the
+regulatory and organizational work required to actually integrate it?
+And, if it's given tools or agency, what are the security and safety
+implications (Chapters 21, 22, and 28)? A reader who can ask these of
+any headline has this book's actual promise fulfilled, whatever
+specific technology prompted the headline.
 
 ## Technical Explanation
 

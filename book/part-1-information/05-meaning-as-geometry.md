@@ -50,12 +50,14 @@ Picture placing six words on this map: "cat," "kitten," "dog," "puppy,"
 "car," "truck." Because "cat" and "kitten" show up in almost identical
 surrounding contexts — petting, feeding, a litter box, meowing — they land
 close together. "Dog" and "puppy" form their own tight cluster for the
-same reason. And because animal-vocabulary and vehicle-vocabulary
-essentially never share surrounding context, the entire animal cluster
-sits far away from the entire vehicle cluster — even though nothing in the
-process ever explicitly told the system "animals are different from
-vehicles." That separation is entirely a byproduct of how differently the
-two groups of words are actually used in real text.
+same reason. And because animal-vocabulary and vehicle-vocabulary mostly
+don't share surrounding context — outside of metaphor and idiom, like
+calling a reliable car "a real workhorse" or describing an "engine that
+growled" — the entire animal cluster sits far away from the entire
+vehicle cluster in the common case, even though nothing in the process
+ever explicitly told the system "animals are different from vehicles."
+That separation is largely a byproduct of how differently the two groups
+of words are actually used in real text.
 
 ## Core Intuition
 
@@ -74,10 +76,13 @@ described by a list of numbers (its coordinates), just a much longer list
 than "latitude, longitude."
 
 **Similarity** between two words is measured by how close their points are
-in this space. Closeness is not decided by hand — it emerges automatically
-from how the words are actually used across enormous amounts of text: words
-that tend to appear in similar surrounding contexts (see Chapter 4) end up
-placed near each other.
+in this space, typically using a measure like cosine similarity or
+Euclidean distance — the specific choice of measure is a real design
+decision, not just an implementation detail, and different measures don't
+always rank the same pairs as equally close. Closeness is not decided by
+hand — it emerges automatically from how the words are actually used
+across enormous amounts of text: words that tend to appear in similar
+surrounding contexts (see Chapter 4) end up placed near each other.
 
 **Semantic geometry** is the idea that meaningful relationships between
 words correspond to consistent geometric patterns — directions and

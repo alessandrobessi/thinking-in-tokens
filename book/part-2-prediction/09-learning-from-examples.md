@@ -36,7 +36,7 @@ thousands of times, but billions.
 
 Imagine training on the same single example five times in a row. First
 pass: the model's prediction is wildly off; loss is high; every parameter
-gets a relatively large nudge. Second pass, same example: the prediction
+that contributed to that error gets a relatively large nudge. Second pass, same example: the prediction
 is a little closer; loss is lower; the nudges shrink accordingly. By the
 fifth pass, the model's prediction on this specific example is nearly
 exact, and further nudges from it are tiny.
@@ -54,12 +54,13 @@ enormous collection.
 
 ## Core Intuition
 
-**Loss** is a single number that measures exactly how wrong a network's
-prediction was for one example — a large loss means "very wrong," a loss
-near zero means "very close to correct." Loss is what makes the free-throw
-analogy precise: instead of a vague sense of "too far left," the network
-gets a precise, quantified measure of its error on every single example it
-sees.
+**Loss** is a single number that measures how much probability a
+network's prediction assigned to the one token that actually came next —
+high probability on the right answer means low loss ("very close to
+correct"), low probability on the right answer means high loss ("very
+wrong"). Loss is what makes the free-throw analogy precise: instead of a
+vague sense of "too far left," the network gets a precise, quantified
+measure of its error on every single example it sees.
 
 **Training** is the repeated process of showing the network an example,
 computing its loss, and then adjusting the parameters that contributed to

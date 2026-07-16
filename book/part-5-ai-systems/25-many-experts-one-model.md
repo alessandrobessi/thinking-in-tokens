@@ -89,7 +89,13 @@ request, might get routed to a completely different pair. Because
 different tokens get routed differently, some rough specialization
 across experts tends to emerge over the course of training — but it
 emerges from the router and experts training jointly, not from anyone
-assigning a topic to each expert in advance. This is why Mixture-of-
+assigning a topic to each expert in advance. Where a real pattern does
+show up, it tends to look less like a subject-matter split and more like
+routing by surface features — token type, position in the sequence, or
+even language in a multilingual model — and different experts can end up
+overlapping or redundant rather than each owning a clean, separate
+slice; the pattern can be genuinely hard to characterize even when it's
+there. This is why Mixture-of-
 Experts models are described using two separate numbers: **total
 parameters** (the sum across every expert in every MoE layer, plus the
 model's ordinary dense components — the model's total learned capacity)

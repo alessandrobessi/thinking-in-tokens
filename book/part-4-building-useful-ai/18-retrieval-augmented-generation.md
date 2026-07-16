@@ -95,7 +95,11 @@ confuse rather than help). RAG substantially reduces, but does not
 eliminate, the hallucination risk from Chapter 15: the model can still
 misread or contradict retrieved text, blend it incorrectly with prior
 trained-in knowledge, or produce a fluent answer when the retrieval step
-itself failed to find the genuinely relevant passage.
+itself failed to find the genuinely relevant passage. And retrieval
+succeeding at its own job — finding a passage that's genuinely relevant —
+doesn't mean the passage itself is correct: a retrieved document can be
+outdated, wrong, or simply unreliable, independent of whether the model
+goes on to use it faithfully.
 
 ## Common Misconceptions
 
@@ -125,6 +129,21 @@ AI" product's claims: does it actually retrieve and cite specific real
 sources for its answers, or does it just generate fluent-sounding text
 without anything underneath it — the exact distinction this chapter and
 Chapter 15 together equip you to spot.
+
+A real production RAG system carries its own checklist beyond getting
+retrieval and generation working at all: source provenance, so a citation
+can actually be traced back to where it came from; documents going
+stale, so the retrieval store itself needs a real update process, not
+just a one-time load; an index being deliberately poisoned with
+malicious or misleading content by whoever can write to it; access
+controls on the retrieval store itself, so a user can't retrieve
+documents they aren't supposed to see (a distinct concern from the
+model's own behavior); indirect prompt injection carried in via
+retrieved content — untrusted text a retrieved document contains being
+treated as an instruction rather than as data (Chapter 28 covers this in
+depth); and evaluating retrieval quality — did the right passage even
+get found? — as its own separate question from evaluating whether the
+generated answer used it well.
 
 ## Key Takeaway
 

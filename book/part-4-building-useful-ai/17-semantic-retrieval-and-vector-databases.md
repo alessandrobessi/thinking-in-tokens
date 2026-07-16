@@ -116,9 +116,22 @@ space like Chapter 5's, is it keyword matching, or is it a hybrid of
 both — each is a legitimate design choice with its own tradeoffs, not
 one being a lesser version of the other.
 
+A handful of other practical levers determine whether useful evidence
+actually reaches the model at all. Metadata filters narrow the search
+space before or alongside similarity search — restricting a query to a
+specific document type, date range, or source, rather than searching the
+whole collection. Reranking takes a larger first-pass set of retrieved
+candidates and re-scores them with a more precise, often more expensive
+method, to push the truly best matches to the top. Access-control
+filtering makes sure a user only ever retrieves documents they're
+actually permitted to see, not just whatever is nearest in meaning-space.
+And recall — whether the genuinely relevant passage was even in the
+retrieved candidate set in the first place — is a real, distinct failure
+mode from how well a later step uses whatever it did retrieve.
+
 ## Key Takeaway
 
-**Retrieval finds relevant passages by meaning, not exact words, by comparing passage-level embeddings in a vector database built for fast nearest-neighbor search at huge scale.**
+**This chapter's approach to retrieval finds relevant passages by meaning, not exact words, by comparing passage-level embeddings in a vector database built for fast nearest-neighbor search at huge scale — one major approach among the real, still-used alternatives like keyword and hybrid retrieval.**
 
 ## What to Remember
 

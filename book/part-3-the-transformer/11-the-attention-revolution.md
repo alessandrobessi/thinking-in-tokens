@@ -104,7 +104,12 @@ but *where* each one sits relative to the others.
 Formally, for each token being processed, attention computes three
 things: a **query** (what this token is looking for), and, for every
 token in the sequence, a **key** (what that token has to offer) and a
-**value** (the actual content it contributes if selected). In the first
+**value** (the actual content it contributes if selected). "Looking
+for," "has to offer," and "contributes" are a useful way to talk about
+what these three quantities do, not literal roles written into the
+numbers — each is really just a learned numerical vector, produced by a
+simple transformation of the token's representation, that happens to
+behave this way once trained. In the first
 transformer block, these are derived from the token representations that
 began as embeddings (Chapter 5); in every later block, they're derived
 instead from the richer representations the previous block already

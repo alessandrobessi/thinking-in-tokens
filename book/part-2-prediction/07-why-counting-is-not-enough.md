@@ -104,7 +104,12 @@ points in a space where closeness reflects similarity of meaning and use
 it has never seen exactly, by reasoning from nearby points it has seen.
 What's still missing is a mechanism that can actually learn and use that
 geometric structure to make predictions — which is exactly what a neural
-network provides.
+network provides. A neural network generalizes a second way too, alongside
+this geometric one: the same learned parameters are reused across every
+position and context they apply to, rather than each distinct phrase
+needing its own independent slot the way a counting table does — one set
+of weights, shared everywhere it's relevant, instead of one count per
+exact sequence ever observed.
 
 ## Common Misconceptions
 
