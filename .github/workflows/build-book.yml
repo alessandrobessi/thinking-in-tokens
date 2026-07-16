@@ -1,0 +1,30 @@
+name: Build book
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Strip authoring scaffolding from chapters
+        run: python3 scripts/prepare_manuscript_for_publish.py
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render book (HTML, EPUB, PDF via Typst)
+        working-directory: publish
+        run: quarto render
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: the-architecture-of-intelligence-book
+          path: publish/_book/
+          retention-days: 30
