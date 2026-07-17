@@ -2,15 +2,15 @@
 
 *A Mental Model for Modern AI Systems*
 
-This is the manuscript, organized by Part and Chapter following the concept
-dependency graph in [`../blueprint.md`](../blueprint.md). Chapters are
+This is the manuscript, organized by Part and Chapter following an
+explicit concept dependency graph. Chapters are
 numbered globally (01–30) and must be read in order — each chapter's
 vocabulary is a prerequisite for the next.
 
 The manuscript teaches entirely through prose — no diagrams. Every chapter
 pairs an opening story with a second, fully-written worked example, and
 ends on one bolded, memorable key-takeaway sentence instead of an
-illustration (see `../blueprint.md`'s "No Diagrams" section for why).
+illustration.
 
 Supporting project files: [`../style-guide.md`](../style-guide.md) (voice,
 analogy registry), [`../glossary.md`](../glossary.md),

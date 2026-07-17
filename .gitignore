@@ -4,3 +4,7 @@
 publish/chapters/
 publish/_book/
 publish/.quarto/
+
+# Internal planning documents — kept locally, not part of the tracked repo.
+blueprint.md
+ROADMAP.md

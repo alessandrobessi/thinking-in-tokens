@@ -48,7 +48,7 @@ Information, Prediction, The Transformer, Building Useful AI, AI Systems,
 and AI in the Real World. The book builds understanding through stories, worked
 examples, careful analogies, and precise technical explanation. See
 [`book/README.md`](book/README.md) for the full chapter-by-chapter index
-and status, and [`ROADMAP.md`](ROADMAP.md) for project-level milestones.
+and status.
 This is a first complete draft, not a finished, fully-validated book — see
 "Editorial status and contributions" below.
 
@@ -56,7 +56,6 @@ This is a first complete draft, not a finished, fully-validated book — see
 
 | | |
 |---|---|
-| [`blueprint.md`](blueprint.md) | The founding design document — mission, audience, teaching philosophy, concept dependency graph, full table of contents. Read this first if you want the "why" behind every other file. |
 | [`book/`](book/) | The manuscript itself, one file per chapter. Start at [`book/README.md`](book/README.md). |
 | [`style-guide.md`](style-guide.md) | Voice conventions and the analogy registry (so an analogy is never reinvented under a different name in a later chapter). |
 | [`templates/chapter-template.md`](templates/chapter-template.md) | The 11-section template every chapter is drafted against. |

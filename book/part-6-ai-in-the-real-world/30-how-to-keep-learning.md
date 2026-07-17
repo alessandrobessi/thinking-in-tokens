@@ -81,9 +81,10 @@ onward) — sturdy enough that a genuinely new technique can be located
 against it without a chapter having been written about that exact
 technique in advance.
 
-This is exactly why the book's own structure (blueprint.md's dependency
-graph, referenced since Chapter 1) matters beyond just organizing thirty
-chapters: it's a map the reader keeps, not just a sequence she read once.
+This is exactly why the book's own structure (the concept dependency
+graph this book has followed since Chapter 1) matters beyond just
+organizing thirty chapters: it's a map the reader keeps, not just a
+sequence she read once.
 When something new appears, the useful question isn't "which chapter
 covers this" — often, for something new enough, no chapter will. The
 useful question is "which existing node on that map does this attach
@@ -139,7 +140,7 @@ Concretely, going forward: read primary technical announcements directly, applyi
 
 ## Further Reading
 
-- Revisit `blueprint.md`'s Concept Dependency Graph directly as a map — not a list of chapters already read, but a structure to keep attaching new developments to.
+- Revisit this book's own concept dependency graph directly as a map — not a list of chapters already read, but a structure to keep attaching new developments to.
 - Revisit Chapter 29's five questions the next time an unfamiliar AI announcement appears, as direct practice rather than review.
 
 ## The Next Obvious Question
