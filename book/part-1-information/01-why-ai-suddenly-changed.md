@@ -16,12 +16,13 @@
 
 ## Real-World Story
 
-In 2016, if you needed to reset a password online, you probably talked to a
-chatbot first. It asked you to pick from a menu: "Billing," "Technical
-Issue," "Something Else." Type a sentence that didn't match its script, and
-it looped back to the same three buttons. Everyone who used one of these
-bots learned the same lesson: type simple keywords, don't try to explain
-yourself, and expect to be handed off to a human eventually anyway.
+In 2016, if your flight got cancelled and you needed to rebook, you
+probably talked to a chatbot first. It asked you to pick from a menu:
+"Flight Status," "Change Booking," "Something Else." Type a sentence
+that didn't match its script, and it looped back to the same three
+buttons. Everyone who used one of these bots learned the same lesson:
+type simple keywords, don't try to explain yourself, and expect to be
+handed off to a human eventually anyway.
 
 In late 2022, a lot of those same people typed a full paragraph into a
 different box — explaining a messy, specific problem in their own words —
