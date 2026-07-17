@@ -125,9 +125,12 @@ API controls directly. It also explains a genuine, recurring business and
 engineering distinction: training is an enormous, largely one-time cost
 per model, while inference is a smaller cost paid again every single time
 anyone actually uses the model — a distinction that shows up constantly
-in discussions of AI infrastructure costs, and one that becomes
-especially important once Chapter 20 covers making inference cheaper and
-faster.
+in discussions of AI infrastructure costs. Smaller per use doesn't mean
+smaller overall, though: summed across millions of uses of a widely
+deployed model, cumulative inference spend can add up to more than the
+original training run cost, which is exactly why making inference cheaper
+and faster (Chapter 20) matters as much to total cost as training
+efficiency does.
 
 ## Key Takeaway
 
@@ -140,7 +143,7 @@ faster.
 - Temperature rescales the model's raw predicted scores before sampling, sharpening or flattening the resulting distribution; top-k/nucleus sampling truncates and renormalizes it, discarding implausible candidates outright.
 - None of this changes the model's parameters or reruns training — but it does genuinely reshape the distribution actually sampled from, not just the rule for picking from an untouched one.
 - Identical prompts can produce different, equally valid outputs by design, because of this controlled randomness.
-- Training is a large, mostly one-time cost; inference is a smaller, recurring cost paid every time the model is used.
+- Training is a large, mostly one-time cost; inference is a smaller, recurring cost paid every time the model is used — but summed across enough uses, cumulative inference spend can exceed the original training cost.
 
 ## Further Reading
 

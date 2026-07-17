@@ -79,18 +79,24 @@ response explicitly. **Reinforcement Learning from Human Feedback
 steps: humans compare pairs of candidate model outputs and indicate which
 they prefer; that preference data trains a separate model — a reward
 model — to predict which of two responses a human would favor. The
-original language model is then further adjusted, using Chapter 9's core
-loss-reduction mechanism, but now using the reward model's predicted
-preference as the error signal instead of raw next-token accuracy.
+original language model is then further adjusted using reinforcement
+learning: it generates responses, the reward model scores them, and the
+language model is nudged toward whatever tends to earn higher scores —
+usually while being kept close to a reference version of itself, so it
+doesn't drift into degenerate behavior that chases the reward signal
+without actually being helpful. That's a meaningfully different training
+procedure from Chapter 9's original loop, not just the same loop with a
+different number plugged in for "error."
 
 RLHF is an influential approach, but not the only way to use preference
-data. Newer methods, broadly grouped under the name **direct preference
-optimization**, adjust the language model directly from pairs of
-preferred and rejected responses, without training a separate reward
-model or running RLHF's full two-stage pipeline. The shared idea across
-all of these methods is the same: shift the model toward outputs that
-some evaluator — human or otherwise — prefers, using whichever specific
-training procedure gets there.
+data. Newer methods, broadly grouped under the umbrella of **direct
+preference-learning methods** — of which **Direct Preference Optimization
+(DPO)** is one well-known example — adjust the language model directly
+from pairs of preferred and rejected responses, without training a
+separate reward model or running RLHF's full two-stage pipeline. The
+shared idea across all of these methods is the same: shift the model
+toward outputs that some evaluator — human or otherwise — prefers, using
+whichever specific training procedure gets there.
 
 Two more precisions matter. First, fine-tuning doesn't only reshape
 surface style — it can also add, sharpen, or shift specific factual
@@ -118,7 +124,7 @@ subtly misaligned ways after this process, which is part of why Chapter
 
 ### *"Fine-tuning and pretraining are fundamentally different kinds of processes."*
 
-**Why it's wrong:** Fine-tuning reuses the identical predict/measure-error/adjust loop from Chapter 9 — the only thing that changes is the dataset and the specific goal it's aimed at, not the underlying mechanism.
+**Why it's wrong:** Fine-tuning reuses the same broad shape as Chapter 9's loop — a forward pass, an error signal, a backward parameter update — but what actually counts as "error," which parameters are trainable, and whether the process involves reinforcement learning against a separate reward model can genuinely differ by method, not just the dataset and goal.
 
 **Correct intuition:** Fine-tuning is the same training process, applied again, to a different and usually smaller set of examples.
 
@@ -151,7 +157,7 @@ effort, not a completed guarantee.
 
 - Fine-tuning reuses Chapter 9's core training loop on a smaller, more specifically curated dataset, after pretraining is complete.
 - Alignment is the broader goal fine-tuning serves — matching model behavior to particular designers'/evaluators' intended goals, which can themselves conflict, not just statistically plausible continuations.
-- Supervised fine-tuning trains directly on curated examples; RLHF trains a reward model from human preferences and adjusts the language model against it; direct preference optimization methods skip the separate reward model and adjust the language model straight from preference pairs.
+- Supervised fine-tuning trains directly on curated examples; RLHF trains a reward model from human preferences, then uses reinforcement learning to adjust the language model toward higher reward while staying close to a reference version of itself; direct preference-learning methods (DPO among them) skip the separate reward model and adjust the language model straight from preference pairs.
 - Fine-tuning can shift specific facts and capabilities, not just surface style, and some methods add small adapter components rather than adjusting every original parameter.
 - Alignment adjusts output tendencies, not necessarily genuine understanding or agreement — a distinction worth holding onto rather than resolving.
 - Alignment is an ongoing, imperfect, actively researched effort, not a one-time, completed fix.

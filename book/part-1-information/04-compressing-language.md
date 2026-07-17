@@ -35,11 +35,10 @@ parts genuinely carry new information and must be preserved in full.
 ## Worked Example
 
 Text messages compress the same way telegrams did. "I will be right back"
-becomes "brb" — four words vanish ("I," "will," "be," "right") because any
-reader can reconstruct them instantly from context and convention, while
-the core content survives, compressed into a single letter because the
-whole phrase is so predictable that even *that* much information is
-redundant.
+becomes "brb" — "I" and "will" vanish entirely, while "be," "right," and
+"back" each survive as a single letter, because any reader can
+reconstruct the full phrase instantly from context and convention, even
+from that much compression.
 
 Now compare a message where the same trick would fail: "brb, the store
 called about a recall on the blue sedan we bought." Nobody compresses

@@ -105,10 +105,15 @@ instead of a retrieved passage.
 This only works because every available tool is described to the model in
 advance, typically inserted into its context alongside the conversation
 itself, as a **tool schema**: a name, a plain description of what it does,
-and the exact arguments it accepts. The model can only request tools that
-appear in that schema — it has no way to invent access to a capability
-nobody described to it, no matter how plausible a request for one might
-sound. Whether a specific fine-tuned or aligned (Chapter 19) model
+and the exact arguments it accepts. Nothing about next-token prediction
+stops the model from generating a request that names a tool that was
+never described to it, or a malformed one — generation alone can't
+prevent that. What actually limits access is the orchestration layer on
+the other end: it will only ever execute a request for a tool that was
+genuinely registered and exposed in the schema, so the model has no way
+to make an unregistered capability actually *run*, no matter how
+plausible-sounding a request for one might be. Whether a specific
+fine-tuned or aligned (Chapter 19) model
 reliably produces well-formed requests, picks the right tool, and fills in
 sensible arguments is itself a trained behavior, not a guarantee that
 comes free with the architecture.
@@ -147,7 +152,7 @@ of the durable idea, not as a separate mechanism.
 
 ### *"Tool calling means the model can use whatever tool it decides it needs, on its own initiative."*
 
-**Why it's wrong:** A model can only request tools that were explicitly described to it in advance, in a tool schema listing exactly what's available and what arguments each one takes. It cannot invent access to a capability nobody exposed to it, regardless of how useful or plausible the request would sound.
+**Why it's wrong:** A model can generate a request naming any tool it likes, including one that was never described to it or a malformed request — nothing about generation itself prevents that. What it cannot do is make that request actually execute: the surrounding system will only run tools that were explicitly registered and exposed to it in a tool schema, so an invented or unregistered request simply goes nowhere.
 
 **Correct intuition:** Available tools are a fixed, predefined catalog set up by whoever built the surrounding system — not an open-ended set the model can expand on its own.
 
@@ -173,7 +178,7 @@ This is what sits underneath the labels "function calling," "tools," "plugins," 
 
 - Tool calling is a model producing a structured request (a tool name plus arguments) instead of, or alongside, ordinary prose — using the same generation mechanism as always.
 - The model never executes anything itself. A surrounding orchestration layer parses the request, runs the real function, and inserts the result back into the context window as new text.
-- Available tools form a fixed, predefined catalog described to the model in advance as a tool schema — the model cannot request a tool that was never exposed to it.
+- Available tools form a fixed, predefined catalog described to the model in advance as a tool schema — the model can generate a request for a tool that was never exposed to it, but the orchestration layer will only ever execute a request for one that actually was.
 - Tool calling is the broader interface: retrieval (Chapter 18) can be implemented as one kind of tool call, alongside exact computation and real-world actions that don't reduce to fetching a passage at all.
 - The Model Context Protocol (MCP) standardizes the communication protocol between tools/data sources and model-serving applications, reducing custom, one-off protocol glue — real deployments still need their own configuration, authentication, and permissions, and MCP doesn't add any new reasoning capability.
 - Producing well-formed, correctly-targeted tool requests is itself a trained behavior (Chapter 19), not a free guarantee of the architecture.

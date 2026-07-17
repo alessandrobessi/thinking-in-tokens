@@ -36,11 +36,11 @@ counting. This is the ceiling every purely count-based approach runs into.
 
 Imagine the counting table has seen "the cat sat" 412 times, so it
 confidently predicts what comes next. Now ask it about "the kitten
-pirouetted" — a sentence that means almost the same thing, just with two
+rested" — a sentence that means almost the same thing, just with two
 words swapped for close synonyms. If the table has seen that exact phrase
 zero times, it has nothing to say: no count, no prediction, no fallback.
 
-It cannot notice that "kitten" behaves like "cat" or that "pirouetted"
+It cannot notice that "kitten" behaves like "cat" or that "rested"
 behaves like "sat" in this context, because it has no representation of
 word similarity at all — only exact-match history. A sentence that means
 almost the same thing produces a completely different, and completely
@@ -96,7 +96,7 @@ shared similar surrounding contexts specifically to share statistics
 between them, a cruder ancestor of exactly the similarity notion
 embeddings provide. These refinements measurably helped, but none of
 them escaped the underlying ceiling: they still worked by manipulating
-counts and hand-built word groupings, not by learning a rich,
+counts and discrete word groupings, not by learning a rich,
 general-purpose geometric representation of meaning. This is precisely
 the gap embeddings were built to close: by placing tokens as
 points in a space where closeness reflects similarity of meaning and use

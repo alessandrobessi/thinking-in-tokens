@@ -69,16 +69,17 @@ into it.
 ## Core Intuition
 
 **Attention** is a mechanism that lets a model, while processing any given
-token, weigh every other token in the sequence by how relevant it is right
-now — a direct, computable version of Chapter 4's "context": instead of
-just saying "surrounding tokens disambiguate meaning," attention is the
-machinery that actually computes, numerically, how much each surrounding
-token matters for this particular word at this particular moment. This
-book, being about generative models like the ones behind ChatGPT, focuses
-specifically on the *causal* form of attention described below — restricted
-to look back across earlier tokens only, never later ones; other forms
-(bidirectional attention, or attention across two different sequences)
-exist and are used elsewhere, but aren't this chapter's concern.
+token, weigh every earlier token in the sequence — itself included — by
+how relevant it is right now, never looking ahead to tokens that haven't
+been generated yet — a direct, computable version of Chapter 4's
+"context": instead of just saying "surrounding tokens disambiguate
+meaning," attention is the machinery that actually computes, numerically,
+how much each earlier token matters for this particular word at this
+particular moment. This book, being about generative models like the ones
+behind ChatGPT, focuses specifically on this *causal* form of attention;
+other forms (bidirectional attention, or attention across two different
+sequences) exist and are used elsewhere, but aren't this chapter's
+concern.
 
 That "earlier, never later" restriction has a name: **causal masking**.
 It isn't a limitation of what attention could technically do — comparing
@@ -183,11 +184,13 @@ somehow, since attention itself carries none) hasn't changed.
 
 Understanding attention explains a genuinely important practical fact:
 because standard attention computes a relevance score between every pair
-of earlier-and-current tokens, its cost grows much faster than the
-sequence length itself — doubling the input roughly quadruples the
-computation. (Some newer architectures restructure this to reduce the
-cost, but the standard version described here is still the dominant
-baseline.) This is a real reason very long documents are expensive to
+of earlier-and-current tokens, processing a full document or prompt at
+once costs much more than the sequence length itself would suggest —
+doubling the length of a document being processed roughly quadruples the
+attention computation for that pass. (Some newer architectures restructure
+this to reduce the cost, but the standard version described here is still
+the dominant baseline.) This is a real reason very long documents are
+expensive to
 process and why "context window" size (Chapter 16) is a meaningful
 engineering constraint, not an arbitrary limit. It also explains
 "attention visualization" tools some AI researchers use to inspect which

@@ -49,9 +49,9 @@ training-is-memorization risk Chapter 9 already warned about.
 The benchmark score alone can't distinguish "genuinely better at general
 math reasoning" from "happened to have this specific test's answers in
 its training data." Only checking for this kind of overlap — known as
-contamination — reveals which explanation is actually true, and once
-it's found, the 92%-versus-89% comparison stops meaning what it appeared
-to mean. And even setting contamination aside, a 3-point gap on its own
+contamination — shows the score can no longer be trusted as clean
+evidence of generalization, and once it's found, the 92%-versus-89%
+comparison stops meaning what it appeared to mean. And even setting contamination aside, a 3-point gap on its own
 doesn't say much without knowing how many questions the benchmark
 actually contains, how much the score moves across repeated runs, and
 whether both models were evaluated under identical conditions — a small
@@ -158,7 +158,7 @@ This is why AI providers publish tables of many separate named benchmarks rather
 
 It's also why a serious evaluation plan for a real product tests more than the model's raw answers: whether retrieval (Chapters 17–18) actually surfaces the right passage, whether a tool-using agent (Chapters 21–22) picks the right tool and recovers sensibly when a step fails, and how the complete pipeline performs end to end — not just a benchmark score for the model sitting at its core, which can look excellent while the surrounding system still lets users down.
 
-A reported score is also only as trustworthy as what stands behind it. Worth checking before treating any comparison as settled: how many test cases the score is actually based on (sample size), whether it was measured once or across repeated runs (generation is often stochastic, so a single run isn't necessarily representative), how much it moves run to run (variance), whether that variance is small enough to trust a given gap (confidence), how much independent raters agree with each other on the same cases (evaluator agreement), and whether a handful of severe failures are being averaged away by many minor successes (failure severity) — an aggregate percentage can look reassuring while hiding exactly the kind of failure that matters most in production.
+A reported score is also only as trustworthy as what stands behind it. Worth checking before treating any comparison as settled: how many test cases the score is actually based on (sample size), whether it was measured once or across repeated runs (with non-deterministic decoding, generation is often stochastic, so a single run isn't necessarily representative — though a deterministic decoding setup run against a fixed harness can reproduce the same result every time), how much it moves run to run (variance), whether that variance is small enough to trust a given gap (an uncertainty estimate, not a gut feeling), how much independent human raters agree with each other on the same cases, and separately, how consistent an LLM judge's own verdicts are across repeated passes over the same cases (evaluator agreement covers both, but they're not the same failure mode), and whether a handful of severe failures are being averaged away by many minor successes (failure severity) — an aggregate percentage can look reassuring while hiding exactly the kind of failure that matters most in production.
 
 ## Key Takeaway
 

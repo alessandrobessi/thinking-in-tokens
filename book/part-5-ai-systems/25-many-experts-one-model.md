@@ -69,8 +69,10 @@ In a standard, dense transformer block (Chapter 12), the feed-forward
 portion of every layer runs every single token through the exact same
 one set of parameters (Chapter 8). A Mixture-of-Experts layer replaces
 that single feed-forward network with several separate expert networks —
-each one itself a smaller feed-forward network, the same basic kind of
-thing Chapter 8 already covered — plus a lightweight router: a small
+each one itself a feed-forward network, the same basic kind of thing
+Chapter 8 already covered, typically close in size to the single dense
+layer it replaces rather than a shrunken-down version of it — plus a
+lightweight router: a small
 learned component that looks at a token's current representation and
 decides which handful of experts, commonly two, are best suited to
 process it. That decision is itself learned during training the same way

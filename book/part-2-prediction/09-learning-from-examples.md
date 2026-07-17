@@ -87,21 +87,25 @@ few dozen.
 
 ## Technical Explanation
 
-For language models, a single training example is simple: take a real
-passage of text, hide the next token, and ask the network to predict it.
-The loss compares the network's predicted probability distribution (from
-Chapter 6) against the token that actually came next in the real text — a
-prediction that puts high probability on the correct token produces low
-loss; a prediction that confidently predicts the wrong token produces high
-loss.
+For language models, training works like this: take a real passage of
+text, and at every position in it, ask the network to predict the token
+that comes next — so a single passage produces many predictions at once,
+one for each position, not just one. The loss at each position compares
+the network's predicted probability distribution (from Chapter 6) against
+the token that actually came next in the real text — a prediction that
+puts high probability on the correct token produces low loss; a
+prediction that confidently predicts the wrong token produces high loss.
 
 After computing the loss for an example, a procedure calculates, for every
 parameter the loss actually depends on, which direction of adjustment
 would have reduced it, and by how much — for a language model this is
 typically most of the network's parameters on any given example, but not
-literally all of them; an embedding table entry for a token that didn't
-appear in this example, for instance, gets no nudge at all this round.
-Each of those parameters is then nudged a small step in its own improving
+literally all of them; in architectures that keep separate input and
+output embedding tables, an embedding table entry for a token that didn't
+appear anywhere in this example, for instance, gets no nudge at all this
+round. (Some architectures instead tie the input and output embedding
+tables together, in which case even an unused token's row can still be
+nudged through the output side.) Each of those parameters is then nudged a small step in its own improving
 direction. This whole cycle (predict, measure loss, nudge the affected
 parameters) is repeated for
 an enormous number of examples, often the same examples multiple times,
@@ -146,10 +150,10 @@ and again.
 
 ## What to Remember
 
-- Loss is a precise number measuring how wrong a single prediction was.
+- Loss is a number measuring how much probability the model assigned to the token that actually came next.
 - Training is the repeated loop of predicting, measuring loss, and nudging whichever parameters contributed to it toward reducing it.
 - Learning is the name for the useful patterns that emerge from this loop — nobody designs them directly.
-- A language model's training examples are simply real text with the next token hidden and then compared against the prediction.
+- A language model's training examples are simply real text, with the model asked to predict the next token at every position and each prediction compared against what actually came next.
 - Well-trained models generalize rather than memorize, though memorization can occur under specific conditions (Chapter 15).
 - Loss measures fit to a specific objective, not general intelligence — a distinction Chapter 26 (Evaluating AI Systems) revisits.
 

@@ -132,10 +132,13 @@ training has built a strong, specifically reinforced capacity to use
 that extra generated text productively, and system design organizes more
 inference-time computation around difficult problems — not that a
 different underlying generation mechanism has appeared. The same is true
-of the wider and
-search-based variants: more computation, organized differently, on top of
-the same generation mechanism throughout — not a different kind of
-system underneath.
+of *generating* candidates or search steps in the wider and search-based
+variants: more computation, organized differently, on top of the same
+generation mechanism throughout, not a different kind of system
+underneath. The check that scores or verifies those candidates is a
+separate matter — a verifier or scoring component doesn't have to be
+doing token-by-token generation at all, and in real systems it often
+isn't.
 
 ## Common Misconceptions
 

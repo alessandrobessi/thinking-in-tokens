@@ -47,10 +47,11 @@ the line.
 
 Researchers use exactly this consistency to forecast forward: if the
 pattern holds across three data points, a fourth, far larger and far more
-expensive model can be predicted before it's ever trained. This is
-precisely how AI labs decide whether a massive training run is likely to
-be worth its cost before committing hundreds of millions of dollars to
-find out.
+expensive model can be predicted before it's ever trained. This general
+approach — extrapolating from smaller, cheaper runs — is one of the key
+inputs AI labs use when deciding whether a massive training run is likely
+to be worth its cost, alongside cost, timeline, and risk, before
+committing hundreds of millions of dollars to find out.
 
 ## Core Intuition
 

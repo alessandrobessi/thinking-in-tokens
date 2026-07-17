@@ -122,8 +122,9 @@ Specialized hardware and software, built specifically around the pattern
 of computation transformers (Chapters 11–12) perform, can run the exact
 same calculations significantly faster than general-purpose systems. None
 of these techniques repeat the training process (Chapter 9) — they aim to
-execute an approximation of the already-learned function more efficiently
-at inference time, not to relearn it.
+execute the already-learned function more efficiently at inference time,
+not to relearn it or approximate it; that's quantization's distinct
+role, covered above.
 
 ## Common Misconceptions
 

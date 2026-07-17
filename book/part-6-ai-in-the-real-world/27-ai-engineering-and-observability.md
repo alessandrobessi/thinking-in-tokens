@@ -55,10 +55,14 @@ advance.
 Observability found the bug; it isn't what should have prevented it. The
 actual fix is making the "process refund" tool **idempotent** — designed
 so that calling it twice for the same order has the same effect as
-calling it once, typically by having it check first whether that specific
-order was already refunded. That's a property engineered into the tool
-itself, independent of whether anyone happens to be watching the logs
-when a retry occurs. Observability and this kind of safe-by-design
+calling it once, typically by having the request carry a stable
+idempotency key that the system atomically records or checks against
+before ever issuing the refund — a database uniqueness constraint, a
+transaction, or a payment provider's own idempotency-key guarantee, not
+a separate check-then-act step that two concurrent retries could each
+pass through before either one finishes. That's a property engineered
+into the tool itself, independent of whether anyone happens to be
+watching the logs when a retry occurs. Observability and this kind of safe-by-design
 tool behavior work together: one limits the damage an unexpected retry
 can do in the first place, the other is how the team finds out a retry
 happened at all and confirms the fix worked.

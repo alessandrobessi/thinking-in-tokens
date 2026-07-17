@@ -94,11 +94,17 @@ and from "Japan" to "Tokyo" alike.
 
 An embedding is, precisely, a list of numbers — a vector — associated with
 each token in the vocabulary built in Chapter 3. These numbers aren't
-assigned by hand; they are learned automatically by having a system observe
-which tokens tend to appear in similar contexts across a huge body of text,
-and gradually adjusting each token's numbers so that tokens with similar
-contextual patterns end up with similar (nearby) vectors. This learning
-process is the subject of Chapter 9; for now, take the result as given.
+assigned by hand. In a system built directly around this goal — like the
+word2vec-style embeddings this chapter uses to keep the geometry easy to
+see — they're learned by observing which tokens tend to appear in similar
+contexts and directly adjusting each token's numbers so that similar
+contextual patterns end up with similar (nearby) vectors. A full language
+model's own input embeddings arrive at a similar geometric structure more
+indirectly: nothing explicitly pulls similar-context tokens together;
+that structure emerges as a side effect of training the whole model to
+predict the next token well, not from a separate, directly-targeted
+objective. This learning process is the subject of Chapter 9; for now,
+take the result as given.
 
 Similarity between two embeddings is typically computed as a geometric
 measure of how close their vectors are — conceptually the same as measuring
@@ -129,8 +135,9 @@ story. Once a model actually reads a specific sentence, it repeatedly
 revises this starting location based on the exact words surrounding it, so
 that "bank" in "river bank" ends up, temporarily, in a different place than
 "bank" in "investment bank" — even though both start from the same point on
-this chapter's map. That revision process is called attention, and it's the
-subject of Chapter 11. Everything in this chapter describes a token's
+this chapter's map. That revision happens through attention (Chapter 11)
+and the rest of the transformer machinery it's embedded in (Chapter 12).
+Everything in this chapter describes a token's
 initial position, not its final, in-context one.
 
 ## Common Misconceptions
@@ -155,7 +162,7 @@ initial position, not its final, in-context one.
 
 ### *"An embedding is a word's one true, permanent representation of meaning, the same wherever it appears."*
 
-**Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — a process called attention (Chapter 11) — producing a different, in-context representation each time.
+**Why it's wrong:** What this chapter describes is a token's starting location, learned from its typical usage across all contexts. A model revises that location based on the specific sentence it's actually reading — through attention (Chapter 11) and the rest of the transformer machinery it's embedded in (Chapter 12) — producing a different, in-context representation each time.
 
 **Correct intuition:** This chapter's embedding is a token's general-purpose starting point, not its final, in-context meaning — the final meaning is computed fresh for every sentence.
 
