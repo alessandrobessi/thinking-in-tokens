@@ -56,8 +56,7 @@ book:
 format:
   html:
     theme: cosmo
-    toc: true
-    toc-depth: 1
+    toc: false
     number-sections: false
   typst:
     toc: true
